@@ -1,0 +1,49 @@
+               V i m   中   文   文   檔
+
+關 於
+
+Vim (http://www.vim.org) 是一個功能非常強大，且具有很強擴展
+性的編輯器。而且 Vim 本身帶有一個完備的幫助系統。本項目的目
+的就是將 Vim 的這些文檔翻譯成中文，以便更多的人認識及更好的
+使用這個非常強大的編輯器。文檔分成 用戶手冊 和 參考手冊 兩
+部分，你即可以象使用教程那樣循序漸進，也可以快速的查閱來獲取
+幫助。
+
+關於如何安裝，請看 INSTALL。
+AUTHORS 列出了翻譯人員。
+LICENSE 包括版權信息。
+
+
+加 入
+
+我們歡迎各種各樣的幫助，翻譯，測試，等等等等。如果你也想加入
+本項目的話，請直接與我們聯繫 (見下) 並同時閱讀 guides.txt 和
+TODO 文件。
+
+
+信 息
+
+歡迎訪問我們的主頁以獲取更多的信息和最新的版本:
+http://vimcdoc.sf.net (English)
+http://vcd.gro.clinux.org （中文）
+
+如果你希望在有新的版本發佈時自動得到通知，可以訂閱我們的
+郵件列表 vimcdoc-announce。方法是發信到
+mailto: vimcdoc-announce-request@lists.sourceforge.net
+subject: subscribe
+
+你也可以訂閱我們的用戶郵件列表 vimcdoc-user，用來和其它用戶
+交流，或得到使用中問題的解答。訂閱的方法是
+mailto: vimcdoc-user-request@lists.sourceforge.net
+subject: subscribe
+
+另外，你還可以使用 RSS 的方式來得到關於項目的最新消息：
+項目新聞 RSS：
+http://sourceforge.net/export/rss2_projnews.php?group_id=56777
+項目文件發佈 RSS：
+http://sourceforge.net/export/rss2_projnews.php?group_id=56777&rss_fulltext=1
+
+
+聯 系
+
+建議,問題，等等，請送往 yianwillis@users.sourceforge.net
