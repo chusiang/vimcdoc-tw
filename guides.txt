@@ -1,0 +1,214 @@
+                      VIMCDOC TRANSLATION GUIDE
+
+
+本文件用來作爲一個翻譯文檔時的指南。包括必須統一的條目以及參考。
+任何意見和建議請在 vim-translate mailinglist 討論。
+
+http://vimcdoc.sf.net
+http://vcd.gro.clinux.org
+
+Note:
+後者是本項目的中文主頁。請在翻譯前先確認要翻譯的文檔沒有被翻譯過。
+以下討論僅以 sourceforge 爲例。
+
+
+==============================================================================
+Sourceforge ~
+
+本項目使用 sourceforge 服務。翻譯人員必須有一個 sourceforge-ID。你可以到
+http://www.sourceforge.net 申請。並通知項目管理員將你加入 developer list。
+
+
+==============================================================================
+CVS ~
+
+從 2006 年 5 月 15 日起，vimcdoc 轉用 Subversion 做版本管理。CVS repository 將
+被廢棄。
+
+==============================================================================
+Subversion ~
+
+vimcdoc 的 Subversion repository 也由 Sourceforge 提供。現在有兩個分支：trunk
+和 vim6，分別位於：
+
+https://svn.sourceforge.net/svnroot/vimcdoc/trunk
+和
+https://svn.sourceforge.net/svnroot/vimcdoc/branches/vimcdoc-vim6
+
+trunk 用來更新完善 Vim 7.x 的翻譯文檔。vim6 分支用來維護 vim 6.x 相關的內容。
+
+關於 svn 的使用，請參閱 sourceforge 文檔
+http://sourceforge.net/docs/E09, http://sourceforge.net/docs/B01
+以及 Subversion 的官方文檔
+http://svnbook.red-bean.com/
+
+Note 在 svn commit 時，儘量填寫有意義的註釋，幷包括以百分比表示的翻譯完成的進度。
+
+==============================================================================
+Mailing List ~
+
+http://sourceforge.net/mail/?group_id=56777
+項目共有3個mailing lists:
+1. vimcdoc@googlegroups.com
+   翻譯者必須 subscribe 這個 mailing list 以和大家交流，互相幫助，保持一致。
+   這個是用來替代 sourceforge 原有的 vimcdoc-translate 的。因爲舊的 list 穩定
+   性稍差。曾經癱瘓的半月之久。
+   http://groups.google.com/group/vimcdoc/subscribe
+2. vimcdoc-announce
+   發佈對外消息。如新版本發行等。
+   mailto: vimcdoc-announce-request@lists.sourceforge.net
+   subject: subscribe
+3. vimcdoc-cvs
+   用來自動通知 subversion commit 的狀態。
+   mailto: vimcdoc-cvscommit-request@lists.sourceforge.net
+   subject: subscribe
+
+
+==============================================================================
+Compulsory Rules ~
+
+1. 不能改動原文件的格式！不能改變各文本的顏色！
+   請打開語法加亮，並使用
+>
+   :syntax on
+   :set list
+   :set listchars=tab:>-,trail:-
+<
+   命令來顯示所有的字符用來幫助排板。
+   同時，VIM 在幫助文件中使用了很多標記字符，
+   用來幫助語法加亮。
+>
+   :hi Ignore guifg=color
+   :hi Ignore ctermfg=color
+<
+   可以使它們被顯示出來(使用比較醒目的 color)
+
+2. 一些 VIM 的專用術語必須統一。參閱 dict.txt
+   中的 Compulsory 區。
+
+3. 在開始翻譯一個新的文檔前，請 cvs update 你的
+   doc 目錄，並確認你所要翻譯的文檔不在其中。
+   在確定之後，cvs add && cvs checkin 一個 "完整"
+   的英文原文用來通知大家該文檔已被 taken。請不要
+   commit 一個空文件。( 在決定要翻譯哪個文件時，
+   請參考 TODO 文件。)
+
+4. 如果你不熟悉 VIM 幫助: 在 | | * * < > 等等
+   之間的文本是 vim 用來 hyperlink 的。不用翻譯。
+
+5. 各文件之間的銜接: VIM 文檔各文件之間互相參閱,
+   例如在每個 usr_??.txt 的最後都將給出前後的
+   文件主題, 翻譯時請參考已經存在的文件, 以確保
+   各個文件中的說法一致。
+
+5. 所有文檔應當使用 unix 行結束符。
+>
+   :set ff=unix
+<
+6. 當在 Vim 文檔中出現全大寫字母以表示某節的
+   開始時，在翻譯的中文字之間加入空格。例：
+	DELETING VARIABLES
+   =>
+	刪 除 變 量
+
+7. 行寬: Vim 幫助文件有固定的行寬--78，對於英文
+   文本，Vim 可以自動排版，可是這對中文文本無效。
+   所以，請在翻譯時注意手動調整行寬，不要超過78。
+
+8. 編碼：所有翻譯後的文本使用 UTF-8 編碼。
+   爲保持最大兼容性，請在翻譯完文檔後，運行以下
+   命令確保幫助文檔能在 enc=euc-cn 環境下查看。
+
+   $ iconv -f utf-8 -t euc-cn file.txt >/dev/null
+
+9. 翻譯日期：每個文檔的第一行均有一個 Last Change:
+   翻譯爲 “最近更新” 然後使用譯文的更新日期。
+
+10. 標點符號不能出現在行首。對引號一律使用 *英文引號* 。
+
+11. 關於 note, Note 的翻譯：視情況而定，可譯爲“注意”
+    或“備註”，之後＿必須＿是英文 ':' 或空格。這樣做
+    是爲了便於 Vim 分割 keyword。
+
+==============================================================================
+Recommended Rules ~
+
+1. 譯者: 譯者可將自己的名字(nickname,etc)置於
+   文件中原文作者的名字下面一行。格式爲 譯者: 
+   （英文標點）但建議同時給出本項目網址: 
+   http://vimcdoc.sf.net。
+
+2. 這個項目翻譯的目標是 Vim 6.3 的文檔，如果
+   你沒有這個版本,請到 Vim 主頁下載。注意：非
+   Vim 官方發行的 plugin 的文檔不再翻譯之列。
+
+3. 標點符號：建議在不改變原文的意思前提下"儘量"
+   使用中文標點。有些地方的標點有特殊的功能，
+   不能翻譯爲中文。例如 regexp 中的'.'
+
+4. 中英文混和：因爲英文本身帶有空格，而中文沒
+   有，建議在混和中英文時加入空格。如同上面
+   條目 2 中提到 Vim 的名字時。這樣比較清楚。
+
+
+==============================================================================
+Using AAP ~
+
+你可以使用 AAP 來 commit 你的翻譯結果。 建議 Vimdoc 翻譯的成員使用 AAP。 AAP 
+是跨平臺的，在 Linux/BSD 和 Windows 平臺都可以使用。
+
+1. 以下是 lang2 在 translate mailinglist中發的一份用法。
+
+Download AAP from http://www.a-a-p.org
+
+> In an effort to make my life (an hopefully others)
+> easier :-), I've been playing with Bram's new toy - aap
+>  for a while. I am now coming to a stage where it can be
+>  used to more or less replace those Makefiles.
+> 
+> I've checked in three file:
+> data/common.aap
+> data/doc/main.aap
+> data/doc/vim2html.pl
+> 
+> These at this moment only handles automatic updating
+> of the HTML version of the translation for both sites
+> (wandys have to patch the recipe for cosoft). I've tested
+> it with pi_gzip.txt (forgot to mention this) and it
+> looks OK so far.
+> 
+> I'd like to suggest you to install aap (http://www.a-a-p.org)
+> and give it a try. It won't hurt you. After the installation,
+> the first thing you have to do to use it is to modify the
+> common.aap to use your own sf handle. Then goto data/doc and try this:
+> - 'aap' will tell you what you can do
+> - 'aap <filename.txt>' will check in your change to that file
+> and generate HTML version and copy it to the remote server.
+> 
+> Quite easy isn't it?
+
+2. 在 Windows 平臺上要注意的問題。
+  (1) AAP 安裝完畢後，記得要把 AAP 可執行文件的路徑和其下的子目錄 bin 加到環境
+      變量 PATH 中。在我這裏，是這兩個目錄：
+
+      C:\Program Files\Aap\Exec; C:\Program Files\Aap\Exec\bin
+
+  (2) lang2 編寫的腳本裏面用到幾個命令行軟件:tar,gzip, 一般情況下，Windows 用戶
+      沒有這些軟件，不過沒關係，可以很方便的使用 AAP 下載。直接在 Dos 窗口中執行：
+
+      aap --install tar
+      aap --install gzip
+
+      軟件自動安裝在 AAP 子目錄 bin 下面。
+
+  (3) 還有一個軟件 NSIS 需要安裝。它是用來製作 vim 文檔的 Windows 安裝程序的。
+      它的網址是 http://nsis.sf.net 。記住：安裝完畢後，也要把的路徑加到環境變
+      量 PATH 中，只有這樣，腳本才能使用這個軟件。
+  
+  (4) 如果想發佈軟件，需要輸入下面的命令：
+      
+      aap release
+     
+      會生成兩個軟件包，*nix 和 Windows 的安裝包
+
+ vim:tw=78:ts=8:ft=help:norl:

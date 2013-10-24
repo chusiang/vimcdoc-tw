@@ -1,0 +1,193 @@
+The following table contains the terminologies used by Vim
+in its documentation and the corresponding Chinese phrases.
+
+The lists are ever changing. Suggestions are welcomed!
+
+
+
+Note: This is meant to be used with Vim!
+
+
+*Compulsory*
++----------------------------------------------------+
+|    ENGLISH                             中文        |
++----------------------------------------------------+
+ + Ex                                    Ex
+ + GUI                                   GUI
+ + UNIX                                  UNIX
+ + Vi                                    Vi
+ + Vim                                   Vim
+ + abbreviations                         縮寫
+ + alternative file                      備選文件
+ + autocommand                           自動命令
+ + backslash                             反斜槓
+ + block                                 塊
+ + boolean                               布爾
+ + buffer                                緩衝
+ + column                                列
+ + comment                               註釋
+ + CVS                                   CVS
+ + digraph                               二合字母
+ + event                                 事件
+ + expression                            表達式
+ + GNOME                                 GNOME
+ + GTK                                   GTK
+ + GUI                                   GUI
+ + folding                               摺疊
+ + identifier                            標識符
+ + indent                                縮進
+ + KDE                                   KDE
+ + key mapping                           鍵盤映射
+ + lisp                                  lisp
+ + locale                                locale
+ + mark and tag                          標記，標籤
+                                         位置標記 (Willis)
+ + marker                                標誌 (folding)
+ + offset                                偏移
+ + operator                              操作符 
+ + paragraph                             段落
+ + quickfix                              quickfix
+ + register                              寄存器
+ + scroll                                滾屏
+ + section                               節
+ + sentence                              句子
+ + session                               會話
+ + shell                                 shell
+                                         外殼 (Willis)
+ + shiftwidth                            shiftwidth
+ + socket                                socket
+                                         套接字 (Willis)
+ + swap file                             交換文件
+ + syntax highlight                      語法高亮
+ + text object                           文本對象
+ + visual mode                           visual 模式
+                                         可視模式 (Willis)
+ + yank                                  剪切
+                                         抽出 (Willis)
+ + Ruby                                  Ruby
+ + Perl                                  Perl
+ + cscope                                cscope
+ + debugger                              debugger
+ + Sun Visual Workshop                   Sun Visual Workshop
+ + OLE                                   OLE
+ + Tcl                                   Tcl
+ + SNiFF+                                SNiFF+
+ + view                                  視口
+                                         視圖 (Willis)
+ + Win32                                 Win32
+ + Windows                               Windows
+ + Plugin                                插件
+ + regexp                                regexp
+                                         正規表達式 (Willis)
+ + pattern                               模式
+ + matching                              匹配
+ + man page                              man page
+ + modeline                              modeline
+                                         模式行 (Willis)
+ + shell script                          shell 腳本
+                                         外殼腳本 (Willis)
+ + toolbar                               工具條
+ + tabstop                               tabstop
+                                         製表位 (Willis)
+ + line break                            ???
+                                         換行 (Willis)
+ + local identifier                      本地標識符
+                                         局部標識符 (Willis)
+ + global identifier                     全局標識符
+ + popup menu                            彈出菜單
+ + keyword                               關鍵字
+ + TABSTOP                               製表位
+ + X11                                   X11
+ + you                                   你
+
+*Recommended*
++----------------------------------------------------+
+|    ENGLISH                             中文        |
++----------------------------------------------------+
+ + active                                活動的
+ + append                                添加
+ + arg                                   參數
+ + argument                              參數
+ + atom                                  匹配原子
+ + brace                                 括號
+ + bracket                               方括號
+ + cursor                                光標
+ + inner                                 內
+ + join                                  連接
+ + layout                                佈局
+ + like                                  如
+ + literally                             照字面意思的
+                                         按本義出現的 (Willis)
+ + recall                                回憶
+ + reset                                 復位
+ + suspend                               掛起
+ + tooltip                               提示
+ + verbose                               verbose
+ + word                                  單詞
+ + format                                格式化
+ + session                               會話
+ + completion, complete                  補全
+ + encryption                            加密
+ + portable                              可移植的
+ + widget                                ???
+                                         窗口組件 (Willis)
+ + word processor                        字處理器
+ + scope                                 作用域
+
+Willis adds:
+ + count                                 計數 (prefix of normal commands)
+ + WORD                                  字串
+ + Block                                 大塊 (as in aB)
+ + set                                   置位 ("enable" boolean options)
+                                         設置 (otherwise)
+ + substitute                            替代
+ + replace mode                          替換模式
+ + virtual replace mode                  虛擬替換模式
+ + normal mode                           普通模式
+ + operator-pending mode                 操作符等待模式
+ + feature                               特性
+ + flag                                  標誌位
+ + undo                                  撤銷
+ + redo                                  重做 (opposite of undo)
+ + repeat                                重複
+ + character-wise                        面向字符
+ + linewise                              面向行
+ + inclusive                             閉的 (as of motions)
+ + exclusive                             開的
+ + cut                                   剪切
+ + copy                                  複製
+ + paste                                 粘貼
+ + put                                   放置
+ + encoding                              編碼
+ + console                               控制檯
+ + keymap                                鍵盤映射表
+ + wrap                                  迴繞
+ + format                                排版 (as in gq)
+ + included file                         頭文件 (C/C++)
+                                         包含文件 (others)
+ + abandon                               放棄
+ + home directory                        (用戶) 主目錄
+ + fontset                               字體集
+ + character set                         字符集
+ + sandbox                               沙盤
+ + double-width (character)              雙寬 (字符)
+ + modeless selection                    無模式的選擇
+ + source (script)                       執行或載入 (it depends)
+ + hebrew                                希伯來語
+ + farsi                                 波斯語
+ + right-to-left                         從右到左
+ + composing character                   合成用字符 (as in arabic and others)
+ + combining character                   組合用字符
+ + shaping                               (字型) 重整
+ + binary search                         二分法查找
+ + notation                              記法，標記法
+ + cluster                               簇
+ + ruler                                 標尺
+ + thesaurus                             同義詞字典
+ + dump                                  轉儲
+ + filter                                過濾
+
+
+-----------------------------------------------------------
+
+ vim:tw=78:ts=4:norl:
