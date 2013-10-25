@@ -6,7 +6,7 @@ It has built with [OpenCC][3] and [Zsh][4], if you want to rebuild it, you can s
 
 ![2013-10-24-vimcdoc-tw.png](https://lh3.googleusercontent.com/-sDPvKB6UsPQ/UmjbLBTiWjI/AAAAAAAAWEM/aF2NDl6CpQc/s640/2013-10-24-vimcdoc-tw.png)
 
-▲ Screenshot.
+▲ Screenshot of ``:help help``.
 
 ## Installation
 
