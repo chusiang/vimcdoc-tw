@@ -36,17 +36,17 @@ Switch the help language to zh-tw.
 	├── ChangeLog
 	├── dict.txt
 	├── doc
-	│   ├── arabic.cnx
-	│   ├── autocmd.cnx
+	│   ├── arabic.twx
+	│   ├── autocmd.twx
 	│   ├── ......
-	│   ├── version4.cnx
-	│   ├── version5.cnx
-	│   ├── version6.cnx
-	│   ├── version7.cnx
-	│   ├── vi_diff.cnx
-	│   ├── visual.cnx
-	│   ├── windows.cnx
-	│   └── workshop.cnx
+	│   ├── version4.twx
+	│   ├── version5.twx
+	│   ├── version6.twx
+	│   ├── version7.twx
+	│   ├── vi_diff.twx
+	│   ├── visual.twx
+	│   ├── windows.twx
+	│   └── workshop.twx
 	├── guides.txt
 	├── INSTALL
 	├── LICENSE
