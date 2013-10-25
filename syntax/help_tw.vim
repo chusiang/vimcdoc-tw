@@ -5,17 +5,17 @@ scriptencoding utf-8
 " Last Change:	2005 March
 " Usage: copy this file to $VIMRUNTIME/syntax
 
-syn match helpHeadlineCn	"^\([^\u0000-\u00ff]\s\|[-A-Z .]\)\+[ \t]\+\*"me=e-1
-syn match helpVimCn		"VIM \(參考\|用戶\)手冊.*"
-syn keyword helpNoteCn		注意 備註
-syn match helpNoteCn		/注意\|備註/
-syn match helpYizheCn		/譯者/
-syn region helpNotViCn		start="{沒有" start="{僅" end="}" contains=helpLeadBlank,helpHyperTextJump
+syn match helpHeadlineTw	"^\([^\u0000-\u00ff]\s\|[-A-Z .]\)\+[ \t]\+\*"me=e-1
+syn match helpVimTw		"VIM \(參考\|用戶\)手冊.*"
+syn keyword helpNoteTw		注意 備註
+syn match helpNoteTw		/注意\|備註/
+syn match helpYizheTw		/譯者/
+syn region helpNotViTw		start="{沒有" start="{僅" end="}" contains=helpLeadBlank,helpHyperTextJump
 
-hi link helpHeadlineCn		helpHeadline
-hi link helpVimCn		helpVim
-hi link helpNoteCn		helpNote
-hi link helpNotViCn		helpNotVi
-hi link helpYizheCn		Identifier
+hi link helpHeadlineTw		helpHeadline
+hi link helpVimTw		helpVim
+hi link helpNoteTw		helpNote
+hi link helpNotViTw		helpNotVi
+hi link helpYizheTw		Identifier
 
 " vim: ts=8 sw=2
