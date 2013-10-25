@@ -202,10 +202,10 @@
 
 "ab" 是一個雙字母的語言代碼。這樣，中文的文件名是:
 
-	help.cnx
-	howto.cnx
+	help.twx
+	howto.twx
 	...
-	tags-cn
+	tags-tw
 
 'helplang' 選項設置若干語言偏好。 缺省值根據當前環境設置。Vim 會先在偏好的語言
 裏查找匹配的標籤。如果沒有，就使用英語版本。
