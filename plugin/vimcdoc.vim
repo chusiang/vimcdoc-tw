@@ -8,7 +8,7 @@ endif
 let g:loaded_vimcdoc = 1
 
 if version >= 603
-  set helplang=tw
+  set helplang=cn
 endif
 
 " vim: ts=8 sw=2
