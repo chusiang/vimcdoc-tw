@@ -7,42 +7,42 @@
 
 歡迎來到 Vim 5.0 版本！
 
-本文檔列出 Vim 4.x 和 Vim 5.0 的不同之處。儘管這裏提到 5.0，但也適用於
+本文件列出 Vim 4.x 和 Vim 5.0 的不同之處。儘管這裡提到 5.0，但也適用於
 5.1，5.2 版本等。
 |vi_diff.txt| 提供 Vi 和 Vim 5.0 的區別的一個概述。
 |version4.txt| 說明 Vim 3.0 和 Vim 4.0 的區別。
 
 不 兼 容 點:				|incompatible-5|
 
-改變 'compatible' 缺省值		|cp-default|
-改變文本排版命令 "Q"			|Q-command-changed|
-改變命令行參數				|cmdline-changed|
+改變 'compatible' 預設值		|cp-default|
+改變文字排版命令 "Q"			|Q-command-changed|
+改變命令列參數				|cmdline-changed|
 保留自動命令				|autocmds-kept|
 改變 'hidden' 的使用			|hidden-changed|
-改變文本對象命令			|text-objects-changed|
+改變文字物件命令			|text-objects-changed|
 刪除 X-Windows 資源			|x-resources|
 $VIM 的使用				|$VIM-use|
 MS-DOS 和 Win32 的 $HOME 的使用		|$HOME-use|
-改變標籤文件格式			|tags-file-changed|
+改變標籤檔案格式			|tags-file-changed|
 改變的選項				|options-changed|
 取消插入命令的 CTRL-B 			|i_CTRL-B-gone|
 
 新 特 性:				|new-5|
 
 語法高亮				|new-highlighting|
-內建的腳本語言				|new-script|
-Perl 和 Python 支持			|new-perl-python|
+內建的指令碼語言				|new-script|
+Perl 和 Python 支援			|new-perl-python|
 Win32 GUI 版本				|added-win32-GUI|
 VMS 版本				|added-VMS|
 BeOS 版本				|added-BeOS|
 Macintosh GUI 版本			|added-Mac|
-和 Vi 更兼容				|more-compatible|
+和 Vi 更相容				|more-compatible|
 從標準輸入讀取輸入			|read-stdin|
-正規表達式模式				|added-regexp|
-重載的標籤				|tag-overloaded|
+正規表示式模式				|added-regexp|
+過載的標籤				|tag-overloaded|
 新命令					|new-commands|
 新選項					|added-options|
-新命令行參數				|added-cmdline-args|
+新命令列參數				|added-cmdline-args|
 其它新增				|added-various|
 
 改 進					|improvements-5|
@@ -58,15 +58,15 @@ Macintosh GUI 版本			|added-Mac|
 
 5.2 版 本			|version-5.2|
 長行可編輯				|long-lines|
-加入文件瀏覽器				|file-browser-5.2|
-加入對話框				|dialogs-added|
-加入彈出式菜單				|popup-menu-added|
+加入檔案瀏覽器				|file-browser-5.2|
+加入對話方塊				|dialogs-added|
+加入彈出式選單				|popup-menu-added|
 加入選擇模式				|new-Select-mode|
-加入會話文件				|new-session-files|
-用戶定義的函數和命令			|new-user-defined|
-新接口					|interfaces-5.2|
+加入會話檔案				|new-session-files|
+使用者定義的函數和命令			|new-user-defined|
+新介面					|interfaces-5.2|
 新移植版本				|ports-5.2|
-多字節支持				|new-multi-byte|
+多位元組支援				|new-multi-byte|
 新函數					|new-functions-5.2|
 新選項					|new-options-5.2|
 新 Ex 命令				|new-ex-commands-5.2|
@@ -81,20 +81,20 @@ Macintosh GUI 版本			|added-Mac|
 
 5.4 版 本			|version-5.4|
 引入運行時目錄				|new-runtime-dir|
-引入文件類型				|new-filetype-5.4|
-Vim 腳本續行符				|new-line-continuation|
-改進會話文件				|improved-sessions|
+引入檔案類型				|new-filetype-5.4|
+Vim 指令碼續行符				|new-line-continuation|
+改進會話檔案				|improved-sessions|
 改進自動命令				|improved-autocmds-5.4|
 加密					|new-encryption|
 GTK GUI 移植版本			|new-GTK-GUI|
-菜單改變				|menu-changes-5.4|
+選單改變				|menu-changes-5.4|
 改進 Viminfo				|improved-viminfo|
 若干新命令				|new-commands-5.4|
 若干新選項				|new-options-5.4|
-Vim 腳本				|new-script-5.4|
+Vim 指令碼				|new-script-5.4|
 避免 hit-enter 提示			|avoid-hit-enter|
 改進 quickfix				|improved-quickfix|
-正規表達式				|regexp-changes-5.4|
+正規表示式				|regexp-changes-5.4|
 改動					|changed-5.4|
 新增					|added-5.4|
 修正					|fixed-5.4|
@@ -124,103 +124,103 @@ Vim 腳本				|new-script-5.4|
 ==============================================================================
 				 不 兼 容 點		*incompatible-5*
 
-改變 'compatible' 缺省值				*cp-default*
+改變 'compatible' 預設值				*cp-default*
 --------------------------------------
 
-Vim 5.0 版本試圖變得和 Vi 更兼容。這有助於那些使用 Vim 作爲 Vi 短期代替品的
-人，但導致了和 4.x 版本的部分不兼容。
+Vim 5.0 版本試圖變得和 Vi 更相容。這有助於那些使用 Vim 作為 Vi 短期代替品的
+人，但導致了和 4.x 版本的部分不相容。
 
-4.x 版本里，'compatible' 選項的缺省值是關閉的。現在缺省打開了。第一件事你就會
-注意到，"u" 命令撤銷了它自己。其它的副作用包括映射可能工作方式不同，甚至完全不
+4.x 版本里，'compatible' 選項的預設值是關閉的。現在預設開啟了。第一件事你就會
+注意到，"u" 命令撤銷了它自己。其它的副作用包括對映可能工作方式不同，甚至完全不
 工作。
 
-因爲許多從 4.x 切換到 5.0 的人覺得這很討厭，如果 Vim 找到了 vimrc 文件，
-'compatible' 選項被關閉。這有點像魔術，但它確保 90% 的 Vim 用戶不會因爲這個改
+因為許多從 4.x 切換到 5.0 的人覺得這很討厭，如果 Vim 找到了 vimrc 檔案，
+'compatible' 選項被關閉。這有點像魔術，但它確保 90% 的 Vim 使用者不會因為這個改
 變而受影響。
 
 這意味什麼呢？
-- 如果你偏好運行在 'compatible' 模式裏且沒有 vimrc 文件，你不需要做任何事。
-- 如果你偏好運行在 'nocompatible' 模式裏且有 vimrc 文件，你不需要做任何事。
-- 如果你偏好運行在 'compatible' 模式裏，但你有 vimrc 文件，你應該在 vimrc 文
+- 如果你偏好運行在 'compatible' 模式裡且沒有 vimrc 檔案，你不需要做任何事。
+- 如果你偏好運行在 'nocompatible' 模式裡且有 vimrc 檔案，你不需要做任何事。
+- 如果你偏好運行在 'compatible' 模式裡，但你有 vimrc 檔案，你應該在 vimrc 文
   件先放上這行: >
 	:set compatible
-- 如果你偏好運行在 'nocompatible' 模式裏，但你沒有 vimrc 文件，你可以選擇以下
+- 如果你偏好運行在 'nocompatible' 模式裡，但你沒有 vimrc 檔案，你可以選擇以下
   方法之一:
-    - 建立空的 vimrc 文件 (比如: Unix 的 "~/.vimrc")。
-    - 在你的 .exrc 文件或 $EXINIT 裏放上這個命令: >
+    - 建立空的 vimrc 檔案 (比如: Unix 的 "~/.vimrc")。
+    - 在你的 .exrc 檔案或 $EXINIT 裡放上這個命令: >
 		:set nocompatible
-<   - 以 "-N" 參數啓動 Vim。
+<   - 以 "-N" 參數啟動 Vim。
 
-如果你是 Vi 和 Vim 的新用戶，強烈建議使用 'nocompatible'。因爲 Vi 有很多意想不
-到的副作用，這個設置可以避免。見 'compatible'。
+如果你是 Vi 和 Vim 的新使用者，強烈建議使用 'nocompatible'。因為 Vi 有很多意想不
+到的副作用，這個設定可以避免。見 'compatible'。
 
-如果你喜歡 'compatible' 的一些設置，不喜歡另一些，你可以用 'cpoptions' 兼容性
+如果你喜歡 'compatible' 的一些設定，不喜歡另一些，你可以用 'cpoptions' 相容性
 選項微調。
 
-如果用 "ex" 或 "gex" 啓動 Vim，Vim 總是以兼容模式啓動。
+如果用 "ex" 或 "gex" 啟動 Vim，Vim 總是以相容模式啟動。
 
 
-改變文本排版命令 "Q"					*Q-command-changed*
+改變文字排版命令 "Q"					*Q-command-changed*
 -----------------------------------
 
 "Q" 命令以前使用 'textwidth' 選項指定的寬度對行進行排版。現在這個命令是 "gq"
 (詳情見 |gq|)。這個改變的原因是 "Q" 是個標準 Vi 的命令，用以進入 "Ex" 模式，而
 事實上，Vim 現在有了 "Ex" 模式 (詳情見 |Q|)。
 
-如果你仍然想用 "Q" 進行排版，使用此映射: >
+如果你仍然想用 "Q" 進行排版，使用此對映: >
 	:noremap Q gq
 如果你同時想用 "Q" 的功能: >
 	:noremap gQ Q
 
 
-改變命令行參數						*cmdline-changed*
+改變命令列參數						*cmdline-changed*
 ------------------------------
 
-現在可以混合命令行文件參數和選項參數。你可以在文件名之後給出選項。例如: >
+現在可以混合命令列檔案參數和選項參數。你可以在檔名之後給出選項。例如: >
    vim main.c -g
 
-這不能用來編輯 '-' 開始的文件。使用 "--" 參數 |---|，然後: >
+這不能用來編輯 '-' 開始的檔案。使用 "--" 參數 |---|，然後: >
    vim -g -- -main.c
 
-"-v" 現在意味着啓動 Ex 進入 Vi 模式，使用 "-R" 進入只讀模式。
+"-v" 現在意味著啟動 Ex 進入 Vi 模式，使用 "-R" 進入只讀模式。
 舊版: "vim -v file"	|-v|
 新版: "vim -R file"	|-R|
 
-"-e" 現在意味着啓動 Vi 進入 Ex 模式，使用 "-q" 進入 quickfix。
+"-e" 現在意味著啟動 Vi 進入 Ex 模式，使用 "-q" 進入 quickfix。
 舊版: "vim -e errorfile"	|-e|
 新版: "vim -q errorfile" |-q|
 
-Ex 模式裏的 "-s" 現在意味着進入安靜 (批處理) 模式。|-s-ex|
+Ex 模式裡的 "-s" 現在意味著進入安靜 (批處理) 模式。|-s-ex|
 
-"-x" 爲加密選項保留，使用 "-f" 來避免啓動時進入新 CLI (Amiga)。
+"-x" 為加密選項保留，使用 "-f" 來避免啟動時進入新 CLI (Amiga)。
 舊版: "vim -x file"	|-x|
 新版: "vim -f file"	|-f|
 
 Vim 允許有不超過十個的 "+cmd" 和 "-c cmd" 參數。過去，Vim 只執行最後一個。
 
-"-n" 現在覆蓋 vimrc 文件裏 'updatecount' 的任何設置，但不會覆蓋 gvimrc 文件的
-設置。
+"-n" 現在覆蓋 vimrc 檔案裡 'updatecount' 的任何設定，但不會覆蓋 gvimrc 檔案的
+設定。
 
 
 保留自動命令						*autocmds-kept*
 ---------------------
 
-5.0 版本以前，有相同的事件、文件名模式和命令的自動命令只能出現一次。對簡單的自
-動命令這沒有問題 (比如設置選項值)，但對更複雜的自動命令，相同的命令可能會出現
+5.0 版本以前，有相同的事件、檔名模式和命令的自動命令只能出現一次。對簡單的自
+動命令這沒有問題 (比如設定選項值)，但對更複雜的自動命令，相同的命令可能會出現
 兩次。這個限制導致了一些問題。因此，Vim 記住所有的自動命令，並以它們定義的順序
-保存。
+儲存。
 
 - 在定義自動命令之前，刪除任何可能定義兩次的自動命令。例如: >
 	:au! * *.ext
 	:au BufEnter *.ext ...
 
-- 把自動命令放到 ":if" 命令裏面。例如: >
+- 把自動命令放到 ":if" 命令裡面。例如: >
 	if !exists("did_ext_autocmds")
 	  let did_ext_autocmds = 1
 	  autocmd BufEnter *.ext ...
 	endif
 
-- 把自動命令放到不同的自動命令組裏，這樣你可以在定義之前刪除它們 |:augroup|: >
+- 把自動命令放到不同的自動命令組裡，這樣你可以在定義之前刪除它們 |:augroup|: >
 	augroup uncompress
 	  au!
 	  au BufReadPost *.gz ...
@@ -230,25 +230,25 @@ Vim 允許有不超過十個的 "+cmd" 和 "-c cmd" 參數。過去，Vim 只執
 改變 'hidden' 的使用					*hidden-changed*
 -----------------------
 
-在 4.x 版本里，只有一些命令使用 'hidden' 選項。現在任何緩衝區從窗口裏消失的命
+在 4.x 版本里，只有一些命令使用 'hidden' 選項。現在任何緩衝區從視窗裡消失的命
 令都使用之。
 
-以前，你可以只阿改變過的緩衝區裏使用 ":buf xxx"，那個緩衝區就會隱藏。限制阿，
+以前，你可以只阿改變過的緩衝區裡使用 ":buf xxx"，那個緩衝區就會隱藏。限制阿，
 你必須置位 'hidden' 選項來做此工作。
 
-新的行爲更簡單: Vim 是否隱藏緩衝區不再取決於你使用的特定命令。
+新的行為更簡單: Vim 是否隱藏緩衝區不再取決於你使用的特定命令。
 - 沒有置位 'hidden'，你永遠不會得到隱藏的緩衝區。特例包括 ":hide" 和 ":close!"
-  命令，還有，在罕見的情況下，當你不這麼做就會丟失緩衝區裏的改動的情況。
-- 置位了 'hidden'，你幾乎不會卸載緩衝區。例外是 ":bunload" 或 ":bdel" 命令。
+  命令，還有，在罕見的情況下，當你不這麼做就會丟失緩衝區裡的改動的情況。
+- 置位了 'hidden'，你幾乎不會解除安裝緩衝區。例外是 ":bunload" 或 ":bdel" 命令。
 
-":buffer" 現在支持 "!": 放棄當前緩衝區的改動，":bnext"、":brewind" 等亦然。
+":buffer" 現在支援 "!": 放棄當前緩衝區的改動，":bnext"、":brewind" 等亦然。
 
 
-改變文本對象命令					*text-objects-changed*
+改變文字物件命令					*text-objects-changed*
 ----------------------------
 
-文本對象命令現在有了新的名字。這允許更多的文本對象，並且使這些字符可用於其它的
-可視模式命令。因爲不再提供單字符的名字，文本對象名字現在需要兩個字符。第一個字
+文字物件命令現在有了新的名字。這允許更多的文字物件，並且使這些字元可用於其它的
+可視模式命令。因為不再提供單字元的名字，文字物件名字現在需要兩個字元。第一個字
 符總是 'i' 或 'a'。
 	舊版	新版	~
 	a	aw	一個單詞 			|v_aw|
@@ -258,65 +258,65 @@ Vim 允許有不超過十個的 "+cmd" 和 "-c cmd" 參數。過去，Vim 只執
 	S	ab	一個 () 塊 			|v_ab|
 	P	aB	一個 {} 塊			|v_aB|
 
-有另外一組文本對象，它們以 "i" 開始，代表 "inner" (內部)。它們選擇相同的對象，
+有另外一組文字物件，它們以 "i" 開始，代表 "inner" (內部)。它們選擇相同的物件，
 但排除空白。
 
 
 刪除 X-Windows 資源					*x-resources*
 --------------------------
 
-Vim 不再支持下面的 X 資源:
+Vim 不再支援下面的 X 資源:
 - boldColor
 - italicColor
 - underlineColor
 - cursorColor
 
-Vim 現在使用高亮組設定顏色。這避免和使用粗體字體的混淆，其中隱含着使用特定顏
+Vim 現在使用高亮組設定顏色。這避免和使用粗體字型的混淆，其中隱含著使用特定顏
 色。見 |:highlight| 和 |gui-resources|。
 
 
 $VIM 的使用						*$VIM-use*
 -----------
 
-Vim 現在使用 VIM 環境變量來找到所有的 Vim 系統文件。其中包括全局 vimrc、
-gvimrc 和 menu.vim 文件以及所有的在線幫助和語法文件。見 |$VIM|。從 5.4
+Vim 現在使用 VIM 環境變數來找到所有的 Vim 系統檔案。其中包括全局 vimrc、
+gvimrc 和 menu.vim 檔案以及所有的線上幫助和語法檔案。見 |$VIM|。從 5.4
 版本開始，也可以使用 |$VIMRUNTIME|。
-Unix 上，Vim 在 "make install" 的時候設置 $VIM 的缺省值。
-如果沒有設置 $VIM，它的缺省值取自 'helpfile' 所在的目錄，減去後面的
+Unix 上，Vim 在 "make install" 的時候設定 $VIM 的預設值。
+如果沒有設定 $VIM，它的預設值取自 'helpfile' 所在的目錄，減去後面的
 "/doc/help.txt"。
 
 
 MS-DOS 和 Win32 的 $HOME 的使用				*$HOME-use*
 ---------------------------------
 
-MS-DOS 和 Win32 版本的 Vim 現在在搜索 vimrc 或 exrc 文件和讀寫 viminfo 文件的
-時候，檢查 $HOME。以前，Vim 在這些系統上使用 $VIM，但在有多個用戶的系統上這會
-有問題。現在 Vim 只有在 $HOME 沒有設置或者在 $HOME 裏沒找到文件的時候才使用
+MS-DOS 和 Win32 版本的 Vim 現在在搜索 vimrc 或 exrc 檔案和讀寫 viminfo 檔案的
+時候，檢查 $HOME。以前，Vim 在這些系統上使用 $VIM，但在有多個使用者的系統上這會
+有問題。現在 Vim 只有在 $HOME 沒有設定或者在 $HOME 裡沒找到檔案的時候才使用
 $VIM。見 |_vimrc|。
 
 
-改變標籤文件格式					*tags-file-changed*
+改變標籤檔案格式					*tags-file-changed*
 ------------------------
 
-標籤文件裏，只有製表可以用來分隔域。這樣，文件名裏就可以允許有空格，而且仍然和
-Vi 兼容。以前的 Vim 版本里，任何的空白都可以用來分隔域。如果你的文件不使用單個
-製表分隔域，編輯 tags 文件，並執行下面的命令: >
+標籤檔案裡，只有製表可以用來分隔域。這樣，檔名裡就可以允許有空格，而且仍然和
+Vi 相容。以前的 Vim 版本里，任何的空白都可以用來分隔域。如果你的檔案不使用單個
+製表分隔域，編輯 tags 檔案，並執行下面的命令: >
 	:%s/\(\S*\)\s\+\(\S*\)\s\+\(.*\)/\1\t\2\t\3/
 
 
 改變的選項						*options-changed*
 ---------------
 
-'errorfile' 的缺省值從 "errors.vim" 改爲 "errors.err"。原因是只有 Vim 腳本才應
-該有 ".vim" 擴展名。
+'errorfile' 的預設值從 "errors.vim" 改為 "errors.err"。原因是只有 Vim 指令碼才應
+該有 ".vim" 副檔名。
 
 ":make" 命令不在使用 'errorfile' 選項。這樣避免了 ":make" 命令的輸出覆蓋手動保
-存的錯誤文件。":make" 使用 'makeef' 選項代替。它也可以產生唯一的名字，防止同時
-運行的 ":make" 命令覆蓋對方的文件。
+存的錯誤檔案。":make" 使用 'makeef' 選項代替。它也可以產生唯一的名字，防止同時
+運行的 ":make" 命令覆蓋對方的檔案。
 
 'insertmode' 置位以後，更多的東西改變了:
-- 普通模式裏的 <Esc> 進入插入模式。
-- 插入模式裏的 <Esc> 不退出插入模式。
+- 普通模式裡的 <Esc> 進入插入模式。
+- 插入模式裡的 <Esc> 不退出插入模式。
 - 執行 ":set im" 時，立即進入插入模式。
 
 'fileformat' (以前是 'textmode' 選項) 和緩衝區的初始格式不同時，Vim 把緩衝區當
@@ -327,8 +327,8 @@ Vi 兼容。以前的 Vim 版本里，任何的空白都可以用來分隔域。
 
 Vim 編譯時加入 |+rightleft| 特性時，你可以使用 CTRL-B 切換 'revins' 選項。不幸
 的是，有的人想按 CTRL-V 或者 CTRL-N 的時候不小心按了 'B' 鍵，然後不知道怎麼撤
-銷此功能。因爲切換 'revins' 選項可以很容易用下面的映射執行，CTRL-B 鍵的該功能
-被取消了。爲此目的，你仍然可用 CTRL-_ 鍵 |i_CTRL-_|。 >
+銷此功能。因為切換 'revins' 選項可以很容易用下面的對映執行，CTRL-B 鍵的該功能
+被取消了。為此目的，你仍然可用 CTRL-_ 鍵 |i_CTRL-_|。 >
    :imap <C-B> <C-O>:set revins!<CR>
 <
 ==============================================================================
@@ -337,49 +337,49 @@ Vim 編譯時加入 |+rightleft| 特性時，你可以使用 CTRL-B 切換 'revi
 語法高亮						*new-highlighting*
 -------------------
 
-Vim 現在有了非常靈活的爲所有文件件類型設定高亮的方式。
+Vim 現在有了非常靈活的為所有檔案件類型設定高亮的方式。
 見 |syntax|。一個小結: >
    :syntax on
 
-語法高亮可以設置色彩和屬性，也可以用 'highlight' 的 ':' 標誌位爲其它高亮項目設
+語法高亮可以設定色彩和屬性，也可以用 'highlight' 的 ':' 標誌位為其它高亮項目設
 置色彩和屬性。所有的高亮項目被分配了一個高亮組，它指定這些項目的高亮方式。見
-|:highlight|。缺省顏色也有改進。
+|:highlight|。預設顏色也有改進。
 
-你可以用 "Normal" 組來設定色彩終端的缺省前/背景色。對於 GUI，你同樣可以使用該
-鑄來指定字體。
+你可以用 "Normal" 組來設定色彩終端的預設前/背景色。對於 GUI，你同樣可以使用該
+鑄來指定字型。
 
-"2html.vim" 腳本可以用來把任何有語法高亮的文件轉化爲 HTML。其中的色彩和你在
-Vim 看到的一模一樣。使用 HTML 瀏覽器，你可以打印彩色的文件。
+"2html.vim" 指令碼可以用來把任何有語法高亮的檔案轉化為 HTML。其中的色彩和你在
+Vim 看到的一模一樣。使用 HTML 瀏覽器，你可以列印彩色的檔案。
 
 
-內建的腳本語言						*new-script*
+內建的指令碼語言						*new-script*
 ------------------------
 
-一些附加的命令和表達式計算器是你可以編寫簡單但強大的腳本。命令包括 ":if" 和
-":while"。表達式可以處理數值和字符串。你可以用 '=' 寄存器來直接插入表達式的結
+一些附加的命令和表示式計算器是你可以編寫簡單但強大的指令碼。命令包括 ":if" 和
+":while"。表示式可以處理數值和字元串。你可以用 '=' 寄存器來直接插入表示式的結
 果。見 |expression|。
 
 
-Perl 和 Python 支持					*new-perl-python*
+Perl 和 Python 支援					*new-perl-python*
 -----------------------
 
-Vim 可以用 ":perldo"、":perl" 等調用 Perl 命令。見 |perl|。
+Vim 可以用 ":perldo"、":perl" 等呼叫 Perl 命令。見 |perl|。
 補丁由 Sven Verdoolaege 和 Matt Gerassimoff 提供。
 
-Vim 可以用 ":python" 和 ":pyfile" 調用 Python 命令。見 |python|。
+Vim 可以用 ":python" 和 ":pyfile" 呼叫 Python 命令。見 |python|。
 
-兩者都必須在編譯時打開才能得到。
+兩者都必須在編譯時開啟才能得到。
 
 
 Win32 GUI 版本						*added-win32-GUI*
 -----------------
 
-GUI 被移植到 MS Windows 95 和 NT 上。Windows 用戶現在可以使用 X11 GUI 的所有特
+GUI 被移植到 MS Windows 95 和 NT 上。Windows 使用者現在可以使用 X11 GUI 的所有特
 性了。|gui-w32|
-這也修正了在 Windows 95 裏運行 Win32 控制檯的問題，那裏，控制檯的支持總是很
+這也修正了在 Windows 95 裡運行 Win32 控制檯的問題，那裡，控制檯的支援總是很
 差。
-還有一個支持 OLE automation 接口的版本。|if_ole.txt|
-使用 VisVim DLL，Vim 可以和 Microsoft Developer Studio 集成。
+還有一個支援 OLE automation 介面的版本。|if_ole.txt|
+使用 VisVim DLL，Vim 可以和 Microsoft Developer Studio 整合。
 使用 Borland C++，可以產生 gvim 的 DLL 版本 (Aaron)。
 
 
@@ -388,7 +388,7 @@ VMS 版本						*added-VMS*
 
 Vim 現在可以用於 VMS 系統。移植由 Henk Elbers 提供。
 還沒有充分測試。但應該可以用了。
-對不起，沒有文檔。
+對不起，沒有文件。
 
 
 BeOS 版本						*added-BeOS*
@@ -406,42 +406,42 @@ Vim 現在可以用於 Macintosh。(Dany St-Amant)
 見 |os_mac.txt|。
 
 
-和 Vi 更兼容						*more-compatible*
+和 Vi 更相容						*more-compatible*
 ------------------
 
-現在，有一個真正的 Ex 模式。以 "Q" 命令執行，或者啓用可執行程序 "ex" 或
+現在，有一個真正的 Ex 模式。以 "Q" 命令執行，或者啟用可執行程式 "ex" 或
 "gex"。|Ex-mode|
 
-如果 'cpoptions' 裏包含 'u' 標誌位，即使在 Vi 兼容模式裏，也允許多層撤銷。
-CTRL-R 用於重複撤銷或重做 (像 Nvi 裏的 ".")。
+如果 'cpoptions' 裡包含 'u' 標誌位，即使在 Vi 相容模式裡，也允許多層撤銷。
+CTRL-R 用於重複撤銷或重做 (像 Nvi 裡的 ".")。
 
 
 從標準輸入讀取輸入					*read-stdin*
 ---------------------
 
-使用 "-" 命令行參數時，Vim 從標準輸入讀入文本輸入。
+使用 "-" 命令列參數時，Vim 從標準輸入讀入文字輸入。
 這可以用來在管道的末端使用 Vim: >
    grep "^a.*" *.c | vim -
 見 |--|。
 
 
-正規表達式模式						*added-regexp*
+正規表示式模式						*added-regexp*
 ---------------------------
 
 增加了指定匹配原匹配次數的範圍: "\{a,b}"。	|/\{|
-增加了 "最短匹配" 正規表達式 "\{-}" (Webb)。
-增加了 "\s"，匹配空白字符。可以替換 "[ \t]"。	|/\s|
-增加了 "\S"，匹配非空白字符，可以替換 "[^ \t]"。|/\S|
+增加了 "最短匹配" 正規表示式 "\{-}" (Webb)。
+增加了 "\s"，匹配空白字元。可以替換 "[ \t]"。	|/\s|
+增加了 "\S"，匹配非空白字元，可以替換 "[^ \t]"。|/\S|
 
 
-重載的標籤						*tag-overloaded*
+過載的標籤						*tag-overloaded*
 ---------------
 
 使用 C++ 這樣的語言的時候，可能有多個標籤對應相同的標簽名。增加了命令，可以跳
-轉到任何一個重載的標籤:
+轉到任何一個過載的標籤:
 |:tselect|	列出匹配的標籤，並跳轉到其中一個。
-|:stselect|	同上，並分割窗口。
-|g_CTRL-]|	使用光標所在的單詞執行 ":tselect"。
+|:stselect|	同上，並分割視窗。
+|g_CTRL-]|	使用游標所在的單詞執行 ":tselect"。
 
 	":ta {tagname}" 如有多個匹配，之後:
 |:tnext|	轉到下一個匹配的標籤。
@@ -449,375 +449,375 @@ CTRL-R 用於重複撤銷或重做 (像 Nvi 裏的 ".")。
 |:trewind|	轉到第一個匹配的標籤。
 |:tlast|	轉到最後一個匹配的標籤。
 
-":tag" 命令現在也接受通配符。執行命令行標籤補全時，也可以 (在最後) 使用大小寫
+":tag" 命令現在也接受通配符。執行命令列標籤補全時，也可以 (在最後) 使用大小寫
 不敏感的匹配。
 
 
 新命令							*new-commands*
 ------------
 
-|:amenu|	定義所有模式下的菜單，在插入模式裏插入 CTRL-O，可視模式下
-		ESC，命令行模式下 CTRL-C。"amenu" 用於定義缺省菜單和 Syntax 菜
+|:amenu|	定義所有模式下的選單，在插入模式裡插入 CTRL-O，可視模式下
+		ESC，命令列模式下 CTRL-C。"amenu" 用於定義預設選單和 Syntax 菜
 		單。
 
-|:augroup|	設置後面的自動命令使用的組。自動命令的編組允許了指定組內部的刪
+|:augroup|	設定後面的自動命令使用的組。自動命令的編組允許了指定組內部的刪
 		除。
 
 |:crewind|	轉到第一個錯誤。
 |:clast|	轉到最後一個錯誤，
 
-|:doautoall|	在所有載入的緩衝區裏執行自動命令。
+|:doautoall|	在所有載入的緩衝區裡執行自動命令。
 
-|:echo|		回顯表達式參數。可以用來顯示包含變量的消息。
+|:echo|		回顯表示式參數。可以用來顯示包含變數的訊息。
 
-|:execute|	執行表達式參數。可以用來構造任意的 Ex 命令。
+|:execute|	執行表示式參數。可以用來構造任意的 Ex 命令。
 
 |:hide|		和 ":close" 類似。
 
-|:if|		條件執行，用於內建腳本語言。
+|:if|		條件執行，用於內建指令碼語言。
 
-|:intro|	顯示介紹文字。Vim 啓動式，如果沒有文件參數，總是執行它。
+|:intro|	顯示介紹文字。Vim 啟動式，如果沒有檔案參數，總是執行它。
 
-|:let|		給內部變量賦值。
+|:let|		給內部變數賦值。
 
-|:omap|		只給操作符等待模式定義映射。從而可以映射文本命令。
+|:omap|		只給操作符等待模式定義對映。從而可以對映文字命令。
 
-|:redir|	把消息的輸出重定向到文件裏。
+|:redir|	把訊息的輸出重定向到檔案裡。
 
 |:update|	緩衝區改變時寫回。
 
-|:while|	While 循環，用於內建腳本語言。
+|:while|	While 迴圈，用於內建指令碼語言。
 
 可視模式:
-|v_O|		可視列塊模式裏的 "O" 水平移動光標到另一個角。
-|v_D|		可視列塊模式裏的 "D" 刪到行尾。
+|v_O|		可視列塊模式裡的 "O" 水平移動游標到另一個角。
+|v_D|		可視列塊模式裡的 "D" 刪到行尾。
 
 插入模式:
-|i_CTRL-]|	切換縮寫、無須插入任何字符。
+|i_CTRL-]|	切換縮寫、無須插入任何字元。
 
 
 新選項							*added-options*
 -----------
 
-'background'	用於選擇缺省的高亮色。"syntax.vim" 也用於選擇語法顏色。通常自
-		動根據使用的終端自動設置。
+'background'	用於選擇預設的高亮色。"syntax.vim" 也用於選擇語法顏色。通常自
+		動根據使用的終端自動設定。
 
 'complete'	指定插入模式補全如何完成。
 
-'eventignore'	可以暫時屏蔽自動命令。
+'eventignore'	可以暫時遮蔽自動命令。
 
-'fileformat'	目前的文件格式。替換了 'textmode'。
-'fileformats'	目前的文件格式列表。替換了 'textauto'。
-		新的特點還包括對 Macintosh 格式的支持: 單個 <CR> 分隔行。
-		'fileformats' 在 MS-DOS、Win32 和 OS/2 的缺省是 "dos,unix"，即
-		使 'compatible' 置位也是如此。Unix 類型的文件在 'fileformats'
-		爲空的時候無論如何都無法工作。
+'fileformat'	目前的檔案格式。替換了 'textmode'。
+'fileformats'	目前的檔案格式列表。替換了 'textauto'。
+		新的特點還包括對 Macintosh 格式的支援: 單個 <CR> 分隔行。
+		'fileformats' 在 MS-DOS、Win32 和 OS/2 的預設是 "dos,unix"，即
+		使 'compatible' 置位也是如此。Unix 類型的檔案在 'fileformats'
+		為空的時候無論如何都無法工作。
 
-'guicursor'	設置光標在不同模式裏的形狀和閃爍。缺省爲插入和替換模式和等待操
-		作符時調整光標。缺省也打開閃爍。
+'guicursor'	設定游標在不同模式裡的形狀和閃爍。預設為插入和替換模式和等待操
+		作符時調整游標。預設也開啟閃爍。
 
-'fkmap'		波斯語鍵盤映射。
+'fkmap'		波斯語鍵盤對映。
 
 'hlsearch'	高亮所有的最近使用的搜索模式的匹配。
 
-'hkmapp'	'根據讀音的希伯來語' 映射 (Ilya Dogolazky)
+'hkmapp'	'根據讀音的希伯來語' 對映 (Ilya Dogolazky)
 
-'iconstring'	如果非空，定義圖標名字。(5.2 版本: 按本義使用該字符串，可是用
+'iconstring'	如果非空，定義圖示名字。(5.2 版本: 按本義使用該字元串，可是用
 		換行建立兩行。)
 
-'lazyredraw'	執行宏、寄存器或其它不靠輸入的命令時，不重畫屏幕。
+'lazyredraw'	執行宏、寄存器或其它不靠輸入的命令時，不重畫螢幕。
 
-'makeef'	":make" 使用的錯誤文件。"##" 被唯一的數字替換。可以避免兩個
-		Vim 會話覆蓋彼此的錯誤文件的情況。Unix 的缺省是
+'makeef'	":make" 使用的錯誤檔案。"##" 被唯一的數字替換。可以避免兩個
+		Vim 會話覆蓋彼此的錯誤檔案的情況。Unix 的預設是
 		"/tmp/vim##.err"；Amiga 是 "t:vim##.Err"，其它 "vim##.err"。
 
-'matchtime'	如果打開了 'showmatch'，1/10 秒計算的括號匹配顯示的時間。類似
+'matchtime'	如果開啟了 'showmatch'，1/10 秒計算的括號匹配顯示的時間。類似
 		於 Nvi。
 
-'mousehide'	輸入文本時隱藏鼠標指針。
+'mousehide'	輸入文字時隱藏滑鼠指針。
 
-'nrformats'	定義使用 CTRL-A 和 CTRL-X 命令時 Vim 考慮的數值的基底。缺省
-		爲: "hex,octal"。
+'nrformats'	定義使用 CTRL-A 和 CTRL-X 命令時 Vim 考慮的數值的基底。預設
+		為: "hex,octal"。
 
 'shellxquote'	圍繞整個外殼命令的附加引號，包括重定向。
 
-'softtabstop'	使得輸入的感覺就像 tabstop 設爲此值一樣，而不用實際改變
-		'tabstop' 的值。使得保持 'ts' 爲 8 更簡單，而實際上輸入 <Tab>
+'softtabstop'	使得輸入的感覺就像 tabstop 設為此值一樣，而不用實際改變
+		'tabstop' 的值。使得保持 'ts' 為 8 更簡單，而實際上輸入 <Tab>
 		仍然可以得到四個空格。
 
-'titlestring'	如果非空，窗口標題字符串。(5.2 版本: 按本義使用該字符串，可是
+'titlestring'	如果非空，視窗標題字元串。(5.2 版本: 按本義使用該字元串，可是
 		用換行建立兩行。)
 
 'verbose'	詳細程度。可以用來顯示初始化時使用了哪個 .vimrc、.exrc、
-		.viminfo 文件等等。也可以顯示執行中的自動命令。也可以用 "-V"
-		命令行參數設置。
+		.viminfo 檔案等等。也可以顯示執行中的自動命令。也可以用 "-V"
+		命令列參數設定。
 
 
-新命令行參數						*added-cmdline-args*
+新命令列參數						*added-cmdline-args*
 --------------------------
 
-|-U|		指定要用的 gvimrc 文件。類似於指定 vimrc 的 "-u"。
+|-U|		指定要用的 gvimrc 檔案。類似於指定 vimrc 的 "-u"。
 
-|-V|		設置 'verbose' 選項。比如 "vim -V10"。
+|-V|		設定 'verbose' 選項。比如 "vim -V10"。
 
-|-N|		以非兼容模式啓動。
+|-N|		以非相容模式啟動。
 
-|-C|		以兼容模式啓動。
+|-C|		以相容模式啟動。
 
-|-Z|		以受限模式啓動，禁止外殼命令。也可以用執行可執行程序 "rvim" 完
+|-Z|		以受限模式啟動，禁止外殼命令。也可以用執行可執行程式 "rvim" 完
 		成。
 
-|-h|		顯示使用信息並退出。
+|-h|		顯示使用資訊並退出。
 
 
 其它新增						*added-various*
 -----------------
 
-增加了和 SNiFF+ 連接的功能 (Toni Leherbauer 提交)。Vim 可以用做 SNiFF 的編輯
-器。沒有文檔...
+增加了和 SNiFF+ 連線的功能 (Toni Leherbauer 提交)。Vim 可以用做 SNiFF 的編輯
+器。沒有文件...
 
-要產生漏洞報告，可用包含的 bugreport.vim 腳本。
-可以這樣使用: ":so $VIMRUNTIME/bugreport.vim"，它在當前目錄建立文件
+要產生漏洞報告，可用包含的 bugreport.vim 指令碼。
+可以這樣使用: ":so $VIMRUNTIME/bugreport.vim"，它在當前目錄建立檔案
 "bugreport.txt"。|bugs|
 
-":normal" 命令增加了範圍。現在你可以爲某範圍內的每行重複相同的命令。
+":normal" 命令增加了範圍。現在你可以為某範圍內的每行重複相同的命令。
 |:normal-range|
 
-加入了波斯語的支持 (Shiran)。只有在編譯時打開才能使用。見 |farsi|。
+加入了波斯語的支援 (Shiran)。只有在編譯時開啟才能使用。見 |farsi|。
 
 ==============================================================================
 				 改 進			*improvements-5*
 
-性能:
-- 如果設置了 'showcmd'，映射的執行過去會慢的多，因爲需要頻繁刷新輸出。這對你執
+效能:
+- 如果設定了 'showcmd'，對映的執行過去會慢的多，因為需要頻繁重新整理輸出。這對你執
   行 "至關重要的" 宏且需要置位 'showcmd' 時太有幫助了。
-- 包含了關於標籤文件進行二分法查找的補丁。(David O'Neill)
+- 包含了關於標籤檔案進行二分法查找的補丁。(David O'Neill)
   可以通過復位 'tagbsearch' 選項關閉。
 - 重複插入時，不更新標尺 (會顯著減慢)。
-- Unix 上，文件名擴展現在在內部完成了，不用啓動外殼來處理。
-- 用 expand_env() 擴展環境變量，而不用調用外殼。使得
+- Unix 上，檔名擴展現在在內部完成了，不用啟動外殼來處理。
+- 用 expand_env() 擴展環境變數，而不用呼叫外殼。使得
   ":so $VIMRUNTIME/syntax/syntax.vim" 快的_多_了。
-- 減少了光標定位的輸出: 用 CR-LF 移動到下面數行的前面數列。使用 termios 時，不
+- 減少了游標定位的輸出: 用 CR-LF 移動到下面數行的前面數列。使用 termios 時，不
   輸出 CR 兩次。
-- 優化了光標定位。用 CR、BS 和 NL，如果產生的代碼比光標絕對定位要短的話。
+- 優化了游標定位。用 CR、BS 和 NL，如果產生的程式碼比游標絕對定位要短的話。
 - 重複插入 "1000ii<Esc>" 時，關閉重畫。
-- 使長行的 "d$" 或 "D" 快的多 (一次刪除所有的字符，而不是一個一個刪)。
+- 使長行的 "d$" 或 "D" 快的多 (一次刪除所有的字元，而不是一個一個刪)。
 - 用地一個字母訪問選項表，而不是從頭開始搜索。
-- 使用 highlight_attr[]，而不是從 'highlight' 字符串裏搜索，這使設置特殊高亮屬
+- 使用 highlight_attr[]，而不是從 'highlight' 字元串裡搜索，這使設定特殊高亮屬
   性快的多。
 - 重畫關閉時，不顯示模式。
-- 設置選項時，只有在需要的時候才重畫屏幕。
-- 通過第一個字母的查找表，提高 Ex 命令的性能。
+- 設定選項時，只有在需要的時候才重畫螢幕。
+- 通過第一個字母的查找表，提高 Ex 命令的效能。
 
 選項:
 'cinoptions'	加入 'g' 標誌位，用於 C++ 作用域定義。
-'cpoptions'	加入 'E' 標誌位: 禁止抽出、刪除等作用於空文本區域。缺省允許抽
-		出空區域。如果包含 'E'，在空行上 "y$" 現在被處理爲錯誤 (Vi 兼
+'cpoptions'	加入 'E' 標誌位: 禁止抽出、刪除等作用於空文字區域。預設允許抽
+		出空區域。如果包含 'E'，在空行上 "y$" 現在被處理為錯誤 (Vi 兼
 		容)。
-		加入 'j' 標誌位: 連接只在 '.' 之後，而不是 '?' 或 '!' 之後加入
+		加入 'j' 標誌位: 連線只在 '.' 之後，而不是 '?' 或 '!' 之後加入
 		兩個空格。
-		加入 'A' 標誌位: 不給出 ATTENTION 消息。
+		加入 'A' 標誌位: 不給出 ATTENTION 訊息。
 		加入 'L' 標誌位: 如果不給出並且置位了 'list'，'textwidth' 排版
 		如同沒有置位 'list' 那樣。
-		加入 'W' 標誌位:  使 ":w!" 的行爲類似 Vi: 不覆蓋只讀文件或者別
-		人擁有的文件。
-'highlight'	加入 '@' 標誌位，用於置位 'list' 時，屏幕最後一行之後的 '@' 字
+		加入 'W' 標誌位:  使 ":w!" 的行為類似 Vi: 不覆蓋只讀檔案或者別
+		人擁有的檔案。
+'highlight'	加入 '@' 標誌位，用於置位 'list' 時，螢幕最後一行之後的 '@' 字
 		符和行尾的 '$'。
-		加入 'i' 標誌位: 設置 'incsearch' 的高亮。缺省使用 "IncSearch"
-		高亮組，它是 "Visual" 的鏈接。
+		加入 'i' 標誌位: 設定 'incsearch' 的高亮。預設使用 "IncSearch"
+		高亮組，它是 "Visual" 的連結。
 		不再允許 'highlight' 的 'h' 標誌位 (3.0 之後就不再用了)。
-'guifont'	僅限於 Win32 GUI: 設置爲 "*" 時彈出字體請求器。
-'guipty'	缺省多，因爲太多人需要它了。
+'guifont'	僅限於 Win32 GUI: 設定為 "*" 時彈出字型請求器。
+'guipty'	預設多，因為太多人需要它了。
 'path'		可以包含通配符，"**" 可用於搜索整個樹。
 'shortmess'	加入 'I' 標誌位已避免介紹文字。
-'viminfo'	加入 '%' 標誌位: 在 viminfo 文件裏保存緩衝區列表。
+'viminfo'	加入 '%' 標誌位: 在 viminfo 檔案裡儲存緩衝區列表。
 
-- 提高了 'maxmem' 和 'maxmemtot' 在 Unix 和 Win32 上的缺省值。許多機器現在有更
-  多的 RAM，因爲價錢便宜多了。
-- 實現了 ":set all&"，設置所有選項爲其缺省值。|:set|
+- 提高了 'maxmem' 和 'maxmemtot' 在 Unix 和 Win32 上的預設值。許多機器現在有更
+  多的 RAM，因為價錢便宜多了。
+- 實現了 ":set all&"，設定所有選項為其預設值。|:set|
 
-交換文件:
-- 不爲只讀文件建立交換文件。只有在第一次修改時，或在需要的內存太高的時候建立交
-  換文件。|swap-file|
-- 如有可能，使得交換文件 "隱藏"。Unix 上是通過在交換文件前附加句號完成的。如果
-  使用長文件名，DJGPP 和 Win32 版本也在前面附加句號，這樣在編輯 Unix 文件系統
-  上裝載的文件時就有效果了。|:swapname|  MSDOS 上，_不_隱藏文件屬性，因爲這會
+交換檔案:
+- 不為只讀檔案建立交換檔案。只有在第一次修改時，或在需要的內存太高的時候建立交
+  換檔案。|swap-file|
+- 如有可能，使得交換檔案 "隱藏"。Unix 上是通過在交換檔案前附加句號完成的。如果
+  使用長檔名，DJGPP 和 Win32 版本也在前面附加句號，這樣在編輯 Unix 檔案系統
+  上裝載的檔案時就有效果了。|:swapname|  MSDOS 上，_不_隱藏檔案屬性，因為這會
   導致 share.exe 的問題。
-- 'updatecount' 缺省總是非零，即使在 Vi 兼容模式也是如此。
-  這意味着總會有交換文件，它可以用來恢復。
+- 'updatecount' 預設總是非零，即使在 Vi 相容模式也是如此。
+  這意味著總會有交換檔案，它可以用來恢復。
 
 標籤:
 - 包含了 ctags 2.0 (Darren Hiebert)。靜態標籤的語法從
 	{tag}:{fname}	{fname}	{command}
-  改爲
+  改為
 	{tag}	{fname}	{command};"	file:
-  這樣，分析更快，更短，而且和 Vi 兼容。仍然接受舊的格式，除非在 src/feature.h
-  裏關閉 (見 OLD_STATIC_TAGS)。|tags-file-format|
-- 標籤的補全現在也包含了其它文件的靜態標籤，放在最後。
+  這樣，分析更快，更短，而且和 Vi 相容。仍然接受舊的格式，除非在 src/feature.h
+  裡關閉 (見 OLD_STATIC_TAGS)。|tags-file-format|
+- 標籤的補全現在也包含了其它檔案的靜態標籤，放在最後。
 - 包含了 Stephen Riehm 的 "shtags"。
-- 尋找標籤匹配但文件不存在時，繼續尋找下一個匹配。有助於爲不同版本的源代碼使用
-  相同的標籤文件 (通過鏈接)。
-- 和其它文件的全局匹配相比，給當前文件的全局標籤匹配更高優先級。
+- 尋找標籤匹配但檔案不存在時，繼續尋找下一個匹配。有助於為不同版本的原始碼使用
+  相同的標籤檔案 (通過連結)。
+- 和其它檔案的全局匹配相比，給當前檔案的全局標籤匹配更高優先順序。
 
 包含 xxd V1.8 版本 (Juergen Weigert)。
 
 自動命令:
-- VimLeave 自動命令再寫入 viminfo 文件之後執行，而不是在它之前。|VimLeave|
+- VimLeave 自動命令再寫入 viminfo 檔案之後執行，而不是在它之前。|VimLeave|
 - 允許在執行自動命令時修改之。可用於自修改的自動命令。(Goldberg 的想法)
 - 使用兩個或更多模式的自動命令時，不能把 ":if/:endif" 分到兩行上。現在所有匹配
-  的自動命令在一個 do_cmdline() 裏執行。
+  的自動命令在一個 do_cmdline() 裡執行。
 - 自動命令不再改變 "." 重複的命令。
 - 執行自動命令之後恢復搜索模式。則避免了自動命令弄亂了 'hlsearch' 高亮。
-- 試圖執行自動命令時，同時嘗試用短文件名匹配模式。有助於短文件名和長文件名不同
-  的場合 (擴展後的符號鏈接)。|autocmd-patterns|
+- 試圖執行自動命令時，同時嘗試用短檔名匹配模式。有助於短檔名和長檔名不同
+  的場合 (擴展後的符號連結)。|autocmd-patterns|
 - 使得 ":autocmd" 的輸出更短且更好。
 - ":autocmd" 在定義時擴展 <sfile>。|<sfile>|
-- ":autocmd" 加入 "nested" 標誌位，允許嵌套。|autocmd-nested|
-- ":autocmd" 加入 [group] 參數。覆蓋目前設置的組。 |autocmd-groups|
+- ":autocmd" 加入 "nested" 標誌位，允許巢狀。|autocmd-nested|
+- ":autocmd" 加入 [group] 參數。覆蓋目前設定的組。 |autocmd-groups|
 - 新事件:
-  |BufUnload|		緩衝區卸載前
+  |BufUnload|		緩衝區解除安裝前
   |BufDelete|		緩衝區從緩衝區列表刪除前
-  |FileChangedShell|	執行外殼命令後，文件修改時間被改變
-  |User|		用戶定義的自動命令
+  |FileChangedShell|	執行外殼命令後，檔案修改時間被改變
+  |User|		使用者定義的自動命令
 - 如果 BufRead* 自動命令置位了 'modified'，過去在它之後又會復位。現在會記住
   ":set modified"。
 
 GUI:
 - 改進 GUI 滾動條在重畫比產生滾動事件時的處理。
-- "vim -u NONE" 現在也不再載入 .gvimrc 和其它 GUI 初始化設置。|-u|
-  用 "-U" 來使用別的 gvimrc 文件。|-U|
-- 處理外部命令的 CTRL-C，也包括支持 "setsid()" 的系統。
-- 啓動 GUI 時，限制窗口大小爲屏幕大小。
-- 缺省菜單從 $VIMRUNTIME/menu.vim 裏讀入。這使得缺省菜單可以定製。|menu.vim|
-- 改進缺省菜單。加入 File/Print、Window 菜單、Syntax 菜單等等。
-- 加入 ":menu" 命令的優先級。現在每個菜單可以放在你想要的地方，和菜單定義的順
+- "vim -u NONE" 現在也不再載入 .gvimrc 和其它 GUI 初始化設定。|-u|
+  用 "-U" 來使用別的 gvimrc 檔案。|-U|
+- 處理外部命令的 CTRL-C，也包括支援 "setsid()" 的系統。
+- 啟動 GUI 時，限制視窗大小為螢幕大小。
+- 預設選單從 $VIMRUNTIME/menu.vim 裡讀入。這使得預設選單可以定製。|menu.vim|
+- 改進預設選單。加入 File/Print、Window 選單、Syntax 選單等等。
+- 加入 ":menu" 命令的優先順序。現在每個選單可以放在你想要的地方，和選單定義的順
   序相互獨立。|menu-priority|
 
-在 Windows 95 上運行 Win32 控制臺版本時，介紹文字屏幕給出警告，因爲在 Windows
+在 Windows 95 上運行 Win32 控制臺版本時，介紹文字螢幕給出警告，因為在 Windows
 95 上運行此版本會有問題。|win32-problems|
 
 ":substitute"  加入 'e' 標誌位: 找不到匹配不會抱怨 (Campbell)。|:s|
 
-映射中使用搜索命令時，只把最後一個保存進歷史。避免過長的映射濫用歷史。
+對映中使用搜索命令時，只把最後一個儲存進歷史。避免過長的對映濫用歷史。
 
-檢查啓動模式時，忽略 "ex"、"view" 和 "gvim" 之後的所有字符。可用來使用 "gvim5"
-等名字。|gvim| "gview" 啓動只讀模式的 GUI。|gview|
+檢查啟動模式時，忽略 "ex"、"view" 和 "gvim" 之後的所有字元。可用來使用 "gvim5"
+等名字。|gvim| "gview" 啟動只讀模式的 GUI。|gview|
 
-調整窗口大小時，儘可能使光標的相對位置保持不變。(Webb)
+調整視窗大小時，儘可能使游標的相對位置保持不變。(Webb)
 
-":all" 和 ":ball" 不再爲同一緩衝區關閉然後然後打開窗口。避免選項、跳轉表和其它
-信息的丟失。
+":all" 和 ":ball" 不再為同一緩衝區關閉然後然後開啟視窗。避免選項、跳轉表和其它
+資訊的丟失。
 
-現在如果 Vim 編譯時不帶 GUI，忽略 "-f" 命令行參數。|-f|
+現在如果 Vim 編譯時不帶 GUI，忽略 "-f" 命令列參數。|-f|
 
-可視列塊模式裏，鼠標右鍵選擇最近的一角。
+可視列塊模式裡，滑鼠右鍵選擇最近的一角。
 
-修改了 DOS 等的缺省映射。刪除 DOS 專用的映射，用 Windows 的那些就可以了。加入
+修改了 DOS 等的預設對映。刪除 DOS 專用的對映，用 Windows 的那些就可以了。加入
 Shift-Insert、Ctrl-Insert、Ctrl-Del 和 Shift-Del。
 
-修改 ":jumps" 輸出的編號，使你能夠看見 {count} CTRL-O 到哪裏。|:jumps|
+修改 ":jumps" 輸出的編號，使你能夠看見 {count} CTRL-O 到哪裡。|:jumps|
 
 用 "~" 代替 $HOME 現在適用於所有系統。|$HOME|
 
-Unix: 除了 CTRL-C 以外，也可用 tty 設置的 INTR 字符。有人把 INTR 設爲 DEL。
+Unix: 除了 CTRL-C 以外，也可用 tty 設定的 INTR 字元。有人把 INTR 設為 DEL。
 
-允許 ":help" 命令參數裏的 <LF> 結束幫助命令，從而可以跟隨下一個命令。
+允許 ":help" 命令參數裡的 <LF> 結束幫助命令，從而可以跟隨下一個命令。
 
 "   #if" 開頭的行上按 "%" 過去不跳轉到匹配的 "#else"。
 'cpo' 包含 '%' 時，'%' 不識別 "#if"、"#else" 等。|%|
 
 改進了用 "CTRL-N"、"CTRL-P" 和 "CTRL-X" 的插入模式擴展 |ins-completion|:
 - 加入 'complete' 選項。
-- 置位 'nowrapscan' 而沒有匹配時，錯誤信息裏報告搜索的方向。
+- 置位 'nowrapscan' 而沒有匹配時，錯誤資訊裡報告搜索的方向。
 - 重複執行 CTRL-X 命令加入匹配之後的單詞/行。
-- 加入擴展時，接受單個字符的匹配。
+- 加入擴展時，接受單個字元的匹配。
 - 重複的 CTRL-X CTRL-N 不把撤銷斷開，這樣 "." 會重複整個插入過程。也修正了不能
   在用 CTRL-N 插入的單詞上退格的問題。
 
-插入模式用 CTRL-E 或 CTRL-Y 從上/下行複製字符時，不再使用 'textwidth'。
+插入模式用 CTRL-E 或 CTRL-Y 從上/下行複製字元時，不再使用 'textwidth'。
 |i_CTRL-E|
 
-在參數表內移動的命令，如 ":n" 和 ":rew"，保持文件原有的光標位置。(主要爲了和
-Vi 兼容)。
+在參數列內移動的命令，如 ":n" 和 ":rew"，保持檔案原有的游標位置。(主要為了和
+Vi 相容)。
 
 Vim 現在記住每個緩衝區的 '< 和 '> 位置標記。修正了在一個緩衝區刪除行後使另一緩
 衝區的 '< 和 '> 位置標記非法的問題。|'<|
 
-MSDOS、Unix 和 OS/2: 如果沒有設置 $VIM，使用可執行文件的路徑。用可執行文件路徑
+MSDOS、Unix 和 OS/2: 如果沒有設定 $VIM，使用可執行檔案的路徑。用可執行檔案路徑
 代替 $VIM 時如果存在 "src/"，刪除之。編譯後直接運行 Vim 時，這個方法使得 Vim
-可以找到文檔和語法文件。|$VIM|
+可以找到文件和語法檔案。|$VIM|
 
-用 <Esc> 退出可視模式時，光標位於可視區域開始處 (就像執行操作符之後的情況)。
+用 <Esc> 退出可視模式時，游標位於可視區域開始處 (就像執行操作符之後的情況)。
 
-Win32 和 Unix 版本: 刪除外部命令的 1100 字符限制。
+Win32 和 Unix 版本: 刪除外部命令的 1100 字元限制。
 
 加入 ":edit +command" 參數包含空格的可能性。在它之前加上反斜槓。|+cmd|
 
 恢復後，提供 BufReadPost 自動命令。|:recover|
 
-加入 "os2ansi"，OS/2 控制檯，的色彩支持。(Slootman) |os2ansi|
+加入 "os2ansi"，OS/2 控制檯，的色彩支援。(Slootman) |os2ansi|
 
-% 爲空也能接受 "%:p:h"。|:_%|
+% 為空也能接受 "%:p:h"。|:_%|
 
-包含 "<sfile>": ":source" 命令的文件名。|<sfile>|
+包含 "<sfile>": ":source" 命令的檔名。|<sfile>|
 
-加入 "<Bslash>" 特殊字符。有助於避免映射和菜單裏的多重反斜槓。
+加入 "<Bslash>" 特殊字元。有助於避免對映和選單裡的多重反斜槓。
 
-幫助窗口裏，雙擊跳轉到光標所在的標籤 (類似 CTRL-])。
+幫助視窗裡，雙擊跳轉到游標所在的標籤 (類似 CTRL-])。
 
 <C-Left> 和 <C-Right> 現在和 <S-Left> 和 <S-Right> 類似，正向/反向移動一個單詞
-(和 Windows 兼容)，|<C-Left>|
+(和 Windows 相容)，|<C-Left>|
 
-刪除 .vimrc 文件對 ":version" 命令的需要。沒有任何用處。用 ":if" 可以處理版本
+刪除 .vimrc 檔案對 ":version" 命令的需要。沒有任何用處。用 ":if" 可以處理版本
 間的差異。|:version|
 
-MS-DOS、Win32 和 OS/2: 自動命令比較文件時，不區別路徑分隔符 '/' 和 '\'。
+MS-DOS、Win32 和 OS/2: 自動命令比較檔案時，不區別路徑分隔符 '/' 和 '\'。
 
 新的 termcap 選項:
 "mb": 閃爍。只能賦予其它高亮選項之一。|t_mb|
-"bc": 退格字符。|t_bc|
-"nd": GUI 上用於向右移動光標，避免刪除從最後一個粗體字符開始的整行像素行。
+"bc": 退格字元。|t_bc|
+"nd": GUI 上用於向右移動游標，避免刪除從最後一個粗體字元開始的整行畫素行。
       |t_nd|
 "xs": 對 hpterm 而言，高亮不用覆蓋來刪除。和 'weirdinvert' 組合使用。hpterm 現
       在可以用可視模式了。|t_xs|
 
-Unix: 補丁和備份文件的時間設置爲和原來文件相同的時間。(Hiebert)。
+Unix: 補丁和備份檔案的時間設定為和原來檔案相同的時間。(Hiebert)。
 
-Amiga: QuickFix 模式不再打開另一個窗口。現在可以用外殼命令。
+Amiga: QuickFix 模式不再開啟另一個視窗。現在可以用外殼命令。
 
-加入 David Binette 的 decmouse 補丁。只要編譯時打開。現在可以使用 Dec 和
-Netterm 鼠標。
+加入 David Binette 的 decmouse 補丁。只要編譯時開啟。現在可以使用 Dec 和
+Netterm 滑鼠。
 
-加入 '#' 寄存器: 輪換文件名 |quote#|。":dis" 命令顯示 '#' 寄存器。|:display|
+加入 '#' 寄存器: 輪換檔名 |quote#|。":dis" 命令顯示 '#' 寄存器。|:display|
 
-Unix 上從 'isfname' 的缺省值裏刪除 ':'。總是檢查文件名裏的 "://"。MS-DOS 也檢
+Unix 上從 'isfname' 的預設值裡刪除 ':'。總是檢查檔名裡的 "://"。MS-DOS 也檢
 查 ":\\"。
 
-"K"eyword 命令加入計數，如果 'keywordprg' 爲 "man"，計數插入 man 命令。"2K" 產
+"K"eyword 命令加入計數，如果 'keywordprg' 為 "man"，計數插入 man 命令。"2K" 產
 生 "!man 2 <cword>"。|K|
 
-相對路徑名上用 "gf" 刪除文件名裏的 "../"，和標籤文件裏對文件名的處理相同。|gf|
+相對路徑名上用 "gf" 刪除檔名裡的 "../"，和標籤檔案裡對檔名的處理相同。|gf|
 
-結束紀錄時，不把記錄的寄存器設置爲放置 (put) 用的缺省寄存器。
+結束紀錄時，不把記錄的寄存器設定為放置 (put) 用的預設寄存器。
 
-使用 "!!" 時，命令行上不放 ":5,5!"，而是 ":.!"。還有一些改進，可能的情況下把具
+使用 "!!" 時，命令列上不放 ":5,5!"，而是 ":.!"。還有一些改進，可能的情況下把具
 體的行號換成 "." 或 "$"。
 
-MSDOS 等: $VIM/viminfo 換名爲 $VIM/_viminfo。和下面這些更一致: .vimrc/_vimrc
+MSDOS 等: $VIM/viminfo 換名為 $VIM/_viminfo。和下面這些更一致: .vimrc/_vimrc
 和 .viminfo/_viminfo
 
-文件名大小寫不敏感的系統 (MSDOS、Amiga) 上，給文件名排序時忽略大小寫。也包括緩
+檔名大小寫不敏感的系統 (MSDOS、Amiga) 上，給檔名排序時忽略大小寫。也包括緩
 衝區的名字。
 
-從標準輸入讀取如果失敗，改爲從標準錯誤讀取 (可用於 "foo | xargs vim")。
+從標準輸入讀取如果失敗，改為從標準錯誤讀取 (可用於 "foo | xargs vim")。
 
-32 位 MS-DOS 版本: 把 csdpmi3 改爲 csdpmi4。
+32 位 MS-DOS 版本: 把 csdpmi3 改為 csdpmi4。
 
-<C-Left> 和 <C-Right> 改爲跳過字串 (WORD) 而不是單詞 (word)。
+<C-Left> 和 <C-Right> 改為跳過字串 (WORD) 而不是單詞 (word)。
 
-Unix 之外的系統現在也支持覆蓋文件時關於修改時間被改變的警告。
+Unix 之外的系統現在也支援覆蓋檔案時關於修改時間被改變的警告。
 
-Unix: 修改 configure 的缺省，使之和 Makefile 的缺省一致: 這包括 GUI、Perl 和
+Unix: 修改 configure 的預設，使之和 Makefile 的預設一致: 這包括 GUI、Perl 和
 Python 等方面。
 
 一些 Motif 的版本需要 "-lXpm"。configure 時加入這方面的檢查。
@@ -829,39 +829,39 @@ link 行不加入 "-L/usr/lib"，一些系統可能有問題。
 
 編譯時，允許通過修改 src/feature.h 的一行，簡單的選擇 minimal、normal 還是
 maximal 特性包。
-DOS16 版本使用 minimal 特性包編譯，以免內存太快溢出。|dos16|
-Win32、DJGPP 和 OS/2 版本使用 maximal 特性包，因爲它們有足夠的內存。
+DOS16 版本使用 minimal 特性包編譯，以免內存太快溢位。|dos16|
+Win32、DJGPP 和 OS/2 版本使用 maximal 特性包，因為它們有足夠的內存。
 Amiga 可以有 normal 和 maximal 特性包的不同版本。
 
 在 Unix 版本的 Makefile 里加上了 "make test"。允許快速檢查是否多數 "普通" 命令
 可以正確工作。也測試一些特定的命令。
 
-DJGPP 版本里，加入 setlocale() 支持代碼頁。
+DJGPP 版本里，加入 setlocale() 支援內碼表。
 
 autoconf:
 - autoconf 增加 -lXdmcp 檢查。
-- 包含 -lXmu 的檢查，爲此不再需要編輯 Makefile。
+- 包含 -lXmu 的檢查，為此不再需要編輯 Makefile。
 - 切換到 autoconf 2.12。
 - configure 增加對 <poll.h> 的檢查。Linux 上包含 Perl 的時候看來需要？
 - 現在，在 termcap 之前檢查 termlib。
 - configure 增加對 strncasecmp()、stricmp() 和 strnicmp() 檢查。加入
   vim_stricmp()，如果沒有 stricmp() 庫函數的話。
-- 在 configure 裏使用 "datadir"，而不是我們自己對 HELPDIR 的檢查。
+- 在 configure 裡使用 "datadir"，而不是我們自己對 HELPDIR 的檢查。
 
-從 Makefile.manx 裏刪除 "make proto"。沒有很多的 #ifdef，無法使它工作。
+從 Makefile.manx 裡刪除 "make proto"。沒有很多的 #ifdef，無法使它工作。
 
-從 proto.h 的 paths 裏刪除 "proto/"。Mac 移植版本需要如此。
+從 proto.h 的 paths 裡刪除 "proto/"。Mac 移植版本需要如此。
 
 Makefile.mint 進行了大改動。現在它包含 Unix Makefile。
 
-Makefile.b32 加了 Dos16 的支持 (Makefile.b32 換名爲 Makefile.bor)。
+Makefile.b32 加了 Dos16 的支援 (Makefile.b32 換名為 Makefile.bor)。
 
-所有的源程序現在編輯時使用 tabstop 爲 8 而不是 4，對於調試和其它工具的使用，這
-樣更合適。爲了方便編輯。'softtabstop' 設爲 4。
+所有的源程式現在編輯時使用 tabstop 為 8 而不是 4，對於偵錯和其它工具的使用，這
+樣更合適。為了方便編輯。'softtabstop' 設為 4。
 
-Unix: 加入 "link.sh" 腳本，它從 link 命令裏刪除一些不必要的庫。
+Unix: 加入 "link.sh" 指令碼，它從 link 命令裡刪除一些不必要的庫。
 
-缺省，HPUX 上不使用二合字母。除非定義了 HPUX_DIGRAPHS 才如此。
+預設，HPUX 上不使用二合字母。除非定義了 HPUX_DIGRAPHS 才如此。
 |digraphs-default|
 
 ==============================================================================
@@ -1561,107 +1561,107 @@ longfilename at the shell prompt.
 
 5.0 和 5.1 版本之間的改進。
 
-主要是一個漏洞修正的發佈版，沒有很多新特性。
+主要是一個漏洞修正的釋出版，沒有很多新特性。
 
 
 改動							*changed-5.1*
 -------
 
-expand() 函數現在用 <NL> 分隔文件名而不是空格。避免內嵌空格文件名出現的問題。
+expand() 函數現在用 <NL> 分隔檔名而不是空格。避免內嵌空格檔名出現的問題。
 要得到舊的結果，用 substitute(expand(foo), "\n", " ", "g")。
 
 插入擴展用的字典可用反斜槓代表通配符。如果 'isk' 包含反斜槓的話，允許擴展
 "ze\kra"。
 
-Win32 GUI 新圖標。
+Win32 GUI 新圖示。
 
-":tag"、":tselect" 等只當參數以 '/' 開始時把它當作正規表達式。避免 ":tag xx~"
-給出錯誤信息: "No previous sub.  regexp"。:tag 參數包含通配字符時亦然，過去和
-Vi 不兼容。
-用 '/' 時，按本義接受參數有更高的優先級，在通配匹配之前先使用。
+":tag"、":tselect" 等只當參數以 '/' 開始時把它當作正規表示式。避免 ":tag xx~"
+給出錯誤資訊: "No previous sub.  regexp"。:tag 參數包含通配字元時亦然，過去和
+Vi 不相容。
+用 '/' 時，按本義接受參數有更高的優先順序，在通配匹配之前先使用。
 只有使用 '/' 時才尋找不同大小寫的匹配，即使沒有置位 'ignorecase' 也是如此。
-"g^]" 被改爲只在匹配的標籤多於一個時才做 ":tselect"。
+"g^]" 被改為只在匹配的標籤多於一個時才做 ":tselect"。
 
-修改部分缺省顏色，因爲在深色背景下它們不方便閱讀。
+修改部分預設顏色，因為在深色背景下它們不方便閱讀。
 
-搜索模式的字符偏移可以移動光標到下行或上行。同時修正 "/pattern/e+2" 在行尾的
+搜索模式的字元偏移可以移動游標到下行或上行。同時修正 "/pattern/e+2" 在行尾的
 "pattern" 停滯的問題。
 
-狀態行上雙擊不再啓動可視模式。拖動狀態行不再停止可視模式。
+狀態行上雙擊不再啟動可視模式。拖動狀態行不再停止可視模式。
 
-Perl 接口: Buffers() 和 Windows() 現在使用更合乎邏輯的參數，就像 Vim 其餘部分
+Perl 介面: Buffers() 和 Windows() 現在使用更合乎邏輯的參數，就像 Vim 其餘部分
 使用的那樣 (Moore)。
 
-'" 位置標記的初始值設爲首行的第一個字符。自動命令使用 '" 不會出錯。
+'" 位置標記的初始值設為首行的第一個字元。自動命令使用 '" 不會出錯。
 
 
 新增							*added-5.1*
 -----
 
-"shell_error" 內部變量: 最近外殼命令的輸出。
+"shell_error" 內部變數: 最近外殼命令的輸出。
 
-":echohl" 命令: 設置 ":echo" 的高亮。
+":echohl" 命令: 設定 ":echo" 的高亮。
 
-'highlight' 的 'S' 標誌位和 StatusLineNC 高亮組: 非當前窗口的狀態行高亮。當前
-窗口的缺省設置使用粗體。
+'highlight' 的 'S' 標誌位和 StatusLineNC 高亮組: 非當前視窗的狀態行高亮。當前
+視窗的預設設定使用粗體。
 
 加入 buffer_name() 和 buffer_number() 函數 (Aaron)。
 加入 substitute() 函數的 "g" 標誌位參數 (Aaron)。
 加入 winheight() 函數。
 
-Win32: 如果外部命令用 "start " 開始，不爲它打開控制檯 (Aaron)。
+Win32: 如果外部命令用 "start " 開始，不為它開啟控制檯 (Aaron)。
 
-Win32 控制檯: 使用 termcap 代碼，根據當前控制檯屬性處理粗體/反轉屬性。
+Win32 控制檯: 使用 termcap 程式碼，根據當前控制檯屬性處理粗體/反轉屬性。
 
 configure 檢查 "strip"。(Napier)
 
 插入模式的 CTRL-R CTRL-R x: 按本義插入寄存器內容，而不是像鍵盤輸入那樣插入。
 
-使一些 "No match" 錯誤消息提供更多信息: 不匹配的模式。
+使一些 "No match" 錯誤訊息提供更多資訊: 不匹配的模式。
 
-"make install" 現在也複製宏文件。
+"make install" 現在也複製宏檔案。
 
-tools/tcltags，從 TCL 文件生成標籤文件的外殼腳本。
+tools/tcltags，從 TCL 檔案生成標籤檔案的外殼指令碼。
 
-configure 的 "--with-tlib" 設置。使用 termlib 的簡單辦法: "./configure
+configure 的 "--with-tlib" 設定。使用 termlib 的簡單辦法: "./configure
 --with-tlib=termlib"。
 
-'cino' 的 'u' 標誌位可以設置被包含的 () 部分的縮進。
+'cino' 的 'u' 標誌位可以設定被包含的 () 部分的縮排。
 
-如果 Win32 OLE 版本不能載入註冊的類型庫，詢問用戶是否現在要註冊 Vim。(Erhardt)
+如果 Win32 OLE 版本不能載入註冊的類型庫，詢問使用者是否現在要註冊 Vim。(Erhardt)
 帶 OLE 的 Win32: 自動註冊時退出 Vim。
-加入 VisVim 1.1b，若干改進和新圖標 (Heiko Erhardt)。
+加入 VisVim 1.1b，若干改進和新圖示 (Heiko Erhardt)。
 
-加入 Vince Negri 關於 Win32s 支持的補丁。需要用 VC 4.1 編譯！
+加入 Vince Negri 關於 Win32s 支援的補丁。需要用 VC 4.1 編譯！
 
-Perl 接口: 加入 $curbuf。使 Buffers() 和 Windows() 更合理。
+Perl 介面: 加入 $curbuf。使 Buffers() 和 Windows() 更合理。
 (Moore) 加入 Msg() 的 "group" 參數。
 
-DOS 源代碼歸檔加入 Perl 文件。修改 Makefile.bor 和 Makefile.w32 以支持編譯帶
+DOS 原始碼歸檔加入 Perl 檔案。修改 Makefile.bor 和 Makefile.w32 以支援編譯帶
 Perl 的 Win32 版本。
 
 加入 Ken Scott 提供的新 Makefile.w32。現在可以 make 所有的 Win32 版本，包括
 OLE、Perl 和 Python。
 
-加入 CTRL-W g ] 和 CTRL-W g ^]: 分割窗口並執行 g] 或 g^]。
+加入 CTRL-W g ] 和 CTRL-W g ^]: 分割視窗並執行 g] 或 g^]。
 
-加入 "g]"，總是爲光標所在的標識符執行 ":tselect"。
+加入 "g]"，總是為游標所在的標識符執行 ":tselect"。
 加入 ":tjump" 和 ":stjump" 命令。
 改進 ":tselect" 的列表標簽名過長的問題。
 
-加入 Macintosh 版本和 Python 接口的一些補丁。(St-Amant)
+加入 Macintosh 版本和 Python 介面的一些補丁。(St-Amant)
 
-如果以前用過某緩衝區，":buf foo" 現在也恢復光標列。
+如果以前用過某緩衝區，":buf foo" 現在也恢復游標列。
 
-爲不同的最終目標調整了語法文件和腳本的 Makefile (用於 Debian Linux)。
+為不同的最終目標調整了語法檔案和指令碼的 Makefile (用於 Debian Linux)。
 
 Amiga: $VIM 可以在任何地方使用。如果沒定義 $VIM，使用 "VIM:"。修正幫助和語法文
 件需要 "VIM:" 賦值的問題。現在兩者都可以用了。
 
-一些 xterms 發送和 vt100 兼容的功能鍵 F1-F4。因爲無法檢測這一點，同時識別兩種
+一些 xterms 發送和 vt100 相容的功能鍵 F1-F4。因為無法檢測這一點，同時識別兩種
 類型的鍵並把它們翻譯成 <F1> - <F4>。
 
-加入 "VimEnter" 自動命令。在所有的啓動任務之後執行。
+加入 "VimEnter" 自動命令。在所有的啟動任務之後執行。
 
 BeOS 版本現在可以在 Intel CPU 上運行。(Seibert)。
 
@@ -1877,100 +1877,100 @@ the Vim window.
 長行可編輯						*long-lines*
 -------------------
 
-窗口裏放不下的長行不再顯示 @@@ 了。重畫從行內的某個字符開始繼續，使得光標周圍
-的文本可見。這使得打開迴繞時，可以編輯長行。
+視窗裡放不下的長行不再顯示 @@@ 了。重畫從行內的某個字元開始繼續，使得游標周圍
+的文字可見。這使得開啟迴繞時，可以編輯長行。
 
 
-加入文件瀏覽器						*file-browser-5.2*
+加入檔案瀏覽器						*file-browser-5.2*
 ------------------
 
-Win32、Ahena 和 Motif GUI 上，如果用戶請求 ":browse" 並用於 ":e"、":w"、":r"、
-":so"、":redirect" 和 ":mkexrc/vimrc/vsess" 命令時，彈出文件請求器。
-":browsee /foo/bar" 在 /foo/bar 目錄打開請求器，這樣，你可以得到很好的右手邊的
-映射，比如 ":browse so $vim/macros"。如購沒有爲 ":browse e" 指定初始目錄，編譯
+Win32、Ahena 和 Motif GUI 上，如果使用者請求 ":browse" 並用於 ":e"、":w"、":r"、
+":so"、":redirect" 和 ":mkexrc/vimrc/vsess" 命令時，彈出檔案請求器。
+":browsee /foo/bar" 在 /foo/bar 目錄開啟請求器，這樣，你可以得到很好的右手邊的
+對映，比如 ":browse so $vim/macros"。如購沒有為 ":browse e" 指定初始目錄，編譯
 時可以選擇從當前目錄還是當前緩衝區的目錄開始。(Negri 和 Kahn)
 增加了 'browsedir' 選項，可取值 "current"、"last" 或 "buffer"。它說明瀏覽對話
 框從最後使用的目錄、當前緩衝區的目錄，還是當前目錄開始。":browse w" 不受影響。
-修改了缺省菜單，現在使用 ":browse" 命令。
+修改了預設選單，現在使用 ":browse" 命令。
 
 
-加入對話框						*dialogs-added*
+加入對話方塊						*dialogs-added*
 -------------
 
 增加了 ":confirm" 命令。可用於 ":e"、":q"、":w"、":cl"。Win32、Athena 和 Motif
-GUI 使用窗口對話框。所有其它的平臺使用命令行上的提示。":confirm qa" 提供了保存
-所有修改過的文件的選擇。
+GUI 使用視窗對話方塊。所有其它的平臺使用命令列上的提示。":confirm qa" 提供了儲存
+所有修改過的檔案的選擇。
 
-confirm() 函數: 允許用戶訪問 confirm 機制。
+confirm() 函數: 允許使用者訪問 confirm 機制。
 
-增加了 'guioptions' 的 'v' 標誌位。如果包含，總是在 Win32 GUI 對話框裏使用垂直
+增加了 'guioptions' 的 'v' 標誌位。如果包含，總是在 Win32 GUI 對話方塊裡使用垂直
 的按鈕佈局。否則，偏向使用水平佈局。
 
-Win32 GUI: ":promptfind" 和 ":promptrepl" 彈出對話框進行搜索/替換。
-可用於菜單項目。(Negri)
+Win32 GUI: ":promptfind" 和 ":promptrepl" 彈出對話方塊進行搜索/替換。
+可用於選單項目。(Negri)
 
 
-加入彈出式菜單						*popup-menu-added*
+加入彈出式選單						*popup-menu-added*
 ----------------
 
-如果 'mousemodel' 選項設爲 "popup"，鼠標右鍵顯示 "PopUp" 頂層菜單，作爲彈出的
-關聯菜單。"PopUp" 菜單不再普通的菜單欄上提示。目前，只支持 Win32 和 Athena
+如果 'mousemodel' 選項設為 "popup"，滑鼠右鍵顯示 "PopUp" 頂層選單，作為彈出的
+關聯選單。"PopUp" 選單不再普通的選單欄上提示。目前，只支援 Win32 和 Athena
 GUI。
 
 
 加入選擇模式						*new-Select-mode*
 -----------------
 
-加入了新模式: "選擇模式"。類似於可視模式，但輸入可顯示的字符將替換選擇區。
+加入了新模式: "選擇模式"。類似於可視模式，但輸入可顯示的字元將替換選擇區。
 - CTRL-G 可以用來切換可視模式和選擇模式。
-- CTRL-O 可以用來爲單個命令從選擇模式切換到選擇模式。
-- 加入 'selectmode' 選項: 說明何時啓動選擇模式，而不是可視模式。
-- 加入 'mousemodel' 選項: 改變鼠標鍵的應用。
-- 加入 'keymodel' 選項: 指示使用 Shift + 特殊鍵可以啓動可視或選擇模式的選擇。
-- 加入 ":behave"。可以用來快速設置 'selectmode'、'mousemodel' 和 'keymodel' 的
-  MS-Windows 和 xterm 行爲。
-- xterm 風格的選擇現在成爲無模式的選擇。
-- 選擇模式使用可視模式的映射和菜單。它們自動先切換到可視模式。之後，重新選擇區
-  域，除非該區域已被刪除。"gV" 命令用來在映射裏跳過重新選擇這一步。
+- CTRL-O 可以用來為單個命令從選擇模式切換到選擇模式。
+- 加入 'selectmode' 選項: 說明何時啟動選擇模式，而不是可視模式。
+- 加入 'mousemodel' 選項: 改變滑鼠鍵的應用。
+- 加入 'keymodel' 選項: 指示使用 Shift + 特殊鍵可以啟動可視或選擇模式的選擇。
+- 加入 ":behave"。可以用來快速設定 'selectmode'、'mousemodel' 和 'keymodel' 的
+  MS-Windows 和 xterm 行為。
+- xterm 風格的選擇現在成為無模式的選擇。
+- 選擇模式使用可視模式的對映和選單。它們自動先切換到可視模式。之後，重新選擇區
+  域，除非該區域已被刪除。"gV" 命令用來在對映裡跳過重新選擇這一步。
 - 增加 "gh"、"gH" 和 "g^H" 命令: 開始選擇 (高亮) 模式。
 - 選擇模式的退格鍵刪除選擇區。
 
-"mswin.vim" 腳本。設置非常類似於 MS-Windows 的行爲。
+"mswin.vim" 指令碼。設定非常類似於 MS-Windows 的行為。
 
 
-加入會話文件						*new-session-files*
+加入會話檔案						*new-session-files*
 -------------------
 
-":mks[ession]" 類似於 "mkvimrc"，但寫入當前載入緩衝區的完整文件名和當前目錄，
-使得執行該文件可以重新載入這些文件並切換到該目錄。也保存和恢復窗口。使文件名相
-對於會話文件。
-'sessionoptions' 選項設置 ":mksession" 的行爲。(Negri)
+":mks[ession]" 類似於 "mkvimrc"，但寫入當前載入緩衝區的完整檔名和當前目錄，
+使得執行該檔案可以重新載入這些檔案並切換到該目錄。也儲存和恢復視窗。使檔名相
+對於會話檔案。
+'sessionoptions' 選項設定 ":mksession" 的行為。(Negri)
 
 
-用戶定義的函數和命令					*new-user-defined*
+使用者定義的函數和命令					*new-user-defined*
 -----------------------------------
 
-加入用戶定義函數。用 ":function" 開始定義，到 ":endfunction" 位置。
-調用方式爲 "Func()"。允許使用可變數量的參數。
-包含局部變量 "l:name" 的支持。用 ":return" 返回值。
+加入使用者定義函數。用 ":function" 開始定義，到 ":endfunction" 位置。
+呼叫方式為 "Func()"。允許使用可變數量的參數。
+包含局部變數 "l:name" 的支援。用 ":return" 返回值。
 見 |:function|。
-用 ":call" 調用函數。如果提供了範圍，該範圍的每行執行一次該函數。|:call|
-"macros/justify.vim" 是使用用戶定義函數的例子。
-用戶函數不改變最近使用的搜索模式，或 "." 重複的命令。
-'maxfuncdepth' 函數。限制函數調用的深度。避免函數使用無限遞歸的麻煩 (因爲內存
-溢出而崩潰)。
+用 ":call" 呼叫函數。如果提供了範圍，該範圍的每行執行一次該函數。|:call|
+"macros/justify.vim" 是使用使用者定義函數的例子。
+使用者函數不改變最近使用的搜索模式，或 "." 重複的命令。
+'maxfuncdepth' 函數。限制函數呼叫的深度。避免函數使用無限遞迴的麻煩 (因為內存
+溢位而崩潰)。
 
-用戶定義的 Ex 命令: ":command"、":delcommand" 和 ":comclear"。(Moore)  見
+使用者定義的 Ex 命令: ":command"、":delcommand" 和 ":comclear"。(Moore)  見
 |user-commands|。
 
 
-新接口							*interfaces-5.2*
+新介面							*interfaces-5.2*
 --------------
 
-Tcl 接口。(Wilken) 見 |tcl|。
+Tcl 介面。(Wilken) 見 |tcl|。
 使用 ":tcl"、":tcldo" 和 "tclfile" 命令。
 
-Cscope 支持。(Kahn) (Sekera) 見 |cscope|。
+Cscope 支援。(Kahn) (Sekera) 見 |cscope|。
 使用 ":cscope" 和 ":cstag" 命令。使用選項 'cscopeprg'、'cscopetag'、
 'cscopetagorder' 和 'cscopeverbose'。
 
@@ -1981,117 +1981,117 @@ Cscope 支持。(Kahn) (Sekera) 見 |cscope|。
 Amiga GUI 移植版本。(Nielsen) 還沒有充分測試！
 
 RISC OS 版本。(Thomas Leonard) 見 |riscos|。
-該版本可以在 GUI 或文本模式下運行，取決於在哪裏調用。
-刪除了 "os_archie" 文件，反正它們也不再工作了。
+該版本可以在 GUI 或文字模式下運行，取決於在哪裡呼叫。
+刪除了 "os_archie" 檔案，反正它們也不再工作了。
 
 
-多字節支持						*new-multi-byte*
+多位元組支援						*new-multi-byte*
 ------------------
 
-Win32 GUI 的多字節支持。(Baek)
-'fileencoding' 選項決定文件裏的文本是如何編碼的。
-多字節字符可以用 ":ascii"。多字節字符可以在 Windows 95 工作，即使使用北美版本
+Win32 GUI 的多位元組支援。(Baek)
+'fileencoding' 選項決定檔案裡的文字是如何編碼的。
+多位元組字元可以用 ":ascii"。多位元組字元可以在 Windows 95 工作，即使使用北美版本
 也是如此。(Aaron)
-需要在 feature.h 裏打開。
+需要在 feature.h 裡開啟。
 還沒有充分測試！
 
 
 新函數							*new-functions-5.2*
 -------------
 
-|browse()|	如果可用，給出文件請求器。(Negri)
-|escape()|	字符串裏用反斜槓給字符轉義。
-|fnamemodify()|	修改文件名。
-|input()|	請求用戶輸入一行。(Aaron) input() 函數輸入的行有單獨的歷史。
+|browse()|	如果可用，給出檔案請求器。(Negri)
+|escape()|	字元串裡用反斜槓給字元轉義。
+|fnamemodify()|	修改檔名。
+|input()|	請求使用者輸入一行。(Aaron) input() 函數輸入的行有單獨的歷史。
 |argc()|
 |argv()|	可以用來訪問參數列表。
-|winbufnr()|	窗口的緩衝區號。(Aaron)
-|winnr()|	窗口號。(Aaron)
-|matchstr()|	返回匹配的字符串。
-|setline()|	設置一行爲某字符串值。
+|winbufnr()|	視窗的緩衝區號。(Aaron)
+|winnr()|	視窗號。(Aaron)
+|matchstr()|	返回匹配的字元串。
+|setline()|	設定一行為某字元串值。
 
 
 新選項							*new-options-5.2*
 -----------
 
-'allowrevins'	允許在插入和命令行模式裏使用 CTRL-_ 命令。
-'browsedir'	指示瀏覽對話框從在哪個目錄開始。
+'allowrevins'	允許在插入和命令列模式裡使用 CTRL-_ 命令。
+'browsedir'	指示瀏覽對話方塊從在哪個目錄開始。
 'confirm'	如果置位，:q :w 和 :e 命令總是和使用了 ":confirm" 一樣。
 		(Negri)
 'cscopeprg'
 'cscopetag'
 'cscopetagorder'
-'cscopeverbose'	設置 |cscope| 行爲。
-'filetype'	RISC-OS 專用的文件類型。
+'cscopeverbose'	設定 |cscope| 行為。
+'filetype'	RISC-OS 專用的檔案類型。
 'grepformat'
-'grepprg'	爲 |:grep| 命令使用。
-'keymodel'	指示使用 Shift + 特殊鍵可以啓動可視或選擇模式的選擇。
-'listchars'	設置 'list' 模式裏行尾、製表和拖尾空格所顯示的字符。(部分來自
-		Smith) 也設置如果置位了 'nowrap' 時，如果一行放不下時要顯示的
-		字符。
-'matchpairs'	允許 '<' 和 '>' 的匹配，還有其它的單字符組對。
-'mousefocus'	窗口焦點追隨鼠標 (部分來自 Terhaar)。用鍵盤命令改變焦點移動指
-		針到該窗口。同時在改變窗口佈局時 (分割窗口、改變窗口高度等) 移
+'grepprg'	為 |:grep| 命令使用。
+'keymodel'	指示使用 Shift + 特殊鍵可以啟動可視或選擇模式的選擇。
+'listchars'	設定 'list' 模式裡行尾、製表和拖尾空格所顯示的字元。(部分來自
+		Smith) 也設定如果置位了 'nowrap' 時，如果一行放不下時要顯示的
+		字元。
+'matchpairs'	允許 '<' 和 '>' 的匹配，還有其它的單字元組對。
+'mousefocus'	視窗焦點追隨滑鼠 (部分來自 Terhaar)。用鍵盤命令改變焦點移動指
+		針到該視窗。同時在改變視窗佈局時 (分割視窗、改變視窗高度等) 移
 		動指針。
-'mousemodel'	改變鼠標按鈕的使用方式。
-'selection'	如果設爲 "inclusive" 或 "exclusive"，光標可以在可視或選擇模式
-		裏到行尾之後一個字符的位置。如果設爲 "old"，則使用舊行爲。如果
-		是 "inclusive"，光標所在的字符包含在操作裏。如果使用
-		"exclusive"，使用 'guicursor' 新的 "ve" 入口。缺省爲垂直線。
+'mousemodel'	改變滑鼠按鈕的使用方式。
+'selection'	如果設為 "inclusive" 或 "exclusive"，游標可以在可視或選擇模式
+		裡到行尾之後一個字元的位置。如果設為 "old"，則使用舊行為。如果
+		是 "inclusive"，游標所在的字元包含在操作裡。如果使用
+		"exclusive"，使用 'guicursor' 新的 "ve" 入口。預設為垂直線。
 'selectmode'	說明何時開始選擇模式，而不是可視模式。
-'sessionoptions' 設置 ":mksession" 的行爲。(Negri)
-'showfulltag'	在插入模式補全標籤時，顯示標籤搜索模式 (整齊格式) 作爲可能的一
+'sessionoptions' 設定 ":mksession" 的行為。(Negri)
+'showfulltag'	在插入模式補全標籤時，顯示標籤搜索模式 (整齊格式) 作為可能的一
 		個選擇 (如果有的話)。
-'swapfile'	緩衝區是否使用交換文件。
-'syntax'	如果設置，載入該名字的語法。允許從模式行裏設置特定的語法。
-'ttymouse'	允許名字不以 "xterm" 開始的終端使用 xterm 的鼠標代碼。
-'wildignore'	不應該參與補全的文件名模式的列表。
-'wildmode'	可以用於設置 'wildchar' 的擴展類型。
-		替換用於命令行補全的 CTRL-T 命令。
+'swapfile'	緩衝區是否使用交換檔案。
+'syntax'	如果設定，載入該名字的語法。允許從模式行裡設定特定的語法。
+'ttymouse'	允許名字不以 "xterm" 開始的終端使用 xterm 的滑鼠程式碼。
+'wildignore'	不應該參與補全的檔名模式的列表。
+'wildmode'	可以用於設定 'wildchar' 的擴展類型。
+		替換用於命令列補全的 CTRL-T 命令。
 		列出所有匹配時，不響鈴。
-'winaltkeys'	Win32 和 Motif GUI。如果爲 "yes"，ALT 鍵完全由窗口系統處理。如
-		果爲 "no"，窗口系統完全不使用 ALT 鍵。如果爲 "menu"，這取決於
-		該鍵是否是菜單快捷鍵。
-'winminheight'	每個窗口的最小高度。缺省爲 1。如果你想要零行的窗口，設爲 0。如
-		果窗口高度爲零，不顯示滾動條。(Negri)
+'winaltkeys'	Win32 和 Motif GUI。如果為 "yes"，ALT 鍵完全由視窗系統處理。如
+		果為 "no"，視窗系統完全不使用 ALT 鍵。如果為 "menu"，這取決於
+		該鍵是否是選單快捷鍵。
+'winminheight'	每個視窗的最小高度。預設為 1。如果你想要零行的視窗，設為 0。如
+		果視窗高度為零，不顯示滾動條。(Negri)
 
 
 
 新 Ex 命令						*new-ex-commands-5.2*
 ---------------
 
-|:badd|		把文件名夾道緩衝區列表，沒有副作用。(Negri)
-|:behave|	快速設置 MS-Windows 或 xterm 行爲。
-|:browse|	使用文件選擇對話框。
-|:call|		調用函數，可選使用行範圍。
+|:badd|		把檔名夾道緩衝區列表，沒有副作用。(Negri)
+|:behave|	快速設定 MS-Windows 或 xterm 行為。
+|:browse|	使用檔案選擇對話方塊。
+|:call|		呼叫函數，可選使用行範圍。
 |:cnewer|
 |:colder|	訪問 quickfix 錯誤列表的堆棧。
-|:comclear|	清除所有的用戶定義命令。
-|:command|	定義用戶命令。
+|:comclear|	清除所有的使用者定義命令。
+|:command|	定義使用者命令。
 |:continue|	回到 ":while"。
 |:confirm|	如果有意想不到的事發生，請求確認。
 |:cscope|	執行 cscope 命令。
 |:cstag|	用 cscope 來跳轉到標籤。
-|:delcommand|	刪除用戶定義命令。
-|:delfunction|	刪除用戶定義函數。
-|:endfunction|	結束用戶定義函數。
-|:function|	定義用戶定義函數。
+|:delcommand|	刪除使用者定義命令。
+|:delfunction|	刪除使用者定義函數。
+|:endfunction|	結束使用者定義函數。
+|:function|	定義使用者定義函數。
 |:grep|		類似於 ":make"。(Negri)
-|:mksession|	建立會話文件。
+|:mksession|	建立會話檔案。
 |:nohlsearch|	暫時停止 'hlsearch' 高亮。
-|:Print|	和 Vi 兼容。和 ":print" 相同。
-|:promptfind|	搜索對話框 (Win32 GUI)。
-|:promptrepl|	搜索/替代對話框 (Win32 GUI)。
-|:return|	從用戶定義函數裏返回。
+|:Print|	和 Vi 相容。和 ":print" 相同。
+|:promptfind|	搜索對話方塊 (Win32 GUI)。
+|:promptrepl|	搜索/替代對話方塊 (Win32 GUI)。
+|:return|	從使用者定義函數裡返回。
 |:simalt|	Win32 GUI: 模擬 alt 鍵的鍵擊。(Negri)
 |:smagic|	類似於 ":substitute"，但總是使用 'magic'。
 |:snomagic|	類似於 ":substitute"，但總是使用 'nomagic'。
 |:tcl|		執行 TCL 命令。
 |:tcldo|	在行範圍上執行 TCL 命令。
-|:tclfile|	執行 TCL 腳本文件。
-|:tearoff|	可撕下的菜單 (Win32 GUI)。
+|:tclfile|	執行 TCL 指令碼檔案。
+|:tearoff|	可撕下的選單 (Win32 GUI)。
 |:tmenu|
-|:tunmenu|	Win32 GUI: 菜單工具提示。(Negri)
+|:tunmenu|	Win32 GUI: 選單工具提示。(Negri)
 |:star|	:*	執行寄存器。
 
 
@@ -2106,61 +2106,61 @@ Win32 GUI 的多字節支持。(Baek)
 		highlight_exists() -> hlexists()
 		highlightID()      -> hlID()
 		last_buffer_nr()   -> bufnr("$")
-爲了後向兼容，仍然可以使用舊名。
+為了後向相容，仍然可以使用舊名。
 
-只有新的 'allowrevins' 選項置位時纔可以用插入模式和命令行模式的 CTRL-_ 命令。
-這是爲了避免按 SHIFT-_ 的人不小心進入反向插入模式而不知所措。
+只有新的 'allowrevins' 選項置位時纔可以用插入模式和命令列模式的 CTRL-_ 命令。
+這是為了避免按 SHIFT-_ 的人不小心進入反向插入模式而不知所措。
 
-如果 ":tselect" 列表的文件名過長，刪除中間部分並放上 "..."。
+如果 ":tselect" 列表的檔名過長，刪除中間部分並放上 "..."。
 
-Win32 GUI: 使字體選擇器出現在 Vim 窗口中間，不是隨便的某個位置。(Negri)
+Win32 GUI: 使字型選擇器出現在 Vim 視窗中間，不是隨便的某個位置。(Negri)
 
 ":bn" 跳過幫助緩衝區，除非現在就在幫助緩衝區。(Negri)
 
-如果有狀態行並且只有一個窗口，不顯示當前窗口的狀態行中的 '^'。
+如果有狀態行並且只有一個視窗，不顯示當前視窗的狀態行中的 '^'。
 
-過去 ":*" 相當於 "'<,'>"，即可視區域。但在 Vi 裏它用作 ":@"。如果 'cpoptions'
-包含 '*'，使用 Vi 兼容行爲。
+過去 ":*" 相當於 "'<,'>"，即可視區域。但在 Vi 裡它用作 ":@"。如果 'cpoptions'
+包含 '*'，使用 Vi 相容行為。
 
-如果置位 'insertmode'，用 CTRL-O 執行映射如同沒有置位 'insertmode' 。這樣，即
-使置位 'insertmode'，也可以使用 "正常的" 映射。
+如果置位 'insertmode'，用 CTRL-O 執行對映如同沒有置位 'insertmode' 。這樣，即
+使置位 'insertmode'，也可以使用 "正常的" 對映。
 
-如果已經設置 'mouse' (比如通過 .vimrc 文件)，GUI 啓動時不自動設置 'mouse'。
+如果已經設定 'mouse' (比如通過 .vimrc 檔案)，GUI 啟動時不自動設定 'mouse'。
 
 從 'mouse' 選項刪除 'N'、'I' 和 'A' 標誌位。
 
-"切換選項" 更名爲 "布爾選項"。有人會認爲 ":set xyz" 每次都會切換 'xyz' 開/關。
+"切換選項" 更名為 "布爾選項"。有人會認為 ":set xyz" 每次都會切換 'xyz' 開/關。
 
-內部變量 "shell_error" 包含外殼的錯誤代碼，而不只是 0 或 1。
+內部變數 "shell_error" 包含外殼的錯誤程式碼，而不只是 0 或 1。
 
 插入或替換時，輸入 CTRL-V CTRL-<CR> 過去插入 "<C-CR>"。這不是很有用。現在忽略
 CTRL 鍵而插入 <CR>，和其他帶修飾符的 "普通" 鍵相同。這些帶修飾符的鍵組合仍然可
-以映射。
-插入模式下，可以用 CTRL-K 加 <C-CR> 或 <S-Space> 插入這些特殊字符。
+以對映。
+插入模式下，可以用 CTRL-K 加 <C-CR> 或 <S-Space> 插入這些特殊字元。
 
-"quotes" 文件移到 doc/quotes.txt，而 "todo" 文件移到 doc/todo.txt。它們現在和
-其它文檔文件一樣安裝。
+"quotes" 檔案移到 doc/quotes.txt，而 "todo" 檔案移到 doc/todo.txt。它們現在和
+其它文件檔案一樣安裝。
 
-winheight() 函數對不存在的窗口返回 -1。過去返回 0，但現在這是一個合法的高度。
+winheight() 函數對不存在的視窗返回 -1。過去返回 0，但現在這是一個合法的高度。
 
-'selection' 的缺省值現在是 "inclusive"。使用 "$" 或在可視模式下用鼠標移動光標
+'selection' 的預設值現在是 "inclusive"。使用 "$" 或在可視模式下用滑鼠移動游標
 時會看到區別。
 
 存在修改過的隱藏緩衝區時 ":q!" 不退出。":qa!" 則總能退出。
 
-缺省關閉 Perl/Python/Tcl 接口。用的人不是很多，但它們的存在使得可執行文件大很
-多。現在對於多數任務而言，內部腳本語言已經足夠強大。
+預設關閉 Perl/Python/Tcl 介面。用的人不是很多，但它們的存在使得可執行檔案大很
+多。現在對於多數任務而言，內部指令碼語言已經足夠強大。
 
-'titlestring' 和 'iconstring' 選項的字符串不經翻譯而直接用於窗口標題和圖標。這
-樣就可以在裏麪包含 <CR>。以前 <CR> 會顯示爲 "^M" (兩個字符)。
+'titlestring' 和 'iconstring' 選項的字元串不經翻譯而直接用於視窗標題和圖示。這
+樣就可以在裡麵包含 <CR>。以前 <CR> 會顯示為 "^M" (兩個字元)。
 
-從插入模式啓動可視或選擇模式下的映射時 (模式顯示 "(insert) Visual")，直到映射
-完成爲止才返回插入模式。這樣，可視模式的映射也能用於從選擇模式開始的可視模式。
+從插入模式啟動可視或選擇模式下的對映時 (模式顯示 "(insert) Visual")，直到對映
+完成為止才返回插入模式。這樣，可視模式的對映也能用於從選擇模式開始的可視模式。
 
-$VIMRUNTIME/menu.vim 的菜單不再否決已有的菜單。這樣可以在 .vimrc 文件或者執行
-mswin.vim 時定義菜單。
+$VIMRUNTIME/menu.vim 的選單不再否決已有的選單。這樣可以在 .vimrc 檔案或者執行
+mswin.vim 時定義選單。
 
-Unix: 如果存在，使用 /var/tmp 來保存 .swp 文件。那裏的文件在系統重啓時仍然存在
+Unix: 如果存在，使用 /var/tmp 來儲存 .swp 檔案。那裡的檔案在系統重啟時仍然存在
 (至少 Linux 如此)。
 
 
@@ -2169,182 +2169,182 @@ Unix: 如果存在，使用 /var/tmp 來保存 .swp 文件。那裏的文件在�
 
 configure 參數 --with-motif-lib，使用靜態 Motif 庫。
 
-支持數字鍵盤 +、-、*、/ 鍵的映射。(Negri)
-如果不映射，和普通字符相同。
+支援數字鍵盤 +、-、*、/ 鍵的對映。(Negri)
+如果不對映，和普通字元相同。
 
-Win32 GUI: 如果放置目錄到 gvim 上，cd 到那裏並編輯新緩衝區。(Negri)
+Win32 GUI: 如果放置目錄到 gvim 上，cd 到那裡並編輯新緩衝區。(Negri)
 
-Win32 GUI: CTRL-Break 用於中斷，這樣 CTRL-C 就可用作映射。
+Win32 GUI: CTRL-Break 用於中斷，這樣 CTRL-C 就可用作對映。
 
 ":map" 的輸出高亮 "*"，明白說明它不是 rhs 的一部分。(Roemer)
 
-顯示可視區域時，現在不關閉光標，方便定位。 GUI 現在使用灰色背景高亮可視區域，
-這樣即使光標反轉也依然保持可見。
+顯示可視區域時，現在不關閉游標，方便定位。 GUI 現在使用灰色背景高亮可視區域，
+這樣即使游標反轉也依然保持可見。
 
-Win32: 啓動時如果使用單個完整路徑名 (例如雙擊文件)，cd 到文件的目錄。(Negri)
+Win32: 啟動時如果使用單個完整路徑名 (例如雙擊檔案)，cd 到檔案的目錄。(Negri)
 
-Win32 GUI: 可撕下菜單，用 ":tearoff <menu-name>" 命令實現。(Negri)
-'guioptions' 的 't' 選項: 爲 Win32 GUI 和 Motif 加入可撕下菜單項目。缺省包含。
-Win32 GUI: 用 ">>" 指示帶子菜單的可撕下菜單。(Negri)
+Win32 GUI: 可撕下選單，用 ":tearoff <menu-name>" 命令實現。(Negri)
+'guioptions' 的 't' 選項: 為 Win32 GUI 和 Motif 加入可撕下選單項目。預設包含。
+Win32 GUI: 用 ">>" 指示帶子選單的可撕下選單。(Negri)
 
 加入 ^Kaa 和 ^KAA 二合字母。
 "euro" 符號加到 digraph.c。(Corry)
 
-支持 Motif 菜單快捷鍵。'&' 的使用方式類似於 MS-Windows (Ollis)。
-其它的 GUI 忽略菜單名裏面的 '&'。
+支援 Motif 選單快捷鍵。'&' 的使用方式類似於 MS-Windows (Ollis)。
+其它的 GUI 忽略選單名裡面的 '&'。
 
-DJGPP: 屏幕更新更快 (John Lange)。
+DJGPP: 螢幕更新更快 (John Lange)。
 
 對語法組進行簇合 ":syntax cluster" (Bigham)。
-語法文件的包含: ":syntax include" (Bigham)。
+語法檔案的包含: ":syntax include" (Bigham)。
 
 如果 'nosol' 置位的話，切換緩衝區時保持列不變 Radics)。
 
-Perl 接口的 Number 函數。
+Perl 介面的 Number 函數。
 
-Athena GUI 的 Intellimouse (智能鼠標) 支持。(Jensen)
+Athena GUI 的 Intellimouse (智慧滑鼠) 支援。(Jensen)
 
 ":sleep" 也接受 "m" 表示的毫秒參數。
 
-'guioptions' 加入 'p' 標誌位: 安裝進入/退出窗口事件的回調。Terhaar 的光標閃爍
+'guioptions' 加入 'p' 標誌位: 安裝進入/退出視窗事件的回撥。Terhaar 的游標閃爍
 現在能用了，但我的不行了。
 
-"--help" 和 "--version" 命令行參數。
+"--help" 和 "--version" 命令列參數。
 
-":list" 輸出的非文本使用 NonText 高亮。
+":list" 輸出的非文字使用 NonText 高亮。
 
-加入文本對象: "i(" 和 "i)" 同義於 "ib"，"i{" 和 "i}" 同義於 "iB"。新出現: "i<"
-和 "i>"，選擇 <thing> (<> 塊)。另外，這些都支持 "a" 對象。
+加入文字物件: "i(" 和 "i)" 同義於 "ib"，"i{" 和 "i}" 同義於 "iB"。新出現: "i<"
+和 "i>"，選擇 <thing> (<> 塊)。另外，這些都支援 "a" 物件。
 
-'shortmess' 的 'O' 標誌位: 讀入文件的消息覆蓋以前的消息。(Negri)
+'shortmess' 的 'O' 標誌位: 讀入檔案的訊息覆蓋以前的訊息。(Negri)
 
 Win32 GUI: 'guioptions' 的 'T' 標誌位: 切換工具欄的開/關。包含自己製作的工具欄
-位圖的列表。(Negri)
+點陣圖的列表。(Negri)
 
-加入子菜單的菜單優先級。Win32 和 Motif GUI 有實現。
-":menu" 命令顯示菜單優先級。
-Default 和 Syntax 菜單現在包含項目的優先級。可以在缺省項目之間插入菜單項目。
+加入子選單的選單優先順序。Win32 和 Motif GUI 有實現。
+":menu" 命令顯示選單優先順序。
+Default 和 Syntax 選單現在包含項目的優先順序。可以在預設項目之間插入選單項目。
 
-打開 'number' 選項時，用 LineNr 組高亮行號。
+開啟 'number' 選項時，用 LineNr 組高亮行號。
 
-"Ignore" 高亮組: 用它高亮的文本被置爲空白。用於隱藏幫助文本的特殊字符。
+"Ignore" 高亮組: 用它高亮的文字被置為空白。用於隱藏幫助文字的特殊字元。
 
-加入 Exuberant Ctags 2.3 版本。它包含 C++ 支持、Java 支持和遞歸訪問目錄。
+加入 Exuberant Ctags 2.3 版本。它包含 C++ 支援、Java 支援和遞迴訪問目錄。
 (Hiebert)
 
-如果標籤文件沒有排序並且檢測到如此 (用一個簡單的方法)，報錯。
+如果標籤檔案沒有排序並且檢測到如此 (用一個簡單的方法)，報錯。
 
-":unlet" 接受 "!"，忽略不存在的變量並接受多於一個參數。(Roemer)
-補全 ":unlet" 的變量名。(Roemer)
+":unlet" 接受 "!"，忽略不存在的變數並接受多於一個參數。(Roemer)
+補全 ":unlet" 的變數名。(Roemer)
 
-如果被其它函數調用的函數裏有錯誤，錯誤信息裏顯示調用棧。
+如果被其它函數呼叫的函數裡有錯誤，錯誤資訊裡顯示呼叫棧。
 
-新文件名修飾符:
-":.": 簡約相對於當前目錄的文件名。
-":~": 簡約相對於主目錄的文件名。
-":s?pat?sub?": "pat" 替代爲 "sub" 一次。
-":gs?pat?sub?": 所有的 "pat" 替代爲 "sub"。
+新檔名修飾符:
+":.": 簡約相對於當前目錄的檔名。
+":~": 簡約相對於主目錄的檔名。
+":s?pat?sub?": "pat" 替代為 "sub" 一次。
+":gs?pat?sub?": 所有的 "pat" 替代為 "sub"。
 
 新 configure 參數: --enable-min-features 和 --enable-max-features。切換到最小
 和最大特性包的簡單方法。
 
-新的編譯時特性: modify_fname。用於文件名修飾符，例如 "%:p:h"。可關閉以減少一些
-代碼 (16 位 DOS)。
+新的編譯時特性: modify_fname。用於檔名修飾符，例如 "%:p:h"。可關閉以減少一些
+程式碼 (16 位 DOS)。
 
-插入模式下使用整行補全時如果置位 'cindent'，合適地縮進該行。
+插入模式下使用整行補全時如果置位 'cindent'，合適地縮排該行。
 
-MSDOS 和 Win32 控制檯: 'guicursor' 設置光標的厚度。(Negri)
+MSDOS 和 Win32 控制檯: 'guicursor' 設定游標的厚度。(Negri)
 
-包含新的 Farsi 字體集合。(Shiran)
+包含新的 Farsi 字型集合。(Shiran)
 
-加速鍵文本現在也能用於 Motif。所有菜單可以用 & 定義助記，TAB 定義加速鍵文本。
-不支持的系統忽略之。
-刪除或替換菜單時，菜單名的比較到助記符之前的 <Tab> 爲止。
+加速鍵文字現在也能用於 Motif。所有選單可以用 & 定義助記，TAB 定義加速鍵文字。
+不支援的系統忽略之。
+刪除或替換選單時，選單名的比較到助記符之前的 <Tab> 為止。
 
 ":substitute" 之後的 'i' 和 'I' 標誌位: 忽略大小寫與否。
 
-如果丟失運行時文件，"make install" 會抱怨。
+如果丟失運行時檔案，"make install" 會抱怨。
 
-Unix: 找到已有但不能打開的交換文件時，在 ATTENTION 消息裏提及文件的擁有者。
+Unix: 找到已有但不能開啟的交換檔案時，在 ATTENTION 訊息裡提及檔案的擁有者。
 
 'complete' 的 'i'、't' 和 'k' 選項現在顯示正在尋找的匹配所在的位置。(Acevedo)
 
-"gJ" 命令: 連接行且不插入空格。
+"gJ" 命令: 連線行且不插入空格。
 
-設置 'keywordprg' 爲 "man -s" 會進行特殊處理。如果沒有計數，刪除 "-s"，否則加
-入計數。configure 會檢查 "man -s 2 read" 是否能用，並據此設置 'keywordprg' 的
-缺省值。
+設定 'keywordprg' 為 "man -s" 會進行特殊處理。如果沒有計數，刪除 "-s"，否則加
+入計數。configure 會檢查 "man -s 2 read" 是否能用，並據此設定 'keywordprg' 的
+預設值。
 
-如果執行 ":bd" 時只打開一個窗口，VIm 試圖移動到相同類型的緩衝區 (也就是說，非
-幫助到非幫助，幫助到幫助)，這樣和 :bnext/:bprev 的行爲一致。(Negri)
+如果執行 ":bd" 時只開啟一個視窗，VIm 試圖移動到相同類型的緩衝區 (也就是說，非
+幫助到非幫助，幫助到幫助)，這樣和 :bnext/:bprev 的行為一致。(Negri)
 
-允許映射的右手邊使用 "<Nop>"。":map xx <Nop>"，定義 "xx" 爲空。
+允許對映的右手邊使用 "<Nop>"。":map xx <Nop>"，定義 "xx" 為空。
 
-":menu" 命令可用 "<Tab>" 代替菜單路徑裏真正的製表。這使輸入更容易，因爲不需要
+":menu" 命令可用 "<Tab>" 代替選單路徑裡真正的製表。這使輸入更容易，因為不需要
 反斜槓。
 
-POSIX 兼容的正規表達式字符類: [:alnum:]、[:alpha:]、[:blank:]、[:cntrl:]、
+POSIX 相容的正規表示式字元類: [:alnum:]、[:alpha:]、[:blank:]、[:cntrl:]、
 [:digit:]、[:graph:]、[:lower:]、[:print:]、[:punct:], [:space:]、[:upper:]
 和 [:xdigit:]。(Briscoe)
 
-正規表達式字符類 (爲了快速語法高亮匹配):
+正規表示式字元類 (為了快速語法高亮匹配):
 	數字:	    \d [0-9]		\D  非數字 (Roemer)
-	十六進制:   \x [0-9a-fA-F]	\X  非十六進制
-	八進制:	    \o [0-7]		\O  非八進制
+	十六進位制:   \x [0-9a-fA-F]	\X  非十六進位制
+	八進位制:	    \o [0-7]		\O  非八進位制
 	單詞:	    \w [a-zA-Z0-9_]	\W  非單詞
-	單詞首字符: \h [a-zA-Z_]	\H  非單詞首字符
+	單詞首字元: \h [a-zA-Z_]	\H  非單詞首字元
 	字母:       \a [a-zA-Z]		\A  非字母
 	小寫:       \l [a-z]		\L  非小寫
 	大寫:       \u [A-Z]		\U  非大寫
 
-":set" 現在接受 "+="、"^=" 和 "-=": 從字符串選項加入或刪除部分內容，從數值選項
+":set" 現在接受 "+="、"^=" 和 "-=": 從字元串選項加入或刪除部分內容，從數值選項
 加入或減去數值。逗號分隔的列表選項自動 (神奇) 地插入或刪除逗號。
 
-文件類型特性，用於自動命令。使用文件類型代替模式來匹配文件。目前只用於 RISC
+檔案類型特性，用於自動命令。使用檔案類型代替模式來匹配檔案。目前只用於 RISC
 OS。(Leonard)
 
-自動命令的模式裏可用環境變量。它們在定義自動命令時擴展。
+自動命令的模式裡可用環境變數。它們在定義自動命令時擴展。
 
 "BufFilePre" 和 "BufFilePost" 自動命令事件: ":file" 命令改變緩衝區名的前與後。
-"VimLeavePre" 自動命令事件: 寫入 .viminfo 文件前。
+"VimLeavePre" 自動命令事件: 寫入 .viminfo 檔案前。
 
 自動命令參數: <abuf> 代表緩衝區號，和 <afile> 類似。
 
 保持更多的同步上下文，往回滾動時語法高亮的速度稍快。
 
-Win32 GUI: 刪除或插入屏幕行時避免重畫以加快滾動。
+Win32 GUI: 刪除或插入螢幕行時避免重畫以加快滾動。
 
-GUI: 拇指移動小於一個像素時不重畫滾動條以加快滾動。
+GUI: 拇指移動小於一個畫素時不重畫滾動條以加快滾動。
 
 bugreport.vim 里加入 ":highlight"。
 
-建立 install.exe 程序，簡化 DOS 和 MS-Windows 的安裝。
+建立 install.exe 程式，簡化 DOS 和 MS-Windows 的安裝。
 
-新寄存器: '_'，黑洞。寫入時什麼都不做。讀取則總是爲空。可用於避免刪除或修改命
+新寄存器: '_'，黑洞。寫入時什麼都不做。讀取則總是為空。可用於避免刪除或修改命
 令對寄存器的改變，或用於減少大改變的內存開銷。
 
-CTRL-V xff 用十六進制值輸入字符。CTRL-V o123 用八進制輸入字符。(Aaron)
+CTRL-V xff 用十六進位制值輸入字元。CTRL-V o123 用八進位制輸入字元。(Aaron)
 
-改進語法高亮的性能，如果沒有 "keepend"，跳過相應的檢查。
+改進語法高亮的效能，如果沒有 "keepend"，跳過相應的檢查。
 
-模式消息 ("-- INSERT --") 移到屏幕的末行。如果 'cmdheight' 大於一，消息仍然可
+模式訊息 ("-- INSERT --") 移到螢幕的末行。如果 'cmdheight' 大於一，訊息仍然可
 以閱讀。
 
-列出匹配文件時，用 'suffixes' 進行排序，這和 CTRL-N 提取它們時列出的順序相同。
+列出匹配檔案時，用 'suffixes' 進行排序，這和 CTRL-N 提取它們時列出的順序相同。
 
 synIDattr() 接受 (可選的) 第三個參數，屬性所屬的終端類型。可用來在 gvim 之外運
 行 2html.vim (要用顏色名代替 #RRGGBB)。
 
-對內存進行刨視 (profile)，用於調試。退出或 "g^A" 命令會顯示結果。(Kahn)
+對內存進行刨視 (profile)，用於偵錯。退出或 "g^A" 命令會顯示結果。(Kahn)
 
-DOS: 使用當前驅動器的文件時刪除驅動器名: "A:\dir\file" -> "\dir\file"。有助於
-移動軟盤上的會話文件: "A:\dir" 到 "B:\dir"。
+DOS: 使用當前驅動器的檔案時刪除驅動器名: "A:\dir\file" -> "\dir\file"。有助於
+移動軟盤上的會話檔案: "A:\dir" 到 "B:\dir"。
 
-能記住的跳轉的數目從每窗口 30 個增加到 50 個。
+能記住的跳轉的數目從每視窗 30 個增加到 50 個。
 
 暫時關閉 'hls' 高亮直到下次搜索: ":nohlsearch"。
 
-"gp" 和 "gP" 命令: 類似於 "p" 和 "P"，但把光標剛好放在插入文本之後。MS-Windows
+"gp" 和 "gP" 命令: 類似於 "p" 和 "P"，但把游標剛好放在插入文字之後。MS-Windows
 模式用於 CTRL-V 命令。
 
 
@@ -2819,13 +2819,13 @@ Memory leak when setting a string option back to its default value.
 改動							*changed-5.3*
 -------
 
-"IDE" 菜單更名爲 "Tools" 菜單。
+"IDE" 選單更名為 "Tools" 選單。
 
 
 新增							*added-5.3*
 -----
 
-Win32 GUI: 激活 Vim 時如果發現已經開始的編輯文件被改變，給出警告。(Negri)
+Win32 GUI: 啟用 Vim 時如果發現已經開始的編輯檔案被改變，給出警告。(Negri)
 
 
 修正							*fixed-5.3*
@@ -2913,62 +2913,62 @@ Included fixes for Macintosh. (Kielhorn)
 引入運行時目錄						*new-runtime-dir*
 ----------------------------
 
-現在，發佈的運行時目錄文件在 $VIMRUNTIME，即 $VIM 裏的用戶文件。
-你通常不需要設置 $VIMRUNTIME，而應該讓 Vim 去找。它使用 $VIM/vim{version}，或
-者如果那不存在， $VIM。這允許把用戶文件和發佈文件分離，使得版本更新更容易。這
-也使保持兩個不同版本的 Vim 成爲可能，每個帶有它自己的運行時文件。
+現在，釋出的運行時目錄檔案在 $VIMRUNTIME，即 $VIM 裡的使用者檔案。
+你通常不需要設定 $VIMRUNTIME，而應該讓 Vim 去找。它使用 $VIM/vim{version}，或
+者如果那不存在， $VIM。這允許把使用者檔案和釋出檔案分離，使得版本更新更容易。這
+也使保持兩個不同版本的 Vim 成為可能，每個帶有它自己的運行時檔案。
 
-在 Unix 發布里，運行時文件移到了 "runtime" 目錄。這可以用來一次複製所有的運行
-時文件，而不需瞭解需要複製什麼。
+在 Unix 發布里，運行時檔案移到了 "runtime" 目錄。這可以用來一次複製所有的運行
+時檔案，而不需瞭解需要複製什麼。
 
 DOS、Windows、Amiga 或 OS/2 的歸檔現在增加了額外的頂層 "vim" 目錄。目的是清楚
-的說明用戶定義文件應該放在這裏。包含可執行文件的目錄不能有 '-' 或 '.' 字符，以
+的說明使用者定義檔案應該放在這裡。包含可執行檔案的目錄不能有 '-' 或 '.' 字元，以
 避免奇怪的擴展。
 
-$VIM 和 $VIMRUNTIME 變量在第一次使用時定義。這使得它們，比如說，可以爲 Perl 使
+$VIM 和 $VIMRUNTIME 變數在第一次使用時定義。這使得它們，比如說，可以為 Perl 使
 用。
 
-運行時文件也在 "$VIM/runtime" 裏尋找。這有助於在只有解壓運行時文件歸檔之後就可
-運行 Vim 的場合。如果用 "src" 目錄裏的可執行文件，Vim 檢查該目錄去掉 "src" 的
-部分之後是否可以加上 "vim54" 或 "runtime"。這使得編譯後立即找到運行時文件。
+運行時檔案也在 "$VIM/runtime" 裡尋找。這有助於在只有解壓運行時檔案歸檔之後就可
+運行 Vim 的場合。如果用 "src" 目錄裡的可執行檔案，Vim 檢查該目錄去掉 "src" 的
+部分之後是否可以加上 "vim54" 或 "runtime"。這使得編譯後立即找到運行時檔案。
 
-可以在 Unix Makefile 裏指定 $VIMRUNTIME 的缺省值。這可以使得 $VIM 不指向上述的
+可以在 Unix Makefile 裡指定 $VIMRUNTIME 的預設值。這可以使得 $VIM 不指向上述的
 運行時目錄，而是，比如，"/etc/"。
 
 
-引入文件類型						*new-filetype-5.4*
+引入檔案類型						*new-filetype-5.4*
 -------------------
 
-現在，語法文件使用新的 FileType 自動命令載入。舊的 "mysyntaxfile" 文件不再可
+現在，語法檔案使用新的 FileType 自動命令載入。舊的 "mysyntaxfile" 檔案不再可
 用。|filetypes|
 
-載入語法高亮的腳本被修改，以使用新的 Syntax 自動命令事件。
+載入語法高亮的指令碼被修改，以使用新的 Syntax 自動命令事件。
 
-Filetype 和 Syntax 事件的組合，包括 Syntax 菜單的選擇，提供更好的語法高亮的微
-調。FileType 事件也可以用來設置該文件類型特定的選項和映射。
+Filetype 和 Syntax 事件的組合，包括 Syntax 選單的選擇，提供更好的語法高亮的微
+調。FileType 事件也可以用來設定該檔案類型特定的選項和對映。
 
-"$VIMRUNTIME/filetype.vim" 文件不是自動載入的。爲此目的，增加了 ":filetype on"
-命令。":syntax on" 也載入此腳本。
+"$VIMRUNTIME/filetype.vim" 檔案不是自動載入的。為此目的，增加了 ":filetype on"
+命令。":syntax on" 也載入此指令碼。
 
-加入了 'filetype' 選項。它被用來激活 FileType 自動命令事件，就像 'syntax' 選項
+加入了 'filetype' 選項。它被用來啟用 FileType 自動命令事件，就像 'syntax' 選項
 之於 Syntax 事件。
 
-":set syntax=OFF" 和 ":set syntax=ON" 可以 (在模式行裏) 開/關當前文件語法高
+":set syntax=OFF" 和 ":set syntax=ON" 可以 (在模式行裡) 開/關當前檔案語法高
 亮。
 
-Syntax 菜單命令被移到了 $VIMRUNTIME/menu.vim。":filetype on" 和 ":syntax
-manual" 都會打開 Syntax 菜單。
+Syntax 選單命令被移到了 $VIMRUNTIME/menu.vim。":filetype on" 和 ":syntax
+manual" 都會開啟 Syntax 選單。
 
-舊的 'filetype' 選項改名爲 'osfiletype'。只有 RISCOS 使用它。'filetype' 現在用
-作通用的文件類型。
+舊的 'filetype' 選項改名為 'osfiletype'。只有 RISCOS 使用它。'filetype' 現在用
+作通用的檔案類型。
 
 加入 ":syntax manual" 命令。允許手動選擇，比如從模式行上，要加入的語法。
 
 
-Vim 腳本續行符					*new-line-continuation*
+Vim 指令碼續行符					*new-line-continuation*
 ----------------------------
 
-如果 Ex 行以反斜槓開始，它被連接到上一行。這樣，避免了長行的需要。
+如果 Ex 行以反斜槓開始，它被連線到上一行。這樣，避免了長行的需要。
 |line-continuation| (Roemer)
 例如: >
 	if   has("dialog_con") ||
@@ -2979,23 +2979,23 @@ Vim 腳本續行符					*new-line-continuation*
 	endif
 
 
-改進會話文件					*improved-sessions*
+改進會話檔案					*improved-sessions*
 ----------------------
 
 'sessionoptions' 的新單詞:
-- "help"	恢復幫助窗口。
-- "blank"	恢復空窗口。
-- "winpos"	恢復 Vim 窗口位置。使用新的 ":winpos" 命令。
-- "buffers"	恢復隱藏和卸載的緩衝區。不使用它，只有窗口裏的緩衝區會恢復。
-- "slash"	把文件名裏的反斜槓換成正斜槓。
-- "globals"	保存全局變量。
-- "unix"	使用 unix 文件格式 (<NL> 代替 <CR><NL>)
+- "help"	恢復幫助視窗。
+- "blank"	恢復空視窗。
+- "winpos"	恢復 Vim 視窗位置。使用新的 ":winpos" 命令。
+- "buffers"	恢復隱藏和解除安裝的緩衝區。不使用它，只有視窗裡的緩衝區會恢復。
+- "slash"	把檔名裡的反斜槓換成正斜槓。
+- "globals"	儲存全局變數。
+- "unix"	使用 unix 檔案格式 (<NL> 代替 <CR><NL>)
 
-":mksession" 和 'sessionoptions' 現在出現在 +mksession 特性裏。
+":mksession" 和 'sessionoptions' 現在出現在 +mksession 特性裡。
 
-使用會話文件時，同時恢復窗口的頂行位置。
+使用會話檔案時，同時恢復視窗的頂行位置。
 
-":mksession" 和 ":mkvimrc" 不保存 'fileformat'，應該在載入文件時會被檢測到。
+":mksession" 和 ":mkvimrc" 不儲存 'fileformat'，應該在載入檔案時會被檢測到。
 
 (多數工作有 Vince Negri 和 Robert Webb 完成)
 
@@ -3004,24 +3004,24 @@ Vim 腳本續行符					*new-line-continuation*
 ---------------------
 
 新事件:
-|FileType|	檢測到文件類型時。
+|FileType|	檢測到檔案類型時。
 |FocusGained|	Vim 得到輸入焦點時。(Negri)
 |FocusLost|	Vim 失去輸入焦點時。(Negri)
-|BufCreate|	新緩衝區剛建立或換名時調用。(Madsen)
-|CursorHold|	如果在 'updatetime' 時間內沒有輸入過鍵則激活。可以用來對光標所
+|BufCreate|	新緩衝區剛建立或換名時呼叫。(Madsen)
+|CursorHold|	如果在 'updatetime' 時間內沒有輸入過鍵則啟用。可以用來對游標所
 		在的單詞進行一些操作。(Negri)
 		Unix 上實現了 CursorHold 自動命令事件。(Zellner)
 		也適用於 Amiga 和 MS-DOS。
-|GUIEnter|	可以用在剛建立 GUI 窗口時完成一些事情。(比如，
+|GUIEnter|	可以用在剛建立 GUI 視窗時完成一些事情。(比如，
 		":winpos 100 50")。
-|BufHidden|	緩衝區被隱藏時。用於當選項窗口隱藏時，刪除之。
+|BufHidden|	緩衝區被隱藏時。用於當選項視窗隱藏時，刪除之。
 
-同時，在緩衝區將要換名前，激活 |BufDelete|。(Madsen)
+同時，在緩衝區將要換名前，啟用 |BufDelete|。(Madsen)
 
-自動命令裏，"<amatch>" 模式使用方法類似於 "<afile>"，只不過它是 FileType 和
+自動命令裡，"<amatch>" 模式使用方法類似於 "<afile>"，只不過它是 FileType 和
 Syntax 事件的匹配值。
 
-如果自動命令裏使用了 ":let @/ = <string>"，自動命令結束時會使用該最近搜索模
+如果自動命令裡使用了 ":let @/ = <string>"，自動命令結束時會使用該最近搜索模
 式。
 
 使自動命令的載入速度稍快了一些。通過記住新模式的長度，避免在每個退出模式上都執
@@ -3031,64 +3031,64 @@ Syntax 事件的匹配值。
 加密							*new-encryption*
 ----------
 
-寫入文件時可以加密，讀入文件時可以解密。加入 'key' 選項，"-x" 命令行參數和
+寫入檔案時可以加密，讀入檔案時可以解密。加入 'key' 選項，"-x" 命令列參數和
 ":X" 命令。|encryption| (基於 Mohsin Ahmed 的補丁)
 
-讀入文件時，進行該文件是否加密的自動檢測。Vim 這時會提示輸入祕鑰。
+讀入檔案時，進行該檔案是否加密的自動檢測。Vim 這時會提示輸入祕鑰。
 
-注意 加密的方法和 Vi 不兼容。該加密方法不是不可破解的。這是爲了滿足能從美國出
+注意 加密的方法和 Vi 不相容。該加密方法不是不可破解的。這是為了滿足能從美國出
 口的條件。
 
 
 GTK GUI 移植版本					*new-GTK-GUI*
 ------------
 
-新的 GTK+ 的 GUI 移植版本。包括工具欄、可撕下的菜單，等等。|gui-gtk|
+新的 GTK+ 的 GUI 移植版本。包括工具欄、可撕下的選單，等等。|gui-gtk|
 加入 |:helpfind| 命令。(Kahn 和 Dalecki)
 
 
-菜單改變						*menu-changes-5.4*
+選單改變						*menu-changes-5.4*
 ------------
 
-菜單現在可以控制臺上使用。用新的 'wildmenu' 選項可以打開。這會顯示命令行補全的
-匹配，就像菜單一樣。它的工作方式如同一個小型的文件瀏覽器。
+選單現在可以控制臺上使用。用新的 'wildmenu' 選項可以開啟。這會顯示命令列補全的
+匹配，就像選單一樣。它的工作方式如同一個小型的檔案瀏覽器。
 
-新的 |:emenu| 命令可以用來執行菜單項。
+新的 |:emenu| 命令可以用來執行選單項。
 
-使用最後的狀態行列出項目，或者在命令行上方插入一行。(Negri)
+使用最後的狀態行列出項目，或者在命令列上方插入一行。(Negri)
 
-'wildcharx' 選項可以用在映射打開 'wildmenu' 補全。
+'wildcharx' 選項可以用在對映開啟 'wildmenu' 補全。
 
-可以用 has("menu") 檢測編譯時是否不帶菜單。也可以從 ":version" 的輸出看到。可
-以編譯沒有菜單支持的 GUI 版本。只有在有菜單支持時，才能包含工具欄支持。
+可以用 has("menu") 檢測編譯時是否不帶選單。也可以從 ":version" 的輸出看到。可
+以編譯沒有選單支援的 GUI 版本。只有在有選單支援時，才能包含工具欄支援。
 
-把 "Window" 菜單一路移到右邊 (優先級 70)。用 MS-Windows 工作的人會覺得更熟悉，
+把 "Window" 選單一路移到右邊 (優先順序 70)。用 MS-Windows 工作的人會覺得更熟悉，
 而其它的人應該也不會受到影響。
 
-包含 "Buffers" 菜單。它使用現有的自動命令和函數。可以通過設置
-"no_buffers_menu" 變量關閉。(Aaron 和 Madsen)
+包含 "Buffers" 選單。它使用現有的自動命令和函數。可以通過設定
+"no_buffers_menu" 變數關閉。(Aaron 和 Madsen)
 
-Win32 支持菜單裏的分隔符: "-.*-"。(Geddes)
-Motif 裏現在也應該支持菜單分隔符。
+Win32 支援選單裡的分隔符: "-.*-"。(Geddes)
+Motif 裡現在也應該支援選單分隔符。
 
-使得 Motif GUI 的彈出式菜單能夠工作。(Madsen)
+使得 Motif GUI 的彈出式選單能夠工作。(Madsen)
 
-'guioptions' 的 'M' 標誌位: 不載入系統菜單。
+'guioptions' 的 'M' 標誌位: 不載入系統選單。
 
-所有的菜單代碼從 gui.c 移到了 menu.c。
+所有的選單程式碼從 gui.c 移到了 menu.c。
 
 
 改進 Viminfo						*improved-viminfo*
 ----------------
 
 'viminfo' 的新標誌位:
-'!'	如果全局變量以大寫字母出現，保存在 viminfo 文件裏。(Negri)
-'h'	載入 viminfo 文件時，執行 ":nohlsearch"。
+'!'	如果全局變數以大寫字母出現，儲存在 viminfo 檔案裡。(Negri)
+'h'	載入 viminfo 檔案時，執行 ":nohlsearch"。
 
-viminfo 文件保存搜索模式的位移、magic 與否，等等。同時保存 'hlsearch' 高亮是否
-打開的標誌位 (如果 'viminfo' 有 'h' 標誌位，不使用該記錄)。
+viminfo 檔案儲存搜索模式的位移、magic 與否，等等。同時儲存 'hlsearch' 高亮是否
+開啟的標誌位 (如果 'viminfo' 有 'h' 標誌位，不使用該記錄)。
 
-如果設置 'viminfo' 的時候沒有逗號，給出錯誤信息。
+如果設定 'viminfo' 的時候沒有逗號，給出錯誤資訊。
 
 
 若干新命令						*new-commands-5.4*
@@ -3097,18 +3097,18 @@ viminfo 文件保存搜索模式的位移、magic 與否，等等。同時保存
 操作符 |g?|: rot13 編碼。(Negri)
 
 |zH| 和 |zL| 命令: 水平滾動半頁。
-|gm| 移動光標到屏幕行的中間。(Ideas by Campbell)
+|gm| 移動游標到螢幕行的中間。(Ideas by Campbell)
 
 可視列塊上的操作: |v_b_I|、|v_b_A|、|v_b_c|、|v_b_C|、|v_b_r|、|v_b_<| 和
 |v_b_>|。(Kelly)
 
-新命令: CTRL-\ CTRL-N，在普通模式裏不作任何事，在插入或命令行模式裏進入普通模
-式。可以在 VisVim 或其它 OLE 程序裏使用，確保 Vim 在普通模式裏，而且不會響鈴。
+新命令: CTRL-\ CTRL-N，在普通模式裡不作任何事，在插入或命令列模式裡進入普通模
+式。可以在 VisVim 或其它 OLE 程式裡使用，確保 Vim 在普通模式裡，而且不會響鈴。
 |CTRL-\_CTRL-N|
 
-":cscope kill" 命令使用連接文件名。|:cscope| (Kahn)
+":cscope kill" 命令使用連線檔名。|:cscope| (Kahn)
 
-|:startinsert| 命令: 下一步啓動插入模式。
+|:startinsert| 命令: 下一步啟動插入模式。
 
 |:history| 命令，顯示所有四種類型的歷史。(Roemer)
 
@@ -3116,129 +3116,129 @@ viminfo 文件保存搜索模式的位移、magic 與否，等等。同時保存
 
 ":@*" 執行 * 寄存器。|:@| (Acevedo)
 
-|go| 和 |:goto| 命令: 根據文件的字節偏移跳轉。
+|go| 和 |:goto| 命令: 根據檔案的位元組偏移跳轉。
 
-|gR| and |gr| 命令: 虛擬替換模式。替換字符，而不改變佈局。(Webb)
+|gR| and |gr| 命令: 虛擬替換模式。替換字元，而不改變佈局。(Webb)
 
 ":cd -" 回到上一次 ":cd" 命令之前的目錄。|:cd-| (Webb)
 
-標籤預覽命令 |:ptag|。在單獨的窗口裏顯示 ":tag" 的結果。可以用來顯示標籤的上下
+標籤預覽命令 |:ptag|。在單獨的視窗裡顯示 ":tag" 的結果。可以用來顯示標籤的上下
 文 (比如，函數參數)。(Negri)
-|:pclose| 命令和 CTRL-W CTRL-Z: 關閉預覽窗口。(Moore)
-'previewheight' 選項，預覽窗口的高度。
+|:pclose| 命令和 CTRL-W CTRL-Z: 關閉預覽視窗。(Moore)
+'previewheight' 選項，預覽視窗的高度。
 還有 |:ppop|、|:ptnext|、|:ptprevious|、|:ptNext|、|:ptrewind|、|:ptlast|。
 
-|:find| 和 |:sfind| 命令: 找到 'path' 裏的文件，(分割窗口) 並編輯之。
+|:find| 和 |:sfind| 命令: 找到 'path' 裡的檔案，(分割視窗) 並編輯之。
 
-|:options| 命令打開選項窗口，顯示當前的選項值。或者使用 ":browse set" 來打開。
+|:options| 命令開啟選項視窗，顯示當前的選項值。或者使用 ":browse set" 來開啟。
 選項按功能分組。提供每個選項簡短的幫助。按 <CR> 可以得到更多的幫助。編輯選項
-值，然後在 "set" 行按 <CR> 可以設置新值。
+值，然後在 "set" 行按 <CR> 可以設定新值。
 
 
 若干新選項						*new-options-5.4*
 -------------------
 
-滾動綁定: 'scrollbind' 和 'scrollopt' 選項。加入 |:syncbind| 命令。使得窗口滾
+滾動繫結: 'scrollbind' 和 'scrollopt' 選項。加入 |:syncbind| 命令。使得視窗滾
 動相同的量 (水平和/或垂直)。(Ralston)
 
 MS-DOS 的 'conskey' 選項。使用直接的控制檯輸入/輸出。應該能用於 telnet (沒有測
 試過！)。
 
-'statusline' 選項: 可以配置的狀態行內容。也可以顯示文件的字節偏移。可以使用
+'statusline' 選項: 可以配置的狀態行內容。也可以顯示檔案的位元組偏移。可以使用
 %1* 到 %9* 高亮，它們使用新的高亮組 User1 到 User9。(Madsen)
 
 'rulerformat' 選項: 可以配置的標尺內容，類似於 'statusline'。(Madsen)
 
-'write' 選項: 如果關閉，不允許寫入文件。避免覆蓋文件，即使是 ":w!" 也適用。
-|-m| 命令行選項復位 'write'。
+'write' 選項: 如果關閉，不允許寫入檔案。避免覆蓋檔案，即使是 ":w!" 也適用。
+|-m| 命令列選項復位 'write'。
 
-'clipboard' 選項: 如果使用剪貼板。值 "unnamed": 就像 "* 那樣使用無名寄存器。
-(Cortopassi)  值 "autoselect": 就像 'guioptions' 裏的 'a' 一樣，但也能在終端上
+'clipboard' 選項: 如果使用剪貼簿。值 "unnamed": 就像 "* 那樣使用無名寄存器。
+(Cortopassi)  值 "autoselect": 就像 'guioptions' 裡的 'a' 一樣，但也能在終端上
 工作。
 
-'guifontset' 選項: 指定 +fontset 特性的字體，用於 X11 GUI 版本。在用這個特性編
-譯 vim 時，可以指定普通所用的字體。(Nam)
+'guifontset' 選項: 指定 +fontset 特性的字型，用於 X11 GUI 版本。在用這個特性編
+譯 vim 時，可以指定普通所用的字型。(Nam)
 
-'guiheadroom' 選項: 允許 GUI 窗口之上/下保留多少空間。用於 Motif、Athena 和
+'guiheadroom' 選項: 允許 GUI 視窗之上/下保留多少空間。用於 Motif、Athena 和
 GTK。
 
-實現了 'tagstack' 選項: 如果關閉，不允許把標籤放到堆棧上 (Vi 兼容)。對映射有
+實現了 'tagstack' 選項: 如果關閉，不允許把標籤放到堆棧上 (Vi 相容)。對對映有
 用。
 
-'shellslash' 選項。只用於使用反斜槓作爲文件分隔符的系統。該選項會在擴展文件名
-時在文件名裏使用正斜槓。可在 'shell' 爲 sh 或 csh 時使用。
+'shellslash' 選項。只用於使用反斜槓作為檔案分隔符的系統。該選項會在擴展檔名
+時在檔名裡使用正斜槓。可在 'shell' 為 sh 或 csh 時使用。
 
-'pastetoggle' 選項: 切換 'paste' 的鍵序列。解決 'paste' 置位時，映射在插入模式
+'pastetoggle' 選項: 切換 'paste' 的鍵序列。解決 'paste' 置位時，對映在插入模式
 下不工作的問題。
 
-'display' 選項: 如果設爲 "lastline"，末行填充窗口，而不是用 "@" 行代替。只
-有最後三個字符被 "@@@" 代替，指示該行尚未完成。
+'display' 選項: 如果設為 "lastline"，末行填充視窗，而不是用 "@" 行代替。只
+有最後三個字元被 "@@@" 代替，指示該行尚未完成。
 
-'switchbuf' 選項: 允許重用已有的被跳轉到的緩衝區所在窗口，否則分割窗口，以打開
+'switchbuf' 選項: 允許重用已有的被跳轉到的緩衝區所在視窗，否則分割視窗，以開啟
 新的緩衝區。(Roemer)
 
-'titleold' 選項。替換固定的字符串 "Thanks for flying Vim"，用來在退出時設置標
+'titleold' 選項。替換固定的字元串 "Thanks for flying Vim"，用來在退出時設定標
 題。
 
 
-Vim 腳本						*new-script-5.4*
+Vim 指令碼						*new-script-5.4*
 -----------
 
 |exists()| 函數也可以檢查函數是否存在。(Roemer)
 現在用二分法查找內部函數，應該會快一些。(Roemer)
 
 新函數:
-- |getwinposx()| 和 |getwinposy()|: 得到 Vim 窗口位置。(Webb)
+- |getwinposx()| 和 |getwinposy()|: 得到 Vim 視窗位置。(Webb)
 - |histnr()|、|histadd()|、|histget()| 和 |histdel()|: 提供歷史。(Roemer)
-- |maparg()|: 返回映射的右邊。基於 Vikas 的補丁。
-- |mapcheck()|: 檢查映射是否匹配已有的名字。
+- |maparg()|: 返回對映的右邊。基於 Vikas 的補丁。
+- |mapcheck()|: 檢查對映是否匹配已有的名字。
 - |visualmode()|: 返回最近的可適模式的類型。(Webb)
-- |libcall()|: 調用庫裏的函數，目前只適用於 Win32。(Negri)
-- |bufwinnr()|: 尋找包含指定緩衝區的窗口。(Roemer)
+- |libcall()|: 呼叫庫裡的函數，目前只適用於 Win32。(Negri)
+- |bufwinnr()|: 尋找包含指定緩衝區的視窗。(Roemer)
 - |bufloaded()|: 緩衝區是否存在且載入。
-- |localtime()| 和 |getftime()|: 包裝時鐘時間和文件最近的修改時間 (Webb)
-- |glob()|: 只擴展文件名通配符。
+- |localtime()| 和 |getftime()|: 包裝時鐘時間和檔案最近的修改時間 (Webb)
+- |glob()|: 只擴展檔名通配符。
 - |system()|: 得到外部命令的原始輸出。(基於 Aaron 的補丁)。
-- |strtrans()|: 翻譯字符串成爲可顯示的字符。用於 2html.vim 腳本。
-- |append()|: 緩衝區附加文本行的簡易方法。
+- |strtrans()|: 翻譯字元串成為可顯示的字元。用於 2html.vim 指令碼。
+- |append()|: 緩衝區附加文字行的簡易方法。
 
 函數改動:
 - |strftime()| 可選參數，給出以秒數計的時間。(Webb)
-- |expand()| 現在也返回不存在文件的文件名。
+- |expand()| 現在也返回不存在檔案的檔名。
 
-允許用戶命令名有數字。(Webb)
+允許使用者命令名有數字。(Webb)
 
-Vim 的內部變量使用 "v:": "v:errmsg"、"v:shell_error" 等。爲了後相兼容，來自
+Vim 的內部變數使用 "v:": "v:errmsg"、"v:shell_error" 等。為了後相相容，來自
 5.3 版本的那些可以不用 "v:"。
 
-新變量:
-"v:warningmsg" 和 "v:statusmsg" 內部變量。包含最近給出的警告和狀態信息。
+新變數:
+"v:warningmsg" 和 "v:statusmsg" 內部變數。包含最近給出的警告和狀態資訊。
 |v:warningmsg| |v:statusmsg| (Madsen)
-"v:count1" 變量: 類似於 "v:count"，但如果沒有給出計數時，缺省爲一。|v:count1|
+"v:count1" 變數: 類似於 "v:count"，但如果沒有給出計數時，預設為一。|v:count1|
 
-如果編譯時不帶表達式計算，"if 1" 可以用來包圍不支持的命令，以免它們被執行。和
+如果編譯時不帶表示式計算，"if 1" 可以用來包圍不支援的命令，以免它們被執行。和
 Vim 4.x 類似。
-在使用以最小特性包編譯的 Vim 時，有些運行時腳本會出錯。現在，"if 1" 可以用來包
-圍不總被支持的代碼。
+在使用以最小特性包編譯的 Vim 時，有些運行時指令碼會出錯。現在，"if 1" 可以用來包
+圍不總被支援的程式碼。
 
-如果計算帶 && 和 || 表達式，忽略不會影響結果的部分。這樣速度更快，而且避免錯誤
-信息。(Webb)
-同時對跳過 "if 0" 裏的表達式進行優化。
+如果計算帶 && 和 || 表示式，忽略不會影響結果的部分。這樣速度更快，而且避免錯誤
+資訊。(Webb)
+同時對跳過 "if 0" 裡的表示式進行優化。
 
 
 避免 hit-enter 提示					*avoid-hit-enter*
 -----------------------
 
-加入 'shortmess' 的 'T' 標誌位: 截短所有會產生 hit-enter 提示的消息 (除了總會
+加入 'shortmess' 的 'T' 標誌位: 截短所有會產生 hit-enter 提示的訊息 (除了總會
 發生的那些)。
-'shortmess' 的 'O' 標誌位現在也適用於 quickfix 消息，比如，從 ":cn" 命令那裏。
+'shortmess' 的 'O' 標誌位現在也適用於 quickfix 訊息，比如，從 ":cn" 命令那裡。
 
-'shortmess' 的缺省值現在是 "filnxtToO"，使得多數消息能放在命令行上，而不需要
+'shortmess' 的預設值現在是 "filnxtToO"，使得多數訊息能放在命令列上，而不需要
 hit-enter 提示。
 
-以前的消息可以用新的 |:messages| 命令看到。
+以前的訊息可以用新的 |:messages| 命令看到。
 
-即使 'shortmess' 指示要縮短消息，有些消息仍然被完整顯示，因爲用戶期待完整地看
+即使 'shortmess' 指示要縮短訊息，有些訊息仍然被完整顯示，因為使用者期待完整地看
 到它們: CTRL-G 和一些 quickfix 命令。
 
 
@@ -3247,42 +3247,42 @@ hit-enter 提示。
 
 分析 gmake 的改變目錄行: "make[1]: Entering directory 'name'"。
 使用 'errorformat' 的 "%D" 和 "%X"。
-同時分析 make 的 "Making {target} in {dir}" 消息。有助於不使用 GNU make 的場
+同時分析 make 的 "Making {target} in {dir}" 訊息。有助於不使用 GNU make 的場
 合。(Schandl)
 
 'errorformat' 的 "%f" 使用 'isfname'。
 
-分析多行消息。|errorformat-multi-line|
+分析多行訊息。|errorformat-multi-line|
 
 允許 |:clist| 命令指定行範圍。(Roemer)
 
-支持 "全局" 文件名，用於爲多個錯誤輸出一次文件名的錯誤格式。(Roemer)
+支援 "全局" 檔名，用於為多個錯誤輸出一次檔名的錯誤格式。(Roemer)
 
-|:cnfile| 跳轉到下一個文件的第一個錯誤。
+|:cnfile| 跳轉到下一個檔案的第一個錯誤。
 
-'makeprg' 裏的 "$*" 被 ":make" 的參數替換。(Roemer)
+'makeprg' 裡的 "$*" 被 ":make" 的參數替換。(Roemer)
 
 
-正規表達式						*regexp-changes-5.4*
+正規表示式						*regexp-changes-5.4*
 -------------------
 
-正規表達式裏，"\)" 之前的 '$' 被認爲是一行的結束。|/$|
-模式裏，"\|" 或 "\(" 之後的 "^" 被認爲是一行的開始。|/^| (Robinson)
+正規表示式裡，"\)" 之前的 '$' 被認為是一行的結束。|/$|
+模式裡，"\|" 或 "\(" 之後的 "^" 被認為是一行的開始。|/^| (Robinson)
 
-正規表達式裏，在 "\)" 和 "\|" 的前面，"$" 和 "\$" 過去都被認爲是一行的結束。現
+正規表示式裡，在 "\)" 和 "\|" 的前面，"$" 和 "\$" 過去都被認為是一行的結束。現
 在，"$" 用作行尾而 "\$" 用作按本義出現的美元符號。這同樣適用於 "\(" 和 "\|" 之
 後的 '^'。|/\$| |/\^|
 
 有些搜索模式即使它們實際上並不是不合法，但它們可能非常慢。比如:
-"\([^a-z]\+\)\+Q"。用 CTRL-C 可以中止任何正規表達式的搜索。
+"\([^a-z]\+\)\+Q"。用 CTRL-C 可以中止任何正規表示式的搜索。
 
-寄存器 "/: 最近的搜索字符串 (只讀)，(Kohan) 被改變爲最近使用的搜索模式 (就像
-'hlsearch' 用的一樣)。可以這樣設置搜索模式 ":let @/ = {expr}"。
+寄存器 "/: 最近的搜索字元串 (只讀)，(Kohan) 被改變為最近使用的搜索模式 (就像
+'hlsearch' 用的一樣)。可以這樣設定搜索模式 ":let @/ = {expr}"。
 
-搜索模式裏，加入字符類，以避免從 'cpoptions' 裏去除 'l' 標誌位的需要:
+搜索模式裡，加入字元類，以避免從 'cpoptions' 裡去除 'l' 標誌位的需要:
 |[:tab:]|、|[:return:]|、|[:backspace:]| 和 |[:escape:]|。
 
-在表達式的比較操作符之後加入 '?' 可以使該比較忽略大小寫。|expr-==?|
+在表示式的比較操作符之後加入 '?' 可以使該比較忽略大小寫。|expr-==?|
 
 
 其它 5.3 和 5.4 版本之間的改進
@@ -3291,256 +3291,256 @@ hit-enter 提示。
 改動							*changed-5.4*
 -------
 
-Unix: 如果 $TMPDIR 設置且存在，用來存放臨時文件。
+Unix: 如果 $TMPDIR 設定且存在，用來存放臨時檔案。
 
-刪除 "Empty buffer" 信息。它沒有用而且會產生 hit-enter 提示。(Negri)
+刪除 "Empty buffer" 資訊。它沒有用而且會產生 hit-enter 提示。(Negri)
 
-"ex -" 現在從標準輸入讀入命令並以安靜模式工作。和原來用於腳本的的 "ex" 命令兼
+"ex -" 現在從標準輸入讀入命令並以安靜模式工作。和原來用於指令碼的的 "ex" 命令兼
 容。
 
-":tcldo" 的缺省範圍是整個文件。
+":tcldo" 的預設範圍是整個檔案。
 
-用 ESC 撤銷可視模式過去移動光標。看來沒有理由這麼做。現在光標留在原來的位置。
+用 ESC 撤銷可視模式過去移動游標。看來沒有理由這麼做。現在游標留在原來的位置。
 
 ":grep" 和 ":make" 命令把 " 看成參數的一部分，而不是註釋的開始。
 
-表達式裏 "=~" 和 "!~" 操作符不再受 'ignorecase' 影響。
+表示式裡 "=~" 和 "!~" 操作符不再受 'ignorecase' 影響。
 
-vimrc_example 換名爲 vimrc_example.vim 而 gvimrc_example 換名爲
-gvimrc_example.vim。使它們能識別爲 vim 腳本。
+vimrc_example 換名為 vimrc_example.vim 而 gvimrc_example 換名為
+gvimrc_example.vim。使它們能識別為 vim 指令碼。
 
 "gd" 不再從前一個函數的尾部開始搜索，而是從當前函數的開始處的之前的第一個空白
-行開始。避免在第一個函數上使用 "gd" 找到的是全局變量。
+行開始。避免在第一個函數上使用 "gd" 找到的是全局變數。
 
-'complete' 的缺省值從 ".,b" 改爲 ".,w,b,u,t,i"。能找到許多其它匹配，代價是時間
+'complete' 的預設值從 ".,b" 改為 ".,w,b,u,t,i"。能找到許多其它匹配，代價是時間
 長一點 (但搜索可以中斷)。
 
-模式行上不再能設置 'shell*' 選項。以前只會給出警告。這樣做減少了安全風險。
+模式行上不再能設定 'shell*' 選項。以前只會給出警告。這樣做減少了安全風險。
 
-文檔文件的索引順序進行調整，以便更容易尋找某一主題。
+文件檔案的索引順序進行調整，以便更容易尋找某一主題。
 
-MS-DOS 和 win32 上如果沒有設置 $VIM，過去使用 $HOME。如果 $HOME 因爲其它工具的
-緣故而設爲，比如說，"C:\"，這會引起問題，因爲會找不到運行時文件。現在 $HOME 只
-用來尋找 _vimrc、_gvimrc 等，而不用來尋找運行時文件。
+MS-DOS 和 win32 上如果沒有設定 $VIM，過去使用 $HOME。如果 $HOME 因為其它工具的
+緣故而設為，比如說，"C:\"，這會引起問題，因為會找不到運行時檔案。現在 $HOME 只
+用來尋找 _vimrc、_gvimrc 等，而不用來尋找運行時檔案。
 
-如果 'tags' 爲 "./{fname}" 而當前緩衝區沒有文件名，就這麼用。過去它被跳過，使
+如果 'tags' 為 "./{fname}" 而當前緩衝區沒有檔名，就這麼用。過去它被跳過，使
 得 "vim -t {tag}" 找不到許多標籤。
 
-在 'scrolloff' 區域如果用拖動試圖選擇文本，產生的滾動使之十分困難。現在暫時把
-'scrolloff' 設爲 0 或 1，以避免這一問題。但在頂行上還是允許滾動，以擴展到顯示
-的文本範圍之上。
+在 'scrolloff' 區域如果用拖動試圖選擇文字，產生的滾動使之十分困難。現在暫時把
+'scrolloff' 設為 0 或 1，以避免這一問題。但在頂行上還是允許滾動，以擴展到顯示
+的文字範圍之上。
 
-'comments' 的缺省值現在包含 "sl:/*,mb: *,ex:*/"，使 Javadoc 註釋可用。也有助於
+'comments' 的預設值現在包含 "sl:/*,mb: *,ex:*/"，使 Javadoc 註釋可用。也有助於
 "/*******" 開始的 C 註釋。
 
-CTRL-X CTRL-] 插入模式標籤擴展在非 ID 字符之後試圖擴展所有的標籤，這樣要花很長
-時間。現在限製爲 200 個匹配。也用於命令行的標籤補全。
+CTRL-X CTRL-] 插入模式標籤擴展在非 ID 字元之後試圖擴展所有的標籤，這樣要花很長
+時間。現在限製為 200 個匹配。也用於命令列的標籤補全。
 
-OS/2 發布被分爲兩個文件。不然太大以致於在一張軟盤上放不下。現在使用和 PC 相同
+OS/2 發布被分為兩個檔案。不然太大以致於在一張軟盤上放不下。現在使用和 PC 相同
 的運行時歸檔。
 
-文檔裏，非可選參數的 <a-z> 項目被 {a-z} 替換。這樣避免了和鍵名 <C-Z> 的衝突，
-後者代表 CTRL-Z 而不是 C 到 Z 之間的字符，那應該用 {C-Z}。
+文件裡，非可選參數的 <a-z> 項目被 {a-z} 替換。這樣避免了和鍵名 <C-Z> 的衝突，
+後者代表 CTRL-Z 而不是 C 到 Z 之間的字元，那應該用 {C-Z}。
 
 
 新增							*added-5.4*
 -----
 
-iris-ansi 內建 termcap 項目的色彩支持。(Tubman)
+iris-ansi 內建 termcap 項目的色彩支援。(Tubman)
 
 加入 VisVim 1.3a 版本。(Erhardt)
 
-SNiFF+ 接口的 Win32 移植版本。(Leherbauer)
-SniFF 接口文檔: if_sniff.txt。(Leherbauer)
+SNiFF+ 介面的 Win32 移植版本。(Leherbauer)
+SniFF 介面文件: if_sniff.txt。(Leherbauer)
 
-在 OleVim 目錄裏包含 "SendToVim" 和 "OpenWithVim" 程序。用於 MS-Windows 上的
+在 OleVim 目錄裡包含 "SendToVim" 和 "OpenWithVim" 程式。用於 MS-Windows 上的
 OLE 版本的 gvim。(Schaller)
 
-包含 Exuberant Ctags 3.2.4 版本，提供 Eiffel 支持。(Hiebert)
+包含 Exuberant Ctags 3.2.4 版本，提供 Eiffel 支援。(Hiebert)
 
-如果刪除了正在編輯中文件，給出警告 (就像改變修改時間一樣)。
+如果刪除了正在編輯中檔案，給出警告 (就像改變修改時間一樣)。
 
-包含新版本生成 HTML 的 Awk 和 Perl 腳本。(Colombo)
+包含新版本生成 HTML 的 Awk 和 Perl 指令碼。(Colombo)
 
-基於 "gpm" 的 Linux 控制檯鼠標支持。(Tsindlekht)
+基於 "gpm" 的 Linux 控制檯滑鼠支援。(Tsindlekht)
 
 安全修正: 不允許從模式行改變 'secure' 和 'exrc'。如果置位 'secure'，修改包含程
 序名的選項時給出警告。
 
-Perl 接口支持 Perl 5.005 和線程。(Verdoolaege)
+Perl 介面支援 Perl 5.005 和執行緒。(Verdoolaege)
 
-給出關於二義性映射的錯誤信息時，同時包含引起問題的映射。(Roemer)
+給出關於二義性對映的錯誤資訊時，同時包含引起問題的對映。(Roemer)
 
-命令行編輯:
-- 命令行的映射補全。(Roemer)
-- 命令行 ":function"、":delfunction"、":let"、":call"、":if" 等的補全。
+命令列編輯:
+- 命令列的對映補全。(Roemer)
+- 命令列 ":function"、":delfunction"、":let"、":call"、":if" 等的補全。
   (Roemer)
-- 使用 CTRL-D 對有 "-complete=tag_listfiles" 的用戶命令進行補全時同時列出文件
+- 使用 CTRL-D 對有 "-complete=tag_listfiles" 的使用者命令進行補全時同時列出檔案
   名。 (Madsen)
 - 補全 ":command" 命令的參數。(Webb)
-- 命令行的 CTRL-R . 插入最近插入的文本。CTRL-R 之後的 CTRL-F、CTRL-P、CTRL-W
-  和 CTRL-A 用於插入光標所在的對象。(Madsen)
+- 命令列的 CTRL-R . 插入最近插入的文字。CTRL-R 之後的 CTRL-F、CTRL-P、CTRL-W
+  和 CTRL-A 用於插入游標所在的物件。(Madsen)
 
-uganda.txt 的文本關於複製 Vi 的部分更加明確。
+uganda.txt 的文字關於複製 Vi 的部分更加明確。
 
-更新 Vim 教程。增加 "vimtutor" 命令，它複製了教程並啓動 Vim 顯示該教程。
+更新 Vim 教程。增加 "vimtutor" 命令，它複製了教程並啟動 Vim 顯示該教程。
 "make install" 現在也複製教程。
 
 ":clist" 的輸出使用 'i' 高亮方式高亮當前項目 (和 'incsearch' 所用的相同)。
 
 ":clist" 命令可以用 "b" 往回滾動 (一整屏)、"u" (半屏) 和 "k" (一行)。
 
-多字節支持:
-- 多字節字符的 X 輸入法。多字節支持的其它一些修正。(Nam)
+多位元組支援:
+- 多位元組字元的 X 輸入法。多位元組支援的其它一些修正。(Nam)
 - Hangul 輸入法特性: |hangul|。 (Nam)
-- 清理了多字節支持、XIM、字體集和 Hangul 輸入的配置。現在每項可以單獨配置。
-- 修改 GTK_KEYBOARD 的檢查爲對 HANGUL_KEYBOARD_TYPE 的檢查。(Nam)
-- 加入 doc/hangulin.txt: Hangul 輸入代碼的文檔。(Nam)
-- GTK+ 的 XIM 支持。(Nam)
-- 包含 SJTS 編碼支持的第一次嘗試。(Nagano)
-- 如果多字節字符在行尾放不下，在那裏放上 "~" 然後在下一行顯示。
-- 優化了多字節文本的輸出。(Park)
+- 清理了多位元組支援、XIM、字型集和 Hangul 輸入的配置。現在每項可以單獨配置。
+- 修改 GTK_KEYBOARD 的檢查為對 HANGUL_KEYBOARD_TYPE 的檢查。(Nam)
+- 加入 doc/hangulin.txt: Hangul 輸入程式碼的文件。(Nam)
+- GTK+ 的 XIM 支援。(Nam)
+- 包含 SJTS 編碼支援的第一次嘗試。(Nagano)
+- 如果多位元組字元在行尾放不下，在那裡放上 "~" 然後在下一行顯示。
+- 優化了多位元組文字的輸出。(Park)
 - Win32 IME: 預編輯風格相當於 over-the-spot。(Nagano)
 - Win32 IME: IME 模式的改變現在使用 ImmSetOpenStatus。(Nagano)
-- GUI Athena: 文件選擇對話框現在可以顯示多字節字符。(Nagano)
+- GUI Athena: 檔案選擇對話方塊現在可以顯示多位元組字元。(Nagano)
 - XA_TEXT 的選擇區應答是 XA_STRING。(Nagano)
 
-"runtime/macros/diffwin.vim"。建立比較窗口的映射。(Campbell)
+"runtime/macros/diffwin.vim"。建立比較視窗的對映。(Campbell)
 
 'suffixes' 選項加入 ".obj"。
 
-用 ":SynAu" 用戶命令，減小了 syntax/synload.vim 的長度。
-menu.vim 自動給 Syntax 菜單項目編號。
-Syntax 菜單中爲開頭字母不同的語法名之間插入分隔符。(Geddes)
+用 ":SynAu" 使用者命令，減小了 syntax/synload.vim 的長度。
+menu.vim 自動給 Syntax 選單項目編號。
+Syntax 選單中為開頭字母不同的語法名之間插入分隔符。(Geddes)
 
 xterm:
-- 在 xterm 裏使用鼠標時提供剪貼板支持。(Madsen)
-- 使用 xterm 鼠標時，跟蹤鼠標的拖動。如有可能，使用 xterm 轉義序列，比其它方法
-  要精確，但需要相當新的 xterm 版本。'ttymouse' 設爲 "xterm2" 打開這一功能。
+- 在 xterm 裡使用滑鼠時提供剪貼簿支援。(Madsen)
+- 使用 xterm 滑鼠時，跟蹤滑鼠的拖動。如有可能，使用 xterm 轉義序列，比其它方法
+  要精確，但需要相當新的 xterm 版本。'ttymouse' 設為 "xterm2" 開啟這一功能。
   (Madsen)
-- 檢查 xterm 的補丁號以設置 'ttymouse'。只用於最新的 xterm (補丁號 > 95)。使用
-  新的 't_RV' termcap 選項。如果能夠識別應答爲正確，設置 'ttymouse' 爲
-  "xterm2"。這樣 xterm 鼠標的拖動工作得更好。
-- 支持 xterm 上 shift + 功能鍵。修改 shift + 光標鍵爲 xterm 實際產生的值。加入
+- 檢查 xterm 的補丁號以設定 'ttymouse'。只用於最新的 xterm (補丁號 > 95)。使用
+  新的 't_RV' termcap 選項。如果能夠識別應答為正確，設定 'ttymouse' 為
+  "xterm2"。這樣 xterm 滑鼠的拖動工作得更好。
+- 支援 xterm 上 shift + 功能鍵。修改 shift + 游標鍵為 xterm 實際產生的值。加入
   shift + <End> 和 <Home> 的編碼。
-- 加入 't_WP'，像素計的窗口位置，和 't_WS'，字符計的窗口大小。xterm 現在可以移
+- 加入 't_WP'，畫素計的視窗位置，和 't_WS'，字元計的視窗大小。xterm 現在可以移
   動 (用於 ":winpos") 和調整大小 (用於 ":set lines=" 和 ":set columns=")。
 
 X11:
 - 可視模式下如果沒有擁有選擇區，使用 VisualNOS 組顯示可視區域。(Madsen)
-- 支持剪貼板支持類型的請求。用於 AIX 和 dtterm。(Wittig)
-- 支持 compound_text 選擇 (即使編譯時沒有多字節支持)。
+- 支援剪貼簿支援類型的請求。用於 AIX 和 dtterm。(Wittig)
+- 支援 compound_text 選擇 (即使編譯時沒有多位元組支援)。
 
-交換文件:
-- 交換文件命名的新變化: 把路徑分隔符替換爲 %，把所有的交換文件都放在一個目錄。
+交換檔案:
+- 交換檔案命名的新變化: 把路徑分隔符替換為 %，把所有的交換檔案都放在一個目錄。
   如果 'dir' 的某個名字以兩個路徑分隔符結尾時有用。(Madsen)
-- 如果找到交換文件，相關信息裏顯示它是否包含了修改。(Madsen)
-- 如果支持對話框，交換文件已存在時使用對話框詢問用戶應該如何做。
+- 如果找到交換檔案，相關資訊裡顯示它是否包含了修改。(Madsen)
+- 如果支援對話方塊，交換檔案已存在時使用對話方塊詢問使用者應該如何做。
 
-'mousemodel' 選項的 "popup_setpos"。允許使用鼠標右鍵時移動光標。
+'mousemodel' 選項的 "popup_setpos"。允許使用滑鼠右鍵時移動游標。
 
 如果刪除緩衝區，要顯示的緩衝區現在變成了跳轉表的最近的項目。(Madsen)
 
 用 CTRL-O/CTRL-I 跳過刪除的緩衝區。
 
-標尺裏如有空間，顯示百分比。
+標尺裡如有空間，顯示百分比。
 
 用 autoconf 1.13 生成 configure。
 
 包含 Dirk van Deun 的 get_lisp_indent()。如果 'cpoptions' 不包含 'p' 標誌位，
-提供更好的 Lisp 縮進。
+提供更好的 Lisp 縮排。
 
-2html.vim 腳本加快不少。(基於 Geddes 的建議)
+2html.vim 指令碼加快不少。(基於 Geddes 的建議)
 
 Unix:
-- version 消息裏包含了編譯 Vim 的用戶名和使用的系統名。
+- version 訊息裡包含了編譯 Vim 的使用者名和使用的系統名。
 - "make install" 現在也安裝 "tools" 目錄。使得所有人都能用它們。
 - "make check" 現在和 "make test" 相同。"make test" 檢查可視列塊模式的左右移、
   插入、替換和修改。
-- 加快文件名和已有緩衝區的比較速度。方法是保存緩衝區的 device/inode 號。
+- 加快檔名和已有緩衝區的比較速度。方法是儲存緩衝區的 device/inode 號。
 - configure 參數 "--disable-gtk"、"--disable-motif" 和 "--disable-athena"，關
   閉特定的 GUI (如果不能用)。
 - 換名 configure 關閉檢查特定 GUI 的參數。現在更清楚。(Kahn)
 - Digital Unix 系統上 ("OSF1")，在 termlib 和 termcap 之前檢查 curses 庫。
   (Schild)
-- "make uninstall_runtime" 只會刪除特定版本的文件。可以用於刪除以前版本的運行
-  時文件。
+- "make uninstall_runtime" 只會刪除特定版本的檔案。可以用於刪除以前版本的運行
+  時檔案。
 
 Macintosh: (St-Amant)
-- 拖動滾動條的行爲類似於 Win32 GUI。把 gui_w32.c 的公共代碼移到 gui.c。
-- 加入對話框和文件瀏覽。
+- 拖動滾動條的行為類似於 Win32 GUI。把 gui_w32.c 的公共程式碼移到 gui.c。
+- 加入對話方塊和檔案瀏覽。
 - 保留資源分叉 (resource fork)，如果丟失給出警告。
-- 複製原始文件的屬性到新寫入的文件。
-- 已修正設置 title/notitle 的漏洞。
-- 改進了文件名補全。
-- Grow box 的限制調整爲基於字符的大小。
+- 複製原始檔案的屬性到新寫入的檔案。
+- 已修正設定 title/notitle 的漏洞。
+- 改進了檔名補全。
+- Grow box 的限制調整為基於字元的大小。
 - 用 rgb.txt 提供更多顏色 (但不能用的顏色又回來了)。
-- Apple 菜單能用了 (除了 about...)。
+- Apple 選單能用了 (除了 about...)。
 - 內部邊界現在和 vim 相容。
-- 刪除菜單不再崩潰。
-- Python 1.5.1 的弱連接 (只用於 PPC)。需要庫來提供 Python 的支持。
-- 執行用戶 .vimrc 文件時如果出錯，現在立即顯示警告窗口，缺省按鈕爲 OK，每行的
+- 刪除選單不再崩潰。
+- Python 1.5.1 的弱連線 (只用於 PPC)。需要庫來提供 Python 的支援。
+- 執行使用者 .vimrc 檔案時如果出錯，現在立即顯示警告視窗，預設按鈕為 OK，每行的
   開頭不再有 "Delete" 鍵的符號。
-- 更好地管理環境變量。現在 $VIM 只計算一次，而不是每次使用時都重新生成。
+- 更好地管理環境變數。現在 $VIM 只計算一次，而不是每次使用時都重新生成。
 - 後臺運行時不再大量佔用 CPU。
-- 用於執行的 Vim 腳本可以識別 Mac 的文件格式，就像 DOS 文件格式那樣。
+- 用於執行的 Vim 指令碼可以識別 Mac 的檔案格式，就像 DOS 檔案格式那樣。
 
-如果 'fileformats' 裏同時有 "unix" 和 "mac" 並且 CR 比 NL 字符多，優先選擇
+如果 'fileformats' 裡同時有 "unix" 和 "mac" 並且 CR 比 NL 字元多，優先選擇
 "mac" 格式。
-用 "mac" 文件格式時用 CR 代替 NL，因爲 NL 用作 NUL。文件的所有字符必須都保留下
+用 "mac" 檔案格式時用 CR 代替 NL，因為 NL 用作 NUL。檔案的所有字元必須都保留下
 來。(Madsen)
 
-DOS install.exe 現在對已存在的安裝進行檢查。避免重複設置 $VIM 和 $PATH。
-Dos/Windows 的安裝程序現在可以通過加入兩個註冊表鍵來安裝 Vim 到彈出菜單。
+DOS install.exe 現在對已存在的安裝進行檢查。避免重複設定 $VIM 和 $PATH。
+Dos/Windows 的安裝程式現在可以通過加入兩個註冊表鍵來安裝 Vim 到彈出選單。
 
 EGCS/mingw32 的移植。新的 Makefile.ming。(Aaron)
 
-DOS 16 位: 不包含光標形狀的代碼。節省一些字節。
+DOS 16 位: 不包含游標形狀的程式碼。節省一些位元組。
 
-TCL 支持加入 Makefile.w32。(Duperval)
+TCL 支援加入 Makefile.w32。(Duperval)
 
-OS/2: 用 argv[0] 來尋找運行時文件。
+OS/2: 用 argv[0] 來尋找運行時檔案。
 
-用 "gf" 轉到已經使用的緩衝區時，跳轉到上次光標所在的行。
+用 "gf" 轉到已經使用的緩衝區時，跳轉到上次游標所在的行。
 
-爲 ":tselect" 的輸出提供更多的顏色。用不同的高亮區別標簽名和文件名。
-("struct:") 字段名的高亮和參數也進行區隔。
+為 ":tselect" 的輸出提供更多的顏色。用不同的高亮區別標簽名和檔名。
+("struct:") 欄位名的高亮和參數也進行區隔。
 
 非 Unix 系統的反引號擴展。基於 Aaron 的補丁。允許用 ":n `grep -l test *.c`" 和
 "echo expand('`ls m*`')"。
 
-設置時檢查 'complete' 選項。(Acevedo)
+設定時檢查 'complete' 選項。(Acevedo)
 'complete'  的 'd' 標誌位檢查宏定義的名字。
-插入模式搜索頭文件和標籤文件的補全時，檢查預輸入，從而可以早匹配。(Webb)
+插入模式搜索標頭檔案和標籤檔案的補全時，檢查預輸入，從而可以早匹配。(Webb)
 'complete' 的 '.' 標誌位現在完全掃描當前緩衝區，不依賴 'nowrapscan'。(Webb)
 
 'whichwrap' 加入 '~' 標誌位。(Acevedo)
 
 結束可視模式時 (例如用 ESC)，不奪取選擇區的所有權。
 
-彩色終端裏，可用 "fg" 和 "bg" 作顏色名。它們分別代表 "Normal" 的兩種顏色。
+彩色終端裡，可用 "fg" 和 "bg" 作顏色名。它們分別代表 "Normal" 的兩種顏色。
 
 一些 cscope 的清理。(Kahn)
 
 包含 Schemenauer 提供的 vimspell.sh 修改。
 
-表達式裏用 "." 進行字符串連接的速度稍稍加快。(Roemer)
+表示式裡用 "." 進行字元串連線的速度稍稍加快。(Roemer)
 
 ":redir" 命令現在可以重定向到寄存器: ":redir @r". (Roemer)
 
-":marks" 現在和 ":jumps" 的輸出格式類似，如果位置標記位於當前文件，顯示它之後
-的文本。":tags" 亦然。
+":marks" 現在和 ":jumps" 的輸出格式類似，如果位置標記位於當前檔案，顯示它之後
+的文字。":tags" 亦然。
 
-如果 configure 能找到 ftello() 和 fseeko()，在 tag.c 裏使用 (如果你有非常龐大
-的標籤文件時有用)。
+如果 configure 能找到 ftello() 和 fseeko()，在 tag.c 裡使用 (如果你有非常龐大
+的標籤檔案時有用)。
 
 configure 檢查編譯器的 "-FOlimit,2000" 參數。(Borsenkow)
 
 GUI:
-- 在非 GUI 的 Vim 上使用 ":gui" 給出清楚的錯誤信息。
-- "gvim -v" 不啓動 GUI (如果支持終端的話)。
-- Ex 模式裏，使用整屏的非可視選擇。
-- 以 "gvim -f" 啓動並在 .gvimrc 文件裏使用 ":gui" 時，Vim 過去仍然進行分叉
+- 在非 GUI 的 Vim 上使用 ":gui" 給出清楚的錯誤資訊。
+- "gvim -v" 不啟動 GUI (如果支援終端的話)。
+- Ex 模式裡，使用整屏的非可視選擇。
+- 以 "gvim -f" 啟動並在 .gvimrc 檔案裡使用 ":gui" 時，Vim 過去仍然進行分叉
   (fork)。現在記住了 "-f" 標誌位並用於 ":gui"。加入 "gui -b" 使得 gvim 總在後
   臺運行。
 
@@ -3551,58 +3551,58 @@ Motif GUI:
 
 Win32 GUI:
 - 非 OLE 版本使用 "-register" 或 "-unregister" 報錯。
-- 使用 GTK 工具欄圖標。使窗口邊界看起來舒服點。窗口左下/右下角使用可改變大小的
+- 使用 GTK 工具欄圖示。使視窗邊界看起來舒服點。視窗左下/右下角使用可改變大小的
   指針。(Negri)
-- 用 ":!start" 啓動外部命令但不能執行該命令時報錯。(Webb)
+- 用 ":!start" 啟動外部命令但不能執行該命令時報錯。(Webb)
 - 滾動條下方的灰色矩形上使用可改變大小的指針。用平坦模式來畫工具欄。這樣看起
   來舒服點。(Negri)
-- 爲 MS-Windows 3.1 的加入做好準備。主要把 WIN32 改爲 MSWIN，USE_GUI_WIN32 改
-  爲 USE_GUI_MSWIN。(Negri)
+- 為 MS-Windows 3.1 的加入做好準備。主要把 WIN32 改為 MSWIN，USE_GUI_WIN32 改
+  為 USE_GUI_MSWIN。(Negri)
 
-buflist_findpat() 裏不要分配相同的字符串四次。(Williams)
+buflist_findpat() 裡不要分配相同的字元串四次。(Williams)
 
-用 termcap 選項 't_ts'、't_fs'、't_IS' 和 't_IE' 設置標題和圖標文本。支持任何
-支持設置標題和/或圖標文本的終端。(Schild)
+用 termcap 選項 't_ts'、't_fs'、't_IS' 和 't_IE' 設定標題和圖示文字。支援任何
+支援設定標題和/或圖示文字的終端。(Schild)
 
-'comments' 的新 'x' 標誌位: 輸入結尾字符串的最後一個字符時，自動插入結尾部分。
+'comments' 的新 'x' 標誌位: 輸入結尾字元串的最後一個字元時，自動插入結尾部分。
 有助於結束 C 的 /* */ 註釋。(Webb)
 
 expand() 有第二個參數且非零時，不用 'suffixes' 和 'wildignore'，返回所有匹配。
 
-'cpoptions' 的 'O' 標誌位: 如果不包含，那麼當文件在編輯開始時不存在但緩衝區寫
-回時卻存在的時候，Vim 不會覆蓋文件。文件一定在 Vim 之外被建立，用戶自己都不一
+'cpoptions' 的 'O' 標誌位: 如果不包含，那麼當檔案在編輯開始時不存在但緩衝區寫
+回時卻存在的時候，Vim 不會覆蓋檔案。檔案一定在 Vim 之外被建立，使用者自己都不一
 定意識到這一點。如果在外殼命令之後發現這一點，給出警告。
 
-編輯新文件時，CTRL-G 顯示 [New file]。讀入文件如果有錯，CTRL-G 顯示 [Read
+編輯新檔案時，CTRL-G 顯示 [New file]。讀入檔案如果有錯，CTRL-G 顯示 [Read
 errors]。
 
-":wall" 現在可以在需要時使用對話框和文件瀏覽。
+":wall" 現在可以在需要時使用對話方塊和檔案瀏覽。
 
-組合若干功能成爲新的特性，這樣做的主要目的是爲了能控制最小版本的大小:
+組合若干功能成為新的特性，這樣做的主要目的是為了能控制最小版本的大小:
 +linebreak:	'showbreak'、'breakat' 和 'linebreak'
 +visualextra:	可視列塊模式的插入 ("I") 和附加 ("A")、列塊中 修改 ("c") 所有
-		行、 ">" 和 "<": 左/右移列塊、"r": 用單個字符替換可視區域。
+		行、 ">" 和 "<": 左/右移列塊、"r": 用單個字元替換可視區域。
 +comments:	'comments'
 +cmdline_info:	'ruler' 和 'showcmd'。替換過去的 +showcmd。
-"+title"	MSDOS 不加入設置標題和圖標的代碼，反正這也不可能做到。
-+cmdline_compl	編譯時關閉除了文件、目錄和幫助項目之外的命令行補全。
+"+title"	MSDOS 不加入設定標題和圖示的程式碼，反正這也不可能做到。
++cmdline_compl	編譯時關閉除了檔案、目錄和幫助項目之外的命令列補全。
 
-特性從函數調用列表移到一個數組。這樣可以節省一點空間。
+特性從函數呼叫列表移到一個陣列。這樣可以節省一點空間。
 
-輸入函數體時，根據 "if" 和 "while" 命令調整縮進。
+輸入函數體時，根據 "if" 和 "while" 命令調整縮排。
 
 VMS: 根據 Arpadffy 的建議稍稍調整 os_vms.mms。
 
-'comments' 選項的標誌位現在可以包含位移。這樣就可以用相同的 'comments' 設置對
-齊 "/*****"、"/*   xxx" 和 "/*" 註釋。'comments' 的缺省值用到這一特性。
+'comments' 選項的標誌位現在可以包含位移。這樣就可以用相同的 'comments' 設定對
+齊 "/*****"、"/*   xxx" 和 "/*" 註釋。'comments' 的預設值用到這一特性。
 加入 'O' 標誌位: 這部分不用於 "O" 命令。用於 "set com=sO:*\ -,mO:*\ \ ,exO:*/"
 
-FileType 自動命令識別 ".bak"、".orig" 和 "~" 擴展名，刪除它們以尋找相關的擴展
+FileType 自動命令識別 ".bak"、".orig" 和 "~" 副檔名，刪除它們以尋找相關的擴展
 名。
 
-編寫 Vim 腳本部分的教程得到擴充。
+編寫 Vim 指令碼部分的教程得到擴充。
 
-幫助文件提供更多高亮，用於不能按本義輸入的項目。
+幫助檔案提供更多高亮，用於不能按本義輸入的項目。
 
 提供了 "CTRL-W CTRL-G"，相當於 "CTRL-W g"。
 
@@ -4522,12 +4522,12 @@ Patch 5.4m.1
 解決方案:   Truncate the message in filemess().  Use the same code as for
 	    msg_trunc_attr(), which is moved to the new function
 	    msg_may_trunc().
-相關文件:   src/message.c, src/proto/message.pro, src/fileio.c
+相關檔案:   src/message.c, src/proto/message.pro, src/fileio.c
 
 Patch 5.4m.3
 問題:	    The Motif libraries were not found by configure for Digital Unix.
 解決方案:   Add "/usr/shlib" to the search path. (Andy Kahn)
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.4m.5
 問題:	    Win32 GUI: When using the Save-As menu entry and selecting an
@@ -4536,7 +4536,7 @@ Patch 5.4m.5
 解決方案:   Removed the dialog from the file browser.  It would be nicer to
 	    set the "forceit" flag and skip Vim's ":confirm" dialog, but it
 	    requires quite a few changes to do that.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.4m.6
 問題:	    Win32 GUI: When reading text from stdin, e.g., "cat foo | gvim -",
@@ -4544,14 +4544,14 @@ Patch 5.4m.6
 	    Schaap)
 解決方案:   Don't switch off termcap mode for versions that are GUI-only.
 	    They use another terminal to read from stdin.
-相關文件:   src/main.c, src/fileio.c
+相關檔案:   src/main.c, src/fileio.c
 
 Patch 5.4m.7
 問題:	    Unix: running configure with --enable-gtk-check,
 	    --enable-motif-check, --enable-athena-check or --enable-gtktest
 	    had the reverse effect. (Thomas Koehler)
 解決方案:   Use $enable_gtk_check variable correctly in AC_ARG_ENABLE().
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.4m.9
 問題:	    Multi-byte: With wrapping lines, the cursor was sometimes 2
@@ -4559,13 +4559,13 @@ Patch 5.4m.9
 	    double-byte character was split for a wrapping line.  When
 	    'showbreak' was on the splitting also didn't work.
 解決方案:   Adjust getvcol() and win_line(). (Chong-Dae Park)
-相關文件:   src/charset.c, src/screen.c
+相關檔案:   src/charset.c, src/screen.c
 
 Patch 5.4m.11
 問題:	    The ":call" command didn't check for illegal trailing characters.
 	    (Stefan Roemer)
 解決方案:   Add the check in do_call().
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.4m.13
 問題:	    With the ":s" command:
@@ -4586,7 +4586,7 @@ Patch 5.4m.13
 	    3. Added global_need_beginline flag to call beginline() after ":g"
 	       has finished all substitutions.
 	    4. Clear the need_wait_return flag after prompting the user.
-相關文件:   src/ex_cmds.c, src/gui_w32.c
+相關檔案:   src/ex_cmds.c, src/gui_w32.c
 
 Patch 5.4m.14
 問題:	    When doing "vim xxx", ":opt", ":only" and then ":e xxx" we end
@@ -4600,7 +4600,7 @@ Patch 5.4m.14
 	    Make autocommand that calls ":bdel" in optwin.vim nested, so that
 	    the buffer loading it triggers also executes autocommands.
 	    Also added a test for this in test13.
-相關文件:   runtime/optwin.vim, src/buffer.c, src/ex_cmds.c, src/globals.h
+相關檔案:   runtime/optwin.vim, src/buffer.c, src/ex_cmds.c, src/globals.h
 	    src/testdir/test13.in, src/testdir/test13.ok
 
 Patch 5.4m.15
@@ -4610,7 +4610,7 @@ Patch 5.4m.15
 	    not cleared.  This will cause memory to be used that has already
 	    been freed.  Added call to invalidate_current_state() in
 	    syntax_clear().
-相關文件:   src/syntax.c
+相關檔案:   src/syntax.c
 
 Patch 5.4m.17
 問題:	    When omitting a ')' in an expression it would not be seen as a
@@ -4624,7 +4624,7 @@ Patch 5.4m.17
 	    message when eval1() returns FAIL.
 	    Fix eval6() to handle trailing ')' correctly and return FAIL when
 	    it's missing.
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.4m.18
 問題:	    When using input() from inside an expression entered with
@@ -4634,7 +4634,7 @@ Patch 5.4m.18
 	    getcmdline() correctly.  It also sets the command line prompt.
 	    Removed cmdline_prompt().  Also use getcmdline_prompt() for
 	    getting the crypt key in get_crypt_key().
-相關文件:   src/proto/ex_getln.pro, src/ex_getln.c, src/eval.c, src/misc2.c
+相關檔案:   src/proto/ex_getln.pro, src/ex_getln.c, src/eval.c, src/misc2.c
 
 Patch 5.4m.21
 問題:	    When starting up, the screen structures were first allocated at
@@ -4644,7 +4644,7 @@ Patch 5.4m.21
 解決方案:   Call screenalloc() in main() only after calling ui_get_winsize().
 	    Also avoids a potential delay because of calling screenclear()
 	    while "starting" is non-zero.
-相關文件:   src/main.c
+相關檔案:   src/main.c
 
 Patch 5.4m.22
 問題:	    In the GUI it was possible that the screen was resized and the
@@ -4658,19 +4658,19 @@ Patch 5.4m.22
 	    This also fixes that resizing the screen while still redrawing
 	    (slow syntax highlighting) would not work properly.
 	    Also disable display_hint, it was never used.
-相關文件:   src/globals.h, src/gui.c, src/screen.c, src/proto/gui.pro
+相關檔案:   src/globals.h, src/gui.c, src/screen.c, src/proto/gui.pro
 
 Patch 5.4m.23
 問題:	    When using expand("<cword>") when there was no word under the
 	    cursor, would get an error message.  Same for <cWORD> and <cfile>.
 解決方案:   Don't give an error message, return an empty string.
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.4m.24
 問題:	    ":help \|" didn't find anything.  It was translated to "/\\|".
 解決方案:   Translate "\|" into "\\bar".  First check the table for specific
 	    translations before checking for "\x".
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.4m.25
 問題:	    Unix: When using command line completion on files that contain
@@ -4678,7 +4678,7 @@ Patch 5.4m.25
 	    Adding this file name to the Buffers menu caused an error message.
 解決方案:   Insert a backslash before these three characters.
 	    Adjust Mungename() function to insert a backslash before '|'.
-相關文件:   src/ex_getln.c, runtime/menu.vim
+相關檔案:   src/ex_getln.c, runtime/menu.vim
 
 Patch 5.4m.26
 問題:	    When using a mapping of two function keys, e.g., <F1><F1>, and
@@ -4686,7 +4686,7 @@ Patch 5.4m.26
 	    would not be recognized.  Noticed on some Unix systems with xterm.
 解決方案:   Add 'K' flag to 'cpoptions' to wait for the whole key code, even
 	    when halfway a mapping.
-相關文件:   src/option.h, src/term.c
+相關檔案:   src/option.h, src/term.c
 
 Patch 5.4m.27
 問題:	    When making test33 without the lisp feature it hangs. Interrupting
@@ -4695,7 +4695,7 @@ Patch 5.4m.27
 	    closescript() has freed typebuf[] and buf[] might be pointing
 	    inside typebuf[].
 	    Avoid that test33 hangs when the lisp feature is missing.
-相關文件:   src/getchar.c src/testdir/test33.in
+相關檔案:   src/getchar.c src/testdir/test33.in
 
 "os2" was missing from the feature list.  Useful for has("os2").
 
@@ -4708,7 +4708,7 @@ Patch 5.4n.3
 問題:	    C-indenting was wrong after "  } else".  The white space was not
 	    skipped.  Visible when 'cino' has "+10".
 解決方案:   Skip white space before calling cin_iselse(). (Norbert Zeh)
-相關文件:   src/misc1.c
+相關檔案:   src/misc1.c
 
 Patch 5.4n.4
 問題:	    When the 't' flag in 'cpoptions' is included, after a
@@ -4716,7 +4716,7 @@ Patch 5.4n.4
 	    after a tag search. (Norbert Zeh)
 解決方案:   When setting the new search pattern in jumpto_tag(), don't restore
 	    no_hlsearch.
-相關文件:   src/tag.c
+相關檔案:   src/tag.c
 
 Patch 5.4n.5
 問題:	    When using ":normal" from a CursorHold autocommand Vim hangs.  The
@@ -4724,26 +4724,26 @@ Patch 5.4n.5
 	    recursively to execute the command doesn't work then.
 解決方案:   Forbid the use of ":normal" when vgetc_busy is set.  Give an error
 	    message when this happens.
-相關文件:   src/ex_docmd.c, runtime/doc/autocmd.txt
+相關檔案:   src/ex_docmd.c, runtime/doc/autocmd.txt
 
 Patch 5.4n.6
 問題:	    "gv" could reselect a Visual that starts and/or ends past the end
 	    of a line. (Robert Webb)
 解決方案:   Check that the start and end of the Visual area are on a valid
 	    character by calling adjust_cursor().
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.4n.8
 問題:	    When a mark was on a non existing line (e.g., when the .viminfo
 	    was edited), jumping to it caused ml_get errors. (Alexey
 	    Marinichev).
 解決方案:   Added check_cursor_lnum() in nv_gomark().
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.4n.9
 問題:	    ":-2" moved the cursor to a negative line number. (Ralf Schandl)
 解決方案:   Give an error message for a negative line number.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.4n.10
 問題:	    Win32 GUI: At the hit-enter prompt, it was possible to scroll the
@@ -4751,26 +4751,26 @@ Patch 5.4n.10
 	    Normal mode, while it is actually still waiting for a <CR>.
 解決方案:   Disallow scrolling at the hit-enter prompt for systems that use
 	    on the fly scrolling.
-相關文件:   src/message.c
+相關檔案:   src/message.c
 
 Patch 5.4n.14
 問題:	    Win32 GUI: When using ":winsize 80 46" and the height is more than
 	    what fits on the screen, the window size was made smaller than
 	    asked for (that's OK) and Vim crashed (that's not OK)>
 解決方案:   Call check_winsize() from gui_set_winsize() to resize the windows.
-相關文件:   src/gui.c
+相關檔案:   src/gui.c
 
 Patch 5.4n.16
 問題:	    Win32 GUI: The <F10> key both selected the menu and was handled as
 	    a key hit.
 解決方案:   Apply 'winaltkeys' to <F10>, like it is used for Alt keys.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.4n.17
 問題:	    Local buffer variables were freed when the buffer is unloaded.
 	    That's not logical, since options are not freed. (Ron Aaron)
 解決方案:   Free local buffer variables only when deleting the buffer.
-相關文件:   src/buffer.c
+相關檔案:   src/buffer.c
 
 Patch 5.4n.19
 問題:	    Doing ":e" (without argument) in an option-window causes trouble.
@@ -4782,7 +4782,7 @@ Patch 5.4n.19
 	    When re-editing the same file causes the current buffer to be
 	    deleted, don't try editing it.
 	    Also added a test for this situation.
-相關文件:   runtime/optwin.vim, src/ex_cmds.c, src/testdir/test13.in,
+相關檔案:   runtime/optwin.vim, src/ex_cmds.c, src/testdir/test13.in,
 	    src/testdir/test13.ok
 
 Patch 5.4n.24
@@ -4793,7 +4793,7 @@ Patch 5.4n.24
 解決方案:   Only disable the GUI when $with_x is "no" and  $BEOS is not "yes".
 	    Add dummy defines for Display and Widget in proto.h.
 	    Don't free the fonts in gui_exit() for BeOS.
-相關文件:   src/configure.in, src/configure, src/proto.h, src/gui.c.
+相關檔案:   src/configure.in, src/configure, src/proto.h, src/gui.c.
 
 
 The runtime/vim48x48.xpm icon didn't have a transparent background. (Schild)
@@ -4824,7 +4824,7 @@ VMS:
 Patch 5.4o.2
 問題:	    Crash when using "gf" on "file.c://comment here". (Scott Graham)
 解決方案:   Fix wrong use of pointers in get_file_name_in_path().
-相關文件:   src/window.c
+相關檔案:   src/window.c
 
 Patch 5.4o.3
 問題:	    The horizontal scrollbar was not sized correctly when 'number' is
@@ -4833,7 +4833,7 @@ Patch 5.4o.3
 	    positioned with a mouse click just after dragging.
 解決方案:   Subtract 8 from the size when 'number' set and 'wrap' not set.
 	    Reset gui.dragged_sb when a mouse click is received.
-相關文件:   src/gui.c
+相關檔案:   src/gui.c
 
 Patch 5.4o.4
 問題:	    When running in an xterm and $WINDOWID is set to an illegal value,
@@ -4842,20 +4842,20 @@ Patch 5.4o.4
 	    check if x11_window is valid by trying to obtain the window title.
 	    Also add a check in setup_xterm_clip(), for when using X calls to
 	    get the pointer position in an xterm.
-相關文件:   src/os_unix.c
+相關檔案:   src/os_unix.c
 
 Patch 5.4o.5
 問題:	    Motif version with Lesstif: When removing the menubar and then
 	    using a menu shortcut key, Vim would crash. (raf)
 解決方案:   Disable the menu mnemonics when the menu bar is removed.
-相關文件:   src/gui_motif.c
+相關檔案:   src/gui_motif.c
 
 Patch 5.4o.9
 問題:	    The DOS install.exe program used the "move" program.  That doesn't
 	    work on Windows NT, where "move" is internal to cmd.exe.
 解決方案:   Don't use an external program for moving the executables.  Use C
 	    functions to copy the file and delete the original.
-相關文件:   src/dosinst.c
+相關檔案:   src/dosinst.c
 
 Motif and Athena obtained the status area height differently from GTK.  Moved
 status_area_enabled from global.h to gui_x11.c and call
@@ -4867,13 +4867,13 @@ Patch 5.4p.1
 	    area still being the same, but ownership taken away by another
 	    program.
 解決方案:   Reset the clipboard Visual mode to force updating the selection.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.4p.2
 問題:	    Motif and Athena with XIM: Typing 3-byte
 	    <multibyte><multibyte><space> doesn't work correctly with Ami XIM.
 解決方案:   Avoid using key_sym XK_VoidSymbol. (Nam)
-相關文件:   src/multbyte.c, src/gui_x11.c
+相關檔案:   src/multbyte.c, src/gui_x11.c
 
 Patch 5.4p.4
 問題:	    Win32 GUI: The scrollbar values were reduced for a file with more
@@ -4883,7 +4883,7 @@ Patch 5.4p.4
 	    Because of round-off errors there is no scroll at all.
 解決方案:   Give each scrollbar its own scroll_shift field.  When the down
 	    arrow is used, scroll several lines.
-相關文件:   src/gui.h, src/gui_w32.c
+相關檔案:   src/gui.h, src/gui_w32.c
 
 Patch 5.4p.5
 問題:	    When changing buffers in a BufDelete autocommand, there could be
@@ -4892,7 +4892,7 @@ Patch 5.4p.5
 解決方案:   When the buffer to be deleted unexpectedly becomes the current
 	    buffer, don't delete it.
 	    Also added a check for this in test13.
-相關文件:   src/buffer.c, src/testdir/test13.in, src/testdir/test13.ok
+相關檔案:   src/buffer.c, src/testdir/test13.in, src/testdir/test13.ok
 
 Patch 5.4p.7
 問題:	    Win32 GUI: When using 'mousemodel' set to "popup_setpos" and
@@ -4901,13 +4901,13 @@ Patch 5.4p.7
 	    (Aaron)
 解決方案:   Set the cursor and update the display before showing the popup
 	    menu.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.4p.8
 問題:	    The generated bugreport didn't contain information about
 	    $VIMRUNTIME and whether runtime files actually exist.
 解決方案:   Added a few checks to the bugreport script.
-相關文件:   runtime/bugreport.vim
+相關檔案:   runtime/bugreport.vim
 
 Patch 5.4p.9
 問題:	    The windows install.exe created a wrong entry in the popup menu.
@@ -4915,13 +4915,13 @@ Patch 5.4p.9
 	    executable had been moved elsewhere. (Ott)
 解決方案:   Double the '%' to get one from printf.  Only include the path to
 	    gvim.exe when it wasn't moved and it's not in $PATH.
-相關文件:   src/dosinst.c
+相關檔案:   src/dosinst.c
 
 Patch 5.4p.10
 問題:	    Win32: On top of 5.4p.9: The "Edit with Vim" entry sometimes used
 	    a short file name for a directory.
 解決方案:   Change the "%1" to "%L" in the registry entry.
-相關文件:   src/dosinst.c
+相關檔案:   src/dosinst.c
 
 Patch 5.4p.11
 問題:	    Motif, Athena and GTK: When closing the GUI window when there is a
@@ -4929,14 +4929,14 @@ Patch 5.4p.11
 	    exit.
 解決方案:   Put up a dialog, like for ":confirm qa".  Uses the code that was
 	    already used for MS-Windows.
-相關文件:   src/gui.c, src/gui_w32.c
+相關檔案:   src/gui.c, src/gui_w32.c
 
 Patch 5.4p.12
 問題:	    Win32: Trying to expand a string that is longer than 256
 	    characters could cause a crash. (Steed)
 解決方案:   For the buffer in win32_expandpath() don't use a fixed size array,
 	    allocate it.
-相關文件:   src/os_win32.c
+相關檔案:   src/os_win32.c
 
 MSDOS: Added "-Wall" to Makefile.djg compile flags.  Function prototypes for
 fname_case() and mch_update_cursor() were missing.  "fd" was unused in
@@ -4952,11 +4952,11 @@ mch_call_shell() for DJGPP version.
 改動							*changed-5.5*
 -------
 
-DJGPP 版本現在用 "-O2" 編譯而不是 "-O4"，以減少可執行文件的大小。
+DJGPP 版本現在用 "-O2" 編譯而不是 "-O4"，以減少可執行檔案的大小。
 
-src/STYLE 文件移到 runtime/doc/develop.txt。加入設計目標。
+src/STYLE 檔案移到 runtime/doc/develop.txt。加入設計目標。
 
-'backspace' 現在成爲字符串選項。見 patch 5.4.15。
+'backspace' 現在成為字元串選項。見 patch 5.4.15。
 
 
 新增							*added-5.5*
@@ -4964,22 +4964,22 @@ src/STYLE 文件移到 runtime/doc/develop.txt。加入設計目標。
 
 加入 Exuberant Ctags 3.3 版本。(Darren Hiebert)
 
-runtime/mswin.vim 裏，把 CTRL-Q 映射爲 CTRL-V，這樣任何 CTRL-V 能做的事情
+runtime/mswin.vim 裡，把 CTRL-Q 對映為 CTRL-V，這樣任何 CTRL-V 能做的事情
 CTRL-Q 都可以做。
 
-vimrc_example.vim 裏支持 bzip2 文件的解壓。
+vimrc_example.vim 裡支援 bzip2 檔案的解壓。
 
 如果加入補丁，補丁號在 version.c 表格里輸入。這樣就可以跳過一個補丁而不影響後
 面。
 
-支持 X11 的鼠標滾輪。見 patch 5.5a.14。
+支援 X11 的滑鼠滾輪。見 patch 5.5a.14。
 
 line2byte() 可以用來得到緩衝區的大小。見 patch 5.4.35。
 
 用插入模式下的 CTRL-R CTRL-O r 和 CTRL-R CTRL-P r 命令按本義插入寄存器。見
 patch 5.4.48。
 
-MS-Windows 的卸載 (uninstall) 程序。可以刪除 "Edit with Vim" 的註冊表項目。也
+MS-Windows 的解除安裝 (uninstall) 程式。可以刪除 "Edit with Vim" 的註冊表項目。也
 進行註冊使 "Add/Remove programs" 應用可以找到它。見 patch 5.4.x7。
 
 
@@ -5007,43 +5007,43 @@ BeOS: "tmo" must be bigtime_t, instead of double. (Seibert)
 Patch 5.4.1
 問題:	    Test11 fails when $GZIP is set to "-v". (Matthew Jackson)
 解決方案:   Set $GZIP to an empty string.
-相關文件:   src/testdir/test11.in
+相關檔案:   src/testdir/test11.in
 
 Patch 5.4.2
 問題:	    Typing <Esc> at the crypt key prompt caused a crash. (Kallingal)
 解決方案:   Check for a NULL pointer returned from get_crypt_key().
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.4.3
 問題:	    Python: Trying to use the name of an unnamed buffer caused a
 	    crash. (Daniel Burrows)
 解決方案:   Check for b_fname being a NULL pointer.
-相關文件:   src/if_python.c
+相關檔案:   src/if_python.c
 
 Patch 5.4.4
 問題:	    Win32: When compiled without toolbar, but the 'T' flag is in
 	    'guioptions', there would be an empty space for the toolbar.
 解決方案:   Add two #ifdefs where checking for the 'T' flag. (Vince Negri)
-相關文件:   src/gui.c
+相關檔案:   src/gui.c
 
 Patch 5.4.5
 問題:	    Athena GUI: Using the Buffers.Refresh menu entry caused a crash.
 	    Looks like any ":unmenu" command may cause trouble.
 解決方案:   Disallow ":unmenu" in the Athena version.  Disable the Buffers
 	    menu, because the Refresh item would not work.
-相關文件:   src/menu.c, runtime/menu.vim
+相關檔案:   src/menu.c, runtime/menu.vim
 
 Patch 5.4.6
 問題:	    GTK GUI: Using ":gui" in the .gvimrc file caused an error.  Only
 	    happens when the GUI forks.
 解決方案:   Don't fork in a recursive call of gui_start().
-相關文件:   src/gui.c
+相關檔案:   src/gui.c
 
 Patch 5.4.7
 問題:	    Typing 'q' at the more prompt for the ATTENTION message causes the
 	    file loading to be interrupted. (Will Day)
 解決方案:   Reset got_int after showing the ATTENTION message.
-相關文件:   src/memline.c
+相關檔案:   src/memline.c
 
 Patch 5.4.8
 問題:	    Edit some file, ":he", ":opt": options from help window are shown,
@@ -5052,7 +5052,7 @@ Patch 5.4.8
 	    error message.
 解決方案:   Before creating the option-window, go to a non-help window.
 	    Use ":bdel!" to delete the buffer.
-相關文件:   runtime/optwin.vim
+相關檔案:   runtime/optwin.vim
 
 Patch 5.4.9
 	    Just updates version.h.  The real patch has been moved to 5.4.x1.
@@ -5062,7 +5062,7 @@ Patch 5.4.10
 問題:	    GTK GUI: When $DISPLAY is invalid, "gvim -f" just exits.  It
 	    should run in the terminal.
 解決方案:   Use gtk_init_check() instead of gtk_init().
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.4.11
 問題:	    When using the 'S' flag in 'cpoptions', 'tabstop' is not copied to
@@ -5070,7 +5070,7 @@ Patch 5.4.11
 解決方案:   When the BCO_NOHELP flag is given to buf_copy_options(), still
 	    copy the options used by do_help() when neither the "from" or "to"
 	    buffer is a help buffer.
-相關文件:   src/option.c
+相關檔案:   src/option.c
 
 Patch 5.4.12
 問題:	    When using 'smartindent', there would be no extra indent if the
@@ -5078,43 +5078,43 @@ Patch 5.4.12
 解決方案:   There was a wrongly placed "else", that previously matched with
 	    the "if" that set trunc_line.  Removed the "else" and added a
 	    check for trunc_line to be false.
-相關文件:   src/misc1.c
+相關檔案:   src/misc1.c
 
 Patch 5.4.13
 問題:	    New SGI C compilers need another option for optimisation.
 解決方案:   Add a check in configure for "-OPT:Olimit". (Chin A Young)
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.4.14
 問題:	    Motif GUI: When the popup menu is present, a tiny window appears
 	    on the desktop for some users.
 解決方案:   Set the menu widget ID for a popup menu to 0. (Thomas Koehler)
-相關文件:   src/gui_motif.c
+相關檔案:   src/gui_motif.c
 
 Patch 5.4.15
 問題:	    Since 'backspace' set to 0 has been made Vi compatible, it is no
 	    longer possible to only allow deleting autoindent.
 解決方案:   Make 'backspace' a list of parts, to allow each kind of
 	    backspacing separately.
-相關文件:   src/edit.c, src/option.c, src/option.h, src/proto/option.pro,
+相關檔案:   src/edit.c, src/option.c, src/option.h, src/proto/option.pro,
 	    runtime/doc/option.txt, runtime/doc/insert.txt
 
 Patch 5.4.16
 問題:	    Multibyte: Locale zh_TW.Big5 was not checked for in configure.
 解決方案:   Add zh_TW.Big5 to configure check. (Chih-Tsun Huang)
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.4.17
 問題:	    GUI: When started from inside gvim with ":!gvim", Vim would not
 	    start.  ":!gvim -f" works fine.
 解決方案:   After forking, wait a moment in the parent process, to give the
 	    child a chance to set its process group.
-相關文件:   src/gui.c
+相關檔案:   src/gui.c
 
 Patch 5.4.18
 問題:	    Python: The clear_history() function also exists in a library.
 解決方案:   Rename clear_history() to clear_hist().
-相關文件:   src/ex_getln.c, src/eval.c, src/proto/ex_getln.pro
+相關檔案:   src/ex_getln.c, src/eval.c, src/proto/ex_getln.pro
 
 Patch 5.4.19
 問題:	    In a terminal with 25 lines, there is a more prompt after the
@@ -5122,52 +5122,52 @@ Patch 5.4.19
 	    doesn't appear and file loading is interrupted. (Will Day)
 解決方案:   Don't allow quitting the printing of a message for the dialog
 	    prompt.  Added the msg_noquit_more flag for this.
-相關文件:   src/message.c
+相關檔案:   src/message.c
 
 Patch 5.4.20
 問題:	    GTK: When starting gvim, would send escape sequences to the
 	    terminal to switch the cursor off and on.
 解決方案:   Don't call msg_start() if the GUI is expected to start.
-相關文件:   src/main.c
+相關檔案:   src/main.c
 
 Patch 5.4.21
 問題:	    Motif: Toplevel menu ordering was wrong when using tear-off items.
 解決方案:   Don't add one to the index for a toplevel menu.
-相關文件:   src/gui_motif.c
+相關檔案:   src/gui_motif.c
 
 Patch 5.4.22
 問題:	    In Insert mode, <C-Left>, <S-Left>, <C-Right> and <S-Right> didn't
 	    update the column used for vertical movement.
 解決方案:   Set curwin->w_set_curswant for those commands.
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.4.23
 問題:	    When a Visual selection is lost to another program, and then the
 	    same text is Visually selected again, the clipboard ownership
 	    wasn't regained.
 解決方案:   Set clipboard.vmode to NUL to force regaining the clipboard.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.4.24
 問題:	    Encryption: When using ":r file" while 'key' has already entered,
 	    the 'key' option would be messed up.  When writing the file it
 	    would be encrypted with an unknown key and lost! (Brad Despres)
 解決方案:   Don't free cryptkey when it is equal to the 'key' option.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.4.25
 問題:	    When 'cindent' is set, but 'autoindent' isn't, comments are not
 	    properly indented when starting a new line. (Mitterand)
 解決方案:   When there is a comment leader for the new line, but 'autoindent'
 	    isn't set, do C-indenting.
-相關文件:   src/misc1.c
+相關檔案:   src/misc1.c
 
 Patch 5.4.26
 問題:	    Multi-byte: a multi-byte character is never recognized in a file
 	    name, causing a backslash before it to be removed on Windows.
 解決方案:   Assume that a leading-byte character is a file name character in
 	    vim_isfilec().
-相關文件:   src/charset.c
+相關檔案:   src/charset.c
 
 Patch 5.4.27
 問題:	    Entries in the PopUp[nvic] menus were added for several modes, but
@@ -5177,20 +5177,20 @@ Patch 5.4.27
 	    could result in greying-out the whole PopUp menu.
 解決方案:   Remove entries for all modes from the PopUp[nvic] menus.  Remove
 	    the PopUp[nvic] menu entries first, before the name is changed.
-相關文件:   src/menu.c
+相關檔案:   src/menu.c
 
 Patch 5.4.28
 問題:	    When using a BufWritePre autocommand to change 'fileformat', the
 	    new value would not be used for writing the file.
 解決方案:   Check 'fileformat' after executing the autocommands instead of
 	    before.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.4.29
 問題:	    Athena GUI: When removing the 'g' flag from 'guioptions', using a
 	    menu can result in a crash.
 解決方案:   Always grey-out menus for Athena, don't hide them.
-相關文件:   src/menu.c
+相關檔案:   src/menu.c
 
 Patch 5.4.30
 問題:	    BeOS: Suspending Vim with CTRL-Z didn't work (killed Vim).  The
@@ -5198,7 +5198,7 @@ Patch 5.4.30
 	    started shell.
 解決方案:   Don't suspend Vim, start a new shell.  Kill the async read thread
 	    when starting a new shell.  It will be restarted later. (Will Day)
-相關文件:   src/os_unix.c, src/ui.c
+相關檔案:   src/os_unix.c, src/ui.c
 
 Patch 5.4.31
 問題:	    GUI: When 'mousefocus' is set, moving the mouse over where a
@@ -5207,19 +5207,19 @@ Patch 5.4.31
 解決方案:   Don't use 'mousefocus' at the hit-enter prompt.  Also ignore it
 	    for the more prompt and a few other situations.  When an operator
 	    is pending, abort it first.
-相關文件:   src/gui.c
+相關檔案:   src/gui.c
 
 Patch 5.4.32
 問題:	    Unix: $LDFLAGS was not passed to configure.
 解決方案:   Pass $LDFLAGS to configure just like $CFLAGS. (Jon Miner)
-相關文件:   src/Makefile
+相關檔案:   src/Makefile
 
 Patch 5.4.33
 問題:	    Unix: After expanding an environment variable with the shell, the
 	    next expansion would also use the shell, even though it is not
 	    needed.
 解決方案:   Reset "recursive" before returning from gen_expand_wildcards().
-相關文件:   src/misc1.c
+相關檔案:   src/misc1.c
 
 Patch 5.4.34 (also see 5.4.x5)
 問題:	    When editing a file, and the file name is relative to a directory
@@ -5228,27 +5228,27 @@ Patch 5.4.34 (also see 5.4.x5)
 解決方案:   Add an argument to shorten_fnames() which indicates if all file
 	    names should be shortened, or only absolute names.  In main() only
 	    use shorten_fnames() to shorten absolute names.
-相關文件:   src/ex_docmd.c, src/fileio.c, src/main.c, src/proto/fileio.pro
+相關檔案:   src/ex_docmd.c, src/fileio.c, src/main.c, src/proto/fileio.pro
 
 Patch 5.4.35
 問題:	    There is no function to get the current file size.
 解決方案:   Allow using line2byte() with the number of lines in the file plus
 	    one.  This returns the offset of the line past the end of the
 	    file, which is the file size plus one.
-相關文件:   src/eval.c, runtime/doc/eval.txt
+相關檔案:   src/eval.c, runtime/doc/eval.txt
 
 Patch 5.4.36
 問題:	    Comparing strings while ignoring case didn't work correctly for
 	    some machines. (Mide Steed)
 解決方案:   vim_stricmp() and vim_strnicmp() only returned 0 or 1.  Changed
 	    them to return -1 when the first argument is smaller.
-相關文件:   src/misc2.c
+相關檔案:   src/misc2.c
 
 Patch 5.4.37 (also see 5.4.40 and 5.4.43)
 問題:	    Long strings from the viminfo file are truncated.
 解決方案:   When writing a long string to the viminfo file, first write a line
 	    with the length, then the string itself in a second line.
-相關文件:   src/eval.c, src/ex_cmds.c, src/ex_getln.c, src/mark.c, src/ops.c,
+相關檔案:   src/eval.c, src/ex_cmds.c, src/ex_getln.c, src/mark.c, src/ops.c,
 	    src/search.c, src/proto/ex_cmds.pro, runtime/syntax/viminfo.vim
 
 Patch 5.4.38
@@ -5259,46 +5259,46 @@ Patch 5.4.38
 	    boolean option.
 	    Save and restore mappings for <Space> and <CR> when entering and
 	    leaving the option-window.
-相關文件:   runtime/optwin.vim
+相關檔案:   runtime/optwin.vim
 
 Patch 5.4.39
 問題:	    When setting a hidden option, spaces before the equal sign were
 	    not skipped and cause an error message.  E.g., ":set csprg =cmd".
 解決方案:   When skipping over a hidden option, check for a following "=val"
 	    and skip it too.
-相關文件:   src/option.c
+相關檔案:   src/option.c
 
 Patch 5.4.40 (depends on 5.4.37)
 問題:	    Compiler error for "atol(p + 1)". (Axel Kielhorn)
 解決方案:   Add a typecast: "atol((char *)p + 1)".
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.4.41
 問題:	    Some commands that were not included would give an error message,
 	    even when after "if 0".
 解決方案:   Don't give an error message for an unsupported command when not
 	    executing the command.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.4.42
 問題:	    ":w" would also cause a truncated message to appear in the message
 	    history.
 解決方案:   Don't put a kept message in the message history when it starts
 	    with "<".
-相關文件:   src/message.c
+相關檔案:   src/message.c
 
 Patch 5.4.43 (depends on 5.4.37)
 問題:	    Mixing long lines with multiple lines in a register causes errors
 	    when writing the viminfo file. (Robinson)
 解決方案:   When reading the viminfo file to skip register contents, skip
 	    lines that start with "<".
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.4.44
 問題:	    When 'whichwrap' includes '~', a "~" command that goes on to the
 	    next line cannot be properly undone. (Zellner)
 解決方案:   Save each line for undo in n_swapchar().
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.4.45 (also see 5.4.x8)
 問題:	    When expand("$ASDF") fails, there is an error message.
@@ -5308,13 +5308,13 @@ Patch 5.4.45 (also see 5.4.x8)
 	    Previously it returned "$ASDF" when 'shell' is "sh".
 	    Also: system() doesn't print an error when the command returns an
 	    error code.
-相關文件:   many
+相關檔案:   many
 
 Patch 5.4.46
 問題:	    Backspacing did not always use 'softtabstop' after hitting <CR>,
 	    inserting a register, moving the cursor, etc.
 解決方案:   Reset inserted_space much more often in edit().
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.4.47
 問題:	    When executing BufWritePre or BufWritePost autocommands for a
@@ -5324,7 +5324,7 @@ Patch 5.4.47
 	    when it is going to be used to execute autocommands for a hidden
 	    buffer.  Use an existing window for the buffer when it's not
 	    hidden.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.4.48
 問題:	    A paste with the mouse in Insert mode was not repeated exactly the
@@ -5332,48 +5332,48 @@ Patch 5.4.48
 	    text with leading indent. (Perry)
 解決方案:   Add the CTRL-R CTRL-O r and CTRL-R CTRL-P r commands in Insert
 	    mode, which insert the contents of a register literally.
-相關文件:   src/edit.c, src/normal.c, runtime/doc/insert.txt
+相關檔案:   src/edit.c, src/normal.c, runtime/doc/insert.txt
 
 Patch 5.4.49
 問題:	    When pasting text with [ <MiddleMouse>, the cursor could end up
 	    after the last character of the line.
 解決方案:   Correct the cursor position for the change in indent.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.4.x1 (note: Replaces patch 5.4.9)
 問題:	    Win32 GUI: menu hints were never used, because WANT_MENU is not
 	    defined until vim.h is included.
 解決方案:   Move the #ifdef WANT_MENU from where MENUHINTS is defined to where
 	    it is used.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.4.x2
 問題:	    BeOS: When pasting text, one character was moved to the end.
 解決方案:   Re-enable the BeOS code in fill_input_buf(), and fix timing out
 	    with acquire_sem_etc(). (Will Day)
-相關文件:   src/os_beos.c, src/ui.c
+相關檔案:   src/os_beos.c, src/ui.c
 
 Patch 5.4.x3
 問題:	    Win32 GUI: When dropping a directory on a running gvim it crashes.
 解決方案:   Avoid using a NULL file name.  Also display a message to indicate
 	    that the current directory was changed.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.4.x4
 問題:	    Win32 GUI: Removing an item from the popup menu doesn't work.
 解決方案:   Don't remove the item from the menubar, but from the parent popup
 	    menu.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.4.x5 (addition to 5.4.34)
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.4.x6
 問題:	    Win32: Expanding (dir)name starting with a dot doesn't work.
 	    (McCormack)  Only when there is a path before it.
 解決方案:   Fix the check, done before expansion, if the file name pattern
 	    starts with a dot.
-相關文件:   src/os_win32.c
+相關檔案:   src/os_win32.c
 
 Patch 5.4.x7
 問題:	    Win32 GUI: Removing "Edit with Vim" from registry is difficult.
@@ -5382,29 +5382,29 @@ Patch 5.4.x7
 	    Also: don't set $VIM when the executable is with the runtime files.
 	    Also: Add a text file with a step-by-step description of how to
 	    uninstall Vim for DOS and Windows.
-相關文件:   src/uninstal.c, src/dosinst.c, src/Makefile.w32, uninstal.txt
+相關檔案:   src/uninstal.c, src/dosinst.c, src/Makefile.w32, uninstal.txt
 
 Patch 5.4.x8 (addition to 5.4.45)
-相關文件:   many
+相關檔案:   many
 
 Patch 5.4.x9
 問題:	    Win32 GUI: After executing an external command, focus is not
 	    always regained (when using focus-follows-mouse).
 解決方案:   Add SetFocus() in mch_system(). (Mike Steed)
-相關文件:   src/os_win32.c
+相關檔案:   src/os_win32.c
 
 
 Patch 5.5a.1
 問題:	    ":let @* = @:" did not work.  The text was not put on the
 	I   clipboard.  (Fisher)
 解決方案:   Own the clipboard and put the text on it.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.5a.2
 問題:	    append() did not mark the buffer modified.  Marks below the
 	    new line were not adjusted.
 解決方案:   Fix the f_append() function.
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.5a.3
 問題:	    Editing compressed ".gz" files doesn't work on non-Unix systems,
@@ -5412,25 +5412,25 @@ Patch 5.5a.3
 解決方案:   Add the rename() function and use it instead of ":!mv".
 	    Also: Disable the automatic jump to the last position, because it
 	    changes the jumplist.
-相關文件:   src/eval.c, runtime/doc/eval.txt, runtime/vimrc_example.vim
+相關檔案:   src/eval.c, runtime/doc/eval.txt, runtime/vimrc_example.vim
 
 Patch 5.5a.4
 問題:	    When using whole-line completion in insert mode while the cursor
 	    is in the indent, get "out of memory" error. (Stekrt)
 解決方案:   Don't allocate a negative amount of memory in ins_complete().
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.5a.5
 問題:	    Win32: The 'path' option can hold only up to 256 characters,
 	    because _MAX_PATH is 256.  (Robert Webb)
 解決方案:   Use a fixed path length of 1024.
-相關文件:   src/os_win32.h
+相關檔案:   src/os_win32.h
 
 Patch 5.5a.6
 問題:	    Compiling with gcc on Win32, using the Unix Makefile, didn't work.
 解決方案:   Add $(SUFFIX) to all places where an executable is used.  Also
 	    pass it to ctags.  (Reynolds)
-相關文件:   src/Makefile
+相關檔案:   src/Makefile
 
 Patch 5.5a.7
 問題:	    When using "cat | vim -" in an xterm, the xterm version reply
@@ -5440,24 +5440,24 @@ Patch 5.5a.7
 	    specific terminal setting.
 	    Also: when using the GUI, print "Reading from stdin..." in the GUI
 	    window, to give a hint why it doesn't do anything.
-相關文件:   src/main.c, src/fileio.c
+相關檔案:   src/main.c, src/fileio.c
 
 Patch 5.5a.8
 問題:	    On multi-threaded Solaris, suspending doesn't work.
 解決方案:   Call pause() when the SIGCONT signal was not received after
 	    sending the SIGTSTP signal. (Nagano)
-相關文件:   src/os_unix.c
+相關檔案:   src/os_unix.c
 
 Patch 5.5a.9
 問題:	    'winaltkeys' could be set to an empty argument, which is illegal.
 解決方案:   Give an error message when doing ":set winaltkeys=".
-相關文件:   src/option.c
+相關檔案:   src/option.c
 
 Patch 5.5a.10
 問題:	    Win32 console: Using ALTGR on a German keyboard to produce "}"
 	    doesn't work, because the 8th bit is set when ALT is pressed.
 解決方案:   Don't set the 8th bit when ALT and CTRL are used. (Leipert)
-相關文件:   src/os_win32.c
+相關檔案:   src/os_win32.c
 
 Patch 5.5a.11
 問題:	    Tcl: Configure always uses tclsh8.0.
@@ -5466,28 +5466,28 @@ Patch 5.5a.11
 	    name for the tcl shell.
 	    Call Tcl_Init() in tclinit() to make loading libraries work.
 	    (Johannes Zellner)
-相關文件:   src/configure.in, src/configure, src/if_tcl.c
+相關檔案:   src/configure.in, src/configure, src/if_tcl.c
 
 Patch 5.5a.12
 問題:	    The "user_commands" feature is called "user-commands".
 解決方案:   Replace "user-commands" with "user_commands". (Kim Sung-bom)
 	    Keep "user-commands" for the has() function, to remain backwards
 	    compatible with 5.4.
-相關文件:   src/eval.c, src/version.c
+相關檔案:   src/eval.c, src/version.c
 
 Patch 5.5a.13
 問題:	    OS/2: When $HOME is not defined, "C:/" is used for the viminfo
 	    file.  That is very wrong when OS/2 is on another partition.
 解決方案:   Use $VIM for the viminfo file when it is defined, like for MSDOS.
 	    Also: Makefile.os2 didn't depend on os_unix.h.
-相關文件:   src/os_unix.h, src/Makefile.os2
+相關檔案:   src/os_unix.h, src/Makefile.os2
 
 Patch 5.5a.14
 問題:	    Athena, Motif and GTK: The Mouse scroll wheel doesn't work.
 解決方案:   Interpret a click of the wheel as a key press of the <MouseDown>
 	    or <MouseUp> keys.  Default behavior is to scroll three lines, or
 	    a full page when Shift is used.
-相關文件:   src/edit.c, src/ex_getln.c, src/gui.c, src/gui_gtk_x11.c,
+相關檔案:   src/edit.c, src/ex_getln.c, src/gui.c, src/gui_gtk_x11.c,
 	    src/gui_x11.c, src/keymap.h, src/message.c, src/misc1.c,
 	    src/misc2.c, src/normal.c,  src/proto/normal.pro, src/vim.h,
 	    runtime/doc/scroll.txt
@@ -5496,7 +5496,7 @@ Patch 5.5a.15
 問題:	    Using CTRL-A in Insert mode doesn't work correctly when the insert
 	    started with the <Insert> key. (Andreas Rohrschneider)
 解決方案:   Replace <Insert> with "i" before setting up the redo buffer.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.5a.16
 問題:	    VMS: GUI does not compile and run.
@@ -5505,7 +5505,7 @@ Patch 5.5a.16
 	    too: open_app_context(), x11_setup_atoms() and clip_x11* functions.
 	    Made xterm_dpy global, it's now used by ui.c and os_unix.c.
 	    Use gethostname() always, sys_hostname doesn't exist.
-相關文件:   src/globals.h, src/gui_x11.c, src/os_vms.mms, src/os_unix.c,
+相關檔案:   src/globals.h, src/gui_x11.c, src/os_vms.mms, src/os_unix.c,
 	    src/os_vms.c, src/ui.c, src/proto/os_unix.pro, src/proto/ui.pro
 
 Renamed AdjustCursorForMultiByteCharacter() to AdjustCursorForMultiByteChar()
@@ -5514,7 +5514,7 @@ to avoid symbol length limit of 31 characters. (Steve P. Wall)
 Patch 5.5b.1
 問題:	    SASC complains about dead assignments and implicit type casts.
 解決方案:   Removed the dead assignments.  Added explicit type casts.
-相關文件:   src/buffer.c, src/edit.c, src/eval.c, src/ex_cmds.c,
+相關檔案:   src/buffer.c, src/edit.c, src/eval.c, src/ex_cmds.c,
 	    src/ex_getln.c, src/fileio.c, src/getchar.c, src/memline.c,
 	    src/menu.c, src/misc1.c, src/normal.c, src/ops.c, src/quickfix.c,
 	    src/screen.c
@@ -5525,7 +5525,7 @@ Patch 5.5b.2
 解決方案:   When using a command that starts Insert mode from CTRL-O, reset
 	    "restart_edit" first.  This avoids that edit() is called with a
 	    mix of starting a new edit command and restarting a previous one.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 ==============================================================================
 5.6 版 本						*version-5.6*
@@ -5536,12 +5536,12 @@ Patch 5.5b.2
 改動							*changed-5.6*
 -------
 
-OleVim 文件的小改動。(Christian Schaller)
+OleVim 檔案的小改動。(Christian Schaller)
 
 src/version.c 的補丁號之間加入 "/**/"。提供一行上下文，有些版本的 patch 需要如
 此。
 
-重新排列 Syntax 菜單，避免子菜單過長。刪除字母表項目的鍵盤快捷鍵，避免和固定項
+重新排列 Syntax 選單，避免子選單過長。刪除字母表項目的鍵盤快捷鍵，避免和固定項
 目發生衝突。
 
 
@@ -5552,15 +5552,15 @@ src/version.c 的補丁號之間加入 "/**/"。提供一行上下文，有些�
 
 Python 的 OpenWithVim。(Christian Schaller)
 
-Win32 GUI: gvimext.dll，用於關聯菜單 "Edit with Vim" 項目。避免了 MS Office
-任務欄上報告的問題。現在用作外殼擴展。(Tianmiao Hu)
+Win32 GUI: gvimext.dll，用於關聯選單 "Edit with Vim" 項目。避免了 MS Office
+工作列上報告的問題。現在用作外殼擴展。(Tianmiao Hu)
 
-新語法文件:
+新語法檔案:
 abel		Abel (John Cook)
 aml		Arc Macro Language (Nikki Knuit)
 apachestyle	Apache-style config file (Christian Hammers)
 cf		Cold Fusion (Jeff Lanzarotta)
-ctrlh		帶有 CTRL-H 序列的文件 (Bram Moolenaar)
+ctrlh		帶有 CTRL-H 序列的檔案 (Bram Moolenaar)
 cupl		CUPL (John Cook)
 cuplsim		CUPL simulation (John Cook)
 erlang		Erlang (Kresimir Marzic)
@@ -5575,7 +5575,7 @@ tads		TADS (Amir Karger)
 texinfo		Texinfo (Sandor Kopanyi)
 xpm2		X Pixmap v2 (Steve Wall)
 
-用 'cpoptions' 的 'C' 標誌位可以關閉源代碼行的連接功能。見下 patch 5.5.013。
+用 'cpoptions' 的 'C' 標誌位可以關閉原始碼行的連線功能。見下 patch 5.5.013。
 |line-continuation|
 
 ":syntax" 命令的 "excludenl" 參數。見下 patch 5.5.032。 |:syn-excludenl|
@@ -5626,25 +5626,25 @@ Patch 5.5.001
 	    space correctly.  For example "./configure --previs="/My home".
 	    (Stephane Chazelas)
 解決方案:   Use '"$@"' instead of '$*' to pass on the arguments.
-相關文件:   configure
+相關檔案:   configure
 
 Patch 5.5.002
 問題:	    Compilation error for using "fds[] & POLLIN". (Jeff Walker)
 解決方案:   Use "fds[].revents & POLLIN".
-相關文件:   src/os_unix.c
+相關檔案:   src/os_unix.c
 
 Patch 5.5.003
 問題:	    The autoconf check for sizeof(int) is wrong on machines where
 	    sizeof(size_t) != sizeof(int).
 解決方案:   Use our own configure check.  Also fixes the warning for
 	    cross-compiling.
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.5.004
 問題:	    On Unix it's not possible to interrupt ":sleep 100".
 解決方案:   Switch terminal to cooked mode while asleep, to allow a SIGINT to
 	    wake us up.  But switch off echo, added TMODE_SLEEP.
-相關文件:   src/term.h, src/os_unix.c
+相關檔案:   src/term.h, src/os_unix.c
 
 Patch 5.5.005
 問題:	    When using <f-args> with a user command, an empty argument to the
@@ -5652,120 +5652,120 @@ Patch 5.5.005
 	    expected.
 解決方案:   Catch an empty argument and pass no argument to the function.
 	    (Paul Moore)
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.5.006
 問題:	    Python: When platform-dependent files are in another directory
 	    than the platform-independent files it doesn't work.
 解決方案:   Also check the executable directory, and add it to CFLAGS. (Tessa
 	    Lau)
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.5.007 (extra)
 問題:	    Win32 OLE: Occasional crash when exiting while still being used
 	    via OLE.
 解決方案:   Move OleUninitialize() to before deleting the application object.
 	    (Vince Negri)
-相關文件:   src/if_ole.cpp
+相關檔案:   src/if_ole.cpp
 
 Patch 5.5.008
 問題:	    10000@@ takes a long time and cannot be interrupted.
 解決方案:   Check for CTRL-C typed while in the loop to push the register.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.5.009
 問題:	    Recent Sequent machines don't link with "-linet". (Kurtis Rader)
 解決方案:   Remove configure check for Sequent.
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.5.010
 問題:	    Ctags freed a memory block twice when exiting.  When out of
 	    memory, a misleading error message was given.
 解決方案:   Update to ctags 3.3.2.  Also fixes a few other problems. (Darren
 	    Hiebert)
-相關文件:   src/ctags/*
+相關檔案:   src/ctags/*
 
 Patch 5.5.011
 問題:	    After "CTRL-V s", the cursor jumps back to the start, while all
 	    other operators leave the cursor on the last changed character.
 	    (Xiangjiang Ma)
 解決方案:   Position cursor on last changed character, if possible.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.5.012
 問題:	    Using CTRL-] in Visual mode doesn't work when the text includes a
 	    space (just where it's useful). (Stefan Bittner)
 解決方案:   Don't escape special characters in a tag name with a backslash.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.5.013
 問題:	    The ":append" and ":insert" commands allow using a leading
 	    backslash in a line.  The ":source" command concatenates those
 	    lines. (Heinlein)
 解決方案:   Add the 'C' flag in 'cpoptions' to switch off concatenation.
-相關文件:   src/ex_docmd.c, src/option.h, runtime/doc/options.txt,
+相關檔案:   src/ex_docmd.c, src/option.h, runtime/doc/options.txt,
 	    runtime/filetype.vim, runtime/scripts.vim
 
 Patch 5.5.014
 問題:	    When executing a register with ":@", the ":append" command would
 	    get text lines with a ':' prepended. (Heinlein)
 解決方案:   Remove the ':' characters.
-相關文件:   src/ex_docmd.c, src/ex_getln.c, src/globals.h
+相關檔案:   src/ex_docmd.c, src/ex_getln.c, src/globals.h
 
 Patch 5.5.015
 問題:	    When using ":g/pat/p", it's hard to see where the output starts,
 	    the ":g" command is overwritten.  Vi keeps the ":g" command.
 解決方案:   Keep the ":g" command, but allow overwriting it with the report
 	    for the number of changes.
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.5.016 (extra)
 問題:	    Win32: Using regedit to install Vim in the popup menu requires the
 	    user to confirm this in a dialog.
 解決方案:   Use "regedit /s" to avoid the dialog
-相關文件:   src/dosinst.c
+相關檔案:   src/dosinst.c
 
 Patch 5.5.017
 問題:	    If an error occurs when closing the current window, Vim could get
 	    stuck in the error handling.
 解決方案:   Don't set curwin to NULL when closing the current window.
-相關文件:   src/window.c
+相關檔案:   src/window.c
 
 Patch 5.5.018
 問題:	    Absolute paths in shell scripts do not always work.
 解決方案:   Use /usr/bin/env to find out the path.
-相關文件:   runtime/doc/vim2html.pl, runtime/tools/efm_filter.pl,
+相關檔案:   runtime/doc/vim2html.pl, runtime/tools/efm_filter.pl,
 	    runtime/tools/shtags.pl
 
 Patch 5.5.019
 問題:	    A function call in 'statusline' stops using ":q" twice from
 	    exiting, when the last argument hasn't been edited.
 解決方案:   Don't decrement quitmore when executing a function. (Madsen)
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.5.020
 問題:	    When the output of CTRL-D completion in the commandline goes all
 	    the way to the last column, there is an empty line.
 解決方案:   Don't add a newline when the cursor wrapped already. (Madsen)
-相關文件:   src/ex_getln.c
+相關檔案:   src/ex_getln.c
 
 Patch 5.5.021
 問題:	    When checking if a file name in the tags file is relative,
 	    environment variables were not expanded.
 解決方案:   Expand the file name before checking if it is relative. (Madsen)
-相關文件:   src/tag.c
+相關檔案:   src/tag.c
 
 Patch 5.5.022
 問題:	    When setting or resetting 'paste' the ruler wasn't updated.
 解決方案:   Update the status lines when 'ruler' changes because of 'paste'.
-相關文件:   src/option.c
+相關檔案:   src/option.c
 
 Patch 5.5.023
 問題:	    When editing a new file and autocommands change the cursor
 	    position, the cursor was moved back to the first non-white, unless
 	    'startofline' was reset.
 解決方案:   Keep the new column, just like the line number.
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.5.024 (extra)
 問題:	    Win32 GUI: When using confirm() to put up a dialog without a
@@ -5773,14 +5773,14 @@ Patch 5.5.024 (extra)
 	    (Krishna)
 解決方案:   Always set focus to the dialog window.  Only set focus to a button
 	    when a default one is specified.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.5.025
 問題:	    When using "keepend" in a syntax region, a contained match that
 	    includes the end-of-line could still force that region to
 	    continue, if there is another contained match in between.
 解決方案:   Check the keepend_level in check_state_ends().
-相關文件:   src/syntax.c
+相關檔案:   src/syntax.c
 
 Patch 5.5.026
 問題:	    When starting Vim in a white-on-black xterm, with 'bg' set to
@@ -5788,14 +5788,14 @@ Patch 5.5.026
 	    "light" in the gvimrc, the highlighting isn't set.  (Tsjokwing)
 解決方案:   Set the highlighting when 'bg' is changed in the gvimrc, even
 	    though full_screen isn't set.
-相關文件:   src/option.c
+相關檔案:   src/option.c
 
 Patch 5.5.027
 問題:	    Unix: os_unix.c doesn't compile when XTERM_CLIP is used but
 	    WANT_TITLE isn't. (Barnum)
 解決方案:   Move a few functions that are used by the X11 title and clipboard
 	    and put another "#if" around it.
-相關文件:   src/os_unix.c
+相關檔案:   src/os_unix.c
 
 Patch 5.5.028 (extra)
 問題:	    Win32 GUI: When a file is dropped on Win32 gvim while at the ":"
@@ -5805,20 +5805,20 @@ Patch 5.5.028 (extra)
 解決方案:   When dropping a file or directory on gvim while at the ":" prompt,
 	    insert the name of the file/directory.  Allows using the
 	    file/directory name for any Ex command.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.5.029
 問題:	    "das" at the end of the file didn't delete the last character of
 	    the sentence.
 解決方案:   When there is no character after the sentence, make the operation
 	    inclusive in current_sent().
-相關文件:   src/search.c
+相關檔案:   src/search.c
 
 Patch 5.5.030
 問題:	    Unix: in os_unix.c, "term_str" is used, which is also defined in
 	    vim.h as a macro. (wuxin)
 解決方案:   Renamed "term_str" to "buf" in do_xterm_trace().
-相關文件:   src/os_unix.c
+相關檔案:   src/os_unix.c
 
 Patch 5.5.031 (extra)
 問題:	    Win32 GUI: When exiting Windows, gvim will leave swap files behind
@@ -5826,14 +5826,14 @@ Patch 5.5.031 (extra)
 解決方案:   Catch the WM_QUERYENDSESSION and WM_ENDSESSION messages and try to
 	    exit gracefully.  Allow the user to cancel the shutdown if there
 	    is a changed buffer.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.5.032
 問題:	    Patch 5.5.025 wasn't right.  And C highlighting was still not
 	    working correctly for a #define.
 解決方案:   Added "excludenl" argument to ":syntax", to be able not to extend
 	    a containing item when there is a match with the end-of-line.
-相關文件:   src/syntax.c, runtime/doc/syntax.txt, runtime/syntax/c.vim
+相關檔案:   src/syntax.c, runtime/doc/syntax.txt, runtime/syntax/c.vim
 
 Patch 5.5.033
 問題:	    When reading from stdin, a long line in viminfo would mess up the
@@ -5841,32 +5841,32 @@ Patch 5.5.033
 	    overwritten by anyone.
 解決方案:   Copy the message from IObuff to msg_buf and set keep_msg to that.
 	    Also change vim_fgets() to not use IObuff any longer.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.5.034
 問題:	    "gvim -rv" caused a crash.  Using 't_Co' before it's set.
 解決方案:   Don't try to initialize the highlighting before it has been
 	    initialized from main().
-相關文件:   src/syntax.c
+相關檔案:   src/syntax.c
 
 Patch 5.5.035
 問題:	    GTK with XIM: Resizing with status area was messy, and
 	    ":set guioptions+=b" didn't work.
 解決方案:   Make status area a separate widget, but not a separate window.
 	    (Chi-Deok Hwang)
-相關文件:   src/gui_gtk_f.c, src/gui_gtk_x11.c, src/multbyte.c
+相關檔案:   src/gui_gtk_f.c, src/gui_gtk_x11.c, src/multbyte.c
 
 Patch 5.5.036
 問題:	    The GZIP_read() function in $VIMRUNTIME/vimrc_example.vim to
 	    uncompress a file did not do detection for 'fileformat'.  This is
 	    because the filtering is done with 'binary' set.
 解決方案:   Split the filtering into separate write, filter and read commands.
-相關文件:   runtime/vimrc_example.vim
+相關檔案:   runtime/vimrc_example.vim
 
 Patch 5.5.037
 問題:	    The "U" command didn't mark the buffer as changed. (McCormack)
 解決方案:   Set the 'modified' flag when using "U".
-相關文件:   src/undo.c
+相關檔案:   src/undo.c
 
 Patch 5.5.038
 問題:	    When typing a long ":" command, so that the screen scrolls up,
@@ -5874,141 +5874,141 @@ Patch 5.5.038
 	    return to execute the command.
 解決方案:   Reset need_wait_return if (part of) the command was typed in
 	    getcmdline().
-相關文件:   src/ex_getln.c
+相關檔案:   src/ex_getln.c
 
 Patch 5.5.039
 問題:	    When using a custom status line, "%a" (file # of #) reports the
 	    index of the current window for all windows.
 解決方案:   Pass a window pointer to append_arg_number(), and pass the window
 	    being updated from build_stl_str_hl(). (Stephen P. Wall)
-相關文件:   src/buffer.c, src/screen.c, src/proto/buffer.pro
+相關檔案:   src/buffer.c, src/screen.c, src/proto/buffer.pro
 
 Patch 5.5.040
 問題:	    Multi-byte: When there is some error in xim_real_init(), it can
 	    close XIM and return.  After this there can be a segv.
 解決方案:   Test "xic" for being non-NULL, don't set "xim" to NULL.  Also try
 	    to find more matches for supported styles. (Sung-Hyun Nam)
-相關文件:   src/multbyte.c
+相關檔案:   src/multbyte.c
 
 Patch 5.5.041
 問題:	    X11 GUI: CTRL-_ requires the SHIFT key only on some machines.
 解決方案:   Translate CTRL-- to CTRL-_. (Robert Webb)
-相關文件:   src/gui_x11.c
+相關檔案:   src/gui_x11.c
 
 Patch 5.5.042
 問題:	    X11 GUI: keys with ALT were assumed to be used for the menu, even
 	    when the menu has been disabled by removing 'm' from 'guioptions'.
 解決方案:   Ignore keys with ALT only when gui.menu_is_active is set. (Raf)
-相關文件:   src/gui_x11.c
+相關檔案:   src/gui_x11.c
 
 Patch 5.5.043
 問題:	    GTK: Handling of fontset fonts was not right when 'guifontset'
 	    contains exactly 14 times '-'.
 解決方案:   Avoid setting fonts when working with a fontset. (Sung-Hyun Nam)
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.5.044
 問題:	    pltags.pl contains an absolute path "/usr/local/bin/perl".  That
 	    might not work everywhere.
 解決方案:   Use "/usr/bin/env perl" instead.
-相關文件:   runtime/tools/pltags.pl
+相關檔案:   runtime/tools/pltags.pl
 
 Patch 5.5.045
 問題:	    Using "this_session" variable does not work, requires preceding it
 	    with "v:".  Default filename for ":mksession" isn't mentioned
 	    in the docs. (Fisher)
 解決方案:   Support using "this_session" to be backwards compatible.
-相關文件:   src/eval.c, runtime/doc/options.txt
+相關檔案:   src/eval.c, runtime/doc/options.txt
 
 Patch 5.5.046 (extra)
 問題:	    VMS: problems with path and filename.
 解決方案:   Truncate file name at last ';', etc. (Zoltan Arpadffy)
-相關文件:   src/buffer.c, src/fileio.c, src/gui_motif.c, src/os_vms.c,
+相關檔案:   src/buffer.c, src/fileio.c, src/gui_motif.c, src/os_vms.c,
 	    src/proto/os_vms.pro
 
 Patch 5.5.047
 問題:	    VMS: Crash when using the popup menu
 解決方案:   Turn the #define MENU_MODE_CHARS into an array. (Arpadffy)
-相關文件:   src/structs.h, src/menu.c
+相關檔案:   src/structs.h, src/menu.c
 
 Patch 5.5.048
 問題:	    HP-UX 11: Compiling doesn't work, because both string.h and
 	    strings.h are included. (Squassabia)
 解決方案:   The configure test for including both string.h and strings.h
 	    must include <Xm/Xm.h> first, because it causes problems.
-相關文件:   src/configure.in, src/configure, src/config.h.in
+相關檔案:   src/configure.in, src/configure, src/config.h.in
 
 Patch 5.5.049
 問題:	    Unix: When installing Vim, the protection bits of files might be
 	    influenced by the umask.
 解決方案:   Add $(FILEMOD) to Makefile. (Shetye)
-相關文件:   src/Makefile
+相關檔案:   src/Makefile
 
 Patch 5.5.050
 問題:	    "z+" and "z^" commands are missing.
 解決方案:   Implemented "z+" and "z^".
-相關文件:   src/normal.c, runtime/doc/scroll.txt, runtime/doc/index.txt
+相關檔案:   src/normal.c, runtime/doc/scroll.txt, runtime/doc/index.txt
 
 Patch 5.5.051
 問題:	    Several Unix systems have a problem with the optimization limits
 	    check in configure.
 解決方案:   Removed the configure check, let the user add it manually in
 	    Makefile or the environment.
-相關文件:   src/configure.in, src/configure, src/Makefile
+相關檔案:   src/configure.in, src/configure, src/Makefile
 
 Patch 5.5.052
 問題:	    Crash when using a cursor key at the ATTENTION prompt. (Alberani)
 解決方案:   Ignore special keys at the console dialog.  Also ignore characters
 	    > 255 for other uses of tolower() and toupper().
-相關文件:   src/menu.c, src/message.c, src/misc2.c
+相關檔案:   src/menu.c, src/message.c, src/misc2.c
 
 Patch 5.5.053
 問題:	    Indenting is wrong after a function when 'cino' has "fs".  Another
 	    problem when 'cino' has "{s".
 解決方案:   Put line after closing "}" of a function at the left margin.
 	    Apply ind_open_extra in the right way after a '{'.
-相關文件:   src/misc1.c, src/testdir/test3.in, src/testdir/test3.ok
+相關檔案:   src/misc1.c, src/testdir/test3.in, src/testdir/test3.ok
 
 Patch 5.5.054
 問題:	    Unix: ":e #" doesn't work if the alternate file name contains a
 	    space or backslash. (Hudacek)
 解決方案:   When replacing "#", "%" or other items that stand for a file name,
 	    prepend a backslash before special characters.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.5.055
 問題:	    Using "<C-V>$r-" in blockwise Visual mode replaces one character
 	    beyond the end of the line. (Zivkov)
 解決方案:   Only replace existing characters.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.5.056
 問題:	    After "z20<CR>" messages were printed at the old command line
 	    position once.  (Veselinovic)
 解決方案:   Set msg_row and msg_col when changing cmdline_row in
 	    win_setheight().
-相關文件:   src/window.c
+相關檔案:   src/window.c
 
 Patch 5.5.057
 問題:	    After "S<Esc>" it should be possible to restore the line with "U".
 	    (Veselinovic)
 解決方案:   Don't call u_clearline() in op_delete() when changing only one
 	    line.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.5.058
 問題:	    Using a long search pattern and then "n" causes the hit-enter
 	    prompt.  (Krishna)
 解決方案:   Truncate the echoed pattern, like other messages.  Moved code for
 	    truncating from msg_attr() to msg_strtrunc().
-相關文件:   src/message.c, src/proto/message.pro, src/search.c
+相關檔案:   src/message.c, src/proto/message.pro, src/search.c
 
 Patch 5.5.059
 問題:	    GTK GUI: When $term is invalid, using "gvim" gives an error
 	    message, even though $term isn't really used.  (Robbins)
 解決方案:   When the GUI is about to start, skip the error messages for a
 	    wrong $term.
-相關文件:   src/term.c
+相關檔案:   src/term.c
 
 Patch 5.5.060 (extra)
 問題:	    Dos 32 bit: When a directory in 'backupdir' doesn't exist, ":w"
@@ -6017,53 +6017,53 @@ Patch 5.5.060 (extra)
 	    non-existing target name correctly.  When renaming fails, make
 	    sure the file has its original name.  Also do this for the Win32
 	    version, although it's unlikely that it runs into this problem.
-相關文件:   src/os_msdos.c, src/os_win32.c
+相關檔案:   src/os_msdos.c, src/os_win32.c
 
 Patch 5.5.061
 問題:	    When using "\:" in a modeline, the backslash is included in the
 	    option value. (Mohsin)
 解決方案:   Remove one backslash before the ':' in a modeline.
-相關文件:   src/buffer.c, runtime/doc/options.txt
+相關檔案:   src/buffer.c, runtime/doc/options.txt
 
 Patch 5.5.062 (extra)
 問題:	    Win32 console: Temp files are created in the root of the current
 	    drive, which may be read-only. (Peterson)
 解決方案:   Use the same mechanism of the GUI version: Use $TMP, $TEMP or the
 	    current directory.  Cleaned up vim_tempname() a bit.
-相關文件:   src/fileio.c, src/os_win32.h, runtime/doc/os_dos.txt
+相關檔案:   src/fileio.c, src/os_win32.h, runtime/doc/os_dos.txt
 
 Patch 5.5.063
 問題:	    When using whole-line completion in Insert mode, 'cindent' is
 	    applied, even after changing the indent of the line.
 解決方案:   Don't reindent the completed line after inserting/removing indent.
 	    (Robert Webb)
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.5.064
 問題:	    has("sniff") doesn't work correctly.
 解決方案:   Return 1 when Vim was compiled with the +sniff feature. (Pruemmer)
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.5.065
 問題:	    When dropping a file on Vim, the 'shellslash' option is not
 	    effective. (Krishna)
 解決方案:   Fix the slashes in the dropped file names according to
 	    'shellslash'.
-相關文件:   src/ex_docmd.c, runtime/doc/options.txt
+相關檔案:   src/ex_docmd.c, runtime/doc/options.txt
 
 Patch 5.5.066
 問題:	    For systems with backslash in file name: Setting a file name
 	    option to a value starting with "\\machine" removed a backslash.
 解決方案:   Keep the double backslash for "\\machine", but do change
 	    "\\\\machine" to "\\machine" for backwards compatibility.
-相關文件:   src/option.c, runtime/doc/options.txt
+相關檔案:   src/option.c, runtime/doc/options.txt
 
 Patch 5.5.067
 問題:	    With 'hlsearch' set, the pattern "\>" doesn't highlight the first
 	    match in a line. (Benji Fisher)
 解決方案:   Fix highlighting an empty match.  Also highlight the first
 	    character in an empty line for "$".
-相關文件:   src/screen.c
+相關檔案:   src/screen.c
 
 Patch 5.5.068
 問題:	    Crash when a ":while" is used with an argument that has an error.
@@ -6071,20 +6071,20 @@ Patch 5.5.068
 解決方案:   Was using an uninitialized index in the cs_line[] array.  The
 	    crash only happened when the index was far off.  Made sure the
 	    uninitialized index isn't used.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.5.069
 問題:	    Shifting lines in blockwise Visual mode didn't set the 'modified'
 	    flag.
 解決方案:   Do set the 'modified' flag.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.5.070
 問題:	    When editing a new file, creating that file outside of Vim, then
 	    editing it again, ":w" still warns for overwriting an existing
 	    file. (Nam)
 解決方案:   The BF_NEW flag in the "b_flags" field wasn't cleared properly.
-相關文件:   src/buffer.c, src/fileio.c
+相關檔案:   src/buffer.c, src/fileio.c
 
 Patch 5.5.071
 問題:	    Using a matchgroup in a ":syn region", which is the same syntax
@@ -6092,45 +6092,45 @@ Patch 5.5.071
 	    the start pattern.
 解決方案:   Also push an item on the stack when the syntax ID of the
 	    matchgroup is the same as the syntax ID of the region.
-相關文件:   src/syntax.c
+相關檔案:   src/syntax.c
 
 Patch 5.5.072 (extra)
 問題:	    Dos 32 bit: When setting 'columns' to a too large value, Vim may
 	    crash, and the DOS console too.
 解決方案:   Check that the value of 'columns' isn't larger than the number of
 	    columns that the BIOS reports.
-相關文件:   src/os_msdos.c, src/proto/os_msdos.pro, src/option.c
+相關檔案:   src/os_msdos.c, src/proto/os_msdos.pro, src/option.c
 
 Patch 5.5.073 (extra)
 問題:	    Win 32 GUI: The Find and Find/Replace dialogs didn't show the
 	    "match case" checkbox.  The Find/Replace dialog didn't handle the
 	    "match whole word" checkbox.
 解決方案:   Support the "match case" and "match whole word" checkboxes.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.6a.001
 問題:	    Using <C-End> with a count doesn't work like it does with "G".
 	    (Benji Fisher)
 解決方案:   Accept a count for <C-End> and <C-Home>.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.6a.002
 問題:	    The script for conversion to HTML was an older version.
 解決方案:   Add support for running 2html.vim on a color terminal.
-相關文件:   runtime/syntax/2html.vim
+相關檔案:   runtime/syntax/2html.vim
 
 Patch 5.6a.003
 問題:	    Defining a function inside a function didn't give an error
 	    message.  A missing ":endfunction" doesn't give an error message.
 解決方案:   Allow defining a function inside a function.
-相關文件:   src/eval.c, runtime/doc/eval.txt
+相關檔案:   src/eval.c, runtime/doc/eval.txt
 
 Patch 5.6a.004
 問題:	    A missing ":endwhile" or ":endif" doesn't give an error message.
 	    (Johannes Zellner)
 解決方案:   Check for missing ":endwhile" and ":endif" in sourced files.
 	    Add missing ":endif" in file selection macros.
-相關文件:   src/ex_docmd.c, runtime/macros/file_select.vim
+相關檔案:   src/ex_docmd.c, runtime/macros/file_select.vim
 
 Patch 5.6a.005
 問題:	    'hlsearch' was not listed alphabetically.  The value of 'toolbar'
@@ -6138,23 +6138,23 @@ Patch 5.6a.005
 解決方案:   Moved entry of 'hlsearch' in options[] table down.
 	    Don't reset 'toolbar' option to the default value when
 	    'compatible' is set.
-相關文件:   src/option.c
+相關檔案:   src/option.c
 
 Patch 5.6a.006
 問題:	    Using a backwards range inside ":if 0" gave an error message.
 解決方案:   Don't complain about a range when it is not going to be used.
 	    (Stefan Roemer)
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.6a.007
 問題:	    ":let" didn't show internal Vim variables.  (Ron Aaron)
 解決方案:   Do show ":v" variables for ":let" and ":let v:name".
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.6a.008
 問題:	    Selecting a syntax from the Syntax menu gives an error message.
 解決方案:   Replace "else if" in SetSyn() with "elseif".  (Ronald Schild)
-相關文件:   runtime/menu.vim
+相關檔案:   runtime/menu.vim
 
 Patch 5.6a.009
 問題:	    When compiling with +extra_search but without +syntax, there is a
@@ -6163,57 +6163,57 @@ Patch 5.6a.009
 	    win_line().  Also solve compilation problem when +statusline is
 	    used without +eval.  Another one when +cmdline_compl is used
 	    without +eval.
-相關文件:   src/screen.c, src/misc2.c
+相關檔案:   src/screen.c, src/misc2.c
 
 Patch 5.6a.010
 問題:	    In a function, ":startinsert!" does not append to the end of the
 	    line if a ":normal" command was used to move the cursor. (Fisher)
 解決方案:   Reset "w_set_curswant" to avoid that w_curswant is changed again.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.6a.011 (depends on 5.6a.004)
 問題:	    A missing ":endif" or ":endwhile" in a function doesn't give an
 	    error message.
 解決方案:   Give that error message.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.6a.012 (depends on 5.6a.008)
 問題:	    Some Syntax menu entries caused a hit-enter prompt.
 解決方案:   Call a function to make the command shorter.  Also rename a few
 	    functions to avoid name clashes.
-相關文件:   runtime/menu.vim
+相關檔案:   runtime/menu.vim
 
 Patch 5.6a.013
 問題:	    Command line completion works different when another completion
 	    was done earlier. (Johannes Zellner)
 解決方案:   Reset wim_index when starting a new completion.
-相關文件:   src/ex_getln.c
+相關檔案:   src/ex_getln.c
 
 Patch 5.6a.014
 問題:	    Various warning messages when compiling and running lint with
 	    different combinations of features.
 解決方案:   Fix the warning messages.
-相關文件:   src/eval.c, src/ex_cmds.c, src/ex_docmd.c, src/gui_gtk_x11.c,
+相關檔案:   src/eval.c, src/ex_cmds.c, src/ex_docmd.c, src/gui_gtk_x11.c,
 	    src/option.c, src/screen.c, src/search.c, src/syntax.c,
 	    src/feature.h, src/globals.h
 
 Patch 5.6a.015
 問題:	    The vimtutor command doesn't always know the value of $VIMRUNTIME.
 解決方案:   Let Vim expand $VIMRUNTIME, instead of the shell.
-相關文件:   src/vimtutor
+相關檔案:   src/vimtutor
 
 Patch 5.6a.016 (extra)
 問題:	    Mac: Window size is restricted when starting.  Cannot drag the
 	    window all over the desktop.
 解決方案:   Get real screen size instead of assuming 640x400.  Do not use a
 	    fixed number for the drag limits. (Axel Kielhorn)
-相關文件:   src/gui_mac.c
+相關檔案:   src/gui_mac.c
 
 Patch 5.6a.017
 問題:	    The "Paste" entry in popup menu for Visual, Insert and Cmdline
 	    mode is in the wrong position. (Stol)
 解決方案:   Add priority numbers for all Paste menu entries.
-相關文件:   runtime/menu.vim
+相關檔案:   runtime/menu.vim
 
 Patch 5.6a.018
 問題:	    GTK GUI: submenu priority doesn't work.
@@ -6234,7 +6234,7 @@ Patch 5.6a.018
 	    Made the drag in Visual mode actually work.
 	    Removed recursiveness protection from gui_mch_get_rgb(), it might
 	    cause more trouble than it solves.
-相關文件:   src/ex_docmd.c, src/gui_gtk.c, src/gui_gtk_x11.c, src/ui.c,
+相關檔案:   src/ex_docmd.c, src/gui_gtk.c, src/gui_gtk_x11.c, src/ui.c,
 	    src/proto/ui.pro, src/misc2.c
 
 Patch 5.6a.019
@@ -6243,29 +6243,29 @@ Patch 5.6a.019
 	    zero.  (Scott McDermott)
 解決方案:   When computing the number of blocks of the file in mf_open(),
 	    round up instead of down.
-相關文件:   src/memfile.c
+相關檔案:   src/memfile.c
 
 Patch 5.6a.020
 問題:	    GUI GTK: Could not set display for gvim.
 解決方案:   Add "-display" and "--display" arguments. (Marcin Dalecki)
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.6a.021
 問題:	    Recovering still may not work when the block size of the device
 	    where the swap file is located is larger than 4096.
 解決方案:   Read block 0 with the minimal block size.
-相關文件:   src/memline.c, src/memfile.c, src/vim.h
+相關檔案:   src/memline.c, src/memfile.c, src/vim.h
 
 Patch 5.6a.022 (extra)
 問題:	    Win32 GUI: When an error in the vimrc causes a dialog to pop up
 	    (e.g., for an existing swap file), Vim crashes. (David Elins)
 解決方案:   Before showing a dialog, open the main window.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.6a.023
 問題:	    Using expand("%:gs??/?") causes a crash. (Ron Aaron)
 解決方案:   Check for running into the end of the string in do_string_sub().
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.6a.024
 問題:	    Using an autocommand to delete a buffer when leaving it can cause
@@ -6273,19 +6273,19 @@ Patch 5.6a.024
 解決方案:   In do_tag(), store tagstacklen before jumping to another buffer.
 	    Check tagstackidx after jumping to another buffer.
 	    Add extra check in win_split() if tagname isn't NULL.
-相關文件:   src/tag.c, src/window.c
+相關檔案:   src/tag.c, src/window.c
 
 Patch 5.6a.025 (extra)
 問題:	    Win32 GUI: The tables for toupper() and tolower() are initialized
 	    too late. (Mike Steed)
 解決方案:   Move the initialization to win32_init() and call it from main().
-相關文件:   src/main.c, src/os_w32.c, src/proto/os_w32.pro
+相關檔案:   src/main.c, src/os_w32.c, src/proto/os_w32.pro
 
 Patch 5.6a.026
 問題:	    When the SNiFF connection is open, shell commands hang. (Pruemmer)
 解決方案:   Skip a second wait() call if waitpid() already detected that the
 	    child has exited.
-相關文件:   src/os_unix.c
+相關檔案:   src/os_unix.c
 
 Patch 5.6a.027 (extra)
 問題:	    Win32 GUI: The "Edit with Vim" popup menu entry causes problems
@@ -6293,14 +6293,14 @@ Patch 5.6a.027 (extra)
 解決方案:   Use a shell extension dll. (Tianmiao Hu)
 	    Added it to the install and uninstal programs, replaces the old
 	    "Edit with Vim" menu registry entries.
-相關文件:   src/dosinst.c, src/uninstal.c, gvimext/*, runtime/doc/gui_w32.txt
+相關檔案:   src/dosinst.c, src/uninstal.c, gvimext/*, runtime/doc/gui_w32.txt
 
 Patch 5.6a.028 (extra)
 問題:	    Win32 GUI: Dialogs and tear-off menus can't handle multi-byte
 	    characters.
 解決方案:   Adjust nCopyAnsiToWideChar() to handle multi-byte characters
 	    correctly.
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 ==============================================================================
 5.7 版 本						*version-5.7*
@@ -6310,14 +6310,14 @@ Patch 5.6a.028 (extra)
 改動							*changed-5.7*
 -------
 
-src/INSTALL.mac 更名爲 INSTALL_mac.txt，以避免錯認文件類型。同時更名
-src/INSTALL.amiga 爲 INSTALL_ami.txt。
+src/INSTALL.mac 更名為 INSTALL_mac.txt，以避免錯認檔案類型。同時更名
+src/INSTALL.amiga 為 INSTALL_ami.txt。
 
 
 新增							*added-5.7*
 -----
 
-新增語法文件:
+新增語法檔案:
 stp		Stored Procedures (Jeff Lanzarotta)
 snnsnet、snnspat、snnsres	SNNS (Davide Alberani)
 mel		MEL (Robert Minsk)
@@ -6341,11 +6341,11 @@ wml		WML (Gerfried Fuchs)
 
 加入 Exuberant ctags 3.5.1。(Darren Hiebert)
 
-語法項目的 "display" 和 "fold" 參數，爲了將來擴展用。現在忽略它們。
+語法項目的 "display" 和 "fold" 參數，為了將來擴展用。現在忽略它們。
 
 Macintosh 的 strftime() 函數。
 
-macros/explorer.vim: 文件瀏覽器腳本 (M A Aziz Ahmed)
+macros/explorer.vim: 檔案瀏覽器指令碼 (M A Aziz Ahmed)
 
 
 修正							*fixed-5.7*
@@ -6411,19 +6411,19 @@ RiscOS: A few prototypes for os_riscos.c were outdated.  Generate prototypes
 automatically.
 
 
-預發佈補丁:
+預釋出補丁:
 
 Patch 5.6.001
 問題:	    When using "set bs=0 si cin", Inserting "#<BS>" or "}<BS>" which
 	    reduces the indent doesn't delete the "#" or "}". (Lorton)
 解決方案:   Adjust ai_col in ins_try_si().
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.6.002
 問題:	    When using the vim.vim syntax file, a comment with all uppercase
 	    characters causes a hang.
 解決方案:   Adjust pattern for vimCommentTitle (Charles Campbell)
-相關文件:   runtime/syntax/vim.vim
+相關檔案:   runtime/syntax/vim.vim
 
 Patch 5.6.003
 問題:	    GTK GUI: Loading a user defined toolbar bitmap gives a warning
@@ -6431,26 +6431,26 @@ Patch 5.6.003
 	    opened yet.
 解決方案:   Use gdk_pixmap_colormap_create_from_xpm() to convert the xpm file.
 	    (Keith Radebaugh)
-相關文件:   src/gui_gtk.c
+相關檔案:   src/gui_gtk.c
 
 Patch 5.6.004 (extra)
 問題:	    Win32 GUI with IME: When setting 'guifont' to "*", the font
 	    requester appears twice.
 解決方案:   In gui_mch_init_font() don't call get_logfont() but copy
 	    norm_logfont from fh. (Yasuhiro Matsumoto)
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.6.005
 問題:	    When 'winminheight' is zero, CTRL-W - with a big number causes a
 	    crash.  (David Kotchan)
 解決方案:   Check for negative window height in win_setheight().
-相關文件:   src/window.c
+相關檔案:   src/window.c
 
 Patch 5.6.006
 問題:	    GTK GUI: Bold font cannot always be used.  Memory is freed too
 	    early in gui_mch_init_font().
 解決方案:   Move call to g_free() to after where sdup is used. (Artem Hodyush)
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.6.007 (extra)
 問題:	    Win32 IME: Font is not changed when screen font is changed. And
@@ -6458,7 +6458,7 @@ Patch 5.6.007 (extra)
 解決方案:   Initialize IME font.  When cursor is moved, set IME composition
 	    window with ImeSetCompositionWindow().  Add call to
 	    ImmReleaseContext() in several places. (Taro Muraoka)
-相關文件:   src/gui.c, src/gui_w32.c, src/proto/gui_w32.pro
+相關檔案:   src/gui.c, src/gui_w32.c, src/proto/gui_w32.pro
 
 Patch 5.6.008 (extra)
 問題:	    Win32: When two files exist with the same name but different case
@@ -6466,33 +6466,33 @@ Patch 5.6.008 (extra)
 	    wrong one to be edited.
 解決方案:   Prefer a perfect match above a match while ignoring case in
 	    fname_case().  (Flemming Madsen)
-相關文件:   src/os_win32.c
+相關檔案:   src/os_win32.c
 
 Patch 5.6.009 (extra)
 問題:	    Win32 GUI: Garbage in Windows Explorer help line when selecting
 	    "Edit with Vim" popup menu entry.
 解決方案:   Only return the help line when called with the GCS_HELPTEXT flag.
 	    (Tianmiao Hu)
-相關文件:   GvimExt/gvimext.cpp
+相關檔案:   GvimExt/gvimext.cpp
 
 Patch 5.6.010
 問題:	    A file name which contains a TAB was not read correctly from the
 	    viminfo file and the ":ls" listing was not aligned properly.
 解決方案:   Parse the buffer list lines in the viminfo file from the end
 	    backwards.  Count a Tab for two characters to align the ":ls" list.
-相關文件:   src/buffer.c
+相關檔案:   src/buffer.c
 
 Patch 5.6.011
 問題:	    When 'columns' is huge (using a tiny font) and 'statusline' is
 	    used, Vim can crash.
 解決方案:   Limit maxlen to MAXPATHL in win_redr_custom(). (John Mullin)
-相關文件:   src/screen.c
+相關檔案:   src/screen.c
 
 Patch 5.6.012
 問題:	    When using "zsh" for /bin/sh, toolcheck may hang until "exit" is
 	    typed. (Kuratczyk)
 解決方案:   Add "-c exit" when checking for the shell version.
-相關文件:   src/toolcheck
+相關檔案:   src/toolcheck
 
 Patch 5.6.013
 問題:	    Multibyte char in tooltip is broken.
@@ -6506,12 +6506,12 @@ Patch 5.6.014
 解決方案:   Recognize a multibyte-char at end-of-line correctly in oneright().
 	    (Taro Muraoka)
 	    Also: make "+quickfix" in ":version" output appear alphabetically.
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.6.015
 問題:	    New xterm delete key sends <Esc>[3~ by default.
 解決方案:   Added <kDel> and <kIns> to make the set of keypad keys complete.
-相關文件:   src/edit.c, src/ex_getln.c, src/keymap.h, src/misc1.c,
+相關檔案:   src/edit.c, src/ex_getln.c, src/keymap.h, src/misc1.c,
 	    src/misc2.c, src/normal.c, src/os_unix.c, src/term.c
 
 Patch 5.6.016
@@ -6521,57 +6521,57 @@ Patch 5.6.016
 	    history.  Also: Increment maptick when starting a mapping from
 	    typed characters to avoid a just added search string being
 	    overwritten or removed from history.
-相關文件:   src/ex_getln.c, src/getchar.c
+相關檔案:   src/ex_getln.c, src/getchar.c
 
 Patch 5.6.017
 問題:	    ":s/e/\^M/" should replace an "e" with a CTRL-M, not split the
 	    line. (Calder)
 解決方案:   Replace the backslash with a CTRL-V internally. (Stephen P. Wall)
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.6.018
 問題:	    ":help [:digit:]" takes a long time to jump to the wrong place.
 解決方案:   Insert a backslash to avoid the special meaning of '[]'.
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.6.019
 問題:	    "snd.c", "snd.java", etc. were recognized as "mail" filetype.
 解決方案:   Make pattern for mail filetype more strict.
-相關文件:   runtime/filetype.vim
+相關檔案:   runtime/filetype.vim
 
 Patch 5.6.020 (extra)
 問題:	    The DJGPP version eats processor time (Walter Briscoe).
 解決方案:   Call __dpmi_yield() in the busy-wait loop.
-相關文件:   src/os_msdos.c
+相關檔案:   src/os_msdos.c
 
 Patch 5.6.021
 問題:	    When 'selection' is "exclusive", a double mouse click in Insert
 	    mode doesn't select last char in line. (Lutz)
 解決方案:   Allow leaving the cursor on the NUL past the line in this case.
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.6.022
 問題:	    ":e \~<Tab>" expands to ":e ~\$ceelen", which doesn't work.
 解決方案:   Re-insert the backslash before the '~'.
-相關文件:   src/ex_getln.c
+相關檔案:   src/ex_getln.c
 
 Patch 5.6.023 (extra)
 問題:	    Various warnings for the Ming compiler.
 解決方案:   Changes to avoid the warnings. (Bill McCarthy)
-相關文件:   src/ex_cmds.c, src/gui_w32.c, src/os_w32exe.c, src/os_win32.c,
+相關檔案:   src/ex_cmds.c, src/gui_w32.c, src/os_w32exe.c, src/os_win32.c,
 	    src/syntax.c, src/vim.rc
 
 Patch 5.6.024 (extra)
 問題:	    Win32 console: Entering CTRL-_ requires the shift key. (Kotchan)
 解決方案:   Specifically catch keycode 0xBD, like the GUI.
-相關文件:   src/os_win32.c
+相關檔案:   src/os_win32.c
 
 Patch 5.6.025
 問題:	    GTK GUI: Starting the GUI could be interrupted by a SIGWINCH.
 	    (Nils Lohner)
 解決方案:   Repeat the read() call to get the gui_in_use value when
 	    interrupted by a signal.
-相關文件:   src/gui.c
+相關檔案:   src/gui.c
 
 Patch 5.6.026 (extra)
 問題:	    Win32 GUI: Toolbar bitmaps are searched for in
@@ -6579,44 +6579,44 @@ Patch 5.6.026 (extra)
 	    Radebaugh)
 解決方案:   Use $VIM/bitmaps for both, because these are not part of the
 	    distribution but defined by the user.
-相關文件:   src/gui_w32.c, runtime/doc/gui.txt
+相關檔案:   src/gui_w32.c, runtime/doc/gui.txt
 
 Patch 5.6.027
 問題:	    TCL: Crash when using a Tcl script (reported for Win32).
 解決方案:   Call Tcl_FindExecutable() in main(). (Brent Fulgham)
-相關文件:   src/main.c
+相關檔案:   src/main.c
 
 Patch 5.6.028
 問題:	    Xterm patch level 126 sends codes for mouse scroll wheel.
 	    Fully works with xterm patch level 131.
 解決方案:   Recognize the codes for button 4 (0x60) and button 5 (0x61).
-相關文件:   src/term.c
+相關檔案:   src/term.c
 
 Patch 5.6.029
 問題:	    GTK GUI: Shortcut keys cannot be used for a dialog. (Johannes
 	    Zellner)
 解決方案:   Add support for shortcut keys. (Marcin Dalecki)
-相關文件:   src/gui_gtk.c
+相關檔案:   src/gui_gtk.c
 
 Patch 5.6.030
 問題:	    When closing a window and 'ea' is set, Vim can crash. (Yasuhiro
 	    Matsumoto)
 解決方案:   Set "curbuf" to a valid value in win_close().
-相關文件:   src/window.c
+相關檔案:   src/window.c
 
 Patch 5.6.031
 問題:	    Multi-byte: When a double-byte character ends in CSI, Vim waits
 	    for another character to be typed.
 解決方案:   Recognize the CSI as the second byte of a character and don't wait
 	    for another one. (Yasuhiro Matsumoto)
-相關文件:   src/getchar.c
+相關檔案:   src/getchar.c
 
 Patch 5.6.032
 問題:	    Functions with an argument that is a line number don't all accept
 	    ".", "$", etc. (Ralf Arens)
 解決方案:   Add get_art_lnum() and use it for setline(), line2byte() and
 	    synID().
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.6.033
 問題:	    Multi-byte: "f " sometimes skips to the second space.  (Sung-Hyun
@@ -6625,29 +6625,29 @@ Patch 5.6.033
 	    character.
 	    Also: Ask for second byte when searching for double-byte
 	    character. (Park Chong-Dae)
-相關文件:   src/search.c
+相關檔案:   src/search.c
 
 Patch 5.6.034 (extra)
 問題:	    Compiling with Borland C++ 5.5 fails on tolower() and toupper().
 解決方案:   Use TO_LOWER() and TO_UPPER() instead.  Also adjust the Makefile
 	    to make using bcc 5.5 easier.
-相關文件:   src/edit.c, src/ex_docmd.c, src/misc1.c, src/Makefile.bor
+相關檔案:   src/edit.c, src/ex_docmd.c, src/misc1.c, src/Makefile.bor
 
 Patch 5.6.035
 問題:	    Listing the"+comments" feature in the ":version" output depended
 	    on the wrong ID. (Stephen P. Wall)
 解決方案:   Change "CRYPTV" to "COMMENTS".
-相關文件:   src/version.c
+相關檔案:   src/version.c
 
 Patch 5.6.036
 問題:	    GTK GUI: Copy/paste text doesn't work between gvim and Eterm.
 解決方案:   Support TEXT and COMPOUND_TEXT selection targets. (ChiDeok Hwang)
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.6.037
 問題:	    Multi-byte: Can't use "f" command with multi-byte character in GUI.
 解決方案:   Enable XIM in Normal mode for the GUI. (Sung-Hyun Nam)
-相關文件:   src/gui_gtk_x11.c, src/multbyte.c
+相關檔案:   src/gui_gtk_x11.c, src/multbyte.c
 
 Patch 5.6.038
 問題:	    Multi-clicks in GUI are interpreted as a mouse wheel click.  When
@@ -6655,7 +6655,7 @@ Patch 5.6.038
 	    wheel click.
 解決方案:   Don't recognize the mouse wheel in check_termcode() in the GUI.
 	    Use 0x43 for a mouse drag in do_xterm_trace(), not 0x63.
-相關文件:   src/term.c, src/os_unix.c
+相關檔案:   src/term.c, src/os_unix.c
 
 Patch 5.6.039
 問題:	    Motif GUI under KDE: When trying to logout, Vim hangs up the
@@ -6663,39 +6663,39 @@ Patch 5.6.039
 解決方案:   When handling the WM_SAVE_YOURSELF event, set the WM_COMMAND
 	    property of the window to let the session manager know we finished
 	    saving ourselves.
-相關文件:   src/gui_x11.c
+相關檔案:   src/gui_x11.c
 
 Patch 5.6.040
 問題:	    When using ":s" command, matching the regexp is done twice.
 解決方案:   After copying the matched line, adjust the pointers instead of
 	    finding the match again. (Loic Grenie)  Added vim_regnewptr().
-相關文件:   src/ex_cmds.c, src/regexp.c, src/proto/regexp.pro
+相關檔案:   src/ex_cmds.c, src/regexp.c, src/proto/regexp.pro
 
 Patch 5.6.041
 問題:	    GUI: Athena, Motif and GTK don't give more than 10 dialog buttons.
 解決方案:   Remove the limit on the number of buttons.
 	    Also support the 'v' flag in 'guioptions'.
 	    For GTK: Center the buttons.
-相關文件:   src/gui_athena.c, src/gui_gtk.c, src/gui_motif.c
+相關檔案:   src/gui_athena.c, src/gui_gtk.c, src/gui_motif.c
 
 Patch 5.6.042
 問題:	    When doing "vim -u vimrc" and vimrc contains ":q", the cursor in
 	    the terminal can remain off.
 解決方案:   Call cursor_on() in mch_windexit().
-相關文件:   src/os_unix.c
+相關檔案:   src/os_unix.c
 
 Patch 5.6.043 (extra)
 問題:	    Win32 GUI: When selecting guifont with the dialog, 'guifont'
 	    doesn't include the bold or italic attributes.
 解決方案:   Append ":i" and/or ":b" to 'guifont' in gui_mch_init_font().
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.6.044 (extra)
 問題:	    MS-DOS and Windows: The line that dosinst.exe appends to
 	    autoexec.bat to set PATH is wrong when Vim is in a directory with
 	    an embedded space.
 解決方案:   Use double quotes for the value when there is an embedded space.
-相關文件:   src/dosinst.c
+相關檔案:   src/dosinst.c
 
 Patch 5.6.045 (extra) (fixed version)
 問題:	    VMS: Various small problems.
@@ -6707,7 +6707,7 @@ Patch 5.6.045 (extra) (fixed version)
 	    Be aware of file names being case insensitive.
 	    Added vt320 builtin termcap.
 	    Be prepared for an empty default_vim_dir.
-相關文件:   runtime/gvimrc_example.vim, runtime/vimrc_example.vim,
+相關檔案:   runtime/gvimrc_example.vim, runtime/vimrc_example.vim,
 	    runtime/doc/os_vms.txt, src/eval.c, src/feature.h, src/fileio.c,
 	    src/gui_motif.c, src/gui_vms_conf.h, src/main.c, src/memline.c,
 	    src/misc1.c, src/option.c, src/os_vms_conf.h, src/os_vms.c,
@@ -6717,12 +6717,12 @@ Patch 5.6.046
 問題:	    Systems with backslash in file name: With 'shellslash' set, "vim
 	    */*.c" only uses a slash for the first file name.  (Har'El)
 解決方案:   Fix slashes in file name arguments after reading the vimrc file.
-相關文件:   src/option.c
+相關檔案:   src/option.c
 
 Patch 5.6.047
 問題:	    $CPPFLAGS is not passed on to ctags configure.
 解決方案:   Add it. (Walter Briscoe)
-相關文件:   src/config.mk.in, src/Makefile
+相關檔案:   src/config.mk.in, src/Makefile
 
 Patch 5.6.048
 問題:	    CTRL-R in Command-line mode is documented to insert text as typed,
@@ -6730,7 +6730,7 @@ Patch 5.6.048
 解決方案:   Make CTRL-R insert text as typed, use CTRL-R CTRL-R to insert
 	    literally.  This is consistent with Insert mode.  But characters
 	    that end Command-line mode are inserted literally.
-相關文件:   runtime/doc/index.txt, runtime/doc/cmdline.txt, src/ex_getln.c,
+相關檔案:   runtime/doc/index.txt, runtime/doc/cmdline.txt, src/ex_getln.c,
 	    src/ops.c, src/proto/ops.pro
 
 Patch 5.6.049
@@ -6738,14 +6738,14 @@ Patch 5.6.049
 	    Fisher)
 解決方案:   Fix the documentation.  Also improve the code to check for a match
 	    after a /* */ comment.
-相關文件:   runtime/doc/tagsearch.txt, src/search.c
+相關檔案:   runtime/doc/tagsearch.txt, src/search.c
 
 Patch 5.6.050
 問題:	    Replacing is wrong when replacing a single-byte char with
 	    double-byte char or the other way around.
 解決方案:   Shift the text after the character when it is replaced.
 	    (Yasuhiro Matsumoto)
-相關文件:   src/normal.c, src/misc1.c
+相關檔案:   src/normal.c, src/misc1.c
 
 Patch 5.6.051
 問題:	    ":tprev" and ":tnext" don't give an error message when trying to
@@ -6753,46 +6753,46 @@ Patch 5.6.051
 解決方案:   Added error messages.  Also: Delay a second when a file-read
 	    message is going to overwrite an error message, otherwise it won't
 	    be seen.
-相關文件:   src/fileio.c, src/tag.c
+相關檔案:   src/fileio.c, src/tag.c
 
 Patch 5.6.052
 問題:	    Multi-byte: When an Ex command has a '|' or '"' as a second byte,
 	    it terminates the command.
 解決方案:   Skip second byte of multi-byte char when checking for '|' and '"'.
 	    (Asai Kenichi)
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.6.053
 問題:	    CTRL-] doesn't work on a tag that contains a '|'. (Cesar Crusius)
 解決方案:   Escape '|', '"' and '\' in tag names when using CTRL-] and also
 	    for command-line completion.
-相關文件:   src/ex_getln.c, src/normal.c
+相關檔案:   src/ex_getln.c, src/normal.c
 
 Patch 5.6.054
 問題:	    When using ":e" and ":e #" the cursor is put in the first column
 	    when 'startofline' is set. (Cordell)
 解決方案:   Use the last known column when 'startofline' is set.
 	    Also, use ECMD_LAST more often to simplify the code.
-相關文件:   src/buffer.c, src/ex_cmds.c, src/ex_docmd.c, src/proto/buffer.pro
+相關檔案:   src/buffer.c, src/ex_cmds.c, src/ex_docmd.c, src/proto/buffer.pro
 
 Patch 5.6.055
 問題:	    When 'statusline' only contains a text without "%" and doesn't fit
 	    in the window, Vim crashes. (Ron Aaron)
 解決方案:   Don't use the pointer for the first item if there is no item.
-相關文件:   src/screen.c
+相關檔案:   src/screen.c
 
 Patch 5.6.056 (extra)
 問題:	    MS-DOS: F11 and F12 don't work when 'bioskey' is set.
 解決方案:   Use enhanced keyboard functions. (Vince Negri)
 	    Detect presence of enhanced keyboard and set bioskey_read and
 	    bioskey_ready.
-相關文件:   src/os_msdos.c
+相關檔案:   src/os_msdos.c
 
 Patch 5.6.057 (extra)
 問題:	    Win32 GUI: Multi-byte characters are wrong in dialogs and tear-off
 	    menus.
 解決方案:   Use system font instead of a fixed font. (Matsumoto, Muraoka)
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.6.058
 問題:	    When the 'a' flag is not in 'guioptions', non-Windows systems
@@ -6800,7 +6800,7 @@ Patch 5.6.058
 	    or delete command anyway.  On Windows it isn't done even when the
 	    'a' flag is included.
 解決方案:   Respect the 'a' flag in 'guioptions' on all systems.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.6.059 (extra)
 問題:	    When moving the cursor over italic text and the characters spill
@@ -6808,14 +6808,14 @@ Patch 5.6.059 (extra)
 	    Noticed in the Win32 GUI, can happen on other systems too.
 解決方案:   Redraw italic text starting from a blank, like this is already
 	    done for bold text. (Vince Negri)
-相關文件:   src/gui.c, src/gui.h, src/gui_w32.c
+相關檔案:   src/gui.c, src/gui.h, src/gui_w32.c
 
 Patch 5.6.060
 問題:	    Some bold characters spill over to the cell on the left, that
 	    spill-over can remain sometimes.
 解決方案:   Redraw a character when the next character was bold and needs
 	    redrawing. (Robert Webb)
-相關文件:   src/screen.c
+相關檔案:   src/screen.c
 
 Patch 5.6.061
 問題:	    When xterm sends 8-bit controls, recognizing the version response
@@ -6826,7 +6826,7 @@ Patch 5.6.061
 	    Also check for CSI when handling colors 8-15 in term_color().
 	    Use CSI for builtin xterm termcap entries when 'term' contains
 	    "8bit".
-相關文件:   runtime/doc/term.txt, src/ex_cmds.c, src/option.c, src/term.c,
+相關檔案:   runtime/doc/term.txt, src/ex_cmds.c, src/option.c, src/term.c,
 	    src/os_unix.c, src/proto/option.pro, src/proto/term.pro
 
 Patch 5.6.062
@@ -6834,69 +6834,69 @@ Patch 5.6.062
 	    effect when 'cindent' is set, but it does make a difference for
 	    lines starting with "#". (Neil Bird)
 解決方案:   Really ignore 'smartindent' when 'cindent' is set.
-相關文件:   src/misc1.c, src/ops.c
+相關檔案:   src/misc1.c, src/ops.c
 
 Patch 5.6.063
 問題:	    Using "I" in Visual-block mode doesn't accept a count. (Johannes
 	    Zellner)
 解決方案:   Pass the count on to do_insert() and edit(). (Allan Kelly)
-相關文件:   src/normal.c, src/ops.c, src/proto/ops.pro
+相關檔案:   src/normal.c, src/ops.c, src/proto/ops.pro
 
 Patch 5.6.064
 問題:	    MS-DOS and Win32 console: Mouse doesn't work correctly after
 	    including patch 5.6.28. (Vince Negri)
 解決方案:   Don't check for mouse scroll wheel when the mouse code contains
 	    the number of clicks.
-相關文件:   src/term.c
+相關檔案:   src/term.c
 
 Patch 5.6.065
 問題:	    After moving the cursor around in Insert mode, typing a space can
 	    still trigger an abbreviation. (Benji Fisher)
 解決方案:   Don't check for an abbreviation after moving around in Insert mode.
-相關文件:   src/edit.c
+相關檔案:   src/edit.c
 
 Patch 5.6.066
 問題:	    Still a few bold character spill-over remains after patch 60.
 解決方案:   Clear character just in front of blanking out rest of the line.
 	    (Robert Webb)
-相關文件:   src/screen.c
+相關檔案:   src/screen.c
 
 Patch 5.6.067
 問題:	    When a file name contains a NL, the viminfo file is corrupted.
 解決方案:   Use viminfo_writestring() to convert the NL to CTRL-V n.
 	    Also fix the Buffers menu and listing a menu name with a newline.
-相關文件:   runtime/menu.vim, src/buffer.c, src/mark.c, src/menu.c
+相關檔案:   runtime/menu.vim, src/buffer.c, src/mark.c, src/menu.c
 
 Patch 5.6.068
 問題:	    Compiling the Perl interface doesn't work with Perl 5.6.0.
 	    (Bernhard Rosenkraenzer)
 解決方案:   Also check xs_apiversion for the version number when prepending
 	    defines for PL_*.
-相關文件:   src/Makefile
+相關檔案:   src/Makefile
 
 Patch 5.6.069
 問題:	    "go" doesn't always end up at the right character when
 	    'fileformat' is "dos". (Bruce DeVisser)
 解決方案:   Correct computations in ml_find_line_or_offset().
-相關文件:   src/memline.
+相關檔案:   src/memline.
 
 Patch 5.6.070 (depends on 5.6.068)
 問題:	    Compiling the Perl interface doesn't work with Perl 5.6.0.
 	    (Bernhard Rosenkraenzer)
 解決方案:   Simpler check instead of the one from patch 68.
-相關文件:   src/Makefile
+相關檔案:   src/Makefile
 
 Patch 5.6.071
 問題:	    "A" in Visual block mode on a Tab positions the cursor one char to
 	    the right. (Michael Haumann)
 解決方案:   Correct the column computation in op_insert().
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.6.072
 問題:	    When starting Vim with "vim +startinsert", it enters Insert mode
 	    only after typing the first command. (Andrew Pimlott)
 解決方案:   Insert a dummy command in the stuff buffer.
-相關文件:   src/main.c
+相關檔案:   src/main.c
 
 Patch 5.6.073 (extra) (depends on 5.6.034)
 問題:	    Win32 GUI: When compiled with Bcc 5.5 menus don't work.
@@ -6906,7 +6906,7 @@ Patch 5.6.073 (extra) (depends on 5.6.034)
 	    Sharp)  Also cleaned up compilation arguments.
 	    Use our own implementation of toupper() in dosinst.c.  Use
 	    mytoupper() instead of tolower().
-相關文件:   src/Makefile.bor, src/dosinst.c
+相關檔案:   src/Makefile.bor, src/dosinst.c
 
 Patch 5.6.074 (extra)
 問題:	    Entering CSI directly doesn't always work, because it's recognized
@@ -6914,7 +6914,7 @@ Patch 5.6.074 (extra)
 	    in the GUI.
 解決方案:   Use K_CSI for a typed CSI character.  Use <CSI> for a normal CSI,
 	    <xCSI> for a CSI typed in the GUI.
-相關文件:   runtime/doc/intro.txt, src/getchar.c, src/gui_amiga.c,
+相關檔案:   runtime/doc/intro.txt, src/getchar.c, src/gui_amiga.c,
 	    src/gui_gtk_x11.c, src/gui_mac.c, src/gui_riscos.c, src/gui_w32.c,
 	    src/keymap.h, src/misc2.c
 
@@ -6926,54 +6926,54 @@ Patch 5.6.075
 解決方案:   Check for change in spaces/tabs after inserting the text.  Append
 	    spaces to fill the gap between the end-of-line and the right edge
 	    of the block.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.6.076
 問題:	    GTK GUI: Mapping <M-Space> doesn't work.
 解決方案:   Don't use the "Alt" modifier twice in key_press_event().
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.6.077
 問題:	    GUI: When interrupting an external program with CTRL-C, gvim might
 	    crash. (Benjamin Korvemaker)
 解決方案:   Avoid using a NULL pointer in ui_inchar_undo().
-相關文件:   src/ui.c
+相關檔案:   src/ui.c
 
 Patch 5.6.078
 問題:	    Locale doesn't always work on FreeBSD. (David O'Brien)
 解決方案:   Link with the "xpg4" library when available.
-相關文件:   src/configure.in, src/configure
+相關檔案:   src/configure.in, src/configure
 
 Patch 5.6.079
 問題:	    Vim could crash when several Tcl interpreters are created and
 	    destroyed.
 解決方案:   handle the "exit" command and nested ":tcl" commands better. (Ingo
 	    Wilken)
-相關文件:   runtime/doc/if_tcl.txt, src/if_tcl.c
+相關檔案:   runtime/doc/if_tcl.txt, src/if_tcl.c
 
 Patch 5.6.080
 問題:	    When jumping to a tag, generating the tags file and jumping to the
 	    same tag again uses the old search pattern. (Sung-Hyun Nam)
 解決方案:   Flush cached tag matches when executing an external command.
-相關文件:   src/misc2.c, src/proto/tag.pro, src/tag.c
+相關檔案:   src/misc2.c, src/proto/tag.pro, src/tag.c
 
 Patch 5.6.081
 問題:	    ":syn include" uses a level for the included file, this confuses
 	    contained items included at the same level.
 解決方案:   Use a unique tag for each included file.  Changed sp_syn_inc_lvl
 	    to sp_syn_inc_tag. (Scott Bigham)
-相關文件:   src/syntax.c, src/structs.h
+相關檔案:   src/syntax.c, src/structs.h
 
 Patch 5.6.082
 問題:	    When using cscope, Vim can crash.
 解決方案:   Initialize tag_fname in find_tags(). (Anton Blanchard)
-相關文件:   src/tag.c
+相關檔案:   src/tag.c
 
 Patch 5.6.083 (extra)
 問題:	    Win32: The visual beep can't be seen. (Eric Roesinger)
 解決方案:   Flush the output before waiting with GdiFlush(). (Maurice S. Barnum)
 	    Also: Allow specifying the delay in t_vb for the GUI.
-相關文件:   src/gui.c, src/gui_amiga.c, src/gui_gtk_x11.c, src/gui_mac.c,
+相關檔案:   src/gui.c, src/gui_amiga.c, src/gui_gtk_x11.c, src/gui_mac.c,
 	    src/gui_riscos.c, src/gui_w32.c, src/gui_x11.c, src/gui_beos.cc,
 	    src/proto/gui_amiga.pro, src/proto/gui_gtk_x11.pro,
 	    src/proto/gui_mac.pro, src/proto/gui_riscos.pro,
@@ -6983,7 +6983,7 @@ Patch 5.6.083 (extra)
 Patch 5.6.084 (depends on 5.6.074)
 問題:	    GUI: Entering CSI doesn't always work for Athena and Motif.
 解決方案:   Handle typed CSI as <xCSI> (forgot this bit in 5.6.074).
-相關文件:   src/gui_x11.c
+相關檔案:   src/gui_x11.c
 
 Patch 5.6.085
 問題:	    Multi-byte: Using "r" to replace a double-byte char with a
@@ -6992,45 +6992,45 @@ Patch 5.6.085
 	    double-byte char didn't work.
 解決方案:   Don't use del_char() to delete the second byte.
 	    Get "ptr" again after calling ins_char().
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.6.086 (extra)
 問題:	    Win32: When using libcall() and the returned value is not a valid
 	    pointer, Vim crashes.
 解決方案:   Use IsBadStringPtr() to check if the pointer is valid.
-相關文件:   src/os_win32.c
+相關檔案:   src/os_win32.c
 
 Patch 5.6.087
 問題:	    Multi-byte: Commands and messages with multi-byte characters are
 	    displayed wrong.
 解決方案:   Detect double-byte characters. (Yasuhiro Matsumoto)
-相關文件:   src/ex_getln.c, src/message.c, src/misc2.c, src/screen.c
+相關檔案:   src/ex_getln.c, src/message.c, src/misc2.c, src/screen.c
 
 Patch 5.6.088
 問題:	    Multi-byte with Motif or Athena: The message "XIM requires
 	    fontset" is annoying when Vim was compiled with XIM support but it
 	    is not being used.
 解決方案:   Remove that message.
-相關文件:   src/multbyte.c
+相關檔案:   src/multbyte.c
 
 Patch 5.6.089
 問題:	    On non-Unix systems it's possible to overwrite a read-only file
 	    without using "!".
 解決方案:   Check if the file permissions allow overwriting before moving the
 	    file to become the backup file.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.6.090
 問題:	    When editing a file in "/home/dir/home/dir" this was replaced with
 	    "~~".  (Andreas Jellinghaus)
 解決方案:   Replace the home directory only once in home_replace().
-相關文件:   src/misc1.c
+相關檔案:   src/misc1.c
 
 Patch 5.6.091
 問題:	    When editing many "no file" files, can't create swap file, because
 	    .sw[a-p] have all been used.  (Neil Bird)
 解決方案:   Also use ".sv[a-z]", ".su[a-z]", etc.
-相關文件:   src/memline.c
+相關檔案:   src/memline.c
 
 Patch 5.6.092
 問題:	    FreeBSD: When setting $TERM to a non-valid terminal name, Vim
@@ -7038,46 +7038,46 @@ Patch 5.6.092
 解決方案:   After tgetent() returns an error code, call it again with the
 	    terminal name "dumb".  This apparently creates an environment in
 	    which tputs() doesn't fail.
-相關文件:   src/term.c
+相關檔案:   src/term.c
 
 Patch 5.6.093 (extra)
 問題:	    Win32 GUI: "ls | gvim -" will show a message box about reading
 	    stdin when Vim exits. (Donohue)
 解決方案:   Don't write a message about the file read from stdin until the GUI
 	    has started.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.6.094
 問題:	    Problem with multi-byte string for ":echo var".
 解決方案:   Check for length in msg_outtrans_len_attr(). (Sung-Hyun Nam)
 	    Also make do_echo() aware of multi-byte characters.
-相關文件:   src/eval.c, src/message.c
+相關檔案:   src/eval.c, src/message.c
 
 Patch 5.6.095
 問題:	    With an Emacs TAGS file that include another a relative path
 	    doesn't always work.
 解決方案:   Use expand_tag_fname() on the name of the included file.
 	    (Utz-Uwe Haus)
-相關文件:   src/tag.c
+相關檔案:   src/tag.c
 
 Patch 5.6.096
 問題:	    Unix: When editing many files, startup can be slow. (Paul
 	    Ackersviller)
 解決方案:   Halve the number of stat() calls used to add a file to the buffer
 	    list.
-相關文件:   src/buffer.c
+相關檔案:   src/buffer.c
 
 Patch 5.7a.001
 問題:	    GTK doesn't respond on drag&drop from ROX-Filer.
 解決方案:   Add "text/uri-list" target. (Thomas Leonard)
 	    Also: fix problem with checking for trash arguments.
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.7a.002
 問題:	    Multi-byte: 'showmatch' is performed when second byte of an
 	    inserted double-byte char is a paren or brace.
 解決方案:   Check IsTrailByte() before calling showmatch(). (Taro Muraoka)
-相關文件:   src/misc1.c
+相關檔案:   src/misc1.c
 
 Patch 5.7a.003
 問題:	    Multi-byte: After using CTRL-O in Insert mode with the cursor at
@@ -7085,26 +7085,26 @@ Patch 5.7a.003
 	    the left.
 解決方案:   Check for multi-byte character at end-of-line. (Taro Muraoka)
 	    Also: fix cls() to detect a double-byte character. (Chong-Dae Park)
-相關文件:   src/edit.c, src/search.c
+相關檔案:   src/edit.c, src/search.c
 
 Patch 5.7a.004
 問題:	    When reporting the search pattern offset, the string could be
 	    unterminated, which may cause a crash.
 解決方案:   Terminate the string for the search offset. (Stephen P. Wall)
-相關文件:   src/search.c
+相關檔案:   src/search.c
 
 Patch 5.7a.005
 問題:	    When ":s//~/" doesn't find a match it reports "[NULL]" for the
 	    pattern.
 解決方案:   Use get_search_pat() to obtain the actually used pattern.
-相關文件:   src/ex_cmds.c, src/proto/search.pro, src/search.c
+相關檔案:   src/ex_cmds.c, src/proto/search.pro, src/search.c
 
 Patch 5.7a.006 (extra)
 問題:	    VMS: Various problems, also with the VAXC compiler.
 解決方案:   In many places use the Unix code for VMS too.
 	    Added time, date and compiler version to version message.
 	    (Zoltan Arpadffy)
-相關文件:   src/ex_cmds.c, src/ex_docmd.c, src/globals.h, src/gui_vms_conf.h,
+相關檔案:   src/ex_cmds.c, src/ex_docmd.c, src/globals.h, src/gui_vms_conf.h,
 	    src/main.c, src/message.c, src/misc1.c, src/os_vms.c,
 	    src/os_vms.h, src/os_vms.mms, src/os_vms_conf.h,
 	    src/proto/os_vms.pro, src/proto/version.pro, src/term.c,
@@ -7113,7 +7113,7 @@ Patch 5.7a.006 (extra)
 Patch 5.7a.007
 問題:	    Motif and Athena GUI: CTRL-@ is interpreted as CTRL-C.
 解決方案:   Only use "intr_char" when it has been set.
-相關文件:   src/gui_x11.c
+相關檔案:   src/gui_x11.c
 
 Patch 5.7a.008
 問題:	    GTK GUI: When using CTRL-L the screen is redrawn twice, causing
@@ -7125,7 +7125,7 @@ Patch 5.7a.008
 	    This avoids setting it each time the scrollbar is forcefully
 	    redrawn.
 	    Don't redraw in expose_event() when gui.starting is still set.
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 
 ==============================================================================
@@ -7137,14 +7137,14 @@ Patch 5.7a.008
 改動							*changed-5.8*
 -------
 
-Vim 不再包含 ctags。它已經成爲獨立的項目。這裏可以找到: http://ctags.sf.net。
-編寫程序時，高度建議和 Vim 一起使用。
+Vim 不再包含 ctags。它已經成為獨立的項目。這裡可以找到: http://ctags.sf.net。
+編寫程式時，高度建議和 Vim 一起使用。
 
 
 新增							*added-5.8*
 -----
 
-新語法文件:
+新語法檔案:
 acedb		AceDB (Stewart Morris)
 aflex		Aflex (Mathieu Clabaut)
 antlr		Antlr (Mathieu Clabaut)
@@ -7154,16 +7154,16 @@ ayacc		Ayacc (Mathieu Clabaut)
 b		B (Mathieu Clabaut)
 bindzone	BIND zone (glory hump)
 blank		Blank (Rafal Sulejman)
-cfg		Configure 文件 (Igor Prischepoff)
+cfg		Configure 檔案 (Igor Prischepoff)
 changelog	ChangeLog (Gediminas Paulauskas)
 cl		Clever (Phil Uren)
 crontab		Crontab (John Hoelzel)
-csc		Essbase 腳本 (Raul Segura Acevedo)
+csc		Essbase 指令碼 (Raul Segura Acevedo)
 cynlib		Cynlib(C++) (Phil Derrick)
 cynpp		Cyn++ (Phil Derrick)
 debchangelog	Debian Changelog (Wichert Akkerman)
 debcontrol	Debian Control (Wichert Akkerman)
-dns		DNS 區域文件 (Jehsom)
+dns		DNS 區域檔案 (Jehsom)
 dtml		Zope 的 DTML (Jean Jordaan)
 dylan		Dylan、Dylan-intr 和 Dylan-lid (Brent Fulgham)
 ecd		Embedix Component Description (John Beppu)
@@ -7220,14 +7220,14 @@ wdiff		Wordwise diff (Gerfried Fuchs)
 wsh		Windows Scripting Host (Paul Moore)
 xkb		X Keyboard Extension (David Necas)
 
-php3 更名爲 php，現在同時支持 php4 (Lutz Eymers)
+php3 更名為 php，現在同時支援 php4 (Lutz Eymers)
 
 Patch 5.7.015
-問題:	    Vim 6.0 的語法文件不能用於 5.x。
+問題:	    Vim 6.0 的語法檔案不能用於 5.x。
 解決方案:   ":highlight" 命令加入 "default" 參數: 如果已經指定高亮，忽略命令。
-相關文件:   src/syntax.c
+相關檔案:   src/syntax.c
 
-用 makemenu.vim 生成 Syntax 菜單，從而不需要在 Vim 啓動時完成。減少了 GUI 啓動
+用 makemenu.vim 生成 Syntax 選單，從而不需要在 Vim 啟動時完成。減少了 GUI 啟動
 時間。
 
 
@@ -7281,31 +7281,31 @@ Win32: Gvimext could not edit more than a few files at once, the length of the
 argument was fixed.
 
 
-Vim 5.7 預發佈補丁:
+Vim 5.7 預釋出補丁:
 
 Patch 5.7.001
 問題:	    When the current buffer is crypted, and another modified buffer
 	    isn't, ":wall" will encrypt the other buffer.
 解決方案:   In buf_write() use "buf" instead of "curbuf" to check for the
 	    crypt key.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.7.002
 問題:	    When 'showmode' is set, using "CTRL-O :r file" waits three seconds
 	    before displaying the read text. (Wichert Akkerman)
 解決方案:   Set "keep_msg" to the file message so that the screen is redrawn
 	    before the three seconds wait for displaying the mode message.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.7.003
 問題:	    Searching for "[[:cntrl:]]" doesn't work.
 解決方案:   Exclude NUL from the matching characters, it terminates the list.
-相關文件:   src/regexp.c
+相關檔案:   src/regexp.c
 
 Patch 5.7.004
 問題:	    GTK: When selecting a new font, Vim can crash.
 解決方案:   In gui_mch_init_font() unreference the old font, not the new one.
-相關文件:   src/gui_gtk_x11.c
+相關檔案:   src/gui_gtk_x11.c
 
 Patch 5.7.005
 問題:	    Multibyte: Inserting a wrapped line corrupts kterm screen.
@@ -7317,69 +7317,69 @@ Patch 5.7.005
 	    request.
 	    Add XIMStatusArea fallback code.
 	    (Katsuhito Nagano)
-相關文件:   src/gui_gtk_x11.c, src/multbyte.c, src/screen.c, src/ui.c
+相關檔案:   src/gui_gtk_x11.c, src/multbyte.c, src/screen.c, src/ui.c
 
 Patch 5.7.006
 問題:	    GUI: redrawing the non-Visual selection is wrong when the window
 	    is unobscured. (Jean-Pierre Etienne)
 解決方案:   Redraw the selection properly and don't clear it.  Added "len"
 	    argument to clip_may_redraw_selection().
-相關文件:   src/gui.c, src/ui.c, src/proto/ui.pro
+相關檔案:   src/gui.c, src/ui.c, src/proto/ui.pro
 
 Patch 5.7.007
 問題:	    Python: Crash when using the current buffer twice.
 解決方案:   Increase the reference count for buffer and window objects.
 	    (Johannes Zellner)
-相關文件:   src/if_python.c
+相關檔案:   src/if_python.c
 
 Patch 5.7.008
 問題:	    In Ex mode, backspacing over the first TAB doesn't work properly.
 	    (Wichert Akkerman)
 解決方案:   Switch the cursor on before printing the newline.
-相關文件:   src/ex_getln.c
+相關檔案:   src/ex_getln.c
 
 Patch 5.7.009 (extra)
 問題:	    Mac: Crash when using a long file.
 解決方案:   Don't redefine malloc() and free(), because it will break using
 	    realloc().
-相關文件:   src/os_mac.h
+相關檔案:   src/os_mac.h
 
 Patch 5.7.010
 問題:	    When using CTRL-A on a very long number Vim can crash.  (Michael
 	    Naumann)
 解決方案:   Truncate the length of the new number to avoid a buffer overflow.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.7.011 (extra)
 問題:	    Win32 GUI on NT 5 and Win98: Displaying Hebrew is reversed.
 解決方案:   Output each character separately, to avoid that Windows reverses
 	    the text for some fonts. (Ron Aaron)
-相關文件:   src/gui_w32.c
+相關檔案:   src/gui_w32.c
 
 Patch 5.7.012
 問題:	    When using "-complete=buffer" for ":command" the user command
 	    fails.
 解決方案:   In a user command don't replace the buffer name with a count for
 	    the  buffer number.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 Patch 5.7.013
 問題:	    "gD" didn't always find a match in the first line, depending on
 	    the column the search started at.
 解決方案:   Reset the column to zero before starting to search.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.7.014
 問題:	    Rot13 encoding was done on characters with accents, which is
 	    wrong. (Sven Gottwald)
 解決方案:   Only do rot13 encoding on ASCII characters.
-相關文件:   src/ops.c
+相關檔案:   src/ops.c
 
 Patch 5.7.016
 問題:	    When hitting 'n' for a ":s///c" command, the ignore-case flag was
 	    not restored, some matches were skipped. (Daniel Blaustein)
 解決方案:   Restore the reg_ic variable when 'n' was hit.
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.7.017
 問題:	    When using a Vim script for Vim 6.0 with <SID> before a function
@@ -7387,7 +7387,7 @@ Patch 5.7.017
 	    >= 600".  (Charles Campbell)
 解決方案:   Ignore errors in the function name when the function is not going
 	    to be defined.
-相關文件:   src/eval.c
+相關檔案:   src/eval.c
 
 Patch 5.7.018
 問題:	    When running "rvim" or "vim -Z" it was still possible to execute a
@@ -7395,31 +7395,31 @@ Patch 5.7.018
 	    Kavarnos)
 解決方案:   Disallow executing a shell command in get_cmd_output() and
 	    mch_expand_wildcards().
-相關文件:   src/misc1.c, src/os_unix.c
+相關檔案:   src/misc1.c, src/os_unix.c
 
 Patch 5.7.019
 問題:	    Multibyte: In a substitute string, a multi-byte character isn't
 	    skipped properly, can be a problem when the second byte is a
 	    backslash.
 解決方案:   Skip an extra byte for a double-byte character. (Muraoka Taro)
-相關文件:   src/ex_cmds.c
+相關檔案:   src/ex_cmds.c
 
 Patch 5.7.020
 問題:	    Compilation doesn't work on MacOS-X.
 解決方案:   Add a couple of #ifdefs. (Jamie Curmi)
-相關文件:   src/regexp.c, src/ctags/general.h
+相關檔案:   src/regexp.c, src/ctags/general.h
 
 Patch 5.7.021
 問題:	    Vim sometimes produces a beep when started in an xterm.  Only
 	    happens when compiled without mouse support.
 解決方案:   Requesting the xterm version results in a K_IGNORE.  This wasn't
 	    handled when mouse support is disabled.  Accept K_IGNORE always.
-相關文件:   src/normal.c
+相關檔案:   src/normal.c
 
 Patch 5.7.022
 問題:	    %v in 'statusline' is not displayed when it's equal to %c.
 解決方案:   Check if %V or %v is used and handle them differently.
-相關文件:   src/screen.c
+相關檔案:   src/screen.c
 
 Patch 5.7.023
 問題:	    Crash when a WinLeave autocommand deletes the buffer in the other
@@ -7427,49 +7427,49 @@ Patch 5.7.023
 解決方案:   Check that after executing the WinLeave autocommands there still
 	    is a window to be closed.  Also update the test that was supposed
 	    to check for this problem.
-相關文件:   src/window.c, testdir/test13.in, testdir/test13.ok
+相關檔案:   src/window.c, testdir/test13.in, testdir/test13.ok
 
 Patch 5.7.024
 問題:	    Evaluating an expression for 'statusline' can have side effects.
 解決方案:   Evaluate the expression in a sandbox.
-相關文件:   src/edit.c, src/eval.c, src/proto/eval.pro, src/ex_cmds.c,
+相關檔案:   src/edit.c, src/eval.c, src/proto/eval.pro, src/ex_cmds.c,
 	    src/ex_cmds.h, src/ex_docmd.c, src/globals.h, src/option.c,
 	    src/screen.c, src/undo.c
 
 Patch 5.7.025 (fixed)
 問題:	    Creating a temp file has a race condition.
 解決方案:   Create a private directory to write the temp files in.
-相關文件:   src/fileio.c, src/misc1.c, src/proto/misc1.pro,
+相關檔案:   src/fileio.c, src/misc1.c, src/proto/misc1.pro,
 	    src/proto/fileio.pro, src/memline.c, src/os_unix.h
 
 Patch 5.7.026 (extra)
 問題:	    Creating a temp file has a race condition.
 解決方案:   Create a private directory to write the temp files in.
 	    This is the extra part of patch 5.7.025.
-相關文件:   src/os_msdos.h
+相關檔案:   src/os_msdos.h
 
 Patch 5.7.027
 問題:	    Starting to edit a file can cause a crash.  For example when in
 	    Insert mode, using CTRL-O :help abbr<Tab> to scroll the screen and
 	    then <CR>, which edits a help file. (Robert Bogomip)
 解決方案:   Check if keep_msg is NULL before copying it.
-相關文件:   src/fileio.c
+相關檔案:   src/fileio.c
 
 Patch 5.7.028
 問題:	    Creating a backup or swap file could fail in rare situations.
 解決方案:   Use O_EXCL for open().
-相關文件:   src/fileio.c, src/memfile.c
+相關檔案:   src/fileio.c, src/memfile.c
 
 Patch 5.7.029
 問題:	    Editing a file with an extremely long name crashed Vim.
 解決方案:   Check for length of the name when setting the window title.
-相關文件:   src/buffer.c
+相關檔案:   src/buffer.c
 
 Patch 5.7.030
 問題:	    A ":make" or ":grep" command with a very long argument could cause
 	    a crash.
 解決方案:   Allocate the buffer for the shell command.
-相關文件:   src/ex_docmd.c
+相關檔案:   src/ex_docmd.c
 
 
  vim:tw=78:ts=8:ft=help:norl:

@@ -8,14 +8,14 @@
 
 二合字母					*digraph* *digraphs* *Digraphs*
 
-二合字母用來輸入不能用普通鍵盤輸入的字符。它們通常是可顯示的非 ASCII 字符。二
-合字母比用 CTRL-V 輸入十進制編碼更方便記憶 (見 |i_CTRL-V|)。
+二合字母用來輸入不能用普通鍵盤輸入的字元。它們通常是可顯示的非 ASCII 字元。二
+合字母比用 CTRL-V 輸入十進位制編碼更方便記憶 (見 |i_CTRL-V|)。
 
-用戶手冊 |24.9| 有二合字母的簡短介紹。一個替代方案是用 'keymap' 選項。
+使用者手冊 |24.9| 有二合字母的簡短介紹。一個替代方案是用 'keymap' 選項。
 
 1. 定義二合字母		|digraphs-define|
 2. 使用二合字母		|digraphs-use|
-3. 缺省的二合字母	|digraphs-default|
+3. 預設的二合字母	|digraphs-default|
 
 {Vi 沒有這些命令}
 
@@ -26,29 +26,29 @@
 :dig[raphs]		顯示當前定義的二合字母。
 							*E104* *E39*
 :dig[raphs] {char1}{char2} {number} ...
-			把二合字母 {char1}{char2} 加入列表。{number} 是字符的
-			十進制表示形式。例如: >
+			把二合字母 {char1}{char2} 加入列表。{number} 是字元的
+			十進位制表示形式。例如: >
 	:digr e: 235 a: 228
 <			避免定義 '_' (下劃線) 開頭的二合字母，將來它會有特殊的
 			含義。
 
-Vim 通常編譯時帶有 |+digraphs| 特性。如果沒有，":digraph" 命令會顯示錯誤信息。
+Vim 通常編譯時帶有 |+digraphs| 特性。如果沒有，":digraph" 命令會顯示錯誤資訊。
 
 ":digraphs" 輸出的例子: >
  TH Þ  222  ss ß  223  a! à  224  a' á  225  a> â  226  a? ã  227  a: ä  228
 
-每列 (譯者注: "TH Þ  222" 稱爲一列) 前兩個字符是你用來輸入二合字母的兩個字符。
+每列 (譯者注: "TH Þ  222" 稱為一列) 前兩個字元是你用來輸入二合字母的兩個字元。
 
-每列的中間是產生的字符。如果你用不支持二合字母的系統察看或者打印，它們可能是亂
+每列的中間是產生的字元。如果你用不支援二合字母的系統察看或者列印，它們可能是亂
 碼。
 
 							*digraph-encoding*
-通常，十進制表示形式是字符的 Unicode 數值。注意 'encoding' 改變的時候該數值並
-不改變。如果需要，字符從 Unicode 轉換爲 'encoding'。這需要該轉換確實能實現，有
-時並非如此。NUL 字符會顯示爲 "10"，這是因爲 NUL 字符內部用 NL 字符表示。寫迴文
-件時它會還原爲 NUL 字符的。
+通常，十進位制表示形式是字元的 Unicode 數值。注意 'encoding' 改變的時候該數值並
+不改變。如果需要，字元從 Unicode 轉換為 'encoding'。這需要該轉換確實能實現，有
+時並非如此。NUL 字元會顯示為 "10"，這是因為 NUL 字元內部用 NL 字元表示。寫迴文
+件時它會還原為 NUL 字元的。
 
-如果 Vim 編譯時沒有 |+multi_byte| 特性，你需要指定該字符在 'encoding' 裏的編
+如果 Vim 編譯時沒有 |+multi_byte| 特性，你需要指定該字元在 'encoding' 裡的編
 碼。可以這樣使用: >
 
 	if has("multi_byte")
@@ -57,7 +57,7 @@ Vim 通常編譯時帶有 |+digraphs| 特性。如果沒有，":digraph" 命令�
 		digraph oe 189
 	endif
 
-這樣，"oe" 二合字母在 Unicode 裏使用數值 339，而在 latin9 (iso-8859-15) 裏使用
+這樣，"oe" 二合字母在 Unicode 裡使用數值 339，而在 latin9 (iso-8859-15) 裡使用
 數值 189。
 
 ==============================================================================
@@ -74,41 +74,41 @@ Vim 通常編譯時帶有 |+digraphs| 特性。如果沒有，":digraph" 命令�
 注意 如果輸入 CTRL-K {char1} 時，{char1} 是特殊鍵，Vim 只會輸入該鍵的編碼。這
 就不是輸入二合字母了。
 
-一旦你輸入了二合字母，Vim 把該字符當成佔據文件和屏幕的一個正常字符。示例: >
-	'B' <BS> 'B'	會輸入中間斷開的 '|' 字符 (166)
+一旦你輸入了二合字母，Vim 把該字元當成佔據檔案和螢幕的一個正常字元。示例: >
+	'B' <BS> 'B'	會輸入中間斷開的 '|' 字元 (166)
 	'a' <BS> '>'	會輸入帶 circumflex 重音的 'a' (226)
 	CTRL-K '-' '-'  會輸入軟的破折號 (173)
 
-":digraphs" 列出當前的二合字母。一些缺省的二合字母列在下面的 |digraph-table|
-裏。
+":digraphs" 列出當前的二合字母。一些預設的二合字母列在下面的 |digraph-table|
+裡。
 
 對 CTRL-K 而言，有一個通用的二合字母: CTRL-K <Space> {char} 會輸入 {char}，並
-設置最高位。你可以用這個方法來輸入帶 meta 的字符。
+設定最高位。你可以用這個方法來輸入帶 meta 的字元。
 
-二合字母裏不能有 <Esc> 字符。按 <Esc> 的時候，Vim 停止二合字母的輸入並回到插入
-或命令行模式，這也可以理解爲 <Esc> 退出了二合字母的上下文。用 CTRL-V 155 輸入
+二合字母裡不能有 <Esc> 字元。按 <Esc> 的時候，Vim 停止二合字母的輸入並回到插入
+或命令列模式，這也可以理解為 <Esc> 退出了二合字母的上下文。用 CTRL-V 155 輸入
 meta-ESC (CSI)。
 
 如果你本來想輸入 'e' 但不小心輸入了 'a'，你也許會鍵入 'a' <BS> 'e'。但是這個序
 列成了二合字母。這也許不是你想要的。要糾正這個錯誤，你需要再按一次 <BS> e。要
 避免這一點，不要置位 'digraph' 選項，只用 CTRL-K 輸入二合字母。
 
-Vim 裏使用值高於 128 的字符可能會有問題。例如: 你輸入 ue (u-umlaut) 而編輯器在
-插入模式回顯 \334。離開插入模式一切就正常了。注意 fmt 刪除待排版的文本里所有值
-高於 128 的字符。有的 Unix 系統上，解決方法是定義 LC_CTYPE。如果你使用 csh，把
+Vim 裡使用值高於 128 的字元可能會有問題。例如: 你輸入 ue (u-umlaut) 而編輯器在
+插入模式回顯 \334。離開插入模式一切就正常了。注意 fmt 刪除待排版的文字里所有值
+高於 128 的字元。有的 Unix 系統上，解決方法是定義 LC_CTYPE。如果你使用 csh，把
 這行放入 .cshrc: >
 	setenv LC_CTYPE iso_8859_1
 
 ==============================================================================
-3. 缺省的二合字母					*digraphs-default*
+3. 預設的二合字母					*digraphs-default*
 
-Vim 缺省提供了一些二合字母。":digraphs" 的輸出列出這些二合字母。
+Vim 預設提供了一些二合字母。":digraphs" 的輸出列出這些二合字母。
 
 Vim 在大多數系統中使用相同二合字母。它們適用於 Unicode 和 ISO-8859-1 字符集。
-缺省的二合字母是 RFC1345 提供的助記符。爲了方便記住這些助記符，第二個字符有一
+預設的二合字母是 RFC1345 提供的助記符。為了方便記住這些助記符，第二個字元有一
 個標準的含義:
 
-	字符名			字符	含義 ~
+	字元名			字元	含義 ~
 	Exclamation mark	!	Grave (鈍音符號)
 	Apostrophe		'	Acute (銳音符號)
 	Greater-Than sign	>	Circumflex (折音/抑揚符號)
@@ -127,29 +127,29 @@ Vim 在大多數系統中使用相同二合字母。它們適用於 Unicode 和 
 	Two			2	上帶鉤 (Hook)
 	Nine			9	帶角 (Horn)
 
-	Equals			=	西裏爾字母 (Cyrillic)
+	Equals			=	西裡爾字母 (Cyrillic)
 	Asterisk		*	希臘語
-	Percent sign		%	特殊的希臘/西裏爾字母
+	Percent sign		%	特殊的希臘/西裡爾字母
 	Plus			+	小寫: 阿拉伯語，大寫: 希伯來語
-	Three			3	一些拉丁/希臘/西裏爾字母
+	Three			3	一些拉丁/希臘/西裡爾字母
 	Four			4	注音符號
 	Five			5	平假名
 	Six			6	片假名
 
 示例: a: 是 ä 而 o: 是 ö
 
-下面列出 RFC1345 定義的單字節二合字母。其他的二合字母見 ":digraphs"。高於 255
-的字符只有在 Vim 編譯的時候加上 |+multi_byte| 特性才能使用。
+下面列出 RFC1345 定義的單位元組二合字母。其他的二合字母見 ":digraphs"。高於 255
+的字元只有在 Vim 編譯的時候加上 |+multi_byte| 特性才能使用。
 
 EURO
 
-特例: RFC1345 沒有指定歐元 (euro) 符號。Vim 裏爲此目的加入了二合字母 =e。注意
-以下區別: latin1 裏，二合字母 Cu 用於貨幣符號，而 latin9 (iso-8859-15) 裏二合
-字母 =e 用於歐元符號，儘管兩者都代表字符 164，0xa4。爲了和 zsh 兼容，Eu 也用於
+特例: RFC1345 沒有指定歐元 (euro) 符號。Vim 裡為此目的加入了二合字母 =e。注意
+以下區別: latin1 裡，二合字母 Cu 用於貨幣符號，而 latin9 (iso-8859-15) 裡二合
+字母 =e 用於歐元符號，儘管兩者都代表字元 164，0xa4。為了和 zsh 相容，Eu 也用於
 歐元符號。
 
 							*digraph-table*
-字符  二合字母	十六進	十進制	正式名字 ~
+字元  二合字母	十六進	十進位制	正式名字 ~
 ^@	NU	0x00	  0	NULL (NUL)
 ^A	SH	0x01	  1	START OF HEADING (SOH)
 ^B	SX	0x02	  2	START OF TEXT (STX)
@@ -325,11 +325,11 @@ $	DO	0x24	 36	DOLLAR SIGN
 þ	th	0xfe	254	LATIN SMALL LETTER THORN (Icelandic)
 ÿ	y:	0xff	255	LATIN SMALL LETTER Y WITH DIAERESIS
 
-如果 Vim 編譯時帶有 |multibyte| 支持而你使用多字節 'encoding'，Vim 提供帶有額
+如果 Vim 編譯時帶有 |multibyte| 支援而你使用多位元組 'encoding'，Vim 提供帶有額
 外二合字母的增強版:
 
 							*digraph-table-mbyte*
-字符  二合字母	十六進	十進制	正式名字 ~
+字元  二合字母	十六進	十進位制	正式名字 ~
 Ā	A-	0100	0256	LATIN CAPITAL LETTER A WITH MACRON
 ā	a-	0101	0257	LATIN SMALL LETTER A WITH MACRON
 Ă	A(	0102	0258	LATIN CAPITAL LETTER A WITH BREVE

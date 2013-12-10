@@ -9,11 +9,11 @@
 			      Vim 待完成任務列表	*todo*
 
 
-這是一個很長。。。的已知漏洞，目前工作和未來希望的改進的列表 (英文)。爲了使其
+這是一個很長。。。的已知漏洞，目前工作和未來希望的改進的列表 (英文)。為了使其
 能稍微好找一點，項目由主題編組。每行的第一列是標明準備時候去做的分類，以便按
 部就班，依次解決。
 
-優先級分類:
+優先順序分類:
 9   下一個小發行
 8   下一個主要發行
 7   儘快
@@ -29,9 +29,9 @@
 關於開發的計劃，參見 |develop.txt|。如果你贊助 Vim 開發，你可以投票決定哪個項
 目值得開發。請見 |sponsor|。
 
-可以在線提供新問題: http://code.google.com/p/vim/issues/list
+可以線上提供新問題: http://code.google.com/p/vim/issues/list
 其中更新的部分會被轉發到 vim_dev 郵件列表。該處已經提供的問題就不在下面重複
-了，除非有額外的信息。
+了，除非有額外的資訊。
 
 							*known-bugs*
 ----------------------- 已知漏洞和當前工作 --------------------------
@@ -1650,7 +1650,7 @@ Patch to support horizontal scroll wheel in GTK. Untested. (Bjorn Winckler,
 2010 Jun 30)
 
 
-下一發佈版本:
+下一釋出版本:
 -   Build a huge version by default.
 -   Improve plugin handling: Automatic updates, handle dependencies?
     E.g. Vundle: https://github.com/gmarik/vundle
@@ -1695,7 +1695,7 @@ Patch to support horizontal scroll wheel in GTK. Untested. (Bjorn Winckler,
     No maintenance in two years...
 -   Patch to open dropped files in new tabs. (Michael Trim, 2010 Aug 3)
 
-等待補丁信息的更新:
+等待補丁資訊的更新:
 9   Mac unicode patch (Da Woon Jung, Eckehard Berns):
     8   Add patch from Muraoka Taro (Mar 16) to support input method on Mac?
 	New patch 2004 Jun 16
@@ -1781,7 +1781,7 @@ Patch to support horizontal scroll wheel in GTK. Untested. (Bjorn Winckler,
 -   Patch for "paranoid mode" by Kevin Collins, March 7.  Needs much more work.
 
 
-Vi 不兼容性:
+Vi 不相容性:
 -   Try new POSIX tests, made after my comments. (Geoff Clare, 2005 April 7)
     Version 1.5 is in ~/src/posix/1.5. (Lynne Canal)
 8   With undo/redo only marks in the changed lines should be changed.  Other
@@ -2639,7 +2639,7 @@ Macintosh:
     This can be done with XReparentWindow().  But how exactly?
 
 
-文檔:
+文件:
 8   List of Vim runtime directories.  dotvim.txt from Charles Campbell, 2007
     Feb 20.
 8   The GUI help should explain the Find and Find/Replace dialogs.  Add a link
@@ -2685,7 +2685,7 @@ Macintosh:
 -   Learn mode: show short help while typing commands.
 
 
-對用戶更友好:
+對使用者更友好:
 8   Windows install with install.exe: Use .exe instead of .bat files for
     links, so that command line arguments are passed on unmodified? (Walter
     Briscoe)
@@ -2887,7 +2887,7 @@ Diff 模式:
     searches.
 
 
-多字節字符處理:
+多位元組字元處理:
 -   When editing a file with both utf-8 and latin1 text Vim always falls back
     to latin1.  Add a command to convert the latin1 characters to utf-8?
 	:unmix utf-8,latin1 filename
@@ -2974,7 +2974,7 @@ Diff 模式:
     But it's very complicated...
 
 
-打印:
+列印:
 7   Implement "undercurl" for printing.
 -   Add "page width" to wrap long lines.
 -   Win32: use a font dialog for setting 'printfont'.  Can reuse the code for
@@ -3152,7 +3152,7 @@ Diff 模式:
     unprintable char another color.  Would be useful for ^M at end of line.
 
 
-內建腳本語言:
+內建指令碼語言:
 8   Make the filename and line number available to script functions, so that
     they can give useful debugging info.  The whole call stack would be ideal.
 7   Execute a function with standard option values.  No need to save and
@@ -3287,7 +3287,7 @@ Diff 模式:
     lock.  When to release a lock: When buffer is unloaded?
 
 
-性能:
+效能:
 7   For string variables up to 3 bytes don't allocate memory, use v_list
     itself as a character array.  Use VAR_SSTRING (short string).
 7   Add 'lazysize' option: Above this size Vim doesn't load everything before
@@ -3385,7 +3385,7 @@ Diff 模式:
     CTRL-C (it's slow).
 
 
-代碼大小:
+程式碼大小:
 8   GUI: When NO_CONSOLE is defined, more code can be excluded.
 -   Put getline() and cookie in a struct, so only one argument has to be
     passed to do_cmdline() and other functions.
@@ -3399,7 +3399,7 @@ Diff 模式:
 8   Can the check for libelf in configure.in be removed?
 
 
-消息:
+訊息:
 8   When using ":q" in a changed file, the error says to "add !".  Add the
     command so that beginners understand it: "use :q!".
 8   For 'verbose' level 12 prints commands from source'ed files.  How to skip
@@ -3437,7 +3437,7 @@ Diff 模式:
     a prompt is present (with a callback function?).
 
 
-屏幕刷新:
+螢幕重新整理:
 7   Add a string to the 'display' option to make CTRL-E and CTRL-Y scroll one
     screen line, also if this means the first line doesn't start with the
     first character (like what happens with a single line that doesn't fit).
@@ -3487,7 +3487,7 @@ Autoconf:
 -   Set default for 'dictionary', add search for dictionary to autoconf.
 
 
-Perl 接口:
+Perl 介面:
 8   Rename typemap file to something else?
 7   Make buffers accessed as Perl arrays. (Clark)
 7   Make it possible to compile with non-ANSI C?
@@ -3846,7 +3846,7 @@ GUI:
 -   Allow listing all matches in some way (and picking one from the list).
 
 
-命令行編輯:
+命令列編輯:
 7   Add commands (keys) to delete from the cursor to the end of the command
     line.
 8   Custom completion of user commands can't use the standard completion
@@ -3887,7 +3887,7 @@ GUI:
 	Mode.
 
 
-命令行自動補全:
+命令列自動補全:
 8   Change expand_interactively into a flag that is passed as an argument.
 8   With command line completion after '%' and '#', expand current/alternate
     file name, so it can be edited.  Also with modifiers, such as "%:h".
@@ -3917,7 +3917,7 @@ GUI:
     Also: when there are several matches, show them line a CTRL-D.
 
 
-命令行歷史:
+命令列歷史:
 -   Add "KeyWasTyped" flag: It's reset before each command and set when a
     character from the keyboard is consumed. Value is used to decide to put a
     command line in history or not. Put line in history if it didn't
@@ -4074,7 +4074,7 @@ Java:
 7   Allow specifying it separately for Tabs and beyond end-of-line?
 
 
-文本對象:
+文字物件:
 8   Add text object for fold, so that it can be yanked when it's open.
 8   Add test script for text object commands "aw", "iW", etc.
 8   Add text object for part of a CamelHumpedWord and under_scored_word.
@@ -4172,7 +4172,7 @@ Java:
 6   Add commands to move selected text, without deselecting.
 
 
-更多高級的重覆命令:
+更多高階的重覆命令:
 -   Add "." command for visual mode: redo last visual command (e.g. ":fmt").
 7   Repeating "d:{cmd}" with "." doesn't work. (Benji Fisher)  Somehow remember
     the command line so that it can be repeated?
@@ -4186,7 +4186,7 @@ Java:
 -   History stack for . command?  Use "g." command.
 
 
-映射和縮寫:
+對映和縮寫:
 8   When "0" is mapped (it is a movement command) this mapping should not be
     used after typing another number, e.g. "20l". (Charles Campbell)
     Is this possible without disabling the mapping of the following command?
@@ -4478,7 +4478,7 @@ Java:
     CASE_INSENSITIVE_FILENAME that are useful on Unix.
 
 
-交換 (.swp) 文件:
+交換 (.swp) 檔案:
 8   If writing to the swap file fails, should try to open one in another
     directory from 'dir'.  Useful in case the file system is full and when
     there are short file name problems.
@@ -4598,7 +4598,7 @@ Viminfo:
 4   Add feature to disable using a shell or external commands.
 
 
-多重窗口:
+多重視窗:
 7   "vim -oO file ..." use both horizontal and vertical splits.
 8   Add CTRL-W T: go to the top window in the column of the current window.
     And CTRL-W B: go to bottom window.
@@ -4665,7 +4665,7 @@ Viminfo:
     least Latin1/Unicode, Latin-2, MS-DOS (esp. for Win32).
 
 
-文件寫入:
+檔案寫入:
 -   In vim_rename(), should lock "from" file when deleting "to" file for
     systems other than Amiga.  Avoids problems with unexpected longname to
     shortname conversion.
@@ -4718,7 +4718,7 @@ Viminfo:
     (Stanislav Sitar)
 
 
-鼠標支持:
+滑鼠支援:
 8   Add 'o' flag to 'mouse'?
 7   Be able to set a 'mouseshape' for the popup menu.
 8   Add 'mouse' flag, which sets a behavior like Visual mode, but automatic
@@ -4760,7 +4760,7 @@ Viminfo:
     How to take care of the flags (offset, magic)?
 
 
-調試模式:
+偵錯模式:
 7   Add something to enable debugging when a remote message is received.
 8   Add breakpoints for setting an option
 8   Add breakpoints for assigning to a variable.
@@ -5143,7 +5143,7 @@ Viminfo:
     (Servatius Brandt)
 
 
-從 Elvis 那裏:
+從 Elvis 那裡:
 -   Use "instman.sh" to install manpages?
 -   Add ":alias" command.
 -   Search patterns:
@@ -5162,12 +5162,12 @@ Viminfo:
     program to use with ":cc".  Use ":compile" instead of ":cc"?
 
 
-從 xvi 那裏:
+從 xvi 那裡:
 -   CTRL-_ : swap 8th bit of character.
 -   Add egrep-like regex type, like xvi (Ned Konz) or Perl (Emmanuel Mogenet)
 
 
-從 vile 那裏:
+從 vile 那裡:
 -   When horizontal scrolling, use '>' for lines continuing right of a window.
 -   Support putting .swp files in /tmp: Command in rc.local to move .swp files
     from /tmp to some directory before deleting files.

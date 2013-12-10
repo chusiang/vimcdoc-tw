@@ -7,7 +7,7 @@
 
 
 						*riscos* *RISCOS* *RISC-OS*
-RISC OS 的支持在 Vim patch 7.3.187 中被刪除。
+RISC OS 的支援在 Vim patch 7.3.187 中被刪除。
 如果你想在 RISC OS 中使用 Vim，請獲取該補丁之前的版本。
 
  vim:tw=78:ts=8:ft=help:norl:

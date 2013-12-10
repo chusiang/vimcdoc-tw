@@ -5,121 +5,121 @@
 		     譯者: wandys http://vimcdoc.sf.net
 
 
-本文討論 C 程序以及其它文件類型的縮進。
+本文討論 C 程式以及其它檔案類型的縮排。
 
-1. 縮進 C 風格的程序		|C-indenting|
-2. 按表達式縮進			|indent-expression|
+1. 縮排 C 風格的程式		|C-indenting|
+2. 按表示式縮排			|indent-expression|
 
 ==============================================================================
-1. 縮進 C 風格的程序					*C-indenting*
+1. 縮排 C 風格的程式					*C-indenting*
 
-有關 C 風格的縮進的基本操作請參用戶手冊的 |30.2|。
+有關 C 風格的縮排的基本操作請參使用者手冊的 |30.2|。
 
-Vim 有很多自動縮進 C 風格程序的選項。不少編程語言，如 Java 和 C++，都和 C 的排
-版習慣非常相近。這些選項只對縮進有影響而不處理其他形式的排版。另有一些選項影響
-其它類型的排版和縮進，大體可參閱 |format-comments|、|fo-table|、|gq| 和
+Vim 有很多自動縮排 C 風格程式的選項。不少程式語言，如 Java 和 C++，都和 C 的排
+版習慣非常相近。這些選項只對縮排有影響而不處理其他形式的排版。另有一些選項影響
+其它類型的排版和縮排，大體可參閱 |format-comments|、|fo-table|、|gq| 和
 |formatting|。
 
 備註 如果編譯時沒有指定 |+smartindent| 或者 |+cindent| 特性，這些選項將不起作
 用。
 
-實際上主要有四種可用縮進的方式，如果同時指定或對 'indentexpr' 而言非空，列於後
+實際上主要有四種可用縮排的方式，如果同時指定或對 'indentexpr' 而言非空，列於後
 者優先於列於前者:
-'autoindent'	沿用上一行的縮進。
+'autoindent'	沿用上一行的縮排。
 'smartindent'	類似 'autoindent'，但是可以識別一些 C 語法以能在合適的地方
-		增加 / 減少縮進。
-'cindent'	比上面兩個更聰明；可以設置不同的縮進風格。
-'indentexpr'	最靈活的一個: 根據表達式來計算縮進。若此選項非空，則優先於其它
+		增加 / 減少縮排。
+'cindent'	比上面兩個更聰明；可以設定不同的縮排風格。
+'indentexpr'	最靈活的一個: 根據表示式來計算縮排。若此選項非空，則優先於其它
 		選項覆蓋。參見 |indent-expression|。
 本節下面的內容介紹 'cindent' 選項。
 
-注意 'cindent' 縮進不一定對所有的代碼都起作用。Vim 不是 C 編譯器: 它不能識別出
+注意 'cindent' 縮排不一定對所有的程式碼都起作用。Vim 不是 C 編譯器: 它不能識別出
 所有的語法。一個要求是頂層函數必須在第一列中含有 '{'。否則它們容易與聲明混淆。
 
-這四個選項控制 C 程序縮進:
-'cindent'	使 Vim 對 C 程序自動縮進。
-'cinkeys'	指定在插入模式下按哪個鍵可以再次縮進。
-'cinoptions'	設定你喜好的縮進模式。
-'cinwords'	定義在下一行中開始一個額外縮進的關鍵字。
+這四個選項控制 C 程式縮排:
+'cindent'	使 Vim 對 C 程式自動縮排。
+'cinkeys'	指定在插入模式下按哪個鍵可以再次縮排。
+'cinoptions'	設定你喜好的縮排模式。
+'cinwords'	定義在下一行中開始一個額外縮排的關鍵字。
 
-如果 'lisp' 選項沒被打開並且 'equalprg' 爲空，"=" 操作符將使用 Vim 的內建算法
-而不調用外部程序。
+如果 'lisp' 選項沒被開啟並且 'equalprg' 為空，"=" 操作符將使用 Vim 的內建演算法
+而不呼叫外部程式。
 
-若要對 C 文件自動設定 'cindent' 選項而在其它文件裏復位，請參考 |autocommand|。
+若要對 C 檔案自動設定 'cindent' 選項而在其它檔案裡復位，請參考 |autocommand|。
 
 					*cinkeys-format* *indentkeys-format*
-'cinkeys' 選項是這樣的一個字符串: 控制 Vim 在輸入特定字符或是在特定上下文下的
-命令後引起的縮進。備註 這不僅僅觸發 C-縮進。 若 'indentexpr' 非空，將會使用
+'cinkeys' 選項是這樣的一個字元串: 控制 Vim 在輸入特定字元或是在特定上下文下的
+命令後引起的縮排。備註 這不僅僅觸發 C-縮排。 若 'indentexpr' 非空，將會使用
 'indentkeys' 而不是 'cinkeys'。'cinkeys' 和 'indentkeys' 的格式是一樣的。
 
-其缺省值是 "0{,0},0),:,0#,!^F,o,O,e"。解釋如下:
+其預設值是 "0{,0},0),:,0#,!^F,o,O,e"。解釋如下:
 
-	"0{"	如果在該行輸入的第一個字符是 '{'
-	"0}"	如果在該行輸入的第一個字符是 '}'
-	"0)"	如果在該行輸入的第一個字符是 ')'
+	"0{"	如果在該行輸入的第一個字元是 '{'
+	"0}"	如果在該行輸入的第一個字元是 '}'
+	"0)"	如果在該行輸入的第一個字元是 ')'
 	":"	如果在標號或是 case 語句後輸入 ':'
-	"0#"	如果在該行輸入的第一個字符是 '#'
+	"0#"	如果在該行輸入的第一個字元是 '#'
 	"!^F"	如果輸入 CTRL-F (它不會被插入)
 	"o"	如果輸入 <CR> 或是使用 "o" 命令
 	"O"	如果使用 "O" 命令
 	"e"	如果輸入處於行首的 "else" 的第二個 'e'
 
-可以加在鍵值前面的字符: 					*i_CTRL-F*
-!	當 '!' 在一個鍵值前面，Vim 將不會插入那個鍵而是將當前行再次縮進。這可
-	以用來定義一個再次縮進當前行的鍵。CTRL-F 是缺省的鍵。將 CTRL-I 設定爲
-	這個鍵時要小心，因爲 CTRL-I 用來表示 <Tab> 的 ASCII 碼。
+可以加在鍵值前面的字元: 					*i_CTRL-F*
+!	當 '!' 在一個鍵值前面，Vim 將不會插入那個鍵而是將當前行再次縮排。這可
+	以用來定義一個再次縮排當前行的鍵。CTRL-F 是預設的鍵。將 CTRL-I 設定為
+	這個鍵時要小心，因為 CTRL-I 用來表示 <Tab> 的 ASCII 碼。
 
-*	當 '*' 在一個鍵值前面，會在插入此鍵之前再次縮進當前行。如果 'cinkeys'
-	包含 "*<Return>"，Vim 在開啓一個新行之前再次縮進當前行。
+*	當 '*' 在一個鍵值前面，會在插入此鍵之前再次縮排當前行。如果 'cinkeys'
+	包含 "*<Return>"，Vim 在開啟一個新行之前再次縮排當前行。
 0	當 '0' 在一個鍵值前面 (但可以在 '!' 或 '*' 後面)，只有當此鍵是該行你輸
-	入的第一個字符時，Vim 纔再次縮進當前行。如果在 "=" 之前使用，只有當此
-	單詞前面全是空白字符時 Vim 纔再次縮進當前行。
+	入的第一個字元時，Vim 纔再次縮排當前行。如果在 "=" 之前使用，只有當此
+	單詞前面全是空白字元時 Vim 纔再次縮排當前行。
 
-如果 '!' 和 '*' 都不在鍵值前，Vim 將在你輸入那個鍵後再次縮進當前行。 因此 ';'
-觸發一個包含 ';' 本身在內的行的縮進。
+如果 '!' 和 '*' 都不在鍵值前，Vim 將在你輸入那個鍵後再次縮排當前行。 因此 ';'
+觸發一個包含 ';' 本身在內的行的縮排。
 
 特殊鍵:
 <>	尖括號表示一個鍵名本身。例如: "<Up>"，"<Ins>" (參見 |key-notation|)。
-^	以 '^' 開頭的字符串表示一個控制字符。比如，"^F" 是 CTRL-F。
-o	當使用 "o" 命令或是在當前行後開啓一個新行時 (例如，在插入模式輸入
-	<Enter> 時) 再次縮進當前行。
-O	當使用 "O" 命令時再次縮進當前行。
-e	當輸入第二個 'e' 時，再次縮進由 "else" 開頭的行。
-:	在一個標號或是 case 語句後輸入 ':' 時，再次縮進當前行；不對 C++ 中的
-	"class::method" 這種形式縮進。若要對所有的 ":" 都縮進，使用 "<:>"。
-=word	當輸入 "word" 的最後一個字母時再次縮進。"word" 可以是一個單詞的一部
+^	以 '^' 開頭的字元串表示一個控制字元。比如，"^F" 是 CTRL-F。
+o	當使用 "o" 命令或是在當前行後開啟一個新行時 (例如，在插入模式輸入
+	<Enter> 時) 再次縮排當前行。
+O	當使用 "O" 命令時再次縮排當前行。
+e	當輸入第二個 'e' 時，再次縮排由 "else" 開頭的行。
+:	在一個標號或是 case 語句後輸入 ':' 時，再次縮排當前行；不對 C++ 中的
+	"class::method" 這種形式縮排。若要對所有的 ":" 都縮排，使用 "<:>"。
+=word	當輸入 "word" 的最後一個字母時再次縮排。"word" 可以是一個單詞的一部
 	分。比如當輸入 "endif" 或是 "endwhile" 中的 "d" 時，"=end" 都能引起再
-	次縮進。但當輸入 "bend" 時就沒有反應。另外，當補全功能產生了一個以
-	"word" 開頭的單詞時也會再次縮進。"0=word" 是當單詞前有空白符時才縮進。
+	次縮排。但當輸入 "bend" 時就沒有反應。另外，當補全功能產生了一個以
+	"word" 開頭的單詞時也會再次縮排。"0=word" 是當單詞前有空白符時才縮排。
 =~word	類似 "=word"，但忽略大小寫。
 
-如果你想在輸入 'o'、'O'、'e'、'0'、'<'、'>'、'*'、':'、 '!' 時產生再次縮進，請
+如果你想在輸入 'o'、'O'、'e'、'0'、'<'、'>'、'*'、':'、 '!' 時產生再次縮排，請
 分別使用 "<o>"、"<O>"、"<e>"、"<0>"、"<<>"、"<>>"、"<*>"、"<:>"、"<!>"。
 
-emacs 風格的縮進模式並不是每次輸入 <Enter> 都縮進，而是只在輸入 <Tab> 時才縮
+emacs 風格的縮排模式並不是每次輸入 <Enter> 都縮排，而是只在輸入 <Tab> 時才縮
 進。對此，我建議使用: >
 	:set cinkeys=0{,0},:,0#,!<Tab>,!^F
 你也許還需要關掉 'autoindent' 選項。
 
-備註: 如果你手動地改變了當前行的縮進，Vim 會忽略對此行的 cindent (譯者注: 也包
+備註: 如果你手動地改變了當前行的縮排，Vim 會忽略對此行的 cindent (譯者注: 也包
 含 'indentexpr') 設定。因此如果你輸入 <BS>、<Tab>、<Space>、CTRL-T、或是
-CTRL-D 來改變縮進，Vim 將不會再次縮進。
+CTRL-D 來改變縮排，Vim 將不會再次縮排。
 
 						*cinoptions-values*
-'cinoptions' 選項決定 Vim 來如何進行縮進。選項之後的值採用以下形式之一 (N 爲
+'cinoptions' 選項決定 Vim 來如何進行縮排。選項之後的值採用以下形式之一 (N 為
 任何數字):
-	N	縮進 N 個空格
-	-N	向左縮進 N 個空格
+	N	縮排 N 個空格
+	-N	向左縮排 N 個空格
 	Ns	N 倍 'shiftwidth' 個空格
 	-Ns	向左 N 倍 'shiftwidth' 個空格
 
-在下面的列表中，"N" 表示一個你選擇的數字 (可以爲負數)。如果數字後有一個 's'，
+在下面的列表中，"N" 表示一個你選擇的數字 (可以為負數)。如果數字後有一個 's'，
 Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftwidth' 的
 兩倍，以此類推。你也可以使用小數點: "-0.5s" 是 'shiftwidth' 一半的負值。
-下面的例子假定 'shiftwidth' 爲 4。
+下面的例子假定 'shiftwidth' 為 4。
 							*cino->*
-	>N    "一般" 縮進的增加值。在需要增加縮進的行 (比如，以 "if" 或是 "{"
-	      等開頭的行) 之後使用。(缺省爲 'shiftwidth')。
+	>N    "一般" 縮排的增加值。在需要增加縮排的行 (比如，以 "if" 或是 "{"
+	      等開頭的行) 之後使用。(預設為 'shiftwidth')。
 
 		cino=		    cino=>2		cino=>2s >
 		  if (cond)	      if (cond)		  if (cond)
@@ -128,9 +128,9 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }		      }			  }
 <
 							*cino-e*
-	eN    當 '{' 在行尾 (End，更準確地，不在行首) 時，相對 '一般' 縮進增加
-	      N 個字符的縮進。如果你想對 '{' 在行首時和 '{' 在行尾時使用不同的
-	      縮進，這將很有用。(缺省爲 0)。
+	eN    當 '{' 在行尾 (End，更準確地，不在行首) 時，相對 '一般' 縮排增加
+	      N 個字元的縮排。如果你想對 '{' 在行首時和 '{' 在行尾時使用不同的
+	      縮排，這將很有用。(預設為 0)。
 
 		cino=		    cino=e2		cino=e-2 >
 		  if (cond) {	      if (cond) {	  if (cond) {
@@ -143,8 +143,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 <
 							*cino-n*
 	nN    如果一個在 "if"，"while" 等等後面的語句不在 (Not) 大括號內，則相
-	      對 '一般' 縮進增加 N 個字符的縮進。如果你要對語句前有 '{' 和沒有
-	      '{' 使用不同的縮進，這將很有用。(缺省爲 0)。
+	      對 '一般' 縮排增加 N 個字元的縮排。如果你要對語句前有 '{' 和沒有
+	      '{' 使用不同的縮排，這將很有用。(預設為 0)。
 
 		cino=		    cino=n2		cino=n-2 >
 		  if (cond)	      if (cond)		  if (cond)
@@ -155,9 +155,9 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }		      }			  }
 <
 							*cino-f*
-	fN    將函數或是其他代碼塊開頭的 '{' 放在第 N 列。這只對不包含於其他大
-	      括號內並且處於行首的 '{' 起作用。'{' 之後的代碼對它的相對位置不
-	      變。 (缺省爲 0)。
+	fN    將函數或是其他程式碼塊開頭的 '{' 放在第 N 列。這只對不包含於其他大
+	      括號內並且處於行首的 '{' 起作用。'{' 之後的程式碼對它的相對位置不
+	      變。 (預設為 0)。
 
 		cino=		    cino=f.5s		cino=f1s >
 		  func()	      func()		  func()
@@ -165,8 +165,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		      int foo;		    int foo;		  int foo;
 <
 							*cino-{*
-	{N    將 '{' 置於 '一般' 縮進後 N 個字符的位置。這只對包括在其他大括號
-	      內的 '{' 起作用。(缺省爲 0)。
+	{N    將 '{' 置於 '一般' 縮排後 N 個字元的位置。這只對包括在其他大括號
+	      內的 '{' 起作用。(預設為 0)。
 
 		cino=		    cino={.5s		cino={1s >
 		  if (cond)	      if (cond)		  if (cond)
@@ -174,7 +174,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		      foo;		  foo;		      foo;
 <
 							*cino-}*
-	}N    將 '}' 放在與之匹配的 '{' 之後 N 個字符處。(缺省爲 0)。
+	}N    將 '}' 放在與之匹配的 '{' 之後 N 個字元處。(預設為 0)。
 
 		cino=		    cino={2,}-0.5s	cino=}2 >
 		  if (cond)	      if (cond)		  if (cond)
@@ -183,9 +183,9 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }		      }			    }
 <
 							*cino-^*
-	^N    如果 '{' 在第 0 列，則對其包含的語句增加相對 '一般' 縮進 N 個字
-	      符的縮進。這可以對整個函數設定一個不同的縮進。(有人喜歡將其設成
-	      負數)。(缺省爲 0)。
+	^N    如果 '{' 在第 0 列，則對其包含的語句增加相對 '一般' 縮排 N 個字
+	      符的縮排。這可以對整個函數設定一個不同的縮排。(有人喜歡將其設成
+	      負數)。(預設為 0)。
 
 		cino=		    cino=^-2		cino=^-s >
 		  func()	      func()		  func()
@@ -197,8 +197,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }		      }			  }
 <
 							*cino-L*
-	LN    控制跳轉標籤的放置。如果 N 爲負，標籤放在第一列上。如果 N 非負，
-	      標籤的縮進位置爲 '一般' 縮進位置減去 N。(缺省爲 -1)。
+	LN    控制跳轉標籤的放置。如果 N 為負，標籤放在第一列上。如果 N 非負，
+	      標籤的縮排位置為 '一般' 縮排位置減去 N。(預設為 -1)。
 
 		cino=               cino=L2             cino=Ls >
 		  func()              func()              func()
@@ -210,7 +210,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }                   }                   }
 <
 							*cino-:*
-	:N    將 case 標號放在 switch() 縮進位置之後的 N 個字符處。(缺省爲
+	:N    將 case 標號放在 switch() 縮排位置之後的 N 個字元處。(預設為
 	      'shiftwidth')。
 
 		cino=		    cino=:0 >
@@ -222,7 +222,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }		      }
 <
 							*cino-=*
-	=N    將 case 標號之後的語句放在標號縮進位置之後的 N 個字符處。(缺省爲
+	=N    將 case 標號之後的語句放在標號縮排位置之後的 N 個字元處。(預設為
 	      'shiftwidth')。
 
 		cino=		    cino==10 >
@@ -230,7 +230,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		       a = a + 1;		  b = b + 1;
 <
 							*cino-l*
-	lN    如果 N 不爲 0，Vim 將會和 case 標號對齊，而不是和同一行其後的語
+	lN    如果 N 不為 0，Vim 將會和 case 標號對齊，而不是和同一行其後的語
 	      句對齊。
 
 		cino=			    cino=l1 >
@@ -240,8 +240,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 				}		  }
 <
 							*cino-b*
-	bN    如果 N 不爲 0，Vim 會將最後的 "break" 和 case 標號對齊，這樣
-	      case..break 看起來有點像一個代碼塊。(缺省爲 0)。
+	bN    如果 N 不為 0，Vim 會將最後的 "break" 和 case 標號對齊，這樣
+	      case..break 看起來有點像一個程式碼塊。(預設為 0)。
 	      使用 1 時，考慮在 'cinkeys' 中加入 "0=break"。
 
 		cino=		    cino=b1 >
@@ -257,7 +257,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }		      }
 <
 							*cino-g*
-	gN    將 C++ 作用域聲明置於其所在代碼塊的 N 個字符後。(缺省爲
+	gN    將 C++ 作用域聲明置於其所在程式碼塊的 N 個字元後。(預設為
 	      'shiftwidth')。作用域聲明可以是 "public:"， "protected:" 或者
 	      "private:"。
 
@@ -269,7 +269,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }		      }
 <
 							*cino-h*
-	hN    將 C++ 作用域聲明後面的語句置於對應標號的 N 個字符後。 (缺省爲
+	hN    將 C++ 作用域聲明後面的語句置於對應標號的 N 個字元後。 (預設為
 	      'shiftwidth')。
 
 		cino=		    cino=h10 >
@@ -277,7 +277,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		       a = a + 1;		  b = b + 1;
 <
 							*cino-N*
-	NN     C++ namespace 之內的相對普通塊的額外縮進。(缺省爲 0)。
+	NN     C++ namespace 之內的相對普通塊的額外縮排。(預設為 0)。
 
 		cino=			   cino=N-s >
 		  namespace {                namespace {
@@ -290,8 +290,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  }                          }
 <
 							*cino-p*
-	pN    在 K&R 形式的函數聲明中，將參數的聲明放在 N 個字符的相對位置。
-	      (缺省爲 'shiftwidth')。
+	pN    在 K&R 形式的函數聲明中，將參數的聲明放在 N 個字元的相對位置。
+	      (預設為 'shiftwidth')。
 
 		cino=		    cino=p0		cino=p2s >
 		  func(a, b)	      func(a, b)	  func(a, b)
@@ -299,7 +299,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		      char b;	      char b;			  char b;
 <
 							*cino-t*
-	tN    將函數返回值類型聲明放在 N 個字符的相對位置。(缺省爲
+	tN    將函數返回值類型聲明放在 N 個字元的相對位置。(預設為
 	      'shiftwidth')。
 
 		cino=		    cino=t0		cino=t7 >
@@ -307,8 +307,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  func()	      func()		  func()
 <
 							*cino-i*
-	iN    縮進 C++ 的基類聲明和構造函數初始化部分，如果它們處於行首 (否
-	      則，它們對齊在 ':' 的右側)。(缺省爲 'shiftwidth')。
+	iN    縮排 C++ 的基類聲明和建構函式初始化部分，如果它們處於行首 (否
+	      則，它們對齊在 ':' 的右側)。(預設為 'shiftwidth')。
 
 		cino=			  cino=i0 >
 		  class MyClass :	    class MyClass :
@@ -319,8 +319,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		  {}			    {}
 <
 							*cino-+*
-	+N    函數之內的續行 (在下一行繼續的行) 縮進增加額外的 N 個字符。(缺省
-	      爲 'shiftwidth')。
+	+N    函數之內的續行 (在下一行繼續的行) 縮排增加額外的 N 個字元。(預設
+	      為 'shiftwidth')。
 	      函數之外，如果前行以反斜槓結尾，使用 2 * N。
 
 		cino=			  cino=+10 >
@@ -328,8 +328,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		      c;			      c;
 <
 							*cino-c*
-	cN    如果沒有其它文本可供對齊的話，註釋頭部 (譯者注: /*) 之後的註釋行
-	      相對註釋頭部 N 個字符的縮進。(缺省爲 3)。
+	cN    如果沒有其它文字可供對齊的話，註釋頭部 (譯者注: /*) 之後的註釋行
+	      相對註釋頭部 N 個字元的縮排。(預設為 3)。
 	      參見 |format-comments|。
 
 		cino=			  cino=c5 >
@@ -338,7 +338,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		   */			     */
 <
 							*cino-C*
-	CN    如果 N 非零，像上面 c 選項一樣對註釋縮進，即使 /* 後面還有其他文
+	CN    如果 N 非零，像上面 c 選項一樣對註釋縮排，即使 /* 後面還有其他文
 	      字也是如此。
 
 		cino=c0			  cino=c0,C1 >
@@ -348,17 +348,17 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 <	      (示例使用了 ":set comments& comments-=s1:/* comments^=s0:/*")
 
 							*cino-/*
-	/N    將註釋行增加額外的縮進 N 個字符。(缺省爲 0)。
+	/N    將註釋行增加額外的縮排 N 個字元。(預設為 0)。
 		cino=			  cino=/4 >
 		  a = b;		    a = b;
 		  /* comment */			/* comment */
 		  c = d;		    c = d;
 <
 							*cino-(*
-	(N    在沒有結束的括號內，相對沒有結束的括號所在行進行 N 個字符的縮
-	      進。對每一個沒有結束的括號增加 'shiftwidth' 的縮進。如果 N 爲 0,
-	      或沒有結束的括號是其所在行的首個非空白字符，和括號之後下一個非空
-	      白字符對齊。(缺省爲 'shiftwidth' * 2)。
+	(N    在沒有結束的括號內，相對沒有結束的括號所在行進行 N 個字元的縮
+	      進。對每一個沒有結束的括號增加 'shiftwidth' 的縮排。如果 N 為 0,
+	      或沒有結束的括號是其所在行的首個非空白字元，和括號之後下一個非空
+	      白字元對齊。(預設為 'shiftwidth' * 2)。
 
 		cino=			  cino=(0 >
 		  if (c1 && (c2 ||	    if (c1 && (c2 ||
@@ -369,7 +369,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		     {			       {
 <
 							*cino-u*
-	uN    和 (N 一樣，但更深一級。(缺省爲 'shiftwidth')。
+	uN    和 (N 一樣，但更深一級。(預設為 'shiftwidth')。
 
 		cino=			  cino=u2 >
 		  if (c123456789	    if (c123456789
@@ -377,8 +377,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 			      || c3))		      || c3))
 <
 							*cino-U*
-	UN    如果 N 非零，即使沒結束的括號是所在行的首個非空白字符，也不忽略
-	      ( 或是 u 指定的縮進。(缺省爲 0)。
+	UN    如果 N 非零，即使沒結束的括號是所在行的首個非空白字元，也不忽略
+	      ( 或是 u 指定的縮排。(預設為 0)。
 
 		cino= 或 cino=(s	  cino=(s,U1 >
 		  c = c1 &&		    c = c1 &&
@@ -389,9 +389,9 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 <
 							*cino-w*
 	wN    如果 N 非零，在沒有結束的括號內如果使用 "(0" 或是 "u0"，或當沒有
-	      結束的括號是所在行的首個非空白字符但使用 "U0" 時，對齊使用的是緊
-	      隨在沒有結束括號之後的字符，而不一定是其後首個非空白字符。
-	      (缺省爲 0)。
+	      結束的括號是所在行的首個非空白字元但使用 "U0" 時，對齊使用的是緊
+	      隨在沒有結束括號之後的字元，而不一定是其後首個非空白字元。
+	      (預設為 0)。
 
 		cino=(0			  cino=(0,w1 >
 		  if (   c1		    if (   c1
@@ -401,9 +401,9 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 <
 							*cino-W*
 	WN    如果 N 非零，在沒有結束的括號內如果使用 "(0" 或是 "u0" 且當沒有
-	      結束的括號是所在行的最後一個非空白字符且不是閉括號時，下一行相對
-	      外部代碼塊 (比如，行首或是下一層沒結束的括號) 縮進 N 個字符。
-	      (缺省爲 0)。
+	      結束的括號是所在行的最後一個非空白字元且不是閉括號時，下一行相對
+	      外部程式碼塊 (比如，行首或是下一層沒結束的括號) 縮排 N 個字元。
+	      (預設為 0)。
 
 		cino=(0			   cino=(0,W4 >
 		  a_long_line(		    a_long_line(
@@ -414,10 +414,10 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 <
 							*cino-k*
 	kN    在 "if"、"for" 或 "while" 之後沒有結束的括號內且 N 非零時，覆蓋
-	      "(N" 定義的行爲: 相對外層上下文 (即 "if"、"for" 或 "while" 所在
-	      行) 縮進 N 個字符。對更深層的嵌套沒有影響。影響 "wN" 等標誌位的
-	      行爲，但僅限於 "if"、"for" 和 "while" 條件。0 值對應的缺省是
-	      "(N" 標誌位定義的行爲。(缺省爲 0)。
+	      "(N" 定義的行為: 相對外層上下文 (即 "if"、"for" 或 "while" 所在
+	      行) 縮排 N 個字元。對更深層的巢狀沒有影響。影響 "wN" 等標誌位的
+	      行為，但僅限於 "if"、"for" 和 "while" 條件。0 值對應的預設是
+	      "(N" 標誌位定義的行為。(預設為 0)。
 
 		cino=(0			   cino=(0,ks >
 		  if (condition1	    if (condition1
@@ -428,7 +428,7 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 <
 							*cino-m*
 	mN    如果 N 非零，則將 ')' 開始的行和與其匹配的 '(' 所在行的第一個字
-	      符對齊。(缺省爲 0)。
+	      符對齊。(預設為 0)。
 
 		cino=(s			  cino=(s,m1 >
 		  c = c1 && (		    c = c1 && (
@@ -441,8 +441,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		      foo;			foo;
 <
 							*cino-M*
-	MN    如果 N 非零，則將 ')' 開始的行與前一行的第一個字符對齊。
-	      (缺省爲 0)。
+	MN    如果 N 非零，則將 ')' 開始的行與前一行的第一個字元對齊。
+	      (預設為 0)。
 
 		cino=			  cino=M1 >
 		  if (cond1 &&		    if (cond1 &&
@@ -450,9 +450,9 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		     )				   )
 <
 				*java-cinoptions* *java-indenting* *cino-j*
-	jN    正確地縮進 Java 匿名類，也適用於 Javascript。目前，'N' 的值並沒
-	      有用到但其不能爲 0 (比如 'j1')。'j1' 將對下面的代碼段這樣正確的
-	      縮進: >
+	jN    正確地縮排 Java 匿名類，也適用於 Javascript。目前，'N' 的值並沒
+	      有用到但其不能為 0 (比如 'j1')。'j1' 將對下面的程式碼段這樣正確的
+	      縮排: >
 
 		object.add(new ChangeListener() {
 		    public void stateChanged(ChangeEvent e) {
@@ -461,8 +461,8 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 		});
 <
 			*javascript-cinoptions* *javascript-indenting* *cino-J*
-	JN    正確縮進 JavaScript 對象聲明，不把它錯誤地當成標籤。目前 'N' 的
-	      值並沒有用到但不能爲 0 (比如 'J1'). 要打開之，也應考慮同時打開
+	JN    正確縮排 JavaScript 物件聲明，不把它錯誤地當成標籤。目前 'N' 的
+	      值並沒有用到但不能為 0 (比如 'J1'). 要開啟之，也應考慮同時開啟
 	      |cino-j|。>
 
 		var bar = {
@@ -480,20 +480,20 @@ Vim 將那個數字乘以 'shiftwidth': "1s" 是 'shiftwidth'，"2s" 是 'shiftw
 <
 								*cino-)*
 	)N    Vim 最多在 N 行範圍內查找沒有結束的括號。這將縮小 Vim 用來查找
-	      括號的時間。(缺省 20 行)。
+	      括號的時間。(預設 20 行)。
 
 								*cino-star*
 	*N    Vim 最多在 N 行範圍內查找沒有結束的註釋。這將縮小 Vim 用來查找
 	      註釋頭部的時間。
-	      如果你的 /* * / 註釋在 N 行後停止縮進，這裏就是你要改的地方。
-	      (缺省 70 行)。
+	      如果你的 /* * / 註釋在 N 行後停止縮排，這裡就是你要改的地方。
+	      (預設 70 行)。
 
 								*cino-#*
-	#N    如果 N 非零，識別 shell/Perl 風格 # 開頭的註釋。缺省 N 爲零:
-	      不識別 '#' 註釋。注意 # 開頭的行仍將被識別爲預處理命令行。
+	#N    如果 N 非零，識別 shell/Perl 風格 # 開頭的註釋。預設 N 為零:
+	      不識別 '#' 註釋。注意 # 開頭的行仍將被識別為預處理命令列。
 
 
-全部的缺省值是:
+全部的預設值是:
 	cinoptions=>s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,l0,b0,gs,hs,N0,ps,ts,is,+s,
 			c3,C0,/0,(2s,us,U0,w0,W0,k0,m0,j0,J0,)20,*70,#0
 
@@ -501,14 +501,14 @@ Vim 將一行從第一列開始，如果:
 - 它以 '#' 開頭 (預處理指令)，並且 'cinkeys' 包含 '#'。
 - 它以一個標號 (後面跟隨一個 ':' 的關鍵字，除了 "case" 或 "default" 以外) 開
   頭，並且 'cinoptions' 不包含使用正數值的 'L' 項目。
-- 任何縮進的組合使這一行產生小於 0 的縮進。
+- 任何縮排的組合使這一行產生小於 0 的縮排。
 
 ==============================================================================
-2. 按表達式縮進						*indent-expression*
+2. 按表示式縮排						*indent-expression*
 
-關於靈活縮進的一些基本知識在用戶手冊的 |30.3| 有解釋。
+關於靈活縮排的一些基本知識在使用者手冊的 |30.3| 有解釋。
 
-如果你要寫一個自己的縮進文件，它必須設定 'indentexpr' 選項。設定 'indentkeys'
+如果你要寫一個自己的縮排檔案，它必須設定 'indentexpr' 選項。設定 'indentkeys'
 也經常有用。$VIMRUNTIME/indent 目錄下有例子可以參考。
 
 
@@ -517,19 +517,19 @@ Vim 將一行從第一列開始，如果:
 
 CLOJURE					*ft-clojure-indent* *clojure-indent*
 
-Clojure 的縮進和傳統的 Lisp 有所不同，部分由於方括號和尖括號的使用，還有部分是
-社羣習慣的差異。這些慣例又不是普遍遵循的。因爲這樣，Closure 縮進腳本提供了若干
+Clojure 的縮排和傳統的 Lisp 有所不同，部分由於方括號和尖括號的使用，還有部分是
+社群習慣的差異。這些慣例又不是普遍遵循的。因為這樣，Closure 縮排指令碼提供了若干
 可配置的選項，如下所述。
 
-如果當前的 vim 不支持 searchpairpos()，縮進腳本回到普通 'lisp' 縮進方式並忽略
+如果當前的 vim 不支援 searchpairpos()，縮排指令碼回到普通 'lisp' 縮排方式並忽略
 以下所述的選項。
 
 							*g:clojure_maxlines*
 
-設置 searchpairpos() 的最大檢索距離。較大的值犧牲性能以換取處理更長表達式
+設定 searchpairpos() 的最大檢索距離。較大的值犧牲效能以換取處理更長表示式
 (form) 的正確性。0 會使檢索沒有限制。
 >
-	" 缺省
+	" 預設
 	let g:clojure_maxlines = 100
 <
 
@@ -537,32 +537,32 @@ Clojure 的縮進和傳統的 Lisp 有所不同，部分由於方括號和尖括
 					*g:clojure_fuzzy_indent_patterns*
 					*g:clojure_fuzzy_indent_blacklist*
 
-'lispwords' 選項是一個逗號分隔的單詞列表，指定那些需要以兩個空格縮進子表達式的
-特殊表達式。
+'lispwords' 選項是一個逗號分隔的單詞列表，指定那些需要以兩個空格縮排子表示式的
+特殊表示式。
 
 例如:
 >
 	(defn bad []
-	      "錯誤的縮進")
+	      "錯誤的縮排")
 
 	(defn good []
-	  "正確的縮進")
+	  "正確的縮排")
 <
-如果想用 |pattern| 來代替 'lispwords'，可用模糊縮進功能:
+如果想用 |pattern| 來代替 'lispwords'，可用模糊縮排功能:
 >
-	" 縮進
+	" 縮排
 	let g:clojure_fuzzy_indent = 1
 	let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
 	let g:clojure_fuzzy_indent_blacklist =
 		\ ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
 
-	" 舊式的逗號分隔字符串版本；建議採用上面的列表格式。注意這裏的模式總是
+	" 舊式的逗號分隔字元串版本；建議採用上面的列表格式。注意這裡的模式總是
 	" 隱含假定以 ^ 開始，以 $ 結束
 	let g:clojure_fuzzy_indent_patterns = 'with.*,def.*,let.*'
 <
 |g:clojure_fuzzy_indent_patterns| 和 |g:clojure_fuzzy_indent_blacklist| 是模式
 的列表 |Lists|，用於匹配 Lisp 列表 (list) 的頭部去掉引號和限定詞部分的符號。這
-意味着形如 "^foo" 的模式會匹配以下的候選: "foobar"、"my.ns/foobar" 和
+意味著形如 "^foo" 的模式會匹配以下的候選: "foobar"、"my.ns/foobar" 和
 "#'foobar"。
 
 每個候選詞會以下列順序進行是否需要特殊處理的測試:
@@ -570,22 +570,22 @@ Clojure 的縮進和傳統的 Lisp 有所不同，部分由於方括號和尖括
 	1. 若單詞按本義出現在 'lispwords' 中，返回真
 	2. 若單詞匹配 |g:clojure_fuzzy_indent_blacklist| 中的某個模式，返回假
 	3. 若單詞匹配 |g:clojure_fuzzy_indent_patterns| 中的某個模式，返回真
-	4. 否則返回假，按正常方式縮進
+	4. 否則返回假，按正常方式縮排
 
 					*g:clojure_special_indent_words*
 
-有些 Closure 的表達式的縮進方式要求每個子表達式只縮進兩格，不管 'lispwords'
-如何設置。如果你有要求這種獨特的縮進方式的結構，可以把相應的符號加入下面的缺省
+有些 Closure 的表示式的縮排方式要求每個子表示式只縮排兩格，不管 'lispwords'
+如何設定。如果你有要求這種獨特的縮排方式的結構，可以把相應的符號加入下面的預設
 列表。
 >
-	" 缺省
+	" 預設
 	let g:clojure_special_indent_words =
 	   \ 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn'
 <
 
 					*g:clojure_align_multiline_strings*
 
-多行字符串的後續行和引導引號之後的列對齊，而不是對齊與同一列。
+多行字元串的後續行和引導引號之後的列對齊，而不是對齊與同一列。
 
 示例:
 >
@@ -601,68 +601,68 @@ Clojure 的縮進和傳統的 Lisp 有所不同，部分由於方括號和尖括
 	   enim ad minim veniam, quis nostrud exercitation ullamco laboris
 	   nisi ut aliquip ex ea commodo consequat.")
 <
-缺省關閉此選項。
+預設關閉此選項。
 >
-	" 缺省
+	" 預設
 	let g:clojure_align_multiline_strings = 0
 <
 
 
 FORTRAN							*ft-fortran-indent*
 
-Block if、select case、where 和 forall 代碼塊被縮進。type、interface、
+Block if、select case、where 和 forall 程式碼塊被縮排。type、interface、
 associate、block 和 enum 結構也是。subrountine、function、module 和 program
-block 的縮進可選。如果 Fortran 在自由格式下，註釋，標號語句和續行被縮進；如果
-在固定寬度格式下，這些就不會被縮進，因爲左邊必須要求留出空白。因此，在固定寬度
-格式下，需要手動對標號語句和續行縮進。關於檢測源碼格式的更深入討論，參見
+block 的縮排可選。如果 Fortran 在自由格式下，註釋，標號語句和續行被縮排；如果
+在固定寬度格式下，這些就不會被縮排，因為左邊必須要求留出空白。因此，在固定寬度
+格式下，需要手動對標號語句和續行縮排。關於檢測源碼格式的更深入討論，參見
 |ft-fortran-syntax|。
 
-do 循環 ~
-缺省情況下，所有的 do 循環保持原樣，不縮進。在 Fortran 裏，循環甚至是多重循環
-可以結束於一個任意類型的帶標號可執行語句，使得 do 循環非結構化。對其正確的縮進
-需要編譯器級別的語法分析。對於這樣 do 循環結束於任意類型的帶標號語句的老式代碼
-可以使用 Tidy (http://www.unb.ca/chem/ajit/f_tidy.htm) 等專門的程序縮進。結構
-化的 do/continue 循環也保持不縮進，因爲 continue 除了結束 do 循環以外還有其它
-的用途。Tidy 可以將結構化的 do/continue 循環轉換成 do/enddo 的形式。do/enddo
-類型的循環能被縮進。如果你只使用結構化的 do/enddo 形式的循環，可以在 .vimrc 中
+do 迴圈 ~
+預設情況下，所有的 do 迴圈保持原樣，不縮排。在 Fortran 裡，迴圈甚至是多重迴圈
+可以結束於一個任意類型的帶標號可執行語句，使得 do 迴圈非結構化。對其正確的縮排
+需要編譯器級別的語法分析。對於這樣 do 迴圈結束於任意類型的帶標號語句的老式程式碼
+可以使用 Tidy (http://www.unb.ca/chem/ajit/f_tidy.htm) 等專門的程式縮排。結構
+化的 do/continue 迴圈也保持不縮排，因為 continue 除了結束 do 迴圈以外還有其它
+的用途。Tidy 可以將結構化的 do/continue 迴圈轉換成 do/enddo 的形式。do/enddo
+類型的迴圈能被縮排。如果你只使用結構化的 do/enddo 形式的迴圈，可以在 .vimrc 中
 作如下聲明: >
 
    let fortran_do_enddo=1
 
-這樣 do 循環就被縮進了。如果只是在比如 .f90 文件裏，你的所有循環都是 do/enddo
-形式，那麼可以像下面一樣用自動命令設置一個緩衝區標誌位 >
+這樣 do 迴圈就被縮排了。如果只是在比如 .f90 檔案裡，你的所有迴圈都是 do/enddo
+形式，那麼可以像下面一樣用自動命令設定一個緩衝區標誌位 >
 
   au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
 
-使 .f90 文件裏的 do 循環被縮進而在其它擴展名裏，比如 .for 文件中不被縮進。
+使 .f90 檔案裡的 do 迴圈被縮排而在其它副檔名裡，比如 .for 檔案中不被縮排。
 
-程序單元 ~
-缺省打開程序單元 (subrountine、function、module 和 program block) 的縮進，如果
-需要輕量級的節省屏幕寬度的縮進風格，可以關閉之。要關閉所有 fortran 文件的程序
-單元的縮進，在 .vimrc 裏設置全局變量 fortran_indent_less >
+程式單元 ~
+預設開啟程式單元 (subrountine、function、module 和 program block) 的縮排，如果
+需要輕量級的節省螢幕寬度的縮排風格，可以關閉之。要關閉所有 fortran 檔案的程式
+單元的縮排，在 .vimrc 裡設定全局變數 fortran_indent_less >
 
   let fortran_indent_less=1
 
-要更精細的控制，可以設置對應的緩衝區局部變量 >
+要更精細的控制，可以設定對應的緩衝區局部變數 >
 
   let b:fortran_indent_less=1
 
 
 HTML				*ft-html-indent* *html-indent* *html-indenting*
 
-這裏說明定製 HTML 縮進的相關變量，可以把它們放到你的 vimrc 裏。
+這裡說明定製 HTML 縮排的相關變數，可以把它們放到你的 vimrc 裡。
 
-可以設置 <script> 和 <style> 這些 "區塊標籤" 之後的首行縮進 (缺省爲 "zero"): >
+可以設定 <script> 和 <style> 這些 "區塊標籤" 之後的首行縮排 (預設為 "zero"): >
 
       :let g:html_indent_script1 = "inc"
       :let g:html_indent_style1 = "inc"
 <
       值	含義 ~
-      "zero"	零縮進
-      "auto"	自動縮進 (和匹塊標籤相同的縮進)
-      "inc"	自動縮進 + 一個縮進位置
+      "zero"	零縮排
+      "auto"	自動縮排 (和匹塊標籤相同的縮排)
+      "inc"	自動縮排 + 一個縮排位置
 
-缺省，給許多標籤之後的內容增加縮進 (見腳本里的 "Add Indent Tags")。可以加入更
+預設，給許多標籤之後的內容增加縮排 (見指令碼里的 "Add Indent Tags")。可以加入更
 多類似的標籤: >
 
       :let g:html_indent_inctags = "html,body,head,tbody"
@@ -671,16 +671,16 @@ HTML				*ft-html-indent* *html-indent* *html-indenting*
 
       :let g:html_indent_autotags = "th,td,tr,tfoot,thead"
 
-這兩個變量的缺省值爲空。注意: 初始的 "inctags" 值只在每個 Vim 會話中定義一次。
+這兩個變數的預設值為空。注意: 初始的 "inctags" 值只在每個 Vim 會話中定義一次。
 
-只在腳本執行時讀入這些用戶變量。要在會話中間執行更改，除了重載 HTML 文件外，可
-以手動調用: >
+只在指令碼執行時讀入這些使用者變數。要在會話中間執行更改，除了過載 HTML 檔案外，可
+以手動呼叫: >
 
       :call HtmlIndent_CheckUserSettings()
 
 細節:
-  "區塊標籤" 內的縮進的計算，有些 "外來的" 內容:
-      區域標籤   縮進表達式	    適用情況 ~
+  "區塊標籤" 內的縮排的計算，有些 "外來的" 內容:
+      區域標籤   縮排表示式	    適用情況 ~
       <script> : {可定製}	    如果是區塊的首行
 	       : cindent(v:lnum)    如果沒有屬性或其中包含 "java"
 	       : -1		    否則 (vbscript、tcl、...)
@@ -691,29 +691,29 @@ HTML				*ft-html-indent* *html-indent* *html-indenting*
 
 PHP				*ft-php-indent* *php-indent* *php-indenting*
 
-注意:	只有激活 PHP 語法 |syntax| 才能正確縮進 PHP 文件。
+注意:	只有啟用 PHP 語法 |syntax| 才能正確縮排 PHP 檔案。
 
-如果在 Unix 'fileformat' 下編輯文件而換行符之前有 '\r' 字符，縮進的處理會不正
-確。需要先去除這些沒有的字符。例如可用: >
+如果在 Unix 'fileformat' 下編輯檔案而換行符之前有 '\r' 字元，縮排的處理會不正
+確。需要先去除這些沒有的字元。例如可用: >
 
     :%s /\r$//g
 
-或者，你可以簡單地 |:let| 變量 PHP_removeCRwhenUnix 爲 1，腳本會在 Vim 載入
-PHP 文件 (每次 |BufRead|) 時安靜地刪除它們。
+或者，你可以簡單地 |:let| 變數 PHP_removeCRwhenUnix 為 1，指令碼會在 Vim 載入
+PHP 檔案 (每次 |BufRead|) 時安靜地刪除它們。
 
 選項: ~
 
-PHP 縮進可以通過修改若干全局變量的值來對幾個方面進行改變:
+PHP 縮排可以通過修改若干全局變數的值來對幾個方面進行改變:
 
 								*php-comment*
-要缺省不打開註釋的自動排版 (如果要使用自己的 'formatoptions' 的話): >
+要預設不開啟註釋的自動排版 (如果要使用自己的 'formatoptions' 的話): >
     :let g:PHP_autoformatcomment = 0
 
-否則，'t' 會從 'formatoptions' 字符串中去除，並加上 "qrowcb"，詳見
+否則，'t' 會從 'formatoptions' 字元串中去除，並加上 "qrowcb"，詳見
 |fo-table|。
 -------------
 
-要給單行註釋增加額外的縮進: >
+要給單行註釋增加額外的縮排: >
     :let g:PHP_outdentSLComments = N
 
 其中的 N 是要增加的 'shiftwidth' 的倍數。
@@ -724,7 +724,7 @@ PHP 縮進可以通過修改若干全局變量的值來對幾個方面進行改�
     /* Comment */
 -------------
 
-要給所有 PHP 行增加額外的縮進 N 個 'shiftwidth': >
+要給所有 PHP 行增加額外的縮排 N 個 'shiftwidth': >
     :let g:PHP_default_indenting = N
 
 例如，如果 N = 1:
@@ -739,18 +739,18 @@ PHP 縮進可以通過修改若干全局變量的值來對幾個方面進行改�
 
 	$command_hist = TRUE;
     ?>
-(注意 PHP 標識符和它包含的代碼之間額外的縮進)
+(注意 PHP 標識符和它包含的程式碼之間額外的縮排)
 -------------
 
-要使 PHP 標籤和和包圍它的代碼使用相同的縮進: >
+要使 PHP 標籤和和包圍它的程式碼使用相同的縮排: >
     :let g:PHP_outdentphpescape = 0
 -------------
 
-要在 'fileformat' 設爲 Unix 時自動刪除 '\r' 字符: >
+要在 'fileformat' 設為 Unix 時自動刪除 '\r' 字元: >
     :let g:PHP_removeCRwhenUnix = 1
 -------------
 
-要使花括號的縮進和其包含的代碼相同: >
+要使花括號的縮排和其包含的程式碼相同: >
     :let g:PHP_BracesAtCodeLevel = 1
 
 給出的結果會變成: >
@@ -764,53 +764,53 @@ PHP 縮進可以通過修改若干全局變量的值來對幾個方面進行改�
 	foo();
     }
 
-注意:	如果使用此選項，縮進可能會稍慢一些，因爲無法使用若干優化。
+注意:	如果使用此選項，縮排可能會稍慢一些，因為無法使用若干優化。
 -------------
 
-要縮進 switch() 塊的 'case:' 和 'default:' 語句: >
+要縮排 switch() 塊的 'case:' 和 'default:' 語句: >
     :let g:PHP_vintage_case_default_indent = 1
 
 PHP 中 'case/default' 塊並非必須使用花括號，因此，'case:' 和 'default:' 和
-'switch()' 的縮進層次相同，以避免不必要的縮進。可用上述的選項來恢復傳統的縮進
+'switch()' 的縮排層次相同，以避免不必要的縮排。可用上述的選項來恢復傳統的縮排
 方式。
 
 
 PYTHON							*ft-python-indent*
 
-可以爲以下情形設置不同的縮進值。下面所舉的例子給出其缺省值。注意 這些變量用表
-達式賦值，所以你以後可以改變 'shiftwidth' 的值來改變此變量。
+可以為以下情形設定不同的縮排值。下面所舉的例子給出其預設值。注意 這些變數用表
+達式賦值，所以你以後可以改變 'shiftwidth' 的值來改變此變數。
 
-在 "(" 後的縮進: >
+在 "(" 後的縮排: >
 	let g:pyindent_open_paren = '&sw * 2'
-在嵌套的括號後的縮進: >
+在巢狀的括號後的縮排: >
 	let g:pyindent_nested_paren = '&sw'
-續行的縮進: >
+續行的縮排: >
 	let g:pyindent_continue = '&sw * 2'
 
 
 R								*ft-r-indent*
 
-函數參數如果跨越多行，會進行對齊。如果不想函數參數進行對齊，在 |vimrc| 裏放入:
+函數參數如果跨越多行，會進行對齊。如果不想函數參數進行對齊，在 |vimrc| 裡放入:
 >
    let r_indent_align_args = 0
 <
-所有註釋字符 # 開始的行和正常 R 代碼採用相同的縮進級別。Emacs/ESS 的用戶可能習
-慣單個 # 的縮進於第 40 列，而 ## 以正常 R 代碼方式縮進，### 不縮進。 如果你習
-慣 Emacs/ESS 的註釋對齊方式，在 |vimrc| 裏放入:
+所有註釋字元 # 開始的行和正常 R 程式碼採用相同的縮排級別。Emacs/ESS 的使用者可能習
+慣單個 # 的縮排於第 40 列，而 ## 以正常 R 程式碼方式縮排，### 不縮排。 如果你習
+慣 Emacs/ESS 的註釋對齊方式，在 |vimrc| 裡放入:
 >
    let r_indent_ess_comments = 1
 <
-要單個 # 開始行的對齊不在第 40 列，給 r_indent_common_column 設置一個新值，如
+要單個 # 開始行的對齊不在第 40 列，給 r_indent_common_column 設定一個新值，如
 下例所示:
 >
    let r_indent_comment_column = 30
 <
-縮進所有以 "<-" 結束的行之後的代碼。Emacs/ESS 則不縮進頂層函數的代碼。如果你希
-望 Vim-R-plugin 這方面採用 Emacs/ESS 風格，在 |.vimrc| 裏放入:
+縮排所有以 "<-" 結束的行之後的程式碼。Emacs/ESS 則不縮排頂層函數的程式碼。如果你希
+望 Vim-R-plugin 這方面採用 Emacs/ESS 風格，在 |.vimrc| 裡放入:
 >
    let r_indent_ess_compatible = 1
 <
-下面舉一個打開和關閉此選項的縮進例子:
+下面舉一個開啟和關閉此選項的縮排例子:
 >
    ### r_indent_ess_compatible = 1           ### r_indent_ess_compatible = 0
    foo <-                                    foo <-
@@ -822,39 +822,39 @@ R								*ft-r-indent*
 
 SHELL							*ft-sh-indent*
 
-通過 b:sh_indent_defaults 字典 |Dictionary| 的以下鍵，可以配置 shell 文件在各
-種情況下使用的縮進距離。它們可以是某個特定的值或者是返回所需距離的函數引用
+通過 b:sh_indent_defaults 字典 |Dictionary| 的以下鍵，可以配置 shell 檔案在各
+種情況下使用的縮排距離。它們可以是某個特定的值或者是返回所需距離的函數引用
 |Funcref|:
 
-b:sh_indent_options['default']	缺省縮進距離。
+b:sh_indent_options['default']	預設縮排距離。
 
 b:sh_indent_options['continuation-line']
-				加到續行上的縮進距離。
+				加到續行上的縮排距離。
 
 b:sh_indent_options['case-labels']
-				加到 case 標簽上的縮進距離。
+				加到 case 標簽上的縮排距離。
 				(沒有實際實現)
 
 b:sh_indent_options['case-statements']
-				加到 case 語句上的縮進距離。
+				加到 case 語句上的縮排距離。
 
 b:sh_indent_options['case-breaks']
-				加到 (更有可能，減少) case break 語句上的縮進
+				加到 (更有可能，減少) case break 語句上的縮排
 				距離。
 
 VERILOG							*ft-verilog-indent*
 
-一般的代碼塊，像 if、for、case、always、initial、function、specify、begin 等等
-都被縮進。module 代碼塊 (處於第一級) 缺省不被縮進。你可以在 .vimrc 裏打開這個
-縮進: >
+一般的程式碼塊，像 if、for、case、always、initial、function、specify、begin 等等
+都被縮排。module 程式碼塊 (處於第一級) 預設不被縮排。你可以在 .vimrc 裡開啟這個
+縮排: >
 
   let b:verilog_indent_modules = 1
 
-這樣 module 代碼塊就被縮進。要關閉縮進，刪除這個變量: >
+這樣 module 程式碼塊就被縮排。要關閉縮排，刪除這個變數: >
 
   :unlet b:verilog_indent_modules
 
-要只對 Verilog 文件設定變量，可以這樣做: >
+要只對 Verilog 檔案設定變數，可以這樣做: >
 
   au BufReadPost * if exists("b:current_syntax")
   au BufReadPost *   if b:current_syntax == "verilog"
@@ -862,20 +862,20 @@ VERILOG							*ft-verilog-indent*
   au BufReadPost *   endif
   au BufReadPost * endif
 
-另外，可以設定 b:verilog_indent_width 來改變縮進值 (缺省爲 'shiftwidth'): >
+另外，可以設定 b:verilog_indent_width 來改變縮排值 (預設為 'shiftwidth'): >
   let b:verilog_indent_width = 4
   let b:verilog_indent_width = &sw * 2
 
-你還可以打開 verbose 模式來幫助調試: >
+你還可以開啟 verbose 模式來幫助偵錯: >
 
   let b:verilog_indent_verbose = 1
 
-不要忘了要先設定 ":set cmdheight=2" 才能顯示信息。
+不要忘了要先設定 ":set cmdheight=2" 才能顯示資訊。
 
 
 VHDL							*ft-vhdl-indent*
 
-缺省執行 類屬 (generic) /端口 (port) 映射語句的對齊。下例說明這種對齊的應用: >
+預設執行 類屬 (generic) /埠 (port) 對映語句的對齊。下例說明這種對齊的應用: >
 
   ENTITY sync IS
   PORT (
@@ -886,7 +886,7 @@ VHDL							*ft-vhdl-indent*
        );
   END ENTITY sync;
 
-要關閉之，在 .vimrc 文件中加上 >
+要關閉之，在 .vimrc 檔案中加上 >
 
   let g:vhdl_indent_genportmap = 0
 
@@ -903,13 +903,13 @@ VHDL							*ft-vhdl-indent*
 
 ----------------------------------------
 
-缺省執行右手邊賦值 "<=" 語句的對齊。下例說明這種對齊的應用: >
+預設執行右手邊賦值 "<=" 語句的對齊。下例說明這種對齊的應用: >
 
   sig_out <= (bus_a(1) AND
              (sig_b OR sig_c)) OR
              (bus_a(0) AND sig_d);
 
-要關閉之，在 .vimrc 文件中加上 >
+要關閉之，在 .vimrc 檔案中加上 >
 
   let g:vhdl_indent_rhsassign = 0
 
@@ -921,7 +921,7 @@ VHDL							*ft-vhdl-indent*
 
 ----------------------------------------
 
-整行註釋 ("--" 打頭的行) 的縮進和上一行註釋對齊，_如果_ "--" 之後有一個空格的
+整行註釋 ("--" 打頭的行) 的縮排和上一行註釋對齊，_如果_ "--" 之後有一個空格的
 話。
 
 示例: >
@@ -936,7 +936,7 @@ VHDL							*ft-vhdl-indent*
 如果緊鄰的上一行不包含 "--"，_那麼_整行註釋會和下一個非空白且_不是_整行註釋的
 行的起始位置對齊。
 
-下列代碼的縮進: >
+下列程式碼的縮排: >
 
   sig_c <= sig_d; -- 註釋 0
          -- 註釋 1
@@ -970,20 +970,20 @@ VHDL							*ft-vhdl-indent*
   sig_e <= sig_f; -- 註釋 4
                   -- 註釋 5
 
-注意到 "--debug_code:" 不和 "-- comment 2" 對齊，因爲 "--debug_code:" 的 "--"
+注意到 "--debug_code:" 不和 "-- comment 2" 對齊，因為 "--debug_code:" 的 "--"
 之後沒有空白。
 
-基於註釋縮進的動態性，縮進應該執行_兩次_。第一遍縮進代碼，第二遍依據已正確縮進
-的代碼來縮進整行註釋。
+基於註釋縮排的動態性，縮排應該執行_兩次_。第一遍縮排程式碼，第二遍依據已正確縮排
+的程式碼來縮排整行註釋。
 
 
 VIM							*ft-vim-indent*
 
-對於縮進 Vim 腳本，有個變量可以指定續行的縮進距離，續行就是以反斜槓開始的行: >
+對於縮排 Vim 指令碼，有個變數可以指定續行的縮排距離，續行就是以反斜槓開始的行: >
 
 	:let g:vim_indent_cont = &sw * 3
 
-缺省值是三倍的 shiftwidth。
+預設值是三倍的 shiftwidth。
 
 
  vim:tw=78:ts=8:ft=help:norl:
